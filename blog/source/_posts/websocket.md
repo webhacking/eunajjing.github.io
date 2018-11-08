@@ -25,7 +25,6 @@ tags:categories: [개발공부]
 
 - 위의 블로그 포스팅에서 누락된 것을 보기 위해 참고했었음
 
-> Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)".
 
 ----
 ## 이상한 곳에서 계속 헤메이던 웹소켓 구현
