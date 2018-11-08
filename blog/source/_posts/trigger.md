@@ -1,10 +1,13 @@
 ﻿---
 title: trigger
 date: 2018-11-01 11:06:33
-tags:categories: - 개발공부
----
-# 트리거의 이용
 
+categories: [개발공부]
+
+---
+
+
+# 트리거의 이용
 ----
 ## 트리거
 특정한 테이블에 INSERT, UPDATE, DELETE와 같은 DML문이 수행되었을 때, 데이터베이스에서 자동으로 동작하도록 작성된 프로그램
