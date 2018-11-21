@@ -1,7 +1,7 @@
 ﻿---
 title: websocket
 date: 2018-11-08 16:27:20
-tags:categories: 개발공부
+tags:categories: [개발공부]
 
 ---
 # websocket을 이용한 간단한 알림 구현
