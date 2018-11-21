@@ -68,3 +68,33 @@ categories: [개발공부]
 
 
 > on DUPLICATE KEY는 트리거의 문법이 아닌 일반 쿼리 문법
+
+## 트리거로 루프 돌리기
+
+    create trigger QNAAdmin after insert on notify for each row
+         begin
+         DECLARE done INT DEFAULT FALSE;
+         declare tempoUserEmail varchar;
+         declare curUserEmail cursor for select userEmail from roles where roleCode='ROLE_ADMIN';
+         DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+         if (select roleCode from roles where userEmail=new.userEmail) = 'ROLE_ADMIN' then
+             open curUserEmail;
+                  ins_loop: LOOP
+                      fetch curUserEmail into tempoUserEmail;
+                      if done then
+                          leave ins_loop;
+                      end if;
+                      insert into notify(userEmail, notifyCode, notifyTarget) values (tempoUserEmail, 'QNA', new.qnaNum);
+                  end loop;
+             close curUserEmail;
+         end if;
+         end;
+
+관리자가 여러 명일 수 있어서, 쿼리의 결과가 다중일 때 트리거 안에서 루프를 돌게끔 쿼리문을 짜보았다.
+그런데 위 쿼리는 실제로 프로젝트에 사용은 못했다.
+roles가 예약어로 잡혀있는 것 같다고 강사님이 그러셨다.
+문법 자체는 오류가 없어보인다고 그러셔서, 나중에 또 내가 이런 뻘짓하고 싶어할까봐 같이 기록.
+
+> 프로젝트에선 파라미터로 role이 관리자인 것들을 리스트 형태로 보낸다음, foreach로 돌렸다.
+
