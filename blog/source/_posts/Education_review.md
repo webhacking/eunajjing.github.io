@@ -1,5 +1,5 @@
 ---
-title: 개발 관련 국비 교육 과정 수료 후기
+title: 국비교육과정수료후기
 date: 2018-11-26 16:18:18
 tags:
 categories:
