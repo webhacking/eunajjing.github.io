@@ -74,60 +74,57 @@
             </a>
         </h4>
         
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/정보처리기사/">
-                정보처리기사
-            </a>
-        </h4>
-        
             <h2 class="post-title">
-                정보처리기사-DB_4
+                websocket
             </h2>
             <ul class="post-date">
                 <li>
-                    2018-10-01
+                    2018-11-08
                 </li>
                 <li>
                     euna
                 </li>
             </ul>
             <div class="post-content">
-                <h1 id="인덱스"><a href="#인덱스" class="headerlink" title="인덱스"></a>인덱스</h1><ul>
-<li>인덱스 파일 : 데이터의 위치 관리 [키 값, 주소]</li>
-<li>데이터 파일 : 실제 데이터 기억</li>
+                <h1 id="websocket을-이용한-간단한-알림-구현"><a href="#websocket을-이용한-간단한-알림-구현" class="headerlink" title="websocket을 이용한 간단한 알림 구현"></a>websocket을 이용한 간단한 알림 구현</h1><hr>
+<h2 id="유용하게-참고했던-링크들"><a href="#유용하게-참고했던-링크들" class="headerlink" title="유용하게 참고했던 링크들"></a>유용하게 참고했던 링크들</h2><p><a href="https://www.youtube.com/watch?v=gQyRxPjssWg" target="_blank" rel="noopener">시니어코딩</a></p>
+<ul>
+<li>유튜브 강좌</li>
+<li>스프링 시큐리티를 사용하지 않아 http세션과 웹소켓을 잇는 작업이 존재</li>
+<li>연속된 강의라서 도중에 강의만 따라해서는 모르는 과정이 있음, 이 부족한 부분은 깃허브에 소스가 오픈되어 있어서 보면서 해야함</li>
 </ul>
-<h2 id="인덱스-구조"><a href="#인덱스-구조" class="headerlink" title="인덱스 구조"></a>인덱스 구조</h2><h3 id="B-트리"><a href="#B-트리" class="headerlink" title="B-트리"></a>B-트리</h3><p>: 검색 효율을 높이기 위해 자료 구조를 트리 구조로 나타내는 방법</p>
-<h3 id="B-트리-1"><a href="#B-트리-1" class="headerlink" title="B+-트리"></a>B+-트리</h3><p>: B-트리의 변형으로 인덱스 세트와 순차 세트로 구성</p>
-<h3 id="클러스터드-인덱스"><a href="#클러스터드-인덱스" class="headerlink" title="클러스터드 인덱스"></a>클러스터드 인덱스</h3><ul>
-<li>하나의 속성을 기준으로 정렬 후 테이블을 재구성해 인덱스를 만드는 방법</li>
-<li>물리적 순서와 인덱스 순서 동일</li>
-<li>하나의 테이블에 하나의 인덱스</li>
+<p><a href="https://blog.naver.com/allspacea7/221360046480" target="_blank" rel="noopener">블로그 포스팅</a></p>
+<ul>
+<li>xml 단에서 설정해야할 부분이 빠져있음</li>
+<li>간단하게 몇 건의 send를 받았는지 표기하는 예제</li>
+<li>개인적으로 제일 많은 도움을 받았음</li>
+<li>그런데 왜인지 똑같은 소스인데 override가 안되더라ㅠㅠ 근데 이건 안되어도 일단 기능은 제대로 발동해서 놔둠</li>
 </ul>
-<h3 id="넌-클러스터드-인덱스"><a href="#넌-클러스터드-인덱스" class="headerlink" title="넌 클러스터드 인덱스"></a>넌 클러스터드 인덱스</h3><ul>
-<li>주소값으로 인덱스를 만들어 검색</li>
-<li>여러 개의 인덱스</li>
+<p><a href="http://victorydntmd.tistory.com/253" target="_blank" rel="noopener">블로그 포스팅</a></p>
+<ul>
+<li>위의 블로그 포스팅에서 누락된 것을 보기 위해 참고했었음</li>
 </ul>
-<h1 id="OODB"><a href="#OODB" class="headerlink" title="OODB"></a>OODB</h1><ul>
-<li>객체</li>
-<li>속성</li>
-<li>메시지</li>
-<li>메소드</li>
-<li>클래스</li>
-<li>캡슐화</li>
-<li>상속</li>
-<li>다형성</li>
-<li>복합 객체 : 한 객체가 가진 속성으로 다른 객체를 이용하기 위한 것, FK와 유사한 개념</li>
+<hr>
+<h2 id="이상한-곳에서-계속-헤메이던-웹소켓-구현"><a href="#이상한-곳에서-계속-헤메이던-웹소켓-구현" class="headerlink" title="이상한 곳에서 계속 헤메이던 웹소켓 구현"></a>이상한 곳에서 계속 헤메이던 웹소켓 구현</h2><ul>
+<li>다들 저 위의 링크들을 따라하다보면 나…름 구현은 가능할 듯</li>
+<li>근데 내가 힘들었던 건 많이 참고했다는 블로그 포스팅을 보고 1차로 페이지 이동 시 웹소켓 발동까지는 했는데</li>
+<li>갑자기 실시간으로 알림 받기로 변경하라는 피드백을 받아서 일부를 수정하면서 생긴 것.</li>
+<li>인강은 <strong>디비에 있는 데이터를 뿌리지 않고 웹소켓이 보낸 데이터를 클라이언트 단에 단순히 뿌려주는 식으로 구현됨</strong></li>
+<li>그런데 나는 디비에서 가져와야 하기 때문에 쵸큼 달랐고 걍 핸들러에서 db에 select를 하게끔 만들었다.</li>
+<li><p>나는 send된 파라미터가 여러 개일 때만 처리하려고 했는데 왜인지 <strong>파라미터 여러 개 send</strong>가 먹지 않았던 문제가 제일 힘들었다. 나중에 알고보니까 아래처럼 써서 그랬던 거 같다.</p>
+<pre><code>websocket.send(&quot;~~~&quot;, &quot;~~~&quot;, &quot;~~&quot;);
+</code></pre></li>
 </ul>
-<h1 id="보안"><a href="#보안" class="headerlink" title="보안"></a>보안</h1><h2 id="정보-보안의-목표"><a href="#정보-보안의-목표" class="headerlink" title="정보 보안의 목표"></a>정보 보안의 목표</h2><ul>
-<li>기밀성 : 허락되지 않은 대상이 정보의 내용을 알 수 없도록 하는 것</li>
-<li>무결성 : 허락되지 않은 대상이 정보를 수정/삭제할 수 없는 것</li>
-<li>가용성 : 허락된 대상이 정보에 접근하고자 할 때 방해받지 않는 것</li>
+<ul>
+<li><p>이렇게 썼다면 되지 않았을까?<br>(어쩌다보니 이렇게 보낼 필요가 없어서 나는 시도는 안해봤다)</p>
+<pre><code>websocket.send(&quot;~~~~, ~~~~, ~~~&quot;);
+</code></pre></li>
+<li><p>그리구 인강에서 전역 변수로 빼서 사용하는 웹소켓, 나는 먹지 않아서 그냥 고치기 전? 전역 변수로 빼지 않고 사용하는 웹소켓으로 구현했다.</p>
+</li>
 </ul>
-<h2 id="보안-어휘"><a href="#보안-어휘" class="headerlink" title="보안 어휘"></a>보안 어휘</h2><ul>
-<li>평문과 암호문</li>
-<li>암호화와 복호화</li>
-<li>대칭키 시스템 : 암호화와 복호화의 키가 동일</li>
-<li>비대칭키 시스템 : 암호화할 때는 공개키, 복호화할 때는 비밀키 이용, 공개키와 비밀키를 키 페어라고 한다.</li>
+<hr>
+<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><ul>
+<li><a href="http://websocket.org/echo.html" target="_blank" rel="noopener">웹소켓 테스트 가능 사이트</a></li>
 </ul>
 
             </div>
