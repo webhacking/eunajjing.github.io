@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="keywords" content="hexo, autumn">
+    <title>
+        ERecord
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="http://osly086qe.bkt.clouddn.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
+    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
+    <script>
+        infiniteScroll()
+
+        // for mobile menu
+        $(function() {
+            $('.social-button').click(function() {
+                if ($('.social-links').hasClass('hide-links')) {
+                    $('.social-links').removeClass('hide-links')
+                } else {
+                    $('.social-links').addClass('hide-links')
+                }
+            })
+        })
+    </script>
+</head>
+
+    <body style="background: url(http://osly086qe.bkt.clouddn.com/button-bg.png) #f3f3f3">
+        <div class="container">
+            <header class="header">
+    <h1 class="title">
+        <a href="/" class="logo">
+            ERecord
+        </a>
+    </h1>
+    <h2 class="desc">
+        일상 및 개발 공부 기록용 블로그
+    </h2>
+
+    <nav class="links">
+        <button class="social-button">
+            menu
+        </button>
+        <ul class="social-links hide-links">
+                <li>
+                    <a href="https://github.com/eunajjing">GITHUB
+                    </a>
+                </li>
+<li><a href="https://uri.life/web/accounts/8579">CONNECTING</a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+                <main class="main">
+                    <article class="post">
+    
+        <h4 class="post-cat">
+            <a href="/categories/개발공부/">
+                개발공부
+            </a>
+        </h4>
+        
+        <h4 class="post-cat">
+            <a href="/categories/개발공부/뉴딜과정/">
+                뉴딜과정
+            </a>
+        </h4>
+        
+            <h2 class="post-title">
+                2018-11-29 수업 내용 정리
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-11-29
+                </li>
+                <li>
+                    euna
+                </li>
+            </ul>
+            <div class="post-content">
+                <h2 id="자바-영역"><a href="#자바-영역" class="headerlink" title="자바 영역"></a>자바 영역</h2><ul>
+<li><p>메서드 에리어(Methed Aera)</p>
+<ul>
+<li><p>명령어가 저장</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x &#123;</span><br><span class="line">	int i = 100;</span><br><span class="line">	int[] arr;</span><br><span class="line">	arr = new int[10];</span><br><span class="line">	arr[i] = 300;</span><br><span class="line">	&#125;</span><br><span class="line">main &#123;</span><br><span class="line">    x();</span><br><span class="line">    x();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>그런데 만약 문자열이라면?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s = new String(&quot;Hello World!&quot;);</span><br><span class="line">// 이것은 힙으로 간다.</span><br><span class="line">String st = &quot;Hello!&quot;;</span><br><span class="line">// 이것은 상수 풀로 간다.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>예전에는 String이 char의 배열이었는데, 자바 버전이 올라가며 utf-8로 저장하기 위해 byte의 배열로 변경됨</p>
+<p>또한 메서드 호출이 종료되면, 메서드 안의 인스턴스 변수가 소멸된다.</p>
+</blockquote>
+<ul>
+<li><p>스택(Stack)</p>
+<ul>
+<li><p>메서드 하나 당 하나의 프레임이 형성되고 관련 데이터들의 주소(첫 시작점)가 저장됨</p>
+</li>
+<li><p>메서드 호출이 종료되면 소멸됨</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main 프레임 생성</span><br><span class="line">x의 프레임 생성 후 소멸</span><br><span class="line">x의 프레임 생성 후 소멸</span><br><span class="line">프로그램이 종료되면 main 프레임 소멸</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>힙(Heap)</p>
+<ul>
+<li><p>객체의 데이터가 저장됨</p>
+</li>
+<li><p>유일하게 garbage가 있는 곳</p>
+</li>
+<li><p>garbage collector는</p>
+<ul>
+<li>특정 객체가 주소를 잃었고</li>
+<li>현재 메모리가 부족하다고 생각되면</li>
+<li>cpu가 한가할 때 실행됨</li>
+</ul>
+<p>(이게 가능한 이유는 참조-레퍼런스- 카운트를 기억하기 때문)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x 내 데이터들의 메모리가 저장되었다가 garbage collector가 삭제</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>자바는 객체 배열을 만들 수 없다</strong></p>
+<ul>
+<li><p>그래서 String 배열을 만든다고 했을 때 힙에는</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[   ] [   ] [   ]....</span><br><span class="line">// 각각의 칸에 상수 풀 주소가 저장된다</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>만약 String을 정식 객체 생성을 해서 만들었다고 했을 때</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s의 Hello World가 저장되어 있다</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>상수 풀(constant pool)</p>
+<ul>
+<li><p>문자열이 저장되었다면 상수 풀(constant pool)에 저장된다! <strong>힙이 아님</strong></p>
+</li>
+<li><p><strong>이미 같은 문자열이 있다면 새로 메모리를 만들지 않는다</strong></p>
+</li>
+<li><p>즉 참조 주소가 다르다!</p>
+</li>
+<li><p>보통 String을</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String st = &quot;~&quot;;</span><br></pre></td></tr></table></figure>
+<p>로 만들기 때문에(단축 객체 생성) 참조 주소가 같은 것</p>
+</li>
+<li><p>그래서 equals를 써야 함</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="헷갈리니까-이전에-했던-예제"><a href="#헷갈리니까-이전에-했던-예제" class="headerlink" title="헷갈리니까 이전에 했던 예제"></a>헷갈리니까 이전에 했던 예제</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; main &#123;</span><br><span class="line">&gt;     String s1 = new String(&quot;hello&quot;);</span><br><span class="line">&gt; 	String s2 = new String(&quot;hello&quot;);</span><br><span class="line">&gt; 	String s3 = &quot;hello&quot;;</span><br><span class="line">&gt; 	String s4 = &quot;hello&quot;;</span><br><span class="line">&gt; 	String s5 = s1;</span><br><span class="line">&gt; 	</span><br><span class="line">&gt; 	if(s1 == s2) System.out.println(&quot;s1과 s2 주소값이 같음&quot;);</span><br><span class="line">&gt; 	if(s2 == s3) System.out.println(&quot;s2과 s3 주소값이 같음&quot;);</span><br><span class="line">&gt; 	if(s3 == s4) System.out.println(&quot;s3과 s4 주소값이 같음&quot;);</span><br><span class="line">&gt; 	if(s5 == s1) System.out.println(&quot;s5과 s1 주소값이 같음&quot;);</span><br><span class="line">&gt; 	if(s1.equals(s2)) System.out.println(&quot;s1과 s2 객체 내용이 같음&quot;);</span><br><span class="line">&gt; 	if(s1.equals(s3)) System.out.println(&quot;s1과 s2 객체 내용이 같음&quot;);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>콘솔은</p>
+<p>s3과 s4 주소값이 같음 </p>
+<p>s5과 s1 주소값이 같음</p>
+<p>s1과 s2 객체 내용이 같음</p>
+<p>s1과 s2 객체 내용이 같음</p>
+</blockquote>
+<h2 id="복습-끝내고-수업-시작"><a href="#복습-끝내고-수업-시작" class="headerlink" title="복습 끝내고 수업 시작"></a>복습 끝내고 수업 시작</h2><h3 id="클래스와-데이터-타입"><a href="#클래스와-데이터-타입" class="headerlink" title="클래스와 데이터 타입"></a>클래스와 데이터 타입</h3><ul>
+<li><p>클래스의 용도</p>
+<ul>
+<li><p>데이터 타입 만들기</p>
+<ul>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-1.6" target="_blank" rel="noopener">오늘의 첫 과제는 여기</a></p>
+</li>
+<li><p>처음에 혼자 코딩했을 때 이렇게 했는데, 에러가 났다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class App &#123;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Scanner keyboard = new Scanner(System.in);</span><br><span class="line">    final int LENGTH = 10;</span><br><span class="line">    Lesson[] lesson = new Lesson[LENGTH];</span><br><span class="line">    // 클래스는 잘 정의했음</span><br><span class="line">    </span><br><span class="line">    int i = 0;</span><br><span class="line">    while (i &lt; LENGTH) &#123;</span><br><span class="line">      System.out.print(&quot;번호? &quot;);</span><br><span class="line">      lesson[i].no = Integer.parseInt(keyboard.nextLine());</span><br><span class="line">      (중략)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>이렇게 하면 nullpointerException이 뜬다.</p>
+</li>
+<li>현재 객체 생성이 되지 않았음!</li>
+<li><p>때문에 while 문 안에서 객체를 생성해주면서 해당 방에 넣어줘야 함</p>
+</li>
+<li><p>답은 이것</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">import java.sql.Date;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class App &#123;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">    Scanner keyboard = new Scanner(System.in);</span><br><span class="line"></span><br><span class="line">    final int LENGTH = 10;</span><br><span class="line"></span><br><span class="line">    Lesson[] lessons = new Lesson[LENGTH];</span><br><span class="line"></span><br><span class="line">    int i = 0;</span><br><span class="line">    while (i &lt; LENGTH) &#123;</span><br><span class="line">      // 클래스로 정의한 새 데이터 타입의 메모리(인스턴스) 만들기</span><br><span class="line">      Lesson lesson = new Lesson();</span><br><span class="line"></span><br><span class="line">      // 사용자가 입력한 값을 메모리에 담는다.</span><br><span class="line">      System.out.print(&quot;번호? &quot;);</span><br><span class="line">      lesson.no = Integer.parseInt(keyboard.nextLine());</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;수업명? &quot;);</span><br><span class="line">      lesson.title = keyboard.nextLine();</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;설명? &quot;);</span><br><span class="line">      lesson.contents = keyboard.nextLine();</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;시작일? &quot;);</span><br><span class="line">      lesson.startDate = Date.valueOf(keyboard.nextLine());</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;종료일? &quot;);</span><br><span class="line">      lesson.endDate = Date.valueOf(keyboard.nextLine());</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;총수업시간? &quot;);</span><br><span class="line">      lesson.totalHours = Integer.parseInt(keyboard.nextLine());</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;일수업시간? &quot;);</span><br><span class="line">      lesson.dayHours = Integer.parseInt(keyboard.nextLine());</span><br><span class="line"></span><br><span class="line">      // i 번째 배열에 수업 정보를 담고 있는 Lesson 객체(의 주소)를 보관한다.</span><br><span class="line">      lessons[i] = lesson;</span><br><span class="line">      i++;</span><br><span class="line"></span><br><span class="line">      System.out.print(&quot;\n계속 입력하시겠습니까?(Y/n) &quot;);</span><br><span class="line">      String answer = keyboard.nextLine().toLowerCase();</span><br><span class="line"></span><br><span class="line">      if (!answer.equals(&quot;y&quot;) &amp;&amp; answer.length() &gt; 0) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    keyboard.close();</span><br><span class="line"></span><br><span class="line">    System.out.println(); // 빈 줄 출력</span><br><span class="line"></span><br><span class="line">    for (int j = 0; j &lt; i; j++) &#123;</span><br><span class="line">      System.out.printf(&quot;%3d, %-15s, %10s ~ %10s, %4d\n&quot;, lessons[j].no, 							lessons[j].title, lessons[j].startDate, </span><br><span class="line">      					lessons[j].endDate, lessons[j].totalHours);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="그-외"><a href="#그-외" class="headerlink" title="그 외"></a>그 외</h3><ul>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-1.7" target="_blank" rel="noopener">분기문, 조건문 통합 과제</a></p>
+</li>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-1.8" target="_blank" rel="noopener">메서드의 존재 이유를 알아보는 과제(..)</a><br>쉽게 말해 유지 보수가 쉽도록 만듦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class App &#123;</span><br><span class="line">  static Lesson[] lessons;</span><br><span class="line">  final static int LENGTH = 10;</span><br><span class="line">  static int lessonIdx = 0;</span><br><span class="line">  static Scanner keyboard;</span><br><span class="line">  // static 메서드에서 접근이 안되기 때문에 모두 클래스 변수로 만든 것</span><br><span class="line">  </span><br><span class="line">  static void addLession() &#123;</span><br><span class="line">   (중략)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">    keyboard = new Scanner(System.in);</span><br><span class="line">    lessons = new Lesson[LENGTH];</span><br><span class="line">    boards = new Board[LENGTH];</span><br><span class="line"></span><br><span class="line">    while (true) &#123;</span><br><span class="line">      System.out.print(&quot;명령&gt; &quot;);</span><br><span class="line">      String command = keyboard.nextLine().toLowerCase();</span><br><span class="line">	  // 사실 이 2줄의 코드도 메서드로 뺄 수 있다!</span><br><span class="line">      if (command.equals(&quot;/lesson/add&quot;)) &#123;</span><br><span class="line">        addLession();</span><br><span class="line">      &#125;</span><br><span class="line">      (중략)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-1.9" target="_blank" rel="noopener">클래스를 활용하여 메서드 분류</a></p>
+<ul>
+<li>Low Coupling<ul>
+<li>낮은 결합도</li>
+<li>한 클래스는 최대한 적은 클래스를 의존해야 한다.</li>
+</ul>
+</li>
+<li>High Cohesion<ul>
+<li>높은 응집도</li>
+<li>한 클래스는 하나의 역할만을 담당한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-2.0" target="_blank" rel="noopener">패키지를 사용해 클래스 분류</a></p>
+<ul>
+<li><p>도메인 : dto, vo, 사용자 정의 데이터 타입</p>
+<blockquote>
+<h3 id="접근-제한자"><a href="#접근-제한자" class="headerlink" title="접근 제한자"></a>접근 제한자</h3><ul>
+<li><p>privatge : 같은 클래스 내에서 접근 가능</p>
+</li>
+<li><p>default : 같은 패키지 내에서 접근 가능</p>
+</li>
+<li><p>protected : 같은 패키지 내에서 접근이 가능하고 해당 클래스를 상속 받은 자식 클래스의 경우 접근 가능</p>
+</li>
+<li><p>public : 누구나 접근 가능</p>
+</li>
+</ul>
+<h3 id="접근-제어자-modifier"><a href="#접근-제어자-modifier" class="headerlink" title="접근 제어자(modifier)"></a>접근 제어자(modifier)</h3><ul>
+<li><p>본래 성질을 변경시키는 것</p>
+</li>
+<li><p>ex : 접근 제한자, static, final 등</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-2.2" target="_blank" rel="noopener">클래스 변수와 클래스 메서드의 한계, 인스턴스 변수와 인스턴스 메서드가 필요한 이유</a></p>
+<blockquote>
+<h3 id="클래스-변수와-인스턴스-변수의-할당"><a href="#클래스-변수와-인스턴스-변수의-할당" class="headerlink" title="클래스 변수와 인스턴스 변수의 할당"></a>클래스 변수와 인스턴스 변수의 할당</h3><ul>
+<li><p>변수 선언은 클래스 로딩이 안된다</p>
+</li>
+<li><p>클래스 로딩은 단 한 번만 된다.</p>
+</li>
+<li><p>때문에 클래스 변수는 한 개가 만들어진다 : 클래스가 로딩될 때(클래스 멤버를 사용할 때)  최초 할당</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;   Class.forName();</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>static 블럭 : 클래스가 최초 로딩될 때 실행됨, 즉 여러 번 클래스 멤버를 사용해도 <strong>한 번만 실행</strong>됨</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;   static &#123;</span><br><span class="line">&gt;   </span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>this : 인스턴스 메서드 내장 변수, 생략 가능<ul>
+<li>static 메서드에서 사용이 불가능함</li>
+<li>this는 객체의 주소</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-2.4" target="_blank" rel="noopener">getter, setter의 등장</a></p>
+<ul>
+<li>인스턴스가 유효한 값을 갖도록 제어하기 위해, 변수에 직접 접근을 막으려 접근 제한자를 건다.</li>
+<li>멤버 변수들 = 필드</li>
+<li>멤버 변수의 이름 = 필드명</li>
+<li>getter, setter = 프로퍼티</li>
+<li>get, set을 떼고 소문자로 첫 문자를 변경한 것 = 프로퍼티명</li>
+<li><strong>필드명과 프로퍼티명은 다른 개념이다</strong></li>
+<li>getter만 구성된 경우 : read only property</li>
+<li>setter만 구성된 경우 : write only property</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>인스턴스 메서드 = message 라고 하기도 하며, 인스턴스를 다루는 연산자(operator)로 보기도 한다.</p>
+</blockquote>
+
+            </div>
+</article>
+
+                </main>
+                <aside class="aside">
+                    <section class="aside-section">
+                        
+    <h1>Categories</h1>
+
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a></li></ul>
+
+                    </section>
+                    <section class="aside-section">
+                        
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a></li></ul>
+
+
+                    </section>
+                    <section class="aside-section tag">
+                        
+    <h1>Tags</h1>
+
+    
+
+                    </section>
+                </aside>
+        </div>
+    </body>
+
+</html>
