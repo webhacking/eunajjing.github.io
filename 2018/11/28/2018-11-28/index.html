@@ -1,98 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        ERecord
-    </title>
-    <!-- favicon -->
+  <meta charset="utf-8">
+  
+  <title>2018-11-28 수업 내용 정리 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="2018-11-28 수업이클립스 프로젝트에 파란 느낌표가 있는 경우 동작하지 않는다. 설정 파일이 꼬여서 컴파일이 제대로 안될 가능성이 높다. 1gradle cleanEclipse 이클립스와 관련된 설정 파일이 모두 날라간다(폴더는 그대로 있는 경우도 있다) 자바 프로젝트 폴더 구성첫 날 했으므로 링크로 대체하지만 간단히 요약하자면  gradle init">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-11-28 수업 내용 정리">
+<meta property="og:url" content="http://eunajjing.github.io/2018/11/28/2018-11-28/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="2018-11-28 수업이클립스 프로젝트에 파란 느낌표가 있는 경우 동작하지 않는다. 설정 파일이 꼬여서 컴파일이 제대로 안될 가능성이 높다. 1gradle cleanEclipse 이클립스와 관련된 설정 파일이 모두 날라간다(폴더는 그대로 있는 경우도 있다) 자바 프로젝트 폴더 구성첫 날 했으므로 링크로 대체하지만 간단히 요약하자면  gradle init">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-12-07T05:37:04.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-11-28 수업 내용 정리">
+<meta name="twitter:description" content="2018-11-28 수업이클립스 프로젝트에 파란 느낌표가 있는 경우 동작하지 않는다. 설정 파일이 꼬여서 컴파일이 제대로 안될 가능성이 높다. 1gradle cleanEclipse 이클립스와 관련된 설정 파일이 모두 날라간다(폴더는 그대로 있는 경우도 있다) 자바 프로젝트 폴더 구성첫 날 했으므로 링크로 대체하지만 간단히 요약하자면  gradle init">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-    <link rel="icon" href="http://osly086qe.bkt.clouddn.com/favicon.ico">
-    
-    <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
-    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
-    <script>
-        infiniteScroll()
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script>
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
 </head>
 
-    <body style="background: url(http://osly086qe.bkt.clouddn.com/button-bg.png) #f3f3f3">
-        <div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            ERecord
-        </a>
-    </h1>
-    <h2 class="desc">
-        일상 및 개발 공부 기록용 블로그
-    </h2>
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
-                <li>
-                    <a href="https://github.com/eunajjing">GITHUB
-                    </a>
-                </li>
-<li><a href="https://uri.life/web/accounts/8579">CONNECTING</a>
-</li>
-        </ul>
-    </nav>
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
 </header>
 
-                <main class="main">
-                    <article class="post">
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2018-11-28" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/">
-                개발공부
-            </a>
-        </h4>
+    
+      <header class="article-header">
         
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/뉴딜과정/">
-                뉴딜과정
-            </a>
-        </h4>
-        
-            <h2 class="post-title">
-                2018-11-28 수업 내용 정리
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-11-28
-                </li>
-                <li>
-                    euna
-                </li>
-            </ul>
-            <div class="post-content">
-                <h2 id="2018-11-28-수업"><a href="#2018-11-28-수업" class="headerlink" title="2018-11-28 수업"></a>2018-11-28 수업</h2><p>이클립스 프로젝트에 파란 느낌표가 있는 경우 동작하지 않는다.</p>
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      2018-11-28 수업 내용 정리
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/11/28/2018-11-28/" class="article-date">
+	  <time datetime="2018-11-28T05:45:18.000Z" itemprop="datePublished">11월 28, 2018</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2018-11-28-수업"><a href="#2018-11-28-수업" class="headerlink" title="2018-11-28 수업"></a>2018-11-28 수업</h2><p>이클립스 프로젝트에 파란 느낌표가 있는 경우 동작하지 않는다.</p>
 <p>설정 파일이 꼬여서 컴파일이 제대로 안될 가능성이 높다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle cleanEclipse</span><br></pre></td></tr></table></figure>
 <p>이클립스와 관련된 설정 파일이 모두 날라간다(폴더는 그대로 있는 경우도 있다)</p>
@@ -104,7 +148,7 @@
 </ul>
 <h3 id="리터럴-literal-변수-variables-키보드-입력-사용-연습"><a href="#리터럴-literal-변수-variables-키보드-입력-사용-연습" class="headerlink" title="리터럴(literal), 변수(variables), 키보드 입력 사용 연습"></a>리터럴(literal), 변수(variables), 키보드 입력 사용 연습</h3><ul>
 <li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-1.4" target="_blank" rel="noopener">과제1</a> 해결</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class App &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">      Scanner scan = new Scanner(System.in);</span><br><span class="line">      System.out.println(&quot;번호?&quot;);</span><br><span class="line">      int num = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(&quot;수업명?&quot;);</span><br><span class="line">      String classTitle = scan.nextLine();</span><br><span class="line">      System.out.println(&quot;수업내용?&quot;);</span><br><span class="line">      String classContent = scan.nextLine();</span><br><span class="line">      System.out.println(&quot;시작일?&quot;);</span><br><span class="line">      Date classStartDate = Date.valueOf(scan.nextLine());</span><br><span class="line">      // sql date 클래스를 이용했다.</span><br><span class="line">      // Date.valueOf()는 String으로 들어온 값을 date 객체로 만들어주는 것</span><br><span class="line">      System.out.println(&quot;종료일?&quot;);</span><br><span class="line">      Date classEndDate = Date.valueOf(scan.nextLine());</span><br><span class="line">      // int month = classEndDate.getMonth();</span><br><span class="line">      // 이렇게도 된다.</span><br><span class="line">      System.out.println(&quot;총수업시간?&quot;);</span><br><span class="line">      int totalClassTime = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(&quot;일수업시간?&quot;);</span><br><span class="line">      int dayClassTime = Integer.parseInt(scan.nextLine());</span><br><span class="line">      </span><br><span class="line">      System.out.println(&quot;번호 : &quot;+num);</span><br><span class="line">      // System.out.printf(&quot;번호: %s\n&quot;, args);</span><br><span class="line">      // 이스케이프 명령어 : 문자열 안에 삽입되는 명령어</span><br><span class="line">      System.out.println(&quot;수업명 : &quot;+classTitle);</span><br><span class="line">      System.out.println(&quot;수업내용 : &quot;+classContent);</span><br><span class="line">      System.out.println(&quot;기간 : &quot;+classStartDate+&quot; ~ &quot;+classEndDate);</span><br><span class="line">      System.out.println(&quot;총수업시간 : &quot;+totalClassTime+&quot; 시간&quot;);</span><br><span class="line">      // System.out.printf(&quot;총수업시간 : %d\n 시간&quot;, args);</span><br><span class="line">      System.out.println(&quot;일수업시간 : &quot;+dayClassTime+&quot; 시간&quot;);</span><br><span class="line">      </span><br><span class="line">      scan.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">      System.out.println(<span class="string">"번호?"</span>);</span><br><span class="line">      <span class="keyword">int</span> num = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(<span class="string">"수업명?"</span>);</span><br><span class="line">      String classTitle = scan.nextLine();</span><br><span class="line">      System.out.println(<span class="string">"수업내용?"</span>);</span><br><span class="line">      String classContent = scan.nextLine();</span><br><span class="line">      System.out.println(<span class="string">"시작일?"</span>);</span><br><span class="line">      Date classStartDate = Date.valueOf(scan.nextLine());</span><br><span class="line">      <span class="comment">// sql date 클래스를 이용했다.</span></span><br><span class="line">      <span class="comment">// Date.valueOf()는 String으로 들어온 값을 date 객체로 만들어주는 것</span></span><br><span class="line">      System.out.println(<span class="string">"종료일?"</span>);</span><br><span class="line">      Date classEndDate = Date.valueOf(scan.nextLine());</span><br><span class="line">      <span class="comment">// int month = classEndDate.getMonth();</span></span><br><span class="line">      <span class="comment">// 이렇게도 된다.</span></span><br><span class="line">      System.out.println(<span class="string">"총수업시간?"</span>);</span><br><span class="line">      <span class="keyword">int</span> totalClassTime = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(<span class="string">"일수업시간?"</span>);</span><br><span class="line">      <span class="keyword">int</span> dayClassTime = Integer.parseInt(scan.nextLine());</span><br><span class="line">      </span><br><span class="line">      System.out.println(<span class="string">"번호 : "</span>+num);</span><br><span class="line">      <span class="comment">// System.out.printf("번호: %s\n", args);</span></span><br><span class="line">      <span class="comment">// 이스케이프 명령어 : 문자열 안에 삽입되는 명령어</span></span><br><span class="line">      System.out.println(<span class="string">"수업명 : "</span>+classTitle);</span><br><span class="line">      System.out.println(<span class="string">"수업내용 : "</span>+classContent);</span><br><span class="line">      System.out.println(<span class="string">"기간 : "</span>+classStartDate+<span class="string">" ~ "</span>+classEndDate);</span><br><span class="line">      System.out.println(<span class="string">"총수업시간 : "</span>+totalClassTime+<span class="string">" 시간"</span>);</span><br><span class="line">      <span class="comment">// System.out.printf("총수업시간 : %d\n 시간", args);</span></span><br><span class="line">      System.out.println(<span class="string">"일수업시간 : "</span>+dayClassTime+<span class="string">" 시간"</span>);</span><br><span class="line">      </span><br><span class="line">      scan.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="static-메서드와-인스턴스-메서드"><a href="#static-메서드와-인스턴스-메서드" class="headerlink" title="static 메서드와 인스턴스 메서드"></a>static 메서드와 인스턴스 메서드</h4><ul>
 <li>인스턴스의 값을 다루면 static을 붙이면 안된다, 반드시 인스턴스 메서드로 만들어줘야 한다.</li>
 </ul>
@@ -120,37 +164,199 @@
 </blockquote>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">import java.sql.Date;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class App &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    final int NUMBER = 20;</span><br><span class="line">    int[] no = new int[NUMBER];</span><br><span class="line">    // 4byte 크기 메모리 100개를 heap(인스턴스들이 저장)</span><br><span class="line">    // 배열은 모두 ref 변수(주소 변수)</span><br><span class="line">    // 메서드 에리어</span><br><span class="line">    // stack (메인 쓰레드 것과... 쓰레드 각각 1개씩 만들어진다)</span><br><span class="line">    String[] title = new String[NUMBER];</span><br><span class="line">    String[] contents = new String[NUMBER];</span><br><span class="line">    Date[] startDate = new Date[NUMBER];</span><br><span class="line">    Date[] endDate = new Date[NUMBER];</span><br><span class="line">    int[] totalHours = new int[NUMBER];</span><br><span class="line">    int[] dayHours = new int[NUMBER];</span><br><span class="line"></span><br><span class="line">    int len = 0;</span><br><span class="line"></span><br><span class="line">    Scanner scan = new Scanner(System.in);</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; NUMBER ; i++) &#123;</span><br><span class="line">      System.out.println(&quot;번호?&quot;);</span><br><span class="line">      no[i] = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(&quot;수업명?&quot;);</span><br><span class="line">      title[i] = scan.nextLine();</span><br><span class="line">      System.out.println(&quot;수업내용?&quot;);</span><br><span class="line">      contents[i] = scan.nextLine();</span><br><span class="line">      System.out.println(&quot;시작일?&quot;);</span><br><span class="line">      startDate[i] = Date.valueOf(scan.nextLine());</span><br><span class="line">      System.out.println(&quot;종료일?&quot;);</span><br><span class="line">      endDate[i] = Date.valueOf(scan.nextLine());</span><br><span class="line">      System.out.println(&quot;총수업시간?&quot;);</span><br><span class="line">      totalHours[i] = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(&quot;일수업시간?&quot;);</span><br><span class="line">      dayHours[i] = Integer.parseInt(scan.nextLine());</span><br><span class="line">      len++;</span><br><span class="line">      System.out.print(&quot;계속하시겠습니까?(Y/n)&quot;);</span><br><span class="line">      String input = scan.nextLine();</span><br><span class="line">      if (input.equalsIgnoreCase(&quot;n&quot;)) &#123;</span><br><span class="line">        // 대소문자 가리지 않고</span><br><span class="line">        break;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        continue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scan.close();</span><br><span class="line"></span><br><span class="line">    for (int j = 0; j &lt; len ; j++) &#123;</span><br><span class="line">      System.out.println(no[j]+&quot;,&quot;+title[j]+&quot;,&quot;+contents[j]+&quot;,&quot;</span><br><span class="line">                      +startDate[j]+&quot;~&quot;+endDate[j]+&quot;,&quot;+totalHours[j]+&quot;,&quot;+dayHours[j]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> NUMBER = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">int</span>[] no = <span class="keyword">new</span> <span class="keyword">int</span>[NUMBER];</span><br><span class="line">    <span class="comment">// 4byte 크기 메모리 100개를 heap(인스턴스들이 저장)</span></span><br><span class="line">    <span class="comment">// 배열은 모두 ref 변수(주소 변수)</span></span><br><span class="line">    <span class="comment">// 메서드 에리어</span></span><br><span class="line">    <span class="comment">// stack (메인 쓰레드 것과... 쓰레드 각각 1개씩 만들어진다)</span></span><br><span class="line">    String[] title = <span class="keyword">new</span> String[NUMBER];</span><br><span class="line">    String[] contents = <span class="keyword">new</span> String[NUMBER];</span><br><span class="line">    Date[] startDate = <span class="keyword">new</span> Date[NUMBER];</span><br><span class="line">    Date[] endDate = <span class="keyword">new</span> Date[NUMBER];</span><br><span class="line">    <span class="keyword">int</span>[] totalHours = <span class="keyword">new</span> <span class="keyword">int</span>[NUMBER];</span><br><span class="line">    <span class="keyword">int</span>[] dayHours = <span class="keyword">new</span> <span class="keyword">int</span>[NUMBER];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUMBER ; i++) &#123;</span><br><span class="line">      System.out.println(<span class="string">"번호?"</span>);</span><br><span class="line">      no[i] = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(<span class="string">"수업명?"</span>);</span><br><span class="line">      title[i] = scan.nextLine();</span><br><span class="line">      System.out.println(<span class="string">"수업내용?"</span>);</span><br><span class="line">      contents[i] = scan.nextLine();</span><br><span class="line">      System.out.println(<span class="string">"시작일?"</span>);</span><br><span class="line">      startDate[i] = Date.valueOf(scan.nextLine());</span><br><span class="line">      System.out.println(<span class="string">"종료일?"</span>);</span><br><span class="line">      endDate[i] = Date.valueOf(scan.nextLine());</span><br><span class="line">      System.out.println(<span class="string">"총수업시간?"</span>);</span><br><span class="line">      totalHours[i] = Integer.parseInt(scan.nextLine());</span><br><span class="line">      System.out.println(<span class="string">"일수업시간?"</span>);</span><br><span class="line">      dayHours[i] = Integer.parseInt(scan.nextLine());</span><br><span class="line">      len++;</span><br><span class="line">      System.out.print(<span class="string">"계속하시겠습니까?(Y/n)"</span>);</span><br><span class="line">      String input = scan.nextLine();</span><br><span class="line">      <span class="keyword">if</span> (input.equalsIgnoreCase(<span class="string">"n"</span>)) &#123;</span><br><span class="line">        <span class="comment">// 대소문자 가리지 않고</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scan.close();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len ; j++) &#123;</span><br><span class="line">      System.out.println(no[j]+<span class="string">","</span>+title[j]+<span class="string">","</span>+contents[j]+<span class="string">","</span></span><br><span class="line">                      +startDate[j]+<span class="string">"~"</span>+endDate[j]+<span class="string">","</span>+totalHours[j]+<span class="string">","</span>+dayHours[j]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-            </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/29/2018-11-29/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2018-11-29 수업 내용 정리
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/28/git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">깃 연습</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+<!-- Table of Contents -->
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a></li></ul>
-
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
-
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a></li></ul>
-
-
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
-
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-11-28-수업"><span class="nav-number">1.</span> <span class="nav-text">2018-11-28 수업</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#자바-프로젝트-폴더-구성"><span class="nav-number">1.1.</span> <span class="nav-text">자바 프로젝트 폴더 구성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#리터럴-literal-변수-variables-키보드-입력-사용-연습"><span class="nav-number">1.2.</span> <span class="nav-text">리터럴(literal), 변수(variables), 키보드 입력 사용 연습</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#static-메서드와-인스턴스-메서드"><span class="nav-number">1.2.1.</span> <span class="nav-text">static 메서드와 인스턴스 메서드</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#배열과-흐름제어문-분기-반복-의-사용"><span class="nav-number">1.3.</span> <span class="nav-text">배열과 흐름제어문(분기, 반복)의 사용</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#프로젝트-폴더를-기존-것을-복사해서-만들-때"><span class="nav-number">1.4.</span> <span class="nav-text">프로젝트 폴더를 기존 것을 복사해서 만들 때</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
 
-                    </section>
-                </aside>
-        </div>
-    </body>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
 
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>

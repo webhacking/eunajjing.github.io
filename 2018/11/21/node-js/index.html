@@ -1,98 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        ERecord
-    </title>
-    <!-- favicon -->
+  <meta charset="utf-8">
+  
+  <title>node.js | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="노드JS공부하게 된 계기프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다. 참고한 것Do it! Node.js 근데 많이 참고하진 않았다…변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js">
+<meta property="og:url" content="http://eunajjing.github.io/2018/11/21/node-js/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="노드JS공부하게 된 계기프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다. 참고한 것Do it! Node.js 근데 많이 참고하진 않았다…변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-11-26T07:22:24.495Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node.js">
+<meta name="twitter:description" content="노드JS공부하게 된 계기프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다. 참고한 것Do it! Node.js 근데 많이 참고하진 않았다…변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-    <link rel="icon" href="http://osly086qe.bkt.clouddn.com/favicon.ico">
-    
-    <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
-    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
-    <script>
-        infiniteScroll()
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script>
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
 </head>
 
-    <body style="background: url(http://osly086qe.bkt.clouddn.com/button-bg.png) #f3f3f3">
-        <div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            ERecord
-        </a>
-    </h1>
-    <h2 class="desc">
-        일상 및 개발 공부 기록용 블로그
-    </h2>
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
-                <li>
-                    <a href="https://github.com/eunajjing">GITHUB
-                    </a>
-                </li>
-<li><a href="https://uri.life/web/accounts/8579">CONNECTING</a>
-</li>
-        </ul>
-    </nav>
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
 </header>
 
-                <main class="main">
-                    <article class="post">
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-node-js" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/">
-                개발공부
-            </a>
-        </h4>
+    
+      <header class="article-header">
         
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/nodeJS/">
-                nodeJS
-            </a>
-        </h4>
-        
-            <h2 class="post-title">
-                node.js
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-11-21
-                </li>
-                <li>
-                    euna
-                </li>
-            </ul>
-            <div class="post-content">
-                <h1 id="노드JS"><a href="#노드JS" class="headerlink" title="노드JS"></a>노드JS</h1><h2 id="공부하게-된-계기"><a href="#공부하게-된-계기" class="headerlink" title="공부하게 된 계기"></a>공부하게 된 계기</h2><p>프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다.</p>
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      node.js
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/11/21/node-js/" class="article-date">
+	  <time datetime="2018-11-21T07:53:21.000Z" itemprop="datePublished">11월 21, 2018</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="노드JS"><a href="#노드JS" class="headerlink" title="노드JS"></a>노드JS</h1><h2 id="공부하게-된-계기"><a href="#공부하게-된-계기" class="headerlink" title="공부하게 된 계기"></a>공부하게 된 계기</h2><p>프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다.</p>
 <h2 id="참고한-것"><a href="#참고한-것" class="headerlink" title="참고한 것"></a>참고한 것</h2><p><a href="https://book.naver.com/bookdb/book_detail.nhn?bid=11738465" target="_blank" rel="noopener">Do it! Node.js</a></p>
 <p>근데 많이 참고하진 않았다…<br>변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에게 그렇게 요구 받았다.(프로젝트 시작 전 우리가 어떤 기능을 쓸 것인지에 대해 고민해보고, 각자 특정 부분을 맡아 공부 후 다른 팀원에게 설명하는 식으로 스터디를 진행했다)</p>
 <p>참고한 책은 모든 장이 연결되어 순차적으로 한 웹사이트를 구현하는 방식에 대해 이야기하고 있어서… 예를 들어 우리 프로젝트에서는 몽고 디비를 빼자고 해서, 나는 공부할 당시엔 몽고 디비를 간략히 보거나 아예 보지 않아도 됐다. 이런 식으로 특정 장을 훑듯 보고 다음 장으로 건너 뛰니, 제대로 이해가 되지 않은 파트가 발목을 잡아 정말 이해해야할 예제 소스가 잘 이해가 되지 않았다.</p>
@@ -285,35 +329,197 @@ nconf.modulInMethod();
 <p>명령어 실행 : package.json의 의존 속성을 참고해 패키지 설치</p>
 </blockquote>
 
-            </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/26/Education_review/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          국비 교육 과정 수료 후기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/08/websocket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">websocket</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+<!-- Table of Contents -->
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a></li></ul>
-
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
-
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a></li></ul>
-
-
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
-
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#노드JS"><span class="nav-number">1.</span> <span class="nav-text">노드JS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#공부하게-된-계기"><span class="nav-number">1.1.</span> <span class="nav-text">공부하게 된 계기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#참고한-것"><span class="nav-number">1.2.</span> <span class="nav-text">참고한 것</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#정말-본론-시작-당시에-정리한-문서"><span class="nav-number">1.3.</span> <span class="nav-text">정말 본론 시작 - 당시에 정리한 문서</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#시작하기-전에"><span class="nav-number">1.3.1.</span> <span class="nav-text">시작하기 전에</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-js"><span class="nav-number">1.3.2.</span> <span class="nav-text">node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-js-특징"><span class="nav-number">1.3.3.</span> <span class="nav-text">node.js 특징</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-Node-Package-Manager"><span class="nav-number">1.3.4.</span> <span class="nav-text">npm(Node Package Manager)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#노드에서-사용할-수-있는-대표적인-전역-객체"><span class="nav-number">1.3.5.</span> <span class="nav-text">노드에서 사용할 수 있는 대표적인 전역 객체</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#노드에서-사용할-수-있는-대표적인-전역-변수"><span class="nav-number">1.3.6.</span> <span class="nav-text">노드에서 사용할 수 있는 대표적인 전역 변수</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#console의-메서드들"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">console의 메서드들</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#log"><span class="nav-number">1.3.6.1.1.</span> <span class="nav-text">log()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-외"><span class="nav-number">1.3.6.2.</span> <span class="nav-text">log() 외</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#모듈-사용-exports"><span class="nav-number">1.3.7.</span> <span class="nav-text">모듈 사용(exports)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#예시"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">예시</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#module1-js"><span class="nav-number">1.3.7.1.1.</span> <span class="nav-text">module1.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#main-js"><span class="nav-number">1.3.7.1.2.</span> <span class="nav-text">main.js</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exports와-module-exports"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">exports와 module.exports</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#process"><span class="nav-number">1.3.7.3.</span> <span class="nav-text">process</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#내장-모듈과-외장-모듈"><span class="nav-number">1.3.8.</span> <span class="nav-text">내장 모듈과 외장 모듈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#내장-모듈-사용하기-path만-정리"><span class="nav-number">1.3.8.1.</span> <span class="nav-text">내장 모듈 사용하기(path만 정리)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#외장-모듈-사용하기"><span class="nav-number">1.3.8.2.</span> <span class="nav-text">외장 모듈 사용하기</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#사용-예시"><span class="nav-number">1.3.8.2.1.</span> <span class="nav-text">사용 예시</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#package-json"><span class="nav-number">1.3.8.2.2.</span> <span class="nav-text">package.json</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
 
-                    </section>
-                </aside>
-        </div>
-    </body>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
 
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>

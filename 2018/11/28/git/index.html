@@ -1,98 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        ERecord
-    </title>
-    <!-- favicon -->
+  <meta charset="utf-8">
+  
+  <title>깃 연습 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Git 기본 사용법버전 관리 시스템(VCS; Version Control System)이란? 개요 파일 변화를 시간에 따라 기록했다가 나중에 특정 시점의 버전을 다시 꺼내올 수 있는 시스템이다. 파일 별로 이전 상태로 되돌리거나 프로젝트 통째로 이전 상태로 되돌릴 수 있다. 시간에 따라 수정 내용을 비교해 볼 수 있다. 누가 문제를 일으켰는지 추적할 수 있">
+<meta property="og:type" content="article">
+<meta property="og:title" content="깃 연습">
+<meta property="og:url" content="http://eunajjing.github.io/2018/11/28/git/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="Git 기본 사용법버전 관리 시스템(VCS; Version Control System)이란? 개요 파일 변화를 시간에 따라 기록했다가 나중에 특정 시점의 버전을 다시 꺼내올 수 있는 시스템이다. 파일 별로 이전 상태로 되돌리거나 프로젝트 통째로 이전 상태로 되돌릴 수 있다. 시간에 따라 수정 내용을 비교해 볼 수 있다. 누가 문제를 일으켰는지 추적할 수 있">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-12-07T05:39:07.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="깃 연습">
+<meta name="twitter:description" content="Git 기본 사용법버전 관리 시스템(VCS; Version Control System)이란? 개요 파일 변화를 시간에 따라 기록했다가 나중에 특정 시점의 버전을 다시 꺼내올 수 있는 시스템이다. 파일 별로 이전 상태로 되돌리거나 프로젝트 통째로 이전 상태로 되돌릴 수 있다. 시간에 따라 수정 내용을 비교해 볼 수 있다. 누가 문제를 일으켰는지 추적할 수 있">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-    <link rel="icon" href="http://osly086qe.bkt.clouddn.com/favicon.ico">
-    
-    <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
-    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
-    <script>
-        infiniteScroll()
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script>
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
 </head>
 
-    <body style="background: url(http://osly086qe.bkt.clouddn.com/button-bg.png) #f3f3f3">
-        <div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            ERecord
-        </a>
-    </h1>
-    <h2 class="desc">
-        일상 및 개발 공부 기록용 블로그
-    </h2>
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
-                <li>
-                    <a href="https://github.com/eunajjing">GITHUB
-                    </a>
-                </li>
-<li><a href="https://uri.life/web/accounts/8579">CONNECTING</a>
-</li>
-        </ul>
-    </nav>
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
 </header>
 
-                <main class="main">
-                    <article class="post">
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-git" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/">
-                개발공부
-            </a>
-        </h4>
+    
+      <header class="article-header">
         
-        <h4 class="post-cat">
-            <a href="/categories/개발공부/뉴딜과정/">
-                뉴딜과정
-            </a>
-        </h4>
-        
-            <h2 class="post-title">
-                깃 연습
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-11-28
-                </li>
-                <li>
-                    euna
-                </li>
-            </ul>
-            <div class="post-content">
-                <h1 id="Git-기본-사용법"><a href="#Git-기본-사용법" class="headerlink" title="Git 기본 사용법"></a>Git 기본 사용법</h1><h2 id="버전-관리-시스템-VCS-Version-Control-System-이란"><a href="#버전-관리-시스템-VCS-Version-Control-System-이란" class="headerlink" title="버전 관리 시스템(VCS; Version Control System)이란?"></a><strong>버전 관리 시스템</strong>(VCS; Version Control System)이란?</h2><ul>
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      깃 연습
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/11/28/git/" class="article-date">
+	  <time datetime="2018-11-28T00:09:18.000Z" itemprop="datePublished">11월 28, 2018</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-기본-사용법"><a href="#Git-기본-사용법" class="headerlink" title="Git 기본 사용법"></a>Git 기본 사용법</h1><h2 id="버전-관리-시스템-VCS-Version-Control-System-이란"><a href="#버전-관리-시스템-VCS-Version-Control-System-이란" class="headerlink" title="버전 관리 시스템(VCS; Version Control System)이란?"></a><strong>버전 관리 시스템</strong>(VCS; Version Control System)이란?</h2><ul>
 <li>개요<ul>
 <li><strong>파일 변화를 시간에 따라 기록했다가 나중에 특정 시점의 버전을 다시 꺼내올 수 있는 시스템</strong>이다.</li>
 <li>파일 별로 이전 상태로 되돌리거나 프로젝트 통째로 이전 상태로 되돌릴 수 있다.</li>
@@ -598,35 +642,197 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -vv</span><br><span class="line">  b1     c2be10d [origin/b1] v1.3</span><br><span class="line">* b2     664dbb5 v3.1</span><br><span class="line">  master 09fb339 [origin/master: ahead 2] v3.0   &lt;=== 로컬 브랜치가 커밋을 2개 앞서 있다는 의미</span><br><span class="line">  other  ed485e2 [origin/other] v1.2</span><br><span class="line">  other2 ed485e2 [origin/other] v1.2</span><br></pre></td></tr></table></figure>
-            </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/28/2018-11-28/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2018-11-28 수업 내용 정리
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/27/181127/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">설치한 것들, 설정 정리</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+<!-- Table of Contents -->
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a></li></ul>
-
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
-
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a></li></ul>
-
-
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
-
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-기본-사용법"><span class="nav-number">1.</span> <span class="nav-text">Git 기본 사용법</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#버전-관리-시스템-VCS-Version-Control-System-이란"><span class="nav-number">1.1.</span> <span class="nav-text">버전 관리 시스템(VCS; Version Control System)이란?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">1.2.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git의-파일-상태"><span class="nav-number">1.2.1.</span> <span class="nav-text">Git의 파일 상태</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-프로젝트의-단계"><span class="nav-number">1.2.2.</span> <span class="nav-text">Git 프로젝트의 단계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-파일의-상태-변화"><span class="nav-number">1.2.3.</span> <span class="nav-text">Git 파일의 상태 변화</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-명령"><span class="nav-number">1.3.</span> <span class="nav-text">Git 명령</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-config"><span class="nav-number">1.3.1.</span> <span class="nav-text">git config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-help-명령-git-명령-–help"><span class="nav-number">1.3.2.</span> <span class="nav-text">git help [명령], git [명령] –help</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-init"><span class="nav-number">1.3.3.</span> <span class="nav-text">git init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore"><span class="nav-number">1.3.4.</span> <span class="nav-text">.gitignore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone-url-폴더"><span class="nav-number">1.3.5.</span> <span class="nav-text">git clone [url][폴더]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-add-파일"><span class="nav-number">1.3.6.</span> <span class="nav-text">git add [파일]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit-m-‘이번-스냅샷을-저장하는-이유’"><span class="nav-number">1.3.7.</span> <span class="nav-text">git commit -m ‘이번 스냅샷을 저장하는 이유’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-status"><span class="nav-number">1.3.8.</span> <span class="nav-text">git status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-diff-옵션"><span class="nav-number">1.3.9.</span> <span class="nav-text">git diff [옵션]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-파일"><span class="nav-number">1.3.10.</span> <span class="nav-text">git checkout [파일]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-rm-파일"><span class="nav-number">1.3.11.</span> <span class="nav-text">git rm [파일]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-mv-기존파일명-새파일명"><span class="nav-number">1.3.12.</span> <span class="nav-text">git mv [기존파일명][새파일명]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log"><span class="nav-number">1.3.13.</span> <span class="nav-text">git log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit-–amend"><span class="nav-number">1.3.14.</span> <span class="nav-text">git commit –amend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset-HEAD-파일"><span class="nav-number">1.3.15.</span> <span class="nav-text">git reset HEAD [파일]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-revert"><span class="nav-number">1.3.16.</span> <span class="nav-text">git revert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#그런데-직전-버전이-아닌-과거의-버전으로-돌리고자-할-때"><span class="nav-number">1.3.17.</span> <span class="nav-text">그런데 직전 버전이 아닌 과거의 버전으로 돌리고자 할 때</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-remote"><span class="nav-number">1.3.18.</span> <span class="nav-text">git remote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-fetch-원격저장소이름"><span class="nav-number">1.3.19.</span> <span class="nav-text">git fetch [원격저장소이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.3.20.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-push-원격-저장소-이름-로컬-브랜치-이름"><span class="nav-number">1.3.21.</span> <span class="nav-text">git push [원격 저장소 이름][로컬 브랜치 이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-tag"><span class="nav-number">1.3.22.</span> <span class="nav-text">git tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-show-태그명"><span class="nav-number">1.3.23.</span> <span class="nav-text">git show [태그명]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-b-새브랜치명-태그명"><span class="nav-number">1.3.24.</span> <span class="nav-text">git checkout -b [새브랜치명][태그명]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-config-–global-alias-별명-원래명령어"><span class="nav-number">1.3.25.</span> <span class="nav-text">git config –global alias.별명 [원래명령어]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-브랜치-사용법"><span class="nav-number">2.</span> <span class="nav-text">Git 브랜치 사용법</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#커밋-정보"><span class="nav-number">2.1.</span> <span class="nav-text">커밋 정보</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#브랜치"><span class="nav-number">2.2.</span> <span class="nav-text">브랜치</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#master-브랜치"><span class="nav-number">2.2.1.</span> <span class="nav-text">master 브랜치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEAD"><span class="nav-number">2.2.2.</span> <span class="nav-text">HEAD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#토픽-브랜치"><span class="nav-number">2.2.3.</span> <span class="nav-text">토픽 브랜치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#트래킹-브랜치-upstream-브랜치"><span class="nav-number">2.2.4.</span> <span class="nav-text">트래킹 브랜치 = upstream 브랜치</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#브랜치-명령"><span class="nav-number">2.3.</span> <span class="nav-text">브랜치 명령</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch"><span class="nav-number">2.3.1.</span> <span class="nav-text">git branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-브랜치-이름"><span class="nav-number">2.3.2.</span> <span class="nav-text">git checkout [브랜치 이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-merge-브랜치-이름"><span class="nav-number">2.3.3.</span> <span class="nav-text">git merge [브랜치 이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-rebase-브랜치명"><span class="nav-number">2.3.4.</span> <span class="nav-text">git rebase [브랜치명]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#원격-브랜치"><span class="nav-number">2.4.</span> <span class="nav-text">원격 브랜치</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone-o-원격저장소이름"><span class="nav-number">2.4.1.</span> <span class="nav-text">git clone -o [원격저장소이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-ls-remote"><span class="nav-number">2.4.2.</span> <span class="nav-text">git ls-remote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-remote-show-원격-저장소-이름"><span class="nav-number">2.4.3.</span> <span class="nav-text">git remote show [원격 저장소 이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-fetch-원격-저장소-이름"><span class="nav-number">2.4.4.</span> <span class="nav-text">git fetch [원격 저장소 이름]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-push"><span class="nav-number">2.4.5.</span> <span class="nav-text">git push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-b-로컬-브랜치-원격-저장소-원격-브랜치"><span class="nav-number">2.4.6.</span> <span class="nav-text">git checkout -b [로컬 브랜치][원격 저장소]/[원격 브랜치]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch-vv"><span class="nav-number">2.4.7.</span> <span class="nav-text">git branch -vv</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
 
-                    </section>
-                </aside>
-        </div>
-    </body>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
 
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>
