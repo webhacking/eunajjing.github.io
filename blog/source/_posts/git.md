@@ -661,7 +661,6 @@ origin
 ```
 예1) 원격 저장소에 마지막으로 push 한 다음에 변경된 모든 것을 가져오기
 $ git fetch origin
-
 ```
 
 ### git pull
@@ -675,7 +674,6 @@ $ git fetch origin
 ```
 예1) 원격 저장소의 파일을 가져와 로컬 저장소의 파일과 병합하기 
 $ git pull
-
 ```
 
 ### git push [원격 저장소 이름][로컬 브랜치 이름]
@@ -689,7 +687,6 @@ $ git pull
 ```
 예1) 로컬 저장소의 master 브랜치를 원격 저장소에 업로드 하기
 $ git push origin master
-
 ```
 
 ### git tag
@@ -702,7 +699,6 @@ $ git tag
 v0.1
 v0.2
 ...
-
 ```
 
 ```
@@ -710,7 +706,6 @@ v0.2
 $ git tag -l 'v10.0*'
 v10.0.0.1
 v10.0.0.2
-
 ```
 
 ```
@@ -720,8 +715,6 @@ v10.0.0.2
      - 이렇게 붙인 태그를 'Annotated 태그'라 부른다.
 $ git tag -a [태그명] -m '태그 메시지'
 $ git tag -a v0.1 -m 'my version 0.1'
-
-
 ```
 
 ```
@@ -730,7 +723,6 @@ $ git tag -a v0.1 -m 'my version 0.1'
      - 이렇게 붙인 태그를 Lightweight 태그'라 부른다.
 $ git tag [태그명]
 $ git tag v0.2
-
 ```
 
 ```
@@ -751,7 +743,6 @@ $ git tag
 v0.0.1    <=== 추가된 태그
 v0.1
 v0.2
-
 ```
 
 ```
@@ -763,7 +754,6 @@ Writing objects: 100% (1/1), 166 bytes | 166.00 KiB/s, done.
 Total 1 (delta 0), reused 0 (delta 0)
 To https://github.com/eomjinyoung/test.git
  * [new tag]         v0.1 -> v0.1
-
 ```
 
 ```
@@ -778,7 +768,6 @@ remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
 To https://github.com/eomjinyoung/test.git
  * [new tag]         v0.0.1 -> v0.0.1
  * [new tag]         v0.2 -> v0.2
-
 ```
 
 ### git show [태그명]
@@ -800,7 +789,6 @@ Date:   Sun Aug 26 23:29:24 2018 +0900
 
     test..ok
 ...
-
 ```
 
 ```
@@ -814,7 +802,6 @@ Date:   Mon Aug 27 00:13:30 2018 +0900
 
     test..ok2
 ...
-
 ```
 
 ### git checkout -b [새브랜치명][태그명]
@@ -827,7 +814,6 @@ Date:   Mon Aug 27 00:13:30 2018 +0900
 예1) v0.1 태그가 붙은 커밋 파일들로 version2 라는 이름의 브랜치를 만들고 작업 디렉토리에 가져오기
 $ git checkout -b version2 v0.1
 Switched to a new branch 'version2'   <=== 작업 디렉토리의 파일들이 변경된다.
-
 ```
 
 ### git config --global alias.별명 [원래명령어]
@@ -840,7 +826,6 @@ $ git config --global alias.st status
 $ git config --global alias.st2 'status --short'
 $ git st                <=== 'git status' 와 같다.
 $ git st2               <=== 'git status --short' 와 같다.
-
 ```
 
 ```
@@ -849,7 +834,6 @@ $ git config --global alias.별명 '!실행파일명'
 $ git config --global alias.nn '!nano'
 $ git nn              
 [nano 편집기가 실행될 것이다.]
-
 ```
 
 ------
