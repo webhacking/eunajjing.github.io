@@ -103,7 +103,7 @@
         
           <section id="main">
   
-    <article id="post-2018-12-03"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-2018-12-06"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/03/2018-12-03/">2018-12-03 수업 내용 정리</a>
+      <a class="article-title" href="/2018/12/06/2018-12-06/">2018-12-06 수업 내용 정리</a>
     </h1>
   
 
@@ -119,8 +119,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/12/03/2018-12-03/" class="article-date">
-	  <time datetime="2018-12-03T00:08:18.000Z" itemprop="datePublished">12월 3, 2018</time>
+	<a href="/2018/12/06/2018-12-06/" class="article-date">
+	  <time datetime="2018-12-06T00:45:18.000Z" itemprop="datePublished">12월 6, 2018</time>
 	</a>
 
       
@@ -131,132 +131,109 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="지난주-static-블록과-instance-블록-이해가-안되어서-추가로-찾아보았다"><a href="#지난주-static-블록과-instance-블록-이해가-안되어서-추가로-찾아보았다" class="headerlink" title="지난주 static 블록과 instance 블록 이해가 안되어서 추가로 찾아보았다"></a>지난주 static 블록과 instance 블록 이해가 안되어서 추가로 찾아보았다</h3><blockquote>
-<p>참고한 사이트들 목록</p>
+        <h2 id="MVC-모델"><a href="#MVC-모델" class="headerlink" title="MVC 모델"></a>MVC 모델</h2><h3 id="MVC-모델1"><a href="#MVC-모델1" class="headerlink" title="MVC 모델1"></a>MVC 모델1</h3><ul>
+<li>JSP가 요청을 받는 Controller의 역할을 하면서 동시에 View의 역할도 하는 것</li>
+</ul>
+<h3 id="MVC-모델2"><a href="#MVC-모델2" class="headerlink" title="MVC 모델2"></a>MVC 모델2</h3><ul>
+<li>Servlet이 Controller의 역할</li>
+<li><p>JSP가 View의 역할</p>
+</li>
+<li><p>Service도 Model의 역할을 한다, DAO만 Model이 아님</p>
 <ul>
-<li><a href="http://uoonleen.tistory.com/6" target="_blank" rel="noopener">참고한 사이트1</a></li>
-<li><a href="https://sarc.io/index.php/java/473-2016-05-31-15-48-27" target="_blank" rel="noopener">참고한 사이트2</a></li>
-<li><a href="http://futurists.tistory.com/43" target="_blank" rel="noopener">참고한 사이트3</a></li>
-</ul>
-</blockquote>
-<ul>
-<li>스태틱 블록<ul>
-<li>클래스가 로딩된 후</li>
-<li>클래스 변수를 초기화 시키는 코드를 주로 둔다</li>
-</ul>
-</li>
-<li>인스턴스 블록<ul>
-<li>인스턴스가 생성된 후 실행</li>
-<li>인스턴스 변수를 초기화 시키는 코드를 주로 둔다</li>
-<li>어떤 생성자가 호출되든 공통적으로 실행되어야 하는 코드가 있다면 작성한다</li>
+<li>업무 로직</li>
+<li>트랜젝션 관리</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p>일단 클래스를 읽어야 하므로, 클래스 로딩 - 스태틱 블록 실행 - 객체 생성(ex. int i) 완료 - 인스턴스 블록 실행</p>
-</blockquote>
-<ul>
-<li><strong>클래스가 로딩되다</strong><ul>
-<li>클래스 로더는 자바 바이트 코드를 읽어들여 클래스 객체를 생성하는 역할을 담당</li>
-<li>로더가 읽은 바이트 코드가 올바르다면, 메서드 에리어 영역으로 파일이 로딩된다</li>
-<li>JVM에 로딩된 클래스만이 객체로 사용이 가능하다</li>
+<h2 id="component"><a href="#component" class="headerlink" title="component"></a>component</h2><ul>
+<li>부품, 역할적인 의미가 강조될 때 사용되는 용어</li>
+<li>object, instance, bean…</li>
 </ul>
+</blockquote>
+<h2 id="JSP-실행-방식"><a href="#JSP-실행-방식" class="headerlink" title="JSP 실행 방식"></a>JSP 실행 방식</h2><ul>
+<li>JSP를 실행하고 싶다는 요청이 들어오면</li>
+<li>JSP 엔진이 JSP를 JAVA 소스로 만든다</li>
+<li>이것은 httpServlet을 상속 받은 서블릿 소스가 된다 </li>
+<li>이것은 <code>.class</code>파일이 되어 실행되는 것</li>
+<li>JSP는 서블릿 클래스를 만드는 재료로 사용되는 것</li>
+<li>때문에 JSP는 template이라고 불리기도 한다</li>
+<li>즉 <strong>JSP는 직접 실행되는 것이 아님</strong></li>
+<li>직접 print.out할 필요가 없어서 사용하는 것</li>
+</ul>
+<h3 id="JSP-안의-lt-gt"><a href="#JSP-안의-lt-gt" class="headerlink" title="JSP 안의 &lt;% %&gt;"></a>JSP 안의 &lt;% %&gt;</h3><ul>
+<li><p>Domain-Specific language = DSL</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>위에 선언하는 이유</p>
+</li>
+<li><p>그런데 JAVA만 사용이 가능<br>(향후 다른 언어도 가능하게 하려고 만들었다)</p>
 </li>
 </ul>
-<blockquote>
-<p>3.7부터 건너 뛰었는데, 따로 공부를 해야할 것 같다.</p>
-<p>braw 업데이트해야한다</p>
-</blockquote>
-<h2 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h2><h3 id="MYSQL"><a href="#MYSQL" class="headerlink" title="MYSQL"></a>MYSQL</h3><h4 id="mysql-서버에-접속하기"><a href="#mysql-서버에-접속하기" class="headerlink" title="mysql 서버에 접속하기"></a>mysql 서버에 접속하기</h4><p>로컬 MySQL 서버에 접속</p>
-<blockquote>
-<p>mysql -u root -p<br>Enter password: 암호입력</p>
-</blockquote>
-<p>원격 MySQL 서버에 접속</p>
-<blockquote>
-<p>mysql -h 서버주소 -u root -p<br>Enter password: 암호입력</p>
-</blockquote>
-<h4 id="mysql-root-암호-변경"><a href="#mysql-root-암호-변경" class="headerlink" title="mysql root 암호 변경"></a>mysql root 암호 변경</h4><blockquote>
-<p>alter user ‘root‘@’localhost’ identified by ‘1111’;</p>
-</blockquote>
-<h4 id="MySQL-사용자-추가"><a href="#MySQL-사용자-추가" class="headerlink" title="MySQL 사용자 추가"></a>MySQL 사용자 추가</h4><blockquote>
-<p>CREATE USER ‘사용자아이디‘@’서버주소’ IDENTIFIED BY ‘암호’;</p>
-</blockquote>
-<p>로컬에서만 접속할 수 있는 사용자를 만들기:</p>
-<blockquote>
-<p>CREATE USER ‘study‘@’localhost’ IDENTIFIED BY ‘1111’;</p>
-<p>=&gt; 이 경우 stidu 사용자는 오직 로컬(서버를 실행하는 컴퓨터)에서만 접속 가능한다.<br>=&gt; 다른 컴퓨터에서 실행하는 MySQL 서버에 접속할 수 없다는 것을 의미한다.</p>
-</blockquote>
-<h4 id="원격에서만-접속할-수-있는-사용자를-만들기"><a href="#원격에서만-접속할-수-있는-사용자를-만들기" class="headerlink" title="원격에서만 접속할 수 있는 사용자를 만들기:"></a>원격에서만 접속할 수 있는 사용자를 만들기:</h4><blockquote>
-<p>CREATE USER ‘study‘@’%’ IDENTIFIED BY ‘1111’;</p>
-<p>=&gt; 이 경우 study 사용자는 원력에서만 접속 가능하다. (% = 원격)</p>
-</blockquote>
-<h4 id="MySQL-사용자-목록-조회"><a href="#MySQL-사용자-목록-조회" class="headerlink" title="MySQL 사용자 목록 조회"></a>MySQL 사용자 목록 조회</h4><blockquote>
-<p>select user from 데이터베이스명.테이블명;</p>
-<p>select user from mysql.user;</p>
-</blockquote>
-<h4 id="MySQL-데이터베이스-생성"><a href="#MySQL-데이터베이스-생성" class="headerlink" title="MySQL 데이터베이스 생성"></a>MySQL 데이터베이스 생성</h4><blockquote>
-<p>CREATE DATABASE 데이터베이스명<br>DEFAULT CHARACTER SET utf8<br>DEFAULT COLLATE utf8_general_ci;</p>
-</blockquote>
-<blockquote>
-<p>CREATE DATABASE studydb<br>DEFAULT CHARACTER SET utf8<br>DEFAULT COLLATE utf8_general_ci;</p>
-</blockquote>
-<h4 id="MySQL-사용자에게-데이터베이스-사용-권한-부여"><a href="#MySQL-사용자에게-데이터베이스-사용-권한-부여" class="headerlink" title="MySQL 사용자에게 데이터베이스 사용 권한 부여"></a>MySQL 사용자에게 데이터베이스 사용 권한 부여</h4><blockquote>
-<p>GRANT ALL ON 데이터베이스명.<em> TO ‘사용자아이디‘@’서버주소’;<br>GRANT ALL ON studydb.</em> TO ‘study‘@’localhost’;<br>GRANT ALL ON studydb.* TO ‘study‘@’%’;</p>
-</blockquote>
-<h4 id="데이터베이스-목록-조회"><a href="#데이터베이스-목록-조회" class="headerlink" title="데이터베이스 목록 조회"></a>데이터베이스 목록 조회</h4><blockquote>
-<p>show databases;</p>
-</blockquote>
-<h4 id="사용자-교체"><a href="#사용자-교체" class="headerlink" title="사용자 교체"></a>사용자 교체</h4><blockquote>
-<p>quit    (프로그램 종료 후)<br>mysql -u study -p   (다시 실행)</p>
-</blockquote>
-<h4 id="기본으로-사용할-데이터베이스-지정하기"><a href="#기본으로-사용할-데이터베이스-지정하기" class="headerlink" title="기본으로 사용할 데이터베이스 지정하기"></a>기본으로 사용할 데이터베이스 지정하기</h4><blockquote>
-<p>use 데이터베이스명<br>use studydb;</p>
-</blockquote>
-<h4 id="데이터베이스의-전체-테이블-목록-조회"><a href="#데이터베이스의-전체-테이블-목록-조회" class="headerlink" title="데이터베이스의 전체 테이블 목록 조회"></a>데이터베이스의 전체 테이블 목록 조회</h4><blockquote>
-<p>show tables;</p>
-</blockquote>
-<hr>
-<blockquote>
-<h2 id="흐름"><a href="#흐름" class="headerlink" title="흐름"></a>흐름</h2><ol>
-<li>웹 브라우저의 요청<ul>
-<li>서블릿 필터가 거른다</li>
-<li>디스패처 서블릿 호출<ul>
-<li>인터셉터 발동 가능</li>
+<h2 id="스코프"><a href="#스코프" class="headerlink" title="스코프"></a>스코프</h2><ol>
+<li>서버가 시작되며 <strong>웹 어플리케이션</strong> 실행<ul>
+<li>하나의 서버에는 여러 개의 웹 어플리케이션이 실행될 수 있다</li>
+<li>정확히 말하면 웹 어플리케이션이 시작하면</li>
 </ul>
 </li>
-<li>페이지 컨트롤러 호출</li>
-<li>jsp 호출</li>
+<li><strong>ServletContext</strong> 보관함이 생성<ul>
+<li>이것은 웹 앱을 종료할 때까지 보관함은 유지된다.</li>
+<li>이 보관함에는 <strong>IOC Container</strong>가 대표적으로 있다.</li>
 </ul>
 </li>
-<li>서비스 호출</li>
-<li>dao 동작</li>
-<li>db 도달</li>
+<li><strong>클라이언트가 최초로 서버에 접속하는 순간</strong>에 <strong>HttpSession</strong> 객체가 생성되며 Session을 무효화할 때 보관함이 사라진다.</li>
+<li>유저 단에서 요청이 들어오면 <strong>ServletRequest</strong> 보관함이 생기고, 응답할 때까지 보관함은 유지된다.</li>
+<li><strong>JSP</strong>는 자신만의 <strong>PageContext</strong> 스코프를 가진다 JSP가 실행되는 동안에만 유지되는 보관소이다. 때문에 응답이 완료되지 않더라도, 다른 JSP로 실행이 옮겨가는 순간 사라진다.</li>
 </ol>
 <ul>
-<li>스프링의 3대 필터<ul>
-<li>서블릿 필터</li>
-<li>인터셉터</li>
-<li>aop<ul>
-<li>자유로운 영혼, 메서드 호출 전후에 꼽는 필터</li>
-<li><strong>애플리케이션 전체에 걸쳐 사용되는 기능을 재사용</strong>하도록 지원</li>
-</ul>
+<li><p><code>sendRedirect</code>로 이동시킬 때는 상대 경로로 지정해도 된다. 브라우저의 입장에서 경로를 인식하기 때문</p>
+</li>
+<li><p>서버에서 <code>include</code>, <code>forward</code>시키는 경우에는 루트부터 시켜줘야 한다</p>
 </li>
 </ul>
-</li>
+<blockquote>
+<h2 id="Expression-Language-EL-태그"><a href="#Expression-Language-EL-태그" class="headerlink" title="Expression Language(EL 태그)"></a>Expression Language(EL 태그)</h2><ul>
+<li>표현언어</li>
+<li>${}</li>
+<li>Expression : 결과를 리턴하는 것</li>
+<li>때문에 태그 안에는 결과를 리턴하는 값이 와야 함</li>
+<li>Statment의 일부 (if, else의 {} 등)</li>
+</ul>
+<h2 id="OGNL"><a href="#OGNL" class="headerlink" title="OGNL"></a>OGNL</h2><ul>
+<li>오브젝트 그래프 네비게이션 언어</li>
+<li>EL 태그 안에서 쓸 수 있다</li>
+<li>객체 안의 객체를 가리킬 때 쓰는 표기법</li>
 </ul>
 </blockquote>
-<h2 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h2><ul>
-<li>포함 관계 : 회원과 학생 엔티티의 관계</li>
-<li><p>상호 배타 관계 : 학생과 교사 엔티티의 관계</p>
-</li>
-<li><p>인덱스 칼럼의 지정<br>:  insert, update, delete 시 실행 속도는 느려지나 select 속도가 빨라짐</p>
-</li>
-<li>도메인 : 실무에 가면 엔티티가 많아지므로, 비슷한 종류의 칼럼들을 묶어 관리하기 위해 사용</li>
+<blockquote>
+<p>html meta tag 중에 실행 후 reloading을 지원하는 태그가 있다</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;meta http-equiv=<span class="string">"Refresh"</span> content=<span class="string">"1;url=list"</span>&gt;</span><br><span class="line">&gt; <span class="comment">// 1초 후에 어디로 리로딩하겠다</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="component-1"><a href="#component-1" class="headerlink" title="component"></a>component</h2><ul>
+<li>button에 타입이 지정이 안되면 기본 submit 버튼</li>
 </ul>
-<h2 id="gradle-사용법"><a href="#gradle-사용법" class="headerlink" title="gradle 사용법"></a>gradle 사용법</h2><ul>
-<li>maven에서 jar 파일을 gradle로 복사한 뒤</li>
-<li>build.gradle에 dependencies에 붙여넣고</li>
-<li>cmd에서 <code>gradle ecilpse</code></li>
+<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><ul>
+<li>필터 역할을 할 클래스는 <code>Filter</code> 인터페이스를 상속 받아야 함</li>
+<li><code>dofilter</code>메서드를 구현<ul>
+<li><code>init()</code></li>
+<li><code>detory()</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">인터페이스 &#123;</span><br><span class="line">    <span class="keyword">default</span> 리턴타입 메서드() &#123;</span><br><span class="line">        정의</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>원래 인터페이스는 메서드를 구현할 수 없으나,  인터페이스에 기본적으로 적용이 되는 메서드을 추가 시키기 위해 사용</p>
+</li>
+<li><p><code>init</code>와 <code>detory</code>가 대표적인 default 메서드</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">필터 인터페이스를 상속 받은 필터 클래스 &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	doFilter(ServletRequest request, ServletResponse response, FilterChain chain) &#123;</span><br><span class="line">		chain.doFilter(request, response);</span><br><span class="line">		<span class="comment">// 이 필터 다음에 또 다른 필터가 있다면 그 필터 실행</span></span><br><span class="line">		<span class="comment">// 없다면 원래 목적지인 servlet 실행</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>필터에 <code>sertCharacterEncoding</code>같은 공통으로 들어가는 메서드를 추가하면 편하다</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@webFilter</span>(<span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>어노테이션 기입이 필요하다.</li>
 </ul>
 
       
@@ -281,7 +258,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/7/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/7/">Next</a>
   </nav>
 
 </section>
@@ -334,7 +311,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">23</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">27</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -382,6 +359,54 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2018/12/18/2018-12-18/">2018-12-18 수업 내용 정리</a></h6>
+              <span>12월 18, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/12/17/2018-12-17/">2018-12-17 수업 내용 정리</a></h6>
+              <span>12월 17, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/12/14/2018-12-14/">2018-12-14 수업 내용 정리</a></h6>
+              <span>12월 14, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/12/11/2018-12-11/">2018-12-11 수업 내용 정리</a></h6>
+              <span>12월 11, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2018/12/07/2018-12-07/">2018-12-07 수업 내용 정리</a></h6>
               <span>12월 7, 2018</span>
             </div>
@@ -400,54 +425,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/05/2018-12-05/">2018-12-05 수업 내용 정리</a></h6>
-              <span>12월 5, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/05/android1/">안드로이드 스튜디오를 이용해 안드로이드 앱 만들기</a></h6>
-              <span>12월 5, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/04/2018-12-04/">2018-12-04 수업 내용 정리</a></h6>
-              <span>12월 4, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/03/2018-12-03/">2018-12-03 수업 내용 정리</a></h6>
-              <span>12월 3, 2018</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -458,7 +435,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -488,8 +465,8 @@
 	      &copy; 2018 ERecord All Rights Reserved.
         
             <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
             </span>
           
       </div>
@@ -514,6 +491,7 @@
     
     
 </script>
+
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
