@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>node.js와 DB 사용 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="node.js와 DB 사용 npm install mysql 모듈 설치  mysql.createConnection(DATABASE-CONFIG); 커넥션  커넥션 설정  host, port : DMBS 주소와 포트(기본 3306) user, password : DBMS 사용자 계정과 암호 database : 데이터베이스 이름 multipleStatements">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js와 DB 사용">
+<meta property="og:url" content="http://eunajjing.github.io/2019/01/09/2019-01-09-node.js와-DB-사용/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="node.js와 DB 사용 npm install mysql 모듈 설치  mysql.createConnection(DATABASE-CONFIG); 커넥션  커넥션 설정  host, port : DMBS 주소와 포트(기본 3306) user, password : DBMS 사용자 계정과 암호 database : 데이터베이스 이름 multipleStatements">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-01-15T12:43:53.182Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node.js와 DB 사용">
+<meta name="twitter:description" content="node.js와 DB 사용 npm install mysql 모듈 설치  mysql.createConnection(DATABASE-CONFIG); 커넥션  커넥션 설정  host, port : DMBS 주소와 포트(기본 3306) user, password : DBMS 사용자 계정과 암호 database : 데이터베이스 이름 multipleStatements">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2019-01-09-node.js와-DB-사용" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      node.js와 DB 사용
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/09/2019-01-09-node.js와-DB-사용/" class="article-date">
+	  <time datetime="2019-01-09T02:52:18.000Z" itemprop="datePublished">1월 9, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="node-js와-DB-사용"><a href="#node-js와-DB-사용" class="headerlink" title="node.js와 DB 사용"></a>node.js와 DB 사용</h2><ol>
+<li><p><code>npm install mysql</code> 모듈 설치</p>
+</li>
+<li><p><code>mysql.createConnection(DATABASE-CONFIG);</code> 커넥션</p>
+<ul>
+<li><p>커넥션 설정</p>
+<ul>
+<li><code>host</code>, <code>port</code> : DMBS 주소와 포트(기본 3306)</li>
+<li><code>user</code>, <code>password</code> : DBMS 사용자 계정과 암호</li>
+<li><code>database</code> : 데이터베이스 이름</li>
+<li><code>multipleStatements</code> : 동시에 여러 SQL 실행. 보안에 주의</li>
+<li><code>connectTimeout</code> : DBMS 연결 타임 아웃 시간. 기본은 10,000 ms</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dbConfig = &#123;</span><br><span class="line"> host : <span class="string">'localhost'</span>,</span><br><span class="line"> user : <span class="string">'root'</span>,</span><br><span class="line"> password : <span class="string">'1234'</span></span><br><span class="line"> database : <span class="string">'Moviest'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(dbConfig);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>커넥션 연결과 닫기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (err) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.error(<span class="string">'error connecting: '</span> + err.stack);</span><br><span class="line"> 		<span class="keyword">return</span>;</span><br><span class="line"> 	&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'connected as id '</span> +v connection.threadId);</span><br><span class="line">connection.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>커넥션 풀 사용하기</p>
+<ul>
+<li><p>생성</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql.createPool(Option)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>풀의 옵션풀 옵션</p>
+<ul>
+<li><code>waitForConnections</code> : 풀에 여유 커넥션이 없는 경우 대기 여부</li>
+<li><code>connectionLimit</code> : 최대 커넥션 개수. 기본 10개</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool = mysql.createPool(&#123;</span><br><span class="line"> host : <span class="string">'localhost'</span>,</span><br><span class="line"> user : <span class="string">'user'</span>,</span><br><span class="line"> password : <span class="string">'1234’,</span></span><br><span class="line"><span class="string"> connectionLimit : 50</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>풀에서 커넥션 얻기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection&#123;</span></span></span><br><span class="line"><span class="function"><span class="params"> <span class="regexp">//</span> connected! (unless <span class="string">`err`</span> is set</span>)</span></span><br><span class="line"><span class="function">&#125;);</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>풀에 커넥션 반환 <code>conn.release();</code></p>
+</li>
+<li><p>풀 닫기 <code>pool.end();</code></p>
+</li>
+</ul>
+</li>
+<li><p>커넥션 모듈 분리</p>
+<ul>
+<li><p>DB 커넥션 모듈</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> dbPool = mysql.createPool(dbConfig);</span><br><span class="line"><span class="built_in">module</span>.exports = dbPool;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>모듈 사용</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool = <span class="built_in">require</span>(‘./dbconnection’);</span><br><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, conn</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SQL 문 실행</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sql = <span class="string">'INSERT INTO movies ...'</span>;</span><br><span class="line">connection.query(sql,<span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">		<span class="built_in">console</span>.error(<span class="string">'INSERT Error'</span>, err);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'results : '</span>, results);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sql = <span class="string">'INSERT INTO movies (title, director, year) VALUES (?, ?, ?);'</span>;</span><br><span class="line"><span class="comment">// 인터스텔라, 크리스퍼 놀란, 2015가 순차적으로 들어간다</span></span><br><span class="line">connection.query(sql, [<span class="string">'인터스텔라'</span>, <span class="string">'크리스토퍼 놀란'</span>, <span class="number">2015</span>],<span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>)</span>&#123;</span><br><span class="line"> <span class="comment">// 에러와 결과 처리</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>insert 문 실행</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">	title : <span class="string">'메멘토'</span>,</span><br><span class="line">	director : <span class="string">'크리스토퍼 놀란'</span>,</span><br><span class="line">	year : <span class="number">2000</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> sql = <span class="string">'INSERT INTO movies SET ?'</span>;</span><br><span class="line">connection.query(sql, data, <span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// 에러 처리</span></span><br><span class="line"> <span class="comment">// 결과 사용</span></span><br><span class="line"> connection.release();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>실행 결과<ul>
+<li>affectedRow : 영향을 받은 열의 갯수</li>
+<li>insertID : 새로 추가한 경우 Primary Key</li>
+<li>changedRow : 변경된 열의 수 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>select 문 실행</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var sql = &apos;SELECT * FROM movies&apos;;</span><br><span class="line">conn.query(sql, function(err, results) &#123;</span><br><span class="line">	if ( err ) &#123;</span><br><span class="line">         console.error(&apos;Error&apos;, err);</span><br><span class="line">         return;</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 0 ; i &lt; results.length ; i++) &#123;</span><br><span class="line">         var movieInfo = results[i];</span><br><span class="line">         console.log(&apos;제목 : &apos; + movieInfo.title + &apos; 감독 : &apos; + movieInfo.director);</span><br><span class="line">    &#125;  </span><br><span class="line">    conn.release();      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>movieInfo</code>에 하나의 레코드가 반환된다</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<h3 id="SQL-Injection-방지하기"><a href="#SQL-Injection-방지하기" class="headerlink" title="SQL Injection 방지하기"></a>SQL Injection 방지하기</h3><p><code>mysql.escape()</code>을 사용하거나 PlaceHolder 사용하기 (?,?,?)</p>
+</blockquote>
+<h3 id="트랜잭션"><a href="#트랜잭션" class="headerlink" title="트랜잭션"></a>트랜잭션</h3><p><code>conn.beginTransaction(function(err) { } );</code></p>
+<ul>
+<li><code>conn.commit()</code> : 트랜잭션 내 변경 확정</li>
+<li><code>conn.rollback()</code> : 트랜잭션 내 변경 되돌리기</li>
+</ul>
+<p>예제</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">conn.beginTransaction(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">	conn.query(sql1, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">			conn.rollback();</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		conn.query(sql2, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">				conn.rollback();</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		conn.commit();</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/13/copyNpaste/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          copyNpaste 프로젝트를 마친 뒤 홀로 회고
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/08/2019-01-08-Express/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Express</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js와-DB-사용"><span class="nav-number">1.</span> <span class="nav-text">node.js와 DB 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-Injection-방지하기"><span class="nav-number">1.1.</span> <span class="nav-text">SQL Injection 방지하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#트랜잭션"><span class="nav-number">1.2.</span> <span class="nav-text">트랜잭션</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
