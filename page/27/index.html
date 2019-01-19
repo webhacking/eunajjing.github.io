@@ -103,7 +103,7 @@
         
           <section id="main">
   
-    <article id="post-notification-API를-이용한-웹-알림-구현"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-websocket"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/16/notification-API를-이용한-웹-알림-구현/">notification API를 이용한 웹 알림 구현</a>
+      <a class="article-title" href="/2018/11/08/websocket/">websocket</a>
     </h1>
   
 
@@ -119,8 +119,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/10/16/notification-API를-이용한-웹-알림-구현/" class="article-date">
-	  <time datetime="2018-10-16T03:43:02.000Z" itemprop="datePublished">10월 16, 2018</time>
+	<a href="/2018/11/08/websocket/" class="article-date">
+	  <time datetime="2018-11-08T07:27:20.000Z" itemprop="datePublished">11월 8, 2018</time>
 	</a>
 
       
@@ -130,35 +130,46 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="notification-API를-이용한-웹-알림-구현"><a href="#notification-API를-이용한-웹-알림-구현" class="headerlink" title="notification API를 이용한 웹 알림 구현"></a>notification API를 이용한 웹 알림 구현</h1><pre><code>&lt;!DOCTYPE html&gt;
- &lt;html&gt;
-  &lt;head&gt;
-   &lt;meta charset=&quot;UTF-8&quot;&gt;
-   &lt;title&gt;Insert title here&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-   &lt;button onclick=&quot;notify()&quot;&gt;알림 띄우기&lt;/button&gt;
-   &lt;script type=&quot;text/javascript&quot;&gt;
-     window.onload = function() {
-    if(window.Notification) {
-        Notification.requestPermission();
-    } // 온 로드되면 공지 기능을 허용한다.
-     function notify() {
-        var notification = new Notification(&apos;공지 타이틀&apos;, {
-            icon: &apos;https://camo.githubusercontent.com/7710b43d0476b6f6d4b4b2865e35c108f69991f3/68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67&apos;,
-            body: &apos;github 블로그로 이동&apos;
-        });
-
-        notification.onclick = function() {
-            window.open(&apos;http://eunajjing.github.io&apos;);
-        };
-        // 알림 메시지 클릭하면 해당 페이지 새 창이 뜬다.
-      }
-   &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>원래 커뮤니티 사이트에서 내가 쓴 게시물에 댓글 달면 댓글 달렸다고 알리는 기능? 구현하고 싶어서 검색하다 발견한 소스. 간단하게 잘라서 구현해봤다.</p>
-<p>내가 원한 건 이게 아닌데…</p>
+        <h1 id="websocket을-이용한-간단한-알림-구현"><a href="#websocket을-이용한-간단한-알림-구현" class="headerlink" title="websocket을 이용한 간단한 알림 구현"></a>websocket을 이용한 간단한 알림 구현</h1><hr>
+<h2 id="유용하게-참고했던-링크들"><a href="#유용하게-참고했던-링크들" class="headerlink" title="유용하게 참고했던 링크들"></a>유용하게 참고했던 링크들</h2><p><a href="https://www.youtube.com/watch?v=gQyRxPjssWg" target="_blank" rel="noopener">시니어코딩</a></p>
+<ul>
+<li>유튜브 강좌</li>
+<li>스프링 시큐리티를 사용하지 않아 http세션과 웹소켓을 잇는 작업이 존재</li>
+<li>연속된 강의라서 도중에 강의만 따라해서는 모르는 과정이 있음, 이 부족한 부분은 깃허브에 소스가 오픈되어 있어서 보면서 해야함</li>
+</ul>
+<p><a href="https://blog.naver.com/allspacea7/221360046480" target="_blank" rel="noopener">블로그 포스팅</a></p>
+<ul>
+<li>xml 단에서 설정해야할 부분이 빠져있음</li>
+<li>간단하게 몇 건의 send를 받았는지 표기하는 예제</li>
+<li>개인적으로 제일 많은 도움을 받았음</li>
+<li>그런데 왜인지 똑같은 소스인데 override가 안되더라ㅠㅠ 근데 이건 안되어도 일단 기능은 제대로 발동해서 놔둠</li>
+</ul>
+<p><a href="http://victorydntmd.tistory.com/253" target="_blank" rel="noopener">블로그 포스팅</a></p>
+<ul>
+<li>위의 블로그 포스팅에서 누락된 것을 보기 위해 참고했었음</li>
+</ul>
+<hr>
+<h2 id="이상한-곳에서-계속-헤메이던-웹소켓-구현"><a href="#이상한-곳에서-계속-헤메이던-웹소켓-구현" class="headerlink" title="이상한 곳에서 계속 헤메이던 웹소켓 구현"></a>이상한 곳에서 계속 헤메이던 웹소켓 구현</h2><ul>
+<li>다들 저 위의 링크들을 따라하다보면 나…름 구현은 가능할 듯</li>
+<li>근데 내가 힘들었던 건 많이 참고했다는 블로그 포스팅을 보고 1차로 페이지 이동 시 웹소켓 발동까지는 했는데</li>
+<li>갑자기 실시간으로 알림 받기로 변경하라는 피드백을 받아서 일부를 수정하면서 생긴 것.</li>
+<li>인강은 <strong>디비에 있는 데이터를 뿌리지 않고 웹소켓이 보낸 데이터를 클라이언트 단에 단순히 뿌려주는 식으로 구현됨</strong></li>
+<li>그런데 나는 디비에서 가져와야 하기 때문에 쵸큼 달랐고 걍 핸들러에서 db에 select를 하게끔 만들었다.</li>
+<li><p>나는 send된 파라미터가 여러 개일 때만 처리하려고 했는데 왜인지 <strong>파라미터 여러 개 send</strong>가 먹지 않았던 문제가 제일 힘들었다. 나중에 알고보니까 아래처럼 써서 그랬던 거 같다.</p>
+<pre><code>websocket.send(&quot;~~~&quot;, &quot;~~~&quot;, &quot;~~&quot;);
+</code></pre></li>
+</ul>
+<ul>
+<li><p>이렇게 썼다면 되지 않았을까?<br>(어쩌다보니 이렇게 보낼 필요가 없어서 나는 시도는 안해봤다)</p>
+<pre><code>websocket.send(&quot;~~~~, ~~~~, ~~~&quot;);
+</code></pre></li>
+<li><p>그리구 인강에서 전역 변수로 빼서 사용하는 웹소켓, 나는 먹지 않아서 그냥 고치기 전? 전역 변수로 빼지 않고 사용하는 웹소켓으로 구현했다.</p>
+</li>
+</ul>
+<hr>
+<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><ul>
+<li><a href="http://websocket.org/echo.html" target="_blank" rel="noopener">웹소켓 테스트 가능 사이트</a></li>
+</ul>
 
       
     </div>
@@ -183,7 +194,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/26/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/28/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/26/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/28/">Next</a>
   </nav>
 
 </section>
@@ -236,7 +247,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">31</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">33</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -284,7 +295,31 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/01/16/mongo DB/">몽고DB</a></h6>
+              <span>1월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/01/15/2019-01-15-java/">면접 준비 - 자바</a></h6>
+              <span>1월 15, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/01/15/2019-01-15-면접-준비---웹/">면접 준비 - 웹</a></h6>
               <span>1월 15, 2019</span>
             </div>
 
@@ -326,30 +361,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/01/08/2019-01-08-Express/">Express</a></h6>
-              <span>1월 8, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/01/07/newdeal_node/">node JS</a></h6>
-              <span>1월 7, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -360,7 +371,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
