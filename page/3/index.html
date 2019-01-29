@@ -103,7 +103,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-15-면접-준비---웹"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-2019-01-29-serialize-사용-시-controller-어노테이션"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/15/2019-01-15-면접-준비---웹/">면접 준비 - 웹</a>
+      <a class="article-title" href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/">serialize 사용 시 controller 어노테이션</a>
     </h1>
   
 
@@ -119,8 +119,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/15/2019-01-15-면접-준비---웹/" class="article-date">
-	  <time datetime="2019-01-15T10:48:18.000Z" itemprop="datePublished">1월 15, 2019</time>
+	<a href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/" class="article-date">
+	  <time datetime="2019-01-29T08:37:18.000Z" itemprop="datePublished">1월 29, 2019</time>
 	</a>
 
       
@@ -130,26 +130,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ul>
-<li><code>init()</code></li>
-<li><code>service()</code></li>
-<li><code>destroy()</code></li>
-</ul>
-<h3 id="개념"><a href="#개념" class="headerlink" title="개념"></a>개념</h3><ul>
-<li><p>서블릿<br>자바를 사용하여 웹페이지를 동적으로 생성하는 서버측 프로그램</p>
-</li>
-<li><p>쿠키<br>클라이언트에서 실행되어 보안이 취약하고 속도가 빠름</p>
-</li>
-<li>세션<br>서버에서 실행되어 속도는 느리지만 보안이 강력함</li>
-<li>XML<br>데이터의 구조화가 목적인 HTML의 한계를 극복하기 위해 만들어짐</li>
-<li>MVC<ul>
-<li>모델 : 정보</li>
-<li>뷰 </li>
-<li>컨트롤러 : 로직 상호작용</li>
-</ul>
-</li>
-<li>mybatis<br>프레임워크의 일종으로 소스코드에서 SQL 문장을 분리하여 별도의 xml 파일로 저장하고, 이 둘을 서로 연결시켜준다</li>
-</ul>
+        <h2 id="그래서-직렬화해서-어떻게-받나요…"><a href="#그래서-직렬화해서-어떻게-받나요…" class="headerlink" title="그래서 직렬화해서 어떻게 받나요…"></a>그래서 직렬화해서 어떻게 받나요…</h2><p><code>serialize()</code>에 대해서는 수업을 받은 적이 있고, 그 수업 내용은 블로그에도 있다. 그런데 아무리 고민해도 controller에서 어떻게 받아야 하는지 잘 모르겠더라. 그래서 포풍 검색을 했지만 잘 나오지 않았고… 계속 삽질하다 알아낸 것 기록</p>
+<p><strong>@ModelAttribute</strong></p>
+<p>어노테이션 기입 후 자료형을 vo에 맞춰서 받아준다!</p>
 
       
     </div>
@@ -174,7 +157,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/4/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/4/">Next</a>
   </nav>
 
 </section>
@@ -227,7 +210,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">33</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">38</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -275,8 +258,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/16/mongo DB/">몽고DB</a></h6>
-              <span>1월 16, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-maria-DB-if-SQL/">maria DB if SQL</a></h6>
+              <span>1월 29, 2019</span>
             </div>
 
           </li>
@@ -287,8 +270,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/15/2019-01-15-java/">면접 준비 - 자바</a></h6>
-              <span>1월 15, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-트리거-내-루프-제어/">트리거 내 루프 제어</a></h6>
+              <span>1월 29, 2019</span>
             </div>
 
           </li>
@@ -299,8 +282,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/15/2019-01-15-면접-준비---웹/">면접 준비 - 웹</a></h6>
-              <span>1월 15, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/">serialize 사용 시 controller 어노테이션</a></h6>
+              <span>1월 29, 2019</span>
             </div>
 
           </li>
@@ -311,8 +294,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/14/2019-01-14-maven_err/">메이븐 업데이트가 안된다</a></h6>
-              <span>1월 14, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-mybatis-프로시저/">mybatis 프로시저 매핑 문제 트러블슈팅</a></h6>
+              <span>1월 29, 2019</span>
             </div>
 
           </li>
@@ -323,8 +306,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/13/copyNpaste/">copyNpaste 프로젝트를 마친 뒤 홀로 회고</a></h6>
-              <span>1월 13, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/">complainZero 프로젝트 회고</a></h6>
+              <span>1월 29, 2019</span>
             </div>
 
           </li>
@@ -335,8 +318,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/09/2019-01-09-node.js와-DB-사용/">node.js와 DB 사용</a></h6>
-              <span>1월 9, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/01/20/spring_security_check/">스프링 시큐리티 3</a></h6>
+              <span>1월 20, 2019</span>
             </div>
 
           </li>
@@ -351,7 +334,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

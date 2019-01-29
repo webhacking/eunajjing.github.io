@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>complainZero 프로젝트 회고 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="뉴딜 과정이 끝났다ComplainZero 비교적 짧은 시간 내에 구현해야했던 는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다. 원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…  프">
+<meta property="og:type" content="article">
+<meta property="og:title" content="complainZero 프로젝트 회고">
+<meta property="og:url" content="http://eunajjing.github.io/2019/01/29/2019-01-29-complainZero-프로젝트-회고/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="뉴딜 과정이 끝났다ComplainZero 비교적 짧은 시간 내에 구현해야했던 는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다. 원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…  프">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://eunajjing.github.io/images/complainZero.png">
+<meta property="og:image" content="http://eunajjing.github.io/images/role1.jpg">
+<meta property="og:image" content="http://eunajjing.github.io/images/role2.jpg">
+<meta property="og:image" content="http://eunajjing.github.io/images/role3.jpg">
+<meta property="og:updated_time" content="2019-01-29T14:38:38.206Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="complainZero 프로젝트 회고">
+<meta name="twitter:description" content="뉴딜 과정이 끝났다ComplainZero 비교적 짧은 시간 내에 구현해야했던 는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다. 원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…  프">
+<meta name="twitter:image" content="http://eunajjing.github.io/images/complainZero.png">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2019-01-29-complainZero-프로젝트-회고" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      complainZero 프로젝트 회고
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/" class="article-date">
+	  <time datetime="2019-01-29T06:58:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="뉴딜-과정이-끝났다"><a href="#뉴딜-과정이-끝났다" class="headerlink" title="뉴딜 과정이 끝났다"></a>뉴딜 과정이 끝났다</h2><h3 id="ComplainZero"><a href="#ComplainZero" class="headerlink" title="ComplainZero"></a><a href="https://github.com/eunajjing/complainzero" target="_blank" rel="noopener">ComplainZero</a></h3><p><img src="/images/complainZero.png" alt="메인화면"></p>
+<p>비교적 짧은 시간 내에 구현해야했던 <complainzero>는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다.</complainzero></p>
+<p>원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…</p>
+<p><img src="/images/role1.jpg" alt="공통권한"><br><img src="/images/role2.jpg" alt="유저권한"><br><img src="/images/role3.jpg" alt="관리자권한"></p>
+<h4 id="프로젝트-전반에-대한-회고"><a href="#프로젝트-전반에-대한-회고" class="headerlink" title="프로젝트 전반에 대한 회고"></a>프로젝트 전반에 대한 회고</h4><p>시간 압박에 쫓겨 개인적으로 배우는 프로젝트였다기보단 빨리 빨리 구현에 중점을 둔 프로젝트였다. 코드를 타이핑하는데에 급급해 문서 작성을 하지 않았고, 이 때문에 불필요한 작업들을 여러 번 하는 경우도 있었다. 내가 한 줄의 코드를 짜는 것보다 타인과 소통하며 협업하는 게 더 중요하다는 걸 배웠지만…. 소통이 안되는 건 내 문제인가….. 하하…</p>
+<h5 id="프로젝트-구현"><a href="#프로젝트-구현" class="headerlink" title="프로젝트 구현"></a>프로젝트 구현</h5><p>구현에 있어 제일 힘들었던 것은 프로시저와 트리거 내 루프문 제어였다. 포스팅을 통해 트러블 슈팅을 기록하겠지만, 왜 안되는지 알 수 없는… 그런 거였다. 레퍼런스가 많기에 구현에 그다지 오래 걸리지 않으리라 생각했는데 데이터베이스마다 조금씩 문법 차이가 있어 레퍼런스 예제 소스가 전혀 적용이 안됐다ㅠㅠㅠ 사용한 maria DB는 insert all과 같이 mysql에서 제공하는 다중 데이터 insert 문을 제공해주지 않았고, 트리거 내에서도 사용이 힘들었다. 이에 모든 걸 DB에서 처리해야겠다는 계획을 변경해 서비스 단에서 트랜젝션을 이용해 제어를 시도했다.</p>
+<p>프로시저 또한 힘들었다. 이것도 정말… 트러블 슈팅 꼭 기록할 것. 프로젝트 내 게시물 상세보기는 조건에 따라 join테이블이 달라지는데, 조건을 사용해야 했기에 결과적으로 DB 처리를 원하면 프로시저를 사용해야한다는 것을 알았다. 트랜젝션을 생성해 DB GUI 툴에서 실행했을 때 정상적인 값을 가지고 오는 것을 확인했건만 호출 결과와 mybatis의 연동이 자동으로 되지 않아 원인을 찾는데 많은 시간이 소비되었다.</p>
+<h5 id="아쉬운-점"><a href="#아쉬운-점" class="headerlink" title="아쉬운 점"></a>아쉬운 점</h5><p> 전반 회고 맥락과 비슷하게, 기능적으로는 배우는 게 많이 없었던 프로젝트였다. 이미 해보거나 잘하는 기능을 맡아 구현했다. 욕심 부리지 않기 위해 프로젝트 규모를 작게 잡아 되레 인원에 비해 너무 소소한 프로젝트였다고 생각한다. 사실… 우리가 4명이었지만 거의 3명인 조였고… 하아… 만약 기회가 된다면 펀딩 사이트처럼 연계 알림 후 결제 시스템을 구현해보거나, 카카오나 네이버 아이디를 이용한 회원가입을 구현해도 재밌었으리라 생각한다.</p>
+<p> 처음에 하지 않은 문서 작업이 뒤에서 크게 발목을 잡으리라 생각치 못한 프로젝트였다. 폴더 구조를 짜두고 시작한 것이 아닌 터라, 나중에 시큐리티 패턴식을 적용하거나 타일즈를 구현할 적마다 폴더 구조를 다시 맞춰야 하는 번거로움이 발생했고, 후에 적용하면 할수록 팀원 간 혼동도 잦았다. 또한 트러블슈팅을 하지 않아 팀원 내 똑같은 에러가 발생해도 팀원 내부에서 도움을 주지 못하고, 문제가 발생한 회원이 다시 레퍼런스를 찾아봐야 하는 등의 비효율적인 측면도 두드러진 프로젝트였다. 특별한 api를 적용하는 경험은 하지 못했지만 문서 작업과 협업에 대해 생각해보는 계기였다.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/29/2019-01-29-mybatis-프로시저/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mybatis 프로시저 매핑 문제 트러블슈팅
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/20/spring_security_check/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">스프링 시큐리티 3</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#뉴딜-과정이-끝났다"><span class="nav-number">1.</span> <span class="nav-text">뉴딜 과정이 끝났다</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ComplainZero"><span class="nav-number">1.1.</span> <span class="nav-text">ComplainZero</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#프로젝트-전반에-대한-회고"><span class="nav-number">1.1.1.</span> <span class="nav-text">프로젝트 전반에 대한 회고</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#프로젝트-구현"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">프로젝트 구현</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#아쉬운-점"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">아쉬운 점</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
