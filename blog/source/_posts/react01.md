@@ -484,6 +484,3 @@ Post.propTypes = {
 
   요소 내 표현식의 값을 추가할 때도 `<p>{this.props.content}</p>`로 써주어야 한다.
 
-​	
-
-> ​	
