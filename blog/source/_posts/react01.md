@@ -35,8 +35,6 @@ categories:
 
 - 리액트 DOM과 같은 랜더러는 가상 DOM 변경 사항을 브라우저 DOM에 반영
 
-  (*뭔 소리야ㅠㅠㅠ, 이해 못하기 때문에 일단 써놓는다... 미래의 나 이것을 이해해서 포스트 수정해주길*)
-
   > **랜더러** : 코드의 결과를 브라우저에 렌더링하는 기능을 제공하는 라이브러리
 
 ### React의 가상 DOM
@@ -105,7 +103,7 @@ ReactDOM.render(
 >
 > ### ReactComponentElement
 >
-> - React 컴포턴트를 표현하는 함수나 클래스에 대한 참조를 의미 (*무슨 소리죠...*)
+> - React 컴포넌트를 표현하는 함수나 클래스에 대한 참조를 의미
 >
 > ### ReactDOMElement
 >
@@ -131,9 +129,21 @@ React.createElement(
 )
 ```
 
-### 상태가 있는(stateful) 컴포넌트
+### React의 상태
 
-#### React Class
+상태 : 어느 특정한 시점의 어떤 것에 대한 정보
+
+- `this.state` : 변경 가능(mutable) 상태와
+- `this.props` : 변경 불가능한(immutable) 상태
+
+로 나뉜다.
+
+- 리액트에서 쓰이는 `컴포넌트` 는 `React.Component` 클래스를 확장한 자바스크립트 클래스로 정의하며 가변(state)/불변(props) 상태를 모두 관리할 수 있다.
+- 반면 함수를 이용해 생성한 컴포넌트(immutable)는 불변 상태(props)만을 관리할 수 있다.
+
+#### 상태가 있는(stateful) 컴포넌트
+
+##### React Class
 
 생성방법
 
@@ -162,6 +172,242 @@ class ReactClassName extends Component {
 > ## `this`
 >
 > Java Script의 키워드로 컴포넌트의 인스턴스를 가리킨다.
+
+###### 기본 상태의 설정
+
+```react
+class CreateComment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      content: "",
+      user: ""
+    };
+      // 생성자 안에서 super 함수를 호출해 클래스 인스턴스 state 속성에 기본 상태 객체를 대입
+  }
+  render() {
+    return React.createElement(
+      "form",
+      {
+        className: "createComment"
+      },
+      React.createElement("input", {
+        type: "text",
+        placeholder: "Your name",
+        value: this.state.user
+          // 이렇게 상태에 접근
+      })
+    );
+  }
+}
+```
+
+**`this.state`의 속성은 직접 덮어쓸 수 없다**
+
+**`this.setState`** 메서드를 호출해야 한다.
+
+```react
+setState(function(preState, props) -> nextState,
+    callback
+) -> void
+```
+
+갱신 함수를 매개변수로 전달받아 다시 지원 인스턴스를 갱신한 후, 새로운 값을 DOM에 적용한다는 특징이 있다.
+
+리액트가 상태를 일괄적으로 변경하기에, `setState` 메서드를 호출한다고 해서 그 결과가 곧바로 적용되지 않는다.
+
+리액트는 사용자 입력에 대한 응답으로 갱신이 이루어진다.
+
+##### React의 이벤트
+
+가상 DOM을 구현하는 것의 일부로 모의(synthetic) 이벤트 시스템을 구현한다.
+
+브라우저에서 이벤트가 발생하면, 리액트 애플리케이션 이벤트로 변환한다.
+
+자바스크립트가 이벤트를 처리하는 방법대로, 브라우저에서 발생하는 이벤트에 반응할 이벤트 핸들러를 설정하면 된다.
+
+**리액트의 이벤트핸들러는 리액트 요소나 컴포넌트 자체에 설정된다.**
+
+때문에 이렇게 설정된 이벤트가 전달하는 데이터를 이용해 컴포넌트 상태를 갱신할 수도 있다.
+
+```react
+class Post extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return React.createElement(
+      "div",
+      {
+        className: "post"
+      },
+      React.createElement(
+        "h2",
+        {
+          className: "postAuthor",
+          id: this.props.id
+        },
+        this.props.user,
+        React.createElement(
+          "span",
+          {
+            className: "postBody"
+          },
+          this.props.content
+        ),
+        this.props.children
+      )
+    );
+  }
+}
+
+class Comment extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return React.createElement(
+      "div",
+      {
+        className: "comment"
+      },
+      React.createElement(
+        "h2",
+        {
+          className: "commentAuthor"
+        },
+        this.props.user,
+        React.createElement(
+          "span",
+          {
+            className: "commentContent"
+          },
+          this.props.content
+        )
+      )
+    );
+  }
+}
+
+class CreateComment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      content: "",
+      user: ""
+    };
+    this.handleUserChange = this.handleUserChange.bind(this);
+    this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+      // 클래스로 생성한 컴포넌트는 메서드를 자동으로 바인딩하지 않는다.
+      // 때문에 생성자 내에서 이 메서드들을 직접 바인딩해줘야 한다.
+      // 이전 버전의 리액트의 경우 메서드가 자동 바인딩되었으나, 자바스크립트 클래스로 변환되며 직접 해줘야 함
+  }
+  handleUserChange(event) {
+    const val = event.target.value;
+      // val에는 input에 사용자가 입력한 텍스트가 들어온다.
+    this.setState(() => ({
+      user: val
+    }));
+  }
+  handleTextChange(event) {
+    const val = event.target.value;
+    this.setState({
+      content: val
+    });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onCommentSubmit({
+      user: this.state.user.trim(),
+      content: this.state.content.trim()
+    });
+    this.setState(() => ({
+      user: "",
+      content: ""
+    }));
+  }
+  render() {
+    return React.createElement(
+      "form",
+      {
+        className: "createComment",
+        onSubmit: this.handleSubmit
+      },
+      React.createElement("input", {
+        type: "text",
+        placeholder: "Your name",
+        value: this.state.user,
+        onChange: this.handleUserChange
+      }),
+      React.createElement("input", {
+        type: "text",
+        placeholder: "Thoughts?",
+        value: this.state.content,
+        onChange: this.handleTextChange
+      }),
+      React.createElement("input", {
+        type: "submit",
+        value: "Post"
+      })
+    );
+  }
+}
+
+class CommentBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comments: this.props.comments
+      // 부모에게 comments를 보낸다
+    };
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+  }
+  handleCommentSubmit(comment) {
+    // 제일 큰 특징은 복사본을 생성해서 대입한다는 것
+    const comments = this.state.comments;
+    comment.id = Date.now();
+    const newComments = comments.concat([comment]);
+    this.setState({
+      comments: newComments
+    });
+  }
+  render() {
+    return React.createElement(
+      "div",
+      {
+        className: "commentBox"
+      },
+      React.createElement(Post, {
+        id: this.props.post.id,
+        content: this.props.post.content,
+        user: this.props.post.user
+      }),
+      this.state.comments.map(function(comment) {
+        return React.createElement(Comment, {
+          key: comment.id,
+          id: comment.id,
+          content: comment.content,
+          user: comment.user
+        });
+        // map 메서드를 이용해 각 댓글에 대응하는 리액트 요소를 생성해 리턴한다.
+      }),
+      React.createElement(CreateComment, {
+        onCommentSubmit: this.handleCommentSubmit
+        // CreateComment에게 handleCommentSubmit 메서드 전달
+      })
+    );
+  }
+}
+
+render(
+  React.createElement(CommentBox, {
+    comments: data.comments,
+    post: data.post
+  }),
+  node
+);
+```
 
 ### `PropTypes`
 
@@ -216,6 +462,28 @@ Post.propTypes = {
 
 *그런데 아직 외부 레퍼런스의 모든 내용을 이해한 건 아니라서.... 점차 공부하면서 덧붙여볼 예정*
 
+## JSX
 
+반드시 **바벨**과 같은 JSX 전처리기 프로그램이 필요하다.
+
+> 전처리기 프로그램 : JSX 코드를 자바스크립트 코드로 바꾸는 것
+
+### 특징
+
+- 특성 표현식
+
+  `<User a = "this.props.b"/>`가 아니라, **`<User a = {this.props.b}/>`**
+
+- 불리언 특성
+
+  `<Planactive/>`, `<Input checked/>` 의 경우 리액트에서 true 값이다. 만약 false를 주고 싶다면
+
+  `attribute={false}` 같은 특성 표현식이 필요하다.
+
+- 중첩 표현식
+
+  요소 내 표현식의 값을 추가할 때도 `<p>{this.props.content}</p>`로 써주어야 한다.
+
+​	
 
 > ​	
