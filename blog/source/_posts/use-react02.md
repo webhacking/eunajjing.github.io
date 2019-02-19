@@ -266,3 +266,89 @@ class IterationSample extends Component {
 ```
 
 ​	
+
+# 라이프 사이클
+
+```react
+class LifeCycleSample extends Component {
+  state = {
+    number: 0,
+    color: null,
+  }
+
+  myRef = null; // ref 를 설정 할 부분
+  
+  
+  constructor(props) {
+    super(props);
+    console.log('constructor');
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+      // nextProps : 부모가 전달한 값
+      // prevState : 내가 가지고 있는 값
+    console.log('getDerivedStateFromProps');
+    if (nextProps.color !== prevState.color) {
+      return { color: nextProps.color };
+    }
+    return null;
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate');
+    // 숫자의 마지막 자리가 4면 리렌더링하지 않습니다
+    return nextState.number % 10 !== 4;
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+  
+  handleClick = () => {
+    this.setState({
+      number: this.state.number + 1
+    });
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('getSnapshotBeforeUpdate');
+    // 그 전에 부모가 내게 줬던 값과 내가 가지고 있던 상태 값
+    if (prevProps.color !== this.props.color) {
+      return this.myRef.style.color;
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('componentDidUpdate');
+    if (snapshot) {
+      console.log('업데이트 되기 직전 색상: ', snapshot);
+    }
+  }
+
+  render() {
+    console.log('render');
+    
+    const style = {
+      color: this.props.color
+    };
+
+    return (
+      <div>
+        <h1 style={style} ref={ref => this.myRef = ref}>
+          {this.state.number}
+        </h1>
+        <p>color: {this.state.color}</p>
+        <button onClick={this.handleClick}>
+          더하기
+        </button>
+      </div>
+    )
+  }
+}
+```
+
