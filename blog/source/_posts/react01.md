@@ -1,6 +1,6 @@
 ---
 title: 리액트 인 액션 PART1
-date: 2019-01-11 16:06:18
+date: 2019-02-11 16:06:18
 tags:
 categories:
 - 개발공부
@@ -81,7 +81,7 @@ const node = document.getElementById("root");
 
 여기까지가 리액트 라이브러리 다운로드, root라는 id를 지닌 DOM 요소를 찾는 것
 
-여기서 컴포넌트를 생성하려면  `ReactDOM.render` 메서드 실행
+여기서 컴포넌트를 생성하려면  `ReactDOM.render` 메서드 실행
 
 신텍스는 아래와 같다.
 
