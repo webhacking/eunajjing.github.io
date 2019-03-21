@@ -152,6 +152,23 @@ function counter(state = initialState, action) {
 > console.log(returnedTarget);
 > // expected output: Object { a: 1, b: 4, c: 5 }
 > ```
+>
+> 근데 이렇게 쓰는 것보다 전개 연산자를 이용해서 더 많이 쓴다.
+>
+> ```javascript
+> function counter(state= initalState, action) {
+>     switch(action.type) {
+>         case INCREMENT:
+>             return {
+>                 ...state,
+>                 number: state.number + action.diff
+>             };
+>         case ....
+>     }
+> }
+> ```
+>
+> 
 
 ## 스토어
 
