@@ -141,12 +141,39 @@ const list2 = fromJS([
 - `list.push(Map({value:3}))`
 
   - **마찬가지로 기존 것에 push 하는 게 아니라, 새로운 것을 만들어 push한다는 것에 유의**
+
 - `list.unshift(Map({value:0}))` // 맨 앞에 넣고 싶을 때
+
 - `list.delete(1)` // 1번 방에 있는 객체 삭제
 
   - `list.pop()`은 맨 끝에 있는 것
+
 - `list.size` // **length가 아니다**
+
 - `list.isEmpth()`도 가능
+
+# bindActionCreators
+
+`connect` 시에 사용하는 `mapDispatchToProps` 메서드에 사용할 수 있는 외부 모듈로 각각의 액션에 `dispatch` 설정을 해줄 필요가 없다.
+
+```javascript
+export default connect(
+    (state) => ({
+        value: state.input.get('value')
+    }),
+    (dispatch) => ({
+        inputActions: bindActionCreators(inputActions, dispatch),
+        /*
+        inputActions: {
+        	setInput: (value) => dispatch(inputActions.setInput(value))
+        	// 액션생성함수들을 자동으로 연결시킴
+    	}
+        */
+        todosActions: bindActionCreators(todosActions, dispatch)
+        // 첫 번째 파라미터는 액션 생성 함수가 들어있는 객체 모듈, 두 번째 파라미터는 dispatch
+    })
+)(TodoInputContainer);
+```
 
 # Ducks
 
