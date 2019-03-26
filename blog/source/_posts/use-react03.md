@@ -230,7 +230,7 @@ $ yarn add classnames
 
 기본 사용법
 
-```react
+```javascript
 import classNames from 'classnames';
 
 classNames('one', 'two'); // 'one two'
@@ -294,7 +294,7 @@ export default CSSModule;
 
  하나의 자바스크립트 파일안에 스타일까지 작성 할 수 있다는 장점이 있다.
 
-```react
+```javascript
 import React from 'react';
 import styled, { css } from 'styled-components';
 

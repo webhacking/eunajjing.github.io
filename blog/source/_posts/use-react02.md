@@ -29,7 +29,7 @@ syntax
 
 `<input ref={(ref) => {this.input=ref}}/>`
 
-```react
+```javascript
 class ValidationSample extends Component {
 	handleButtonClick = () => {
         this.setState({
@@ -132,7 +132,7 @@ syntax : `arr.map(callback, [thisArg])`
   - `array` : 현재 처리하고 있는 원본 배열
 - `thisArg` : 옵션 항목. 콜백 함수 내부에서 사용할 this 레퍼런스
 
-```react
+```javascript
 class IterationSample extends Component {
     render() {
         const names = ['눈사람', '얼음', '눈', '바람'];
@@ -152,7 +152,7 @@ class IterationSample extends Component {
 
 위의 소스는 실행되지만, 콘솔에는 `key`가 없다는 에러가 난다.
 
-```react
+```javascript
 class IterationSample extends Component {
     render() {
         const names = ['눈사람', '얼음', '눈', '바람'];
@@ -168,7 +168,7 @@ class IterationSample extends Component {
 
 ## `concat()`
 
-```react
+```javascript
 class IterationSample extends Component {
     state = {
         names: ['눈사람', '얼음', '눈', '바람'],
@@ -226,7 +226,7 @@ console.log(animals.slice(1, 5));
 
   (begin부터 end-1까지 반환된다)
 
-```react
+```javascript
 class IterationSample extends Component {
 	handleRemove = (index) => {
         const {names} = this.state;
@@ -248,7 +248,7 @@ class IterationSample extends Component {
 
 이렇게 romove를 구현할 수도 있다.
 
-```react
+```javascript
 class IterationSample extends Component {
 	handleRemove = (index) => {
         const {names} = this.state;
@@ -269,7 +269,7 @@ class IterationSample extends Component {
 
 # 라이프 사이클
 
-```react
+```javascript
 class LifeCycleSample extends Component {
   state = {
     number: 0,

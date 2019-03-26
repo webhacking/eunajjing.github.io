@@ -67,7 +67,7 @@ categories:
 
 #  `state`의 사용
 
-```react
+```javascript
 class MyComponent extends Component {
     constructor(props) {
         super(props);
@@ -92,7 +92,7 @@ class MyComponent extends Component {
 
 굳이 생성자에서 하지 않아도 되긴 한다.
 
-```react
+```javascript
 class MyComponent extends Component {
     state = {
         number: 0
@@ -102,7 +102,7 @@ class MyComponent extends Component {
 
 ## `setState`의 사용
 
-```react
+```javascript
 this.setState({
     수정할 필드명: 값,
     수정할 필드명: 값
@@ -154,7 +154,7 @@ this.setState({
 
 바벨의 `transform-class-properties` 문법을 사용해 간단하게 화살표 함수로 구현이 가능
 
-```react
+```javascript
 class EventPractice extends Component {
     state = {
         message: ''
@@ -188,7 +188,7 @@ class EventPractice extends Component {
 
 이를 이용해서 이렇게 핸들링도 가능하다.
 
-```react
+```javascript
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -200,7 +200,7 @@ class EventPractice extends Component {
 
 # `onKeyPress` 핸들링
 
-```react
+```javascript
 import React, { Component } from 'react';
 
 class EventPractice extends Component {

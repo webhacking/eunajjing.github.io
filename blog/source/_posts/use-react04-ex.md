@@ -13,7 +13,7 @@ categories:
 
 함수형 컴포넌트의 경우 이전 기초 예제들과 거의 유사하다.
 
-```react
+```javascript
 import React from 'react';
 
 const Counter = ({number, color, onIncrement, onDecrement, onSetColor}) => {
@@ -43,7 +43,7 @@ export default Counter;
 
 ### 액션 정의
 
-```react
+```javascript
 // actionType.js
 
 export const INCREMENT = 'INCREMENT';
@@ -53,7 +53,7 @@ export const SET_COLOR = 'SET_COLOR';
 
 ### 액션 생성 메서드
 
-```react
+```javascript
 // action.js
 
 import * as types from './ActionTypes';
@@ -74,7 +74,7 @@ export const setColor = (color) => ({
 
 ## 리듀서
 
-```react
+```javascript
 import * as types from '../actions/ActionTypes';
 
 // 초기값 설정
@@ -110,7 +110,7 @@ export default counter;
 
 ## 관련 라이브러리 사용
 
-```react
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
@@ -132,7 +132,7 @@ ReactDOM.render(
 
 ## 컨테이너 생성
 
-```react
+```javascript
 import Counter from '../components/Counter';
 // 함수형 컴포넌트를 받아와서 하단의 커넥트로 묶어줌
 import * as actions from '../actions';
@@ -177,7 +177,7 @@ export default CounterContainer;
 
 ## 최상위 컴포넌트에서 컨테이너 받아오기
 
-```react
+```javascript
 import React, { Component } from 'react';
 import CounterContainer from './CounterContainer';
 
@@ -198,7 +198,7 @@ export default App;
 
 위의 코드와 거의 비슷한데, 일단 리듀서들을 두 개 작성한다.
 
-```react
+```javascript
 // number.js
 import * as types from '../actions/ActionTypes';
 
@@ -226,7 +226,7 @@ export default number;
 
 그리고 통합 리듀서에서 이들을 합친다.
 
-```react
+```javascript
 import color from './color';
 import number from './number';
 import {combineReducers} from 'redux';
@@ -255,7 +255,7 @@ const mapStateToProps = (state) => ({
 
 액션 생성 함수에 인덱스를 넣는다
 
-```react
+```javascript
 // index.js
 
 import * as types from './ActionTypes';
@@ -287,7 +287,7 @@ export const setColor = ({color, index}) => ({
 
 리듀서가 복잡해진다. 가독성이 떨어지므로 추후 다른 것을 이용해 대체한다.
 
-```react
+```javascript
 // index.js
 
 import * as types from '../actions/ActionTypes';
@@ -440,7 +440,7 @@ export default Counter;
 
 ## 컨테이너 생성
 
-```react
+```javascript
 import CounterList from '../components/CounterList';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
@@ -466,7 +466,7 @@ export default CounterListContainer;
 
 버튼에 대한 컨테이너가 없기 때문에 앱에서 해당 내용 처리
 
-```react
+```javascript
 import React, { Component } from 'react';
 import Buttons from '../components/Buttons';
 import CounterListContainer from './CounterListContainer';
