@@ -603,7 +603,7 @@ Promise 기반 액션을 시작하면 액션 두 개가 디스패치된다.
 
   : 해당 액션의 payload 값에는 액션 이름이 들어가고, 이에 따라 pender 리듀서의 상태가 변화된다.
 
-  ![](images/redux-pender.png)
+  ![](images/redux-pender.PNG)
 
 ### `onCancel`
 
@@ -678,4 +678,3 @@ export default handleActions({
 > ```
 >
 > 
-
