@@ -366,7 +366,7 @@ export default connect(
 
 Promise 객체를 payload로 전달하면 요청을 시작, 성공, 실패할 때 액션의 뒷부분에 `_PENDING`, `_FULFILLED`, `_REJECTED`를 붙여서 반환한다.
 
-각 앤션 타입을 선언할 필요가 없으며, 뒤에 붙는 접미사는 커스터마이징도 가능하다. 커스터마이징 방법은 아래와 같다.
+각 액션 타입을 선언할 필요가 없으며, 뒤에 붙는 접미사는 커스터마이징도 가능하다. 커스터마이징 방법은 아래와 같다.
 
 ```javascript
 import { createStore, applyMiddleware } from 'redux';
@@ -396,6 +396,11 @@ function getPostAPI(postId) {
 }
 
 const GET_POST = 'GET_POST';
+
+const GET_POST_PENDING = 'GET_POST_PENDING';
+const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+const GET_POST_FAILURE = 'GET_POST_FAILURE';
+// 해당 액션들이 기술되어야 리듀서에서 사용이 된다.
 
 export const getPost = (postId) => ({
     type: GET_POST,
