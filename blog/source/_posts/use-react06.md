@@ -330,24 +330,27 @@ export default connect(
 >
 > ```javascript
 > PostActions.getPost(number).then(
->          (response) => {
->              console.log(response);
->          }
->      ).catch(
->          (error) => {
->              console.log(error);
->          }
->      );
+>       (response) => {
+>           console.log(response);
+>       }
+>   ).catch(
+>       (error) => {
+>           console.log(error);
+>       }
+>   );
 > ```
 >
 > ES7의 문법으로, 위의 코드를 이렇게 작성 가능하다.
 >
 > ```javascript
-> try {
->             const response = await PostActions.getPost(number);
->             console.log(response);
-> } catch(e) {
->             console.log(e);
+> loadData = async () => {
+>     const {PostActions, number} = this.props;
+>  	try {
+>          const response = await PostActions.getPost(number);
+>          console.log(response);
+> 	} catch(e) {
+>          console.log(e);
+> 	}   
 > }
 > ```
 >
