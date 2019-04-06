@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>react-loadable | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="react-loadableyarn add react-loadable 장점 페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.  서버사이드 렌더링과 함께 쉽게 코드 스플리팅을 할 수 있다.  로딩 중일 때 렌더링할 컴포넌트를 따로 지정할 수 있다. 123456789101112131415import Reac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-loadable">
+<meta property="og:url" content="http://eunajjing.github.io/2019/03/27/2019-03-27-react-loadable/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="react-loadableyarn add react-loadable 장점 페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.  서버사이드 렌더링과 함께 쉽게 코드 스플리팅을 할 수 있다.  로딩 중일 때 렌더링할 컴포넌트를 따로 지정할 수 있다. 123456789101112131415import Reac">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-06T07:19:34.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-loadable">
+<meta name="twitter:description" content="react-loadableyarn add react-loadable 장점 페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.  서버사이드 렌더링과 함께 쉽게 코드 스플리팅을 할 수 있다.  로딩 중일 때 렌더링할 컴포넌트를 따로 지정할 수 있다. 123456789101112131415import Reac">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2019-03-27-react-loadable" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      react-loadable
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/03/27/2019-03-27-react-loadable/" class="article-date">
+	  <time datetime="2019-03-27T08:16:18.000Z" itemprop="datePublished">3월 27, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="react-loadable"><a href="#react-loadable" class="headerlink" title="react-loadable"></a><a href="https://github.com/jamiebuilds/react-loadable#avoiding-flash-of-loading-component" target="_blank" rel="noopener">react-loadable</a></h1><p><code>yarn add react-loadable</code></p>
+<h2 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h2><ul>
+<li><p>페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.</p>
+</li>
+<li><p>서버사이드 렌더링과 함께 쉽게 코드 스플리팅을 할 수 있다.</p>
+</li>
+<li><p>로딩 중일 때 렌더링할 컴포넌트를 따로 지정할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">'react-loadable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &lt;div&gt;로딩중...&lt;/div&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Home = Loadable(&#123;</span><br><span class="line">  loader: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./Home'</span>),</span><br><span class="line">  loading: Loading</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> About = Loadable(&#123;</span><br><span class="line">  loader: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./About'</span>),</span><br><span class="line">  loading: Loading</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Preloading</p>
+<ul>
+<li>렌더링되지 않아도 특정 함수를 호출하여 미리 불러온다.</li>
+<li>링크 호버 시에 로딩을 시작한다</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Route, Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; About, Home &#125; <span class="keyword">from</span> <span class="string">'./pages'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  handleMouseOver = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    About.preload();</span><br><span class="line">  &#125;;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">          &lt;li&gt;</span><br><span class="line">            &lt;Link to=<span class="string">"/"</span>&gt;Home&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">          &lt;/</span>li&gt;</span><br><span class="line">          &lt;li&gt;</span><br><span class="line">            &lt;Link to=<span class="string">"/about"</span> onMouseOver=&#123;<span class="keyword">this</span>.handleMouseOver&#125;&gt;</span><br><span class="line">              About</span><br><span class="line">            &lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">          &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;hr /</span>&gt;</span><br><span class="line">        &lt;Route exact path=<span class="string">"/"</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://velog.io/@velopert/react-code-splitting#7.-react-loadable-%EC%9D%80-%EC%84%9C%EB%B2%84%EC%82%AC%EC%9D%B4%EB%93%9C-%EB%A0%8C%EB%8D%94%EB%A7%81%EC%9D%84-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%98%EA%B8%B8%EB%9E%98" target="_blank" rel="noopener">서버사이드렌더링과 함께 쓰는 방법</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/06/react-lib/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          리액트의 라이브러리
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/27/2019-03-27-git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">아직도 배울 게 많은 git</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#react-loadable"><span class="nav-number">1.</span> <span class="nav-text">react-loadable</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#장점"><span class="nav-number">1.1.</span> <span class="nav-text">장점</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

@@ -103,7 +103,7 @@
         
           <section id="main">
   
-    <article id="post-use-react03"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-react-lib"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/02/19/use-react03/">리액트를 다루는 기술03 - css</a>
+      <a class="article-title" href="/2019/04/06/react-lib/">리액트의 라이브러리</a>
     </h1>
   
 
@@ -119,8 +119,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/02/19/use-react03/" class="article-date">
-	  <time datetime="2019-02-19T00:47:18.000Z" itemprop="datePublished">2월 19, 2019</time>
+	<a href="/2019/04/06/react-lib/" class="article-date">
+	  <time datetime="2019-04-06T06:13:18.000Z" itemprop="datePublished">4월 6, 2019</time>
 	</a>
 
       
@@ -130,57 +130,97 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>모든 출처는 <a href="https://velog.io/@velopert/react-component-styling" target="_blank" rel="noopener">벨로퍼티 님 블로그</a></p>
-<p>보면서 따라한 내용 / 혼자 검색해서 볼 것 같은 내용을 정리</p>
-</blockquote>
-<h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><p>Sass를 CSS로 변환해주는 <code>node-sass</code>라는 라이브러리를 설치한다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add node-sass</span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 변수 사용하기</span></span><br><span class="line"><span class="variable">$red</span>: <span class="number">#fa5252</span>;</span><br><span class="line"><span class="variable">$orange</span>: <span class="number">#fd7e14</span>;</span><br><span class="line"><span class="variable">$yellow</span>: <span class="number">#fcc419</span>;</span><br><span class="line"><span class="variable">$green</span>: <span class="number">#40c057</span>;</span><br><span class="line"><span class="variable">$blue</span>: <span class="number">#339af0</span>;</span><br><span class="line"><span class="variable">$indigo</span>: <span class="number">#5c7cfa</span>;</span><br><span class="line"><span class="variable">$violet</span>: <span class="number">#7950f2</span>;</span><br><span class="line"><span class="comment">// mixin 만들기 (재사용되는 스타일 블록을 함수처럼 사용 할 수 있음)</span></span><br><span class="line">@<span class="keyword">mixin</span> square(<span class="variable">$size</span>) &#123;</span><br><span class="line">  <span class="variable">$calculated</span>: <span class="number">32px</span> * <span class="variable">$size</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">$calculated</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">$calculated</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.SassComponent</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: red; <span class="comment">// 일반 CSS 에선 .SassComponent .box 와 마찬가지</span></span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.3s</span> ease-in;</span><br><span class="line">    &amp;<span class="selector-class">.red</span> &#123; </span><br><span class="line">      <span class="comment">// .red 클래스가 .box 와 함께 사용 됐을 때</span></span><br><span class="line">      <span class="comment">// &amp;는 부모를 레퍼런스할 때 쓴다.</span></span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$red</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">1</span>);</span><br><span class="line">      <span class="comment">// mixin 사용</span></span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-class">.orange</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$orange</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-class">.yellow</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$yellow</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-class">.green</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$green</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-class">.blue</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$blue</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-class">.indigo</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$indigo</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-class">.violet</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$violet</span>;</span><br><span class="line">      @<span class="keyword">include</span> square(<span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;:hover &#123;</span><br><span class="line">      <span class="comment">// .box 에 마우스 올렸을 때</span></span><br><span class="line">      <span class="attribute">background</span>: black;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="sass-loader-설정-커스터마이징"><a href="#sass-loader-설정-커스터마이징" class="headerlink" title="sass-loader 설정 커스터마이징"></a>sass-loader 설정 커스터마이징</h2><p>경로가 너무 길어질 경우 <code>Webpack</code>에서 <code>sass-loader</code> 설정을 커스터마이징하여 해결할 수 있다.</p>
-<p>이 때 <code>create-react-app</code>으로 만들어진 것은 세부 설정들이 숨어있으므로 명령어를 통해 설정을 밖으로 꺼내준다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn eject</span><br></pre></td></tr></table></figure>
-<p>원본</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: sassRegex,</span><br><span class="line">  exclude: sassModuleRegex,</span><br><span class="line">  use: getStyleLoaders(</span><br><span class="line">    &#123;</span><br><span class="line">      importLoaders: <span class="number">2</span>,</span><br><span class="line">      sourceMap: isEnvProduction</span><br><span class="line">        ? shouldUseSourceMap</span><br><span class="line">        : isEnvDevelopment,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'sass-loader'</span></span><br><span class="line">  ),</span><br><span class="line">  sideEffects: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>교체</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: sassRegex,</span><br><span class="line">  exclude: sassModuleRegex,</span><br><span class="line">  use: getStyleLoaders(&#123;</span><br><span class="line">    importLoaders: <span class="number">2</span>,</span><br><span class="line">    sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap</span><br><span class="line">  &#125;).concat(&#123;</span><br><span class="line">    loader: <span class="built_in">require</span>.resolve(<span class="string">'sass-loader'</span>),</span><br><span class="line">    options: &#123;</span><br><span class="line">      includePaths: [paths.appSrc + <span class="string">'/styles'</span>],</span><br><span class="line">      sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  sideEffects: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>이 설정을 하게 되면 해당 파일 경로가 어디에 위치하더라도, 상대 경로를 입력하지 않고 <code>styles</code> 디렉토리 기준 절대경로로 불러올 수 있다.</p>
-<p>만약 모든 곳에서 <code>import</code>가 필요한 css라면 옵션 설정을 해준다.</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">              test: sassRegex,</span><br><span class="line">              exclude: sassModuleRegex,</span><br><span class="line">              use: getStyleLoaders(&#123;</span><br><span class="line">                importLoaders: <span class="number">2</span>,</span><br><span class="line">                sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap</span><br><span class="line">              &#125;).concat(&#123;</span><br><span class="line">                loader: require.resolve(<span class="string">'sass-loader'</span>),</span><br><span class="line">                options: &#123;</span><br><span class="line">                  includePaths: [paths.appSrc + <span class="string">'/styles'</span>],</span><br><span class="line">                  sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap,</span><br><span class="line">                  data: `@import <span class="string">'utils'</span>;`</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;),</span><br><span class="line">              sideEffects: true</span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
-<h2 id="node-modules-에서-불러오기"><a href="#node-modules-에서-불러오기" class="headerlink" title="node_modules 에서 불러오기"></a>node_modules 에서 불러오기</h2><p><code>open-color</code>나 <code>include-media</code> 등의 모듈을 사용했을 경우, 관련 <code>scss</code> 파일들이 <code>node_modules</code> 에 있다. 이를 가져오는 방법!</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span><span class="string">'~include-media/dist/include-media'</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="CSS-Module"><a href="#CSS-Module" class="headerlink" title="CSS Module"></a>CSS Module</h1><p>CSS 클래스를 불러와서 사용 할 때 [js 파일이름]_[클래스이름]__[해쉬값] 형태로 클래스네임을 자동으로 고유한 값으로 만들어주어서 컴포넌트 스타일 중첩현상을 방지해주는 기술</p>
-<p>이를 사용하기 위해서는 파일 이름을 <code>JS 파일 이름.module.css</code> 이런 식으로 저장해야 함</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 자동으로 고유해질 것이므로 흔히 사용되는 단어를 클래스 이름으로 마음대로 사용가능*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: black;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1rem</span>;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.inverted</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">  <span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 글로벌 CSS 를 작성하고 싶다면 */</span></span><br><span class="line"></span><br><span class="line">:global &#123;</span><br><span class="line">    .something &#123;</span><br><span class="line">	  font-weight: <span class="number">800</span>;</span><br><span class="line">	  <span class="attribute">color</span>: aqua;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>src/CSSModule.js</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import styles from &apos;./CSSModule.module.css&apos;;</span><br><span class="line"></span><br><span class="line">const CSSModule = () =&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&#123;`$&#123;styles.wrapper&#125; $&#123;styles.inverted&#125;`&#125;&gt;</span><br><span class="line">      안녕하세요, 저는 &lt;span className=&quot;something&quot;&gt;CSS Module!&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default CSSModule;</span><br></pre></td></tr></table></figure>
-<p>이 때 <code>{sytles.wrapper}</code>에 반환되는 객체는 <code>{wrapper: &quot;CSSModule_wrapper__CUMkx&quot;}</code>로 CSS Module 에서 사용한 클래스 이름과, 해당 이름을 고유화시킨 값이 key-value 형태로 들어있다.</p>
-<h2 id="만약-CSS-Module이-아닌-파일에서-CSS-Module을-쓰고-싶다면"><a href="#만약-CSS-Module이-아닌-파일에서-CSS-Module을-쓰고-싶다면" class="headerlink" title="만약 CSS Module이 아닌 파일에서 CSS Module을 쓰고 싶다면"></a>만약 <code>CSS Module</code>이 아닌 파일에서 <code>CSS Module</code>을 쓰고 싶다면</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:local &#123;</span><br><span class="line">  .wrapper &#123;</span><br><span class="line">    /* 스타일 */</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="classNames"><a href="#classNames" class="headerlink" title="classNames"></a>classNames</h1><p> CSS 클래스를 조건부로 설정할 때 쓰는 라이브러리</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add classnames</span><br></pre></td></tr></table></figure>
-<p>기본 사용법</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import classNames from &apos;classnames&apos;;</span><br><span class="line"></span><br><span class="line">classNames(&apos;one&apos;, &apos;two&apos;); // &apos;one two&apos;</span><br><span class="line">classNames(&apos;one&apos;, &#123; two: true &#125;); // &apos;one two&apos;</span><br><span class="line">classNames(&apos;one&apos;, &#123; two: false &#125;); // &apos;one&apos;</span><br><span class="line">classNames(&apos;one&apos;, [&apos;two&apos;, &apos;three&apos;]); // &apos;one two three&apos;</span><br><span class="line"></span><br><span class="line">const myClass = &apos;hello&apos;;</span><br><span class="line">classNames(&apos;one&apos;, myClass, &#123; myCondition: true &#125;); //&apos;one hello myCondition&apos;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyComponent = <span class="function">(<span class="params">&#123; highlighted, theme &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  &lt;div className=&#123;classNames(<span class="string">'MyComponent'</span>, &#123; highlighted &#125;, theme)&#125;&gt;Hello&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p><code>highlighted</code> 값이 뭔가에 따라 적용 여부가 달라진다.</p>
-<h2 id="classnames-bind"><a href="#classnames-bind" class="headerlink" title="classnames/bind"></a><code>classnames/bind</code></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> classNames <span class="keyword">from</span> <span class="string">'classnames/bind'</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./CSSModule.module.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cx = classNames.bind(styles); <span class="comment">// 미리 styles 에서 클래스를 받아오도록 설정하고</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CSSModule = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=&#123;cx(<span class="string">'wrapper'</span>, <span class="string">'inverted'</span>)&#125;&gt;</span><br><span class="line">      안녕하세요, 저는 &lt;span className=<span class="string">"something"</span>&gt;CSS Module!<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default CSSModule;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="react-라이브러리-정리"><a href="#react-라이브러리-정리" class="headerlink" title="react 라이브러리 정리"></a>react 라이브러리 정리</h1><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="node-sass"><a href="#node-sass" class="headerlink" title="node-sass"></a>node-sass</h3><p><code>Sass</code>를 CSS로 변환</p>
 <blockquote>
-<h1 id="Tagged-Template-Literal"><a href="#Tagged-Template-Literal" class="headerlink" title="Tagged Template Literal"></a>Tagged Template Literal</h1><p>내부에 JavaScript 객체나 함수가 전달 될 때 이를 따로 추출할 때 사용</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="string">`hello <span class="subst">$&#123;&#123;foo: <span class="string">'bar'</span> &#125;</span>&#125; <span class="subst">$&#123;() =&gt; <span class="string">'world'</span>&#125;</span>!`</span></span><br><span class="line">&gt; <span class="comment">// 결과: "hello [object Object] () =&gt; 'world'!"</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="SCSS의-문법"><a href="#SCSS의-문법" class="headerlink" title="SCSS의 문법"></a>SCSS의 문법</h1><ul>
+<li>변수의 사용 가능</li>
+<li><code>mixin</code> 생성 가능<ul>
+<li>재사용되는 스타일 블록을 함수처럼 사용 가능</li>
+</ul>
+</li>
+<li><code>$.자식요소</code> 사용 가능<ul>
+<li>부모의 요소와 자식의 요소가 함께 사용됐을 때</li>
+</ul>
+</li>
+<li><code>@import</code> 구문 사용 가능</li>
+</ul>
 </blockquote>
-<blockquote>
-<p>문자열이 출력되어야 하는 곳에 <code>[object Object]</code>라고 나온다.</p>
-<p>그래서 사용하는 방법</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">tagged</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">&gt;     <span class="built_in">console</span>.log(args);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; tagged<span class="string">`hello <span class="subst">$&#123;&#123;foo: <span class="string">'bar'</span> &#125;</span>&#125; <span class="subst">$&#123;() =&gt; <span class="string">'world'</span>&#125;</span>!`</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="styled-components"><a href="#styled-components" class="headerlink" title="styled-components"></a>styled-components</h1><p> 하나의 자바스크립트 파일안에 스타일까지 작성 할 수 있다는 장점이 있다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import styled, &#123; css &#125; from &apos;styled-components&apos;;</span><br><span class="line"></span><br><span class="line">const Box = styled.div`</span><br><span class="line">  /* props 로 넣어준 값을 직접 전달해줄 수 있습니다. */</span><br><span class="line">  background: $&#123;props =&gt; props.color || &apos;blue&apos;&#125;;</span><br><span class="line">  padding: 1rem;</span><br><span class="line">  display: flex;</span><br><span class="line">  /* 기본적으로는 1024px 에 가운데 정렬을 하고</span><br><span class="line">  가로 크기가 작아짐에 따라 사이즈를 줄이고</span><br><span class="line">  768px 미만으로 되면 꽉 채웁니다 */</span><br><span class="line">width: 1024px;</span><br><span class="line">margin: 0 auto;</span><br><span class="line">@media (max-width: 1024px) &#123;</span><br><span class="line">  width: 768px;</span><br><span class="line">&#125;</span><br><span class="line">@media (max-width: 768px) &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">const Button = styled.button`</span><br><span class="line">  background: white;</span><br><span class="line">  color: black;</span><br><span class="line">  border-radius: 4px;</span><br><span class="line">  padding: 0.5rem;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items: center;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">  font-size: 1rem;</span><br><span class="line">  font-weight: 600;</span><br><span class="line"></span><br><span class="line">  /* &amp; 문자를 사용하여 Sass 처럼 자기 자신 선택 가능 */</span><br><span class="line">  &amp;:hover &#123;</span><br><span class="line">    background: rgba(255, 255, 255, 0.9);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /* 다음 코드는 inverted 값이 true 일 때 특정 스타일을 부여해줍니다. */</span><br><span class="line">  $&#123;props =&gt;</span><br><span class="line">        props.inverted &amp;&amp;</span><br><span class="line">        css`</span><br><span class="line">      background: none;</span><br><span class="line">      border: 2px solid white;</span><br><span class="line">      color: white;</span><br><span class="line">      &amp;:hover &#123;</span><br><span class="line">        background: white;</span><br><span class="line">        color: black;</span><br><span class="line">      &#125;</span><br><span class="line">    `&#125;;</span><br><span class="line">  &amp; + button &#123;</span><br><span class="line">    margin-left: 1rem;</span><br><span class="line">  &#125;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">const StyledComponent = () =&gt; (</span><br><span class="line">    &lt;Box color=&quot;black&quot;&gt;</span><br><span class="line">        &lt;Button&gt;안녕하세요&lt;/Button&gt;</span><br><span class="line">        &lt;Button inverted=&#123;true&#125;&gt;테두리만&lt;/Button&gt;</span><br><span class="line">    &lt;/Box&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">export default StyledComponent;</span><br></pre></td></tr></table></figure>
-<p>box의 media css의 경우 이렇게도 넣을 수 있다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> styled, &#123; css &#125; <span class="keyword">from</span> <span class="string">'styled-components'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sizes = &#123;</span><br><span class="line">  desktop: <span class="number">1024</span>,</span><br><span class="line">  tablet: <span class="number">768</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 위에있는 size 객체에 따라 자동으로 media 쿼리 함수를 만들어줍니다.</span></span><br><span class="line"><span class="comment">// 참고: https://www.styled-components.com/docs/advanced#media-templates</span></span><br><span class="line"><span class="keyword">const</span> media = <span class="built_in">Object</span>.keys(sizes).reduce(<span class="function">(<span class="params">acc, label</span>) =&gt;</span> &#123;</span><br><span class="line">  acc[label] = <span class="function">(<span class="params">...args</span>) =&gt;</span> css<span class="string">`</span></span><br><span class="line"><span class="string">    @media (max-width: <span class="subst">$&#123;sizes[label] <span class="regexp">/ 16&#125;em) &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      $&#123;css(...args)&#125;;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">    &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  `;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  return acc;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">&#125;, &#123;&#125;);</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">const Box = styled.div`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  /</span>* props 로 넣어준 값을 직접 전달해줄 수 있습니다. *<span class="regexp">/</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  background: $&#123;props =&gt; props.color || 'blue'&#125;;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  padding: 1rem;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  display: flex;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  width: 1024px;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  margin: 0 auto;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  $&#123;media.desktop`width: 768px;`&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">  $&#123;media.tablet`width: 768px;`&#125;;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">`;</span></span></span></span><br></pre></td></tr></table></figure>
-<p>스타일링 된 엘리먼트를 만들 때는</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import styled from &apos;styled-components&apos;;</span><br><span class="line"></span><br><span class="line">const MyComponent = styled.div`</span><br><span class="line">  font-size: 2rem;</span><br><span class="line">`;</span><br></pre></td></tr></table></figure>
-<p>혹은 태그가 유동적이거나 특정 컴포넌트에 스타일링을 해야하는 상황이라면</p>
-<p>(특정 컴포넌트에 스타일링을 해야하는 상황이 무슨 뜻이지)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 문자열로 styled 의 인자로 전달</span></span><br><span class="line"><span class="keyword">const</span> MyInput = styled(<span class="string">'input'</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  background: gray;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"><span class="comment">// 아예 컴포넌트 형식의 값을 넣어줌</span></span><br><span class="line"><span class="keyword">const</span> StyledLink = styled(Link)<span class="string">`</span></span><br><span class="line"><span class="string">  color: blue;</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<h3 id="open-color"><a href="#open-color" class="headerlink" title="open-color"></a>open-color</h3><p><code>Sass</code> 라이브러리 중 하나로 색상 팔레트임</p>
+<p>사용을 위해선 <code>@import &#39;~open-color/open-color&#39;;</code></p>
+<h3 id="include-media"><a href="#include-media" class="headerlink" title="include-media"></a>include-media</h3><p><code>Sass</code> 라이브러리 중 하나로 반응형 디자인을 쉽게 만들어줌</p>
+<p>사용을 위해선 <code>@import &#39;~include-media/dist/include-media&#39;;</code> 구문 필요</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">include</span> media(<span class="string">"&gt;phone"</span>, <span class="string">"&lt;=tablet"</span>) &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="classnames"><a href="#classnames" class="headerlink" title="classnames"></a>classnames</h3><p>CSS 클래스를 조건부로 설정하거나 여러 종류의 파라미터를 조합해 CSS 클래스를 설정할 수 있음</p>
+<p><code>classNames.bind()</code> 사용 가능</p>
+<h3 id="styled-components"><a href="#styled-components" class="headerlink" title="styled-components"></a>styled-components</h3><p>자바스크립트 파일안에 스타일까지 작성 가능</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Box = styled.div<span class="string">`</span></span><br><span class="line"><span class="string">  /* props 로 넣어준 값을 직접 전달해줄 수 있습니다. */</span></span><br><span class="line"><span class="string">  background: <span class="subst">$&#123;props =&gt; props.color || <span class="string">'blue'</span>&#125;</span>;</span></span><br><span class="line"><span class="string">  padding: 1rem;</span></span><br><span class="line"><span class="string">  display: flex;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><h3 id="redux-1"><a href="#redux-1" class="headerlink" title="redux"></a>redux</h3><p>상태 관리 로직을 컴포넌트 밖에서 관리하는 라이브러리</p>
+<ul>
+<li><code>createStore(리듀서)</code></li>
+<li><code>combineReducers({객체})</code><ul>
+<li>서브 리듀서들을 하나로 합쳐 통합 리듀서를 만들어주는 역할</li>
+</ul>
+</li>
+<li><code>bindActionCreators(액션 생성 함수가 있는 객체 모듈, dispatch)</code><ul>
+<li>액션 생성함수 자동 바인딩</li>
+</ul>
+</li>
+<li><code>applyMiddkeware()</code></li>
+</ul>
+<h3 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h3><ul>
+<li><code>Provider</code><ul>
+<li>리액트 어플리케이션에 손쉽게 스토어를 연동할 수 있도록 돕는 컴포넌트</li>
+</ul>
+</li>
+<li><code>connect(stateToProps, dispatchToProps)(뷰 컴포넌트)</code><ul>
+<li>뷰단 컴포넌트를 어플리케이션의 데이터 레이어와 묶는다</li>
+</ul>
+</li>
+</ul>
+<h3 id="react-actions"><a href="#react-actions" class="headerlink" title="react-actions"></a>react-actions</h3><ul>
+<li><code>createAction(액션정의)</code></li>
+<li><code>handleActions(액션에 따라 실행할 함수들이 담긴 객체, 기본 값)</code><ul>
+<li>리듀서 만들 때 활용</li>
+</ul>
+</li>
+</ul>
+<h2 id="middleware"><a href="#middleware" class="headerlink" title="middleware"></a>middleware</h2><h3 id="redux-logger"><a href="#redux-logger" class="headerlink" title="redux-logger"></a>redux-logger</h3><h3 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h3><p>객체가 아닌 함수도 디스패치할 수 있게 하는 미들웨어</p>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><p>요청의 응답 정보를 지닌 객체를 반환</p>
+<h3 id="redux-promise-middleware"><a href="#redux-promise-middleware" class="headerlink" title="redux-promise-middleware"></a>redux-promise-middleware</h3><p>Promise 객체를 payload로 전달하면 요청을 시작, 성공, 실패할 때 액션의 뒷부분에 <code>_PENDING</code>, <code>_FULFILLED</code>, <code>_REJECTED</code>를 붙여서 반환</p>
+<ul>
+<li><code>createPromise()</code></li>
+</ul>
+<h3 id="redux-pender"><a href="#redux-pender" class="headerlink" title="redux-pender"></a>redux-pender</h3><p>액션 객체 안 <code>payload</code>가 <code>Promise</code> 형태라면 액션의 뒷부분에 관련 접미사를 붙여 반환(<code>redux-promise-middleware</code> 와 유사하지만 객체가 온다는 게 좀 다름)</p>
+<ul>
+<li><code>penderMiddleware()</code></li>
+<li><code>pender()</code><ul>
+<li><code>…pender({ type: 액션타입명, 함수 : (state, action) =&gt; {} })</code></li>
+<li>type에 접미사를 붙인 액션 핸들러들이 담긴 객체를 생성</li>
+</ul>
+</li>
+<li><code>applyPenders()</code><ul>
+<li><code>…pender()</code> 를 여러 번 생성해야할 때</li>
+</ul>
+</li>
+</ul>
+<h2 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h2><h3 id="react-router-dom"><a href="#react-router-dom" class="headerlink" title="react-router-dom"></a>react-router-dom</h3><ul>
+<li><code>Route</code></li>
+<li><code>Link</code></li>
+<li><code>NavLink</code></li>
+</ul>
+<h3 id="query-string"><a href="#query-string" class="headerlink" title="query-string"></a>query-string</h3><h3 id="cross-env"><a href="#cross-env" class="headerlink" title="cross-env"></a>cross-env</h3><ul>
+<li>window의 경우 node_path를 쓰기 위함</li>
+</ul>
+<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><h3 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h3><ul>
+<li>Map</li>
+<li>fromJS</li>
+<li>List</li>
+</ul>
+<h2 id="react-loadable"><a href="#react-loadable" class="headerlink" title="react-loadable"></a>react-loadable</h2><p>페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.</p>
+<ul>
+<li><code>Loadable({})</code></li>
+<li><code>preload()</code></li>
+</ul>
 
       
     </div>
@@ -205,7 +245,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/2/">Next</a>
   </nav>
 
 </section>
@@ -258,7 +298,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">43</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">52</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -306,8 +346,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/19/use-react03/">리액트를 다루는 기술03 - css</a></h6>
-              <span>2월 19, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/04/06/react-lib/">리액트의 라이브러리</a></h6>
+              <span>4월 6, 2019</span>
             </div>
 
           </li>
@@ -318,8 +358,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/use-react02/">리액트를 다루는 기술02</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-react-loadable/">react-loadable</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -330,8 +370,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/use-react01/">리액트를 다루는 기술01</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-git/">아직도 배울 게 많은 git</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -342,8 +382,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/react02-1/">리액트 인 액션 PART2 - 렌더링과 생명주기 메서드</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-yarn-eject-error/">yarn eject 중 에러가 발생했다</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -354,8 +394,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/11/react01/">리액트 인 액션 PART1</a></h6>
-              <span>2월 11, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/use-react08/">리액트를 다루는 기술08</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -366,8 +406,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-maria-DB-if-SQL/">maria DB if SQL</a></h6>
-              <span>1월 29, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/26/use-react07/">리액트를 다루는 기술07</a></h6>
+              <span>3월 26, 2019</span>
             </div>
 
           </li>
@@ -382,7 +422,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

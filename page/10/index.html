@@ -103,7 +103,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-29-complainZero-프로젝트-회고"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-use-react05"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/">complainZero 프로젝트 회고</a>
+      <a class="article-title" href="/2019/02/27/use-react05/">리액트를 다루는 기술05</a>
     </h1>
   
 
@@ -119,33 +119,125 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/" class="article-date">
-	  <time datetime="2019-01-29T06:58:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/02/27/use-react05/" class="article-date">
+	  <time datetime="2019-02-27T07:06:18.000Z" itemprop="datePublished">2월 27, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="뉴딜-과정이-끝났다"><a href="#뉴딜-과정이-끝났다" class="headerlink" title="뉴딜 과정이 끝났다"></a>뉴딜 과정이 끝났다</h2><h3 id="ComplainZero"><a href="#ComplainZero" class="headerlink" title="ComplainZero"></a><a href="https://github.com/eunajjing/complainzero" target="_blank" rel="noopener">ComplainZero</a></h3><p><img src="/images/complainZero.png" alt="메인화면"></p>
-<p>비교적 짧은 시간 내에 구현해야했던 <complainzero>는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다.</complainzero></p>
-<p>원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…</p>
-<p><img src="/images/role1.jpg" alt="공통권한"><br><img src="/images/role2.jpg" alt="유저권한"><br><img src="/images/role3.jpg" alt="관리자권한"></p>
-<h4 id="프로젝트-전반에-대한-회고"><a href="#프로젝트-전반에-대한-회고" class="headerlink" title="프로젝트 전반에 대한 회고"></a>프로젝트 전반에 대한 회고</h4><p>시간 압박에 쫓겨 개인적으로 배우는 프로젝트였다기보단 빨리 빨리 구현에 중점을 둔 프로젝트였다. 코드를 타이핑하는데에 급급해 문서 작성을 하지 않았고, 이 때문에 불필요한 작업들을 여러 번 하는 경우도 있었다. 내가 한 줄의 코드를 짜는 것보다 타인과 소통하며 협업하는 게 더 중요하다는 걸 배웠지만…. 소통이 안되는 건 내 문제인가….. 하하…</p>
-<h5 id="프로젝트-구현"><a href="#프로젝트-구현" class="headerlink" title="프로젝트 구현"></a>프로젝트 구현</h5><p>구현에 있어 제일 힘들었던 것은 프로시저와 트리거 내 루프문 제어였다. 포스팅을 통해 트러블 슈팅을 기록하겠지만, 왜 안되는지 알 수 없는… 그런 거였다. 레퍼런스가 많기에 구현에 그다지 오래 걸리지 않으리라 생각했는데 데이터베이스마다 조금씩 문법 차이가 있어 레퍼런스 예제 소스가 전혀 적용이 안됐다ㅠㅠㅠ 사용한 maria DB는 insert all과 같이 mysql에서 제공하는 다중 데이터 insert 문을 제공해주지 않았고, 트리거 내에서도 사용이 힘들었다. 이에 모든 걸 DB에서 처리해야겠다는 계획을 변경해 서비스 단에서 트랜젝션을 이용해 제어를 시도했다.</p>
-<p>프로시저 또한 힘들었다. 이것도 정말… 트러블 슈팅 꼭 기록할 것. 프로젝트 내 게시물 상세보기는 조건에 따라 join테이블이 달라지는데, 조건을 사용해야 했기에 결과적으로 DB 처리를 원하면 프로시저를 사용해야한다는 것을 알았다. 트랜젝션을 생성해 DB GUI 툴에서 실행했을 때 정상적인 값을 가지고 오는 것을 확인했건만 호출 결과와 mybatis의 연동이 자동으로 되지 않아 원인을 찾는데 많은 시간이 소비되었다.</p>
-<h5 id="아쉬운-점"><a href="#아쉬운-점" class="headerlink" title="아쉬운 점"></a>아쉬운 점</h5><p> 전반 회고 맥락과 비슷하게, 기능적으로는 배우는 게 많이 없었던 프로젝트였다. 이미 해보거나 잘하는 기능을 맡아 구현했다. 욕심 부리지 않기 위해 프로젝트 규모를 작게 잡아 되레 인원에 비해 너무 소소한 프로젝트였다고 생각한다. 사실… 우리가 4명이었지만 거의 3명인 조였고… 하아… 만약 기회가 된다면 펀딩 사이트처럼 연계 알림 후 결제 시스템을 구현해보거나, 카카오나 네이버 아이디를 이용한 회원가입을 구현해도 재밌었으리라 생각한다.</p>
-<p> 처음에 하지 않은 문서 작업이 뒤에서 크게 발목을 잡으리라 생각치 못한 프로젝트였다. 폴더 구조를 짜두고 시작한 것이 아닌 터라, 나중에 시큐리티 패턴식을 적용하거나 타일즈를 구현할 적마다 폴더 구조를 다시 맞춰야 하는 번거로움이 발생했고, 후에 적용하면 할수록 팀원 간 혼동도 잦았다. 또한 트러블슈팅을 하지 않아 팀원 내 똑같은 에러가 발생해도 팀원 내부에서 도움을 주지 못하고, 문제가 발생한 회원이 다시 레퍼런스를 찾아봐야 하는 등의 비효율적인 측면도 두드러진 프로젝트였다. 특별한 api를 적용하는 경험은 하지 못했지만 문서 작업과 협업에 대해 생각해보는 계기였다.</p>
-
+        <h1 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a><code>Immutable</code></h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="built_in">Map</span>&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> data = <span class="built_in">Map</span>(&#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: <span class="built_in">Map</span>(&#123;</span><br><span class="line">    d: <span class="number">3</span>,</span><br><span class="line">    e: <span class="number">4</span>,</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>여러 층으로 구성된 객체를 만들 때 매번 <code>Map({})</code>을 쓰는 게 귀찮으므로 이를 해결해줄</p>
+<h2 id="fromJS-사용"><a href="#fromJS-사용" class="headerlink" title="fromJS 사용"></a><code>fromJS</code> 사용</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="built_in">Map</span>, fromJS&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> data = fromJS(&#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d: <span class="number">3</span>,</span><br><span class="line">    e: <span class="number">4</span>,</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="사용법"><a href="#사용법" class="headerlink" title="사용법"></a>사용법</h3><ul>
+<li><p><code>data.toJS()</code> : 자바스크립트 객체로 변환</p>
+</li>
+<li><p><code>data.get(&#39;a&#39;)</code> : 특정 키의 값을 불러올 때</p>
+</li>
+<li><p><code>data.getIn([&#39;c&#39;, &#39;d&#39;])</code> : 내부의 키 값을 가져오려고 할 때</p>
+<ul>
+<li>c 안의 d의 값을 부르는 것</li>
+</ul>
+</li>
+<li><p><code>data.set(&#39;a&#39;, 4)</code> : 새로운 값을 넣은 map 생성</p>
+<ul>
+<li><p>기존 map이 수정되는 것이 아니다 </p>
+</li>
+<li><p><code>const newData = data.set(&#39;a&#39;, 4)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="built_in">Map</span>, fromJS&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> newData = fromJS(&#123;</span><br><span class="line">  a: <span class="number">4</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d: <span class="number">3</span>,</span><br><span class="line">    e: <span class="number">4</span>,</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>data.setIn([&#39;c&#39;, &#39;d&#39;], 10)</code> : 내부의 키에 값을 넣는 map을 생성하려고 할 때</p>
+<ul>
+<li>마찬가지로 기존 객체가 변경되지는 않는다.</li>
+</ul>
+</li>
+<li><p><code>data.updateIn([&#39;c&#39;, &#39;d&#39;], 불리언값 =&gt; !불리언값)</code> : 해당 값을 바꾸려 할 때</p>
+</li>
+<li><p><code>data.merge({a: 10, b: 10})</code> : 값 여러 개를 동시에 바꾸려고 할 때</p>
+</li>
+<li><p><code>data.mergeIn([&#39;c&#39;], {d: 10, e: 10})</code> : 내부의 값 여러 개를 동시에 바꾸려고 할 때</p>
+<ul>
+<li><p>체이닝 방식으로도 기술 가능하다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newData = data.setIn([<span class="string">'c'</span>, <span class="string">'d'</span>], <span class="number">10</span>)</span><br><span class="line">					.setIn([<span class="string">'c'</span>, <span class="string">'e'</span>], <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="List-사용"><a href="#List-사용" class="headerlink" title="List 사용"></a><code>List</code> 사용</h2><p>배열 대신 사용하는 것</p>
+<p><code>map</code>, <code>filter</code>, <code>sort</code>, <code>push</code>, <code>pop</code>을 내장하고 있다.</p>
+<p>마찬가지로 List 자체를 변경하는 게 아니라, 새로운 List를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;List&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> list = List([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>,]);</span><br></pre></td></tr></table></figure>
+<p>객체들의 list를 만들어야 할 때는</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;List, <span class="built_in">Map</span>, fromJS&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> list1 = List([</span><br><span class="line">    <span class="built_in">Map</span>(&#123;<span class="attr">value</span>: <span class="number">1</span>&#125;),</span><br><span class="line">    <span class="built_in">Map</span>(&#123;<span class="attr">value</span>: <span class="number">2</span>&#125;)</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> list2 = fromJS([</span><br><span class="line">   &#123;<span class="attr">value</span>: <span class="number">1</span>&#125;,</span><br><span class="line">   &#123;<span class="attr">value</span>: <span class="number">2</span>&#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>메서드들도 똑같이 쓸 수 있다. </p>
+<ul>
+<li><p><code>list.toJS()</code></p>
+</li>
+<li><p><code>list1.get(0)</code> // 이 경우 반환되는 것은 <code>{value:1}</code> 객체</p>
+</li>
+<li><p><code>list.getIn([0, &#39;value&#39;])</code> // 이 경우 0번 째 방의 value라는 키의 값, 즉 1</p>
+</li>
+<li><p><code>list.set(0, Map({value: 10}))</code> // 이 경우 0번째 방의 객체를 바꾸겠다</p>
+</li>
+<li><p><code>list.setIn([0, &#39;value&#39;], 10)</code> // 이 경우 0번째 방의 객체의 value 키의 값을 바꾸겠다</p>
+<ul>
+<li><p><code>list.update(0, item =&gt; item.set(&#39;value&#39;, item.get(&#39;value&#39;)*5))</code></p>
+<p>// 기존 값을 참고해서 업데이트 해야할 때</p>
+<p>// 0번 방의 value 필드의 값을 기존 value 값에 * 5를 한 것으로 바꾸겠다</p>
+<ul>
+<li>첫 번째 파라미터 : 선택할 인덱스 값</li>
+<li>두 번째 파라미터 : 선택한 원소를 업데이트하는 메서드</li>
+</ul>
+</li>
+<li><p><code>list.setIn([0, &#39;value&#39;], list.ginIn([0, &#39;value&#39;]*5))</code>와 같다</p>
+</li>
+</ul>
+</li>
+<li><p><code>list.push(Map({value:3}))</code></p>
+<ul>
+<li><strong>마찬가지로 기존 것에 push 하는 게 아니라, 새로운 것을 만들어 push한다는 것에 유의</strong></li>
+</ul>
+</li>
+<li><p><code>list.unshift(Map({value:0}))</code> // 맨 앞에 넣고 싶을 때</p>
+</li>
+<li><p><code>list.delete(1)</code> // 1번 방에 있는 객체 삭제</p>
+<ul>
+<li><code>list.pop()</code>은 맨 끝에 있는 것</li>
+</ul>
+</li>
+<li><p><code>list.size</code> // <strong>length가 아니다</strong></p>
+</li>
+<li><p><code>list.isEmpth()</code>도 가능</p>
+</li>
+</ul>
+<h1 id="bindActionCreators"><a href="#bindActionCreators" class="headerlink" title="bindActionCreators"></a>bindActionCreators</h1><p><code>connect</code> 시에 사용하는 <code>mapDispatchToProps</code> 메서드에 사용할 수 있는 외부 모듈로 각각의 액션에 <code>dispatch</code> 설정을 해줄 필요가 없다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">    (state) =&gt; (&#123;</span><br><span class="line">        value: state.input.get(<span class="string">'value'</span>)</span><br><span class="line">    &#125;),</span><br><span class="line">    (dispatch) =&gt; (&#123;</span><br><span class="line">        inputActions: bindActionCreators(inputActions, dispatch),</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        inputActions: &#123;</span></span><br><span class="line"><span class="comment">        	setInput: (value) =&gt; dispatch(inputActions.setInput(value))</span></span><br><span class="line"><span class="comment">        	// 액션생성함수들을 자동으로 연결시킴</span></span><br><span class="line"><span class="comment">    	&#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        todosActions: bindActionCreators(todosActions, dispatch)</span><br><span class="line">        <span class="comment">// 첫 번째 파라미터는 액션 생성 함수가 들어있는 객체 모듈, 두 번째 파라미터는 dispatch</span></span><br><span class="line">    &#125;)</span><br><span class="line">)(TodoInputContainer);</span><br></pre></td></tr></table></figure>
+<h1 id="Ducks"><a href="#Ducks" class="headerlink" title="Ducks"></a>Ducks</h1><p>액션 타입, 액션 생성 함수, 리듀서 모두 한 파일에서 모듈화하여 관리하는 파일 구조</p>
+<h2 id="규칙"><a href="#규칙" class="headerlink" title="규칙"></a>규칙</h2><ul>
+<li><code>export default</code>를 이용하여 리듀서, 액션 생성 메서드를 내보내야 한다.</li>
+<li>액션 타입의 명명규칙은 <code>npm-module-or-app/reducer/ACTION_TYPE</code> 형식이다.<ul>
+<li>여러 프로젝트로 나누거나 라이브러리를 만든 게 아니라면 <code>npm-module-or-app/reducer/</code>은 생략이 가능하다.</li>
+</ul>
+</li>
+<li>외부 리듀서에서 액션 타입이 필요할 때는 액션 타입 또한 내보내도 된다.</li>
+</ul>
+<h1 id="redux-actions을-통한-관리"><a href="#redux-actions을-통한-관리" class="headerlink" title="redux-actions을 통한 관리"></a><code>redux-actions</code>을 통한 관리</h1><p><code>yarn add redux-action</code>으로 의존 설정을 해준 뒤</p>
+<p><code>import {createAction, handleActions} from &#39;redux-actions&#39;</code>으로 불러 실행한다.</p>
+<h2 id="createAction"><a href="#createAction" class="headerlink" title="createAction"></a>createAction</h2><p>액션 생성 메서드를 단축한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 액션 생성 메서드</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = createAction(types.INCREMENT);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> setColor = createAction(types.SET_COLOR);</span><br><span class="line"><span class="comment">// setColor는 파라미터를 계속 객체로 받는다면,</span></span><br><span class="line"><span class="comment">// 가독성을 위해 해당 부분을 명시해도 좋다.</span></span><br><span class="line"><span class="comment">// export const setColor = createAction(types.SET_COLOR, (&#123;index, color&#125;) =&gt; (&#123;index, color&#125;))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 생성할 때</span></span><br><span class="line">increment(<span class="number">3</span>);</span><br><span class="line">setColor(&#123;<span class="attr">index</span>:<span class="number">5</span>, <span class="attr">color</span>:<span class="string">'#fff'</span>&#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    type: 'INCREAMENT',</span></span><br><span class="line"><span class="comment">   	payload : 3</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    type: 'SET_COLOR',</span></span><br><span class="line"><span class="comment">    payload : &#123;</span></span><br><span class="line"><span class="comment">        index : 5,</span></span><br><span class="line"><span class="comment">        color: '#fff'</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="handleActions"><a href="#handleActions" class="headerlink" title="handleActions"></a>handleActions</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = handleActions(&#123;</span><br><span class="line">    INCREMENT: <span class="function">(<span class="params">state, action</span>) =&gt;</span> (&#123;</span><br><span class="line">        counter: state.counter + action.payload</span><br><span class="line">    &#125;),</span><br><span class="line">    INCREMENT: <span class="function">(<span class="params">state, action</span>) =&gt;</span> (&#123;</span><br><span class="line">        counter: state.counter - action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;, &#123;<span class="attr">counter</span>: <span class="number">0</span>&#125;);</span><br><span class="line"><span class="comment">// 첫 번째 파라미터는 액션에 따라 실행할 함수를 가진 객체를 넣는다</span></span><br><span class="line"><span class="comment">// 두 번째 파라미터는 기본 값을 넣는다</span></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
 
       
       
@@ -163,7 +255,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/9/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/11/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/9/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/11/">Next</a>
   </nav>
 
 </section>
@@ -216,7 +308,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">43</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">52</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -264,8 +356,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/19/use-react03/">리액트를 다루는 기술03 - css</a></h6>
-              <span>2월 19, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/04/06/react-lib/">리액트의 라이브러리</a></h6>
+              <span>4월 6, 2019</span>
             </div>
 
           </li>
@@ -276,8 +368,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/use-react02/">리액트를 다루는 기술02</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-react-loadable/">react-loadable</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -288,8 +380,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/use-react01/">리액트를 다루는 기술01</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-git/">아직도 배울 게 많은 git</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -300,8 +392,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/react02-1/">리액트 인 액션 PART2 - 렌더링과 생명주기 메서드</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-yarn-eject-error/">yarn eject 중 에러가 발생했다</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -312,8 +404,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/11/react01/">리액트 인 액션 PART1</a></h6>
-              <span>2월 11, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/use-react08/">리액트를 다루는 기술08</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -324,8 +416,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-maria-DB-if-SQL/">maria DB if SQL</a></h6>
-              <span>1월 29, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/26/use-react07/">리액트를 다루는 기술07</a></h6>
+              <span>3월 26, 2019</span>
             </div>
 
           </li>
@@ -340,7 +432,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

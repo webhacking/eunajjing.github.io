@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>리액트를 다루는 기술05 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Immutable12345678910const &amp;#123;Map&amp;#125; = Immutable;const data = Map(&amp;#123;  a: 1,  b: 2,  c: Map(&amp;#123;    d: 3,    e: 4,    f: 5  &amp;#125;)&amp;#125;); 여러 층으로 구성된 객체를 만들 때 매번 Map({})을 쓰는 게 귀찮으므로 이를 해결해줄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="리액트를 다루는 기술05">
+<meta property="og:url" content="http://eunajjing.github.io/2019/02/27/use-react05/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="Immutable12345678910const &amp;#123;Map&amp;#125; = Immutable;const data = Map(&amp;#123;  a: 1,  b: 2,  c: Map(&amp;#123;    d: 3,    e: 4,    f: 5  &amp;#125;)&amp;#125;); 여러 층으로 구성된 객체를 만들 때 매번 Map({})을 쓰는 게 귀찮으므로 이를 해결해줄">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-06T07:19:34.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="리액트를 다루는 기술05">
+<meta name="twitter:description" content="Immutable12345678910const &amp;#123;Map&amp;#125; = Immutable;const data = Map(&amp;#123;  a: 1,  b: 2,  c: Map(&amp;#123;    d: 3,    e: 4,    f: 5  &amp;#125;)&amp;#125;); 여러 층으로 구성된 객체를 만들 때 매번 Map({})을 쓰는 게 귀찮으므로 이를 해결해줄">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-use-react05" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      리액트를 다루는 기술05
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/02/27/use-react05/" class="article-date">
+	  <time datetime="2019-02-27T07:06:18.000Z" itemprop="datePublished">2월 27, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a><code>Immutable</code></h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="built_in">Map</span>&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> data = <span class="built_in">Map</span>(&#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: <span class="built_in">Map</span>(&#123;</span><br><span class="line">    d: <span class="number">3</span>,</span><br><span class="line">    e: <span class="number">4</span>,</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>여러 층으로 구성된 객체를 만들 때 매번 <code>Map({})</code>을 쓰는 게 귀찮으므로 이를 해결해줄</p>
+<h2 id="fromJS-사용"><a href="#fromJS-사용" class="headerlink" title="fromJS 사용"></a><code>fromJS</code> 사용</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="built_in">Map</span>, fromJS&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> data = fromJS(&#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d: <span class="number">3</span>,</span><br><span class="line">    e: <span class="number">4</span>,</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="사용법"><a href="#사용법" class="headerlink" title="사용법"></a>사용법</h3><ul>
+<li><p><code>data.toJS()</code> : 자바스크립트 객체로 변환</p>
+</li>
+<li><p><code>data.get(&#39;a&#39;)</code> : 특정 키의 값을 불러올 때</p>
+</li>
+<li><p><code>data.getIn([&#39;c&#39;, &#39;d&#39;])</code> : 내부의 키 값을 가져오려고 할 때</p>
+<ul>
+<li>c 안의 d의 값을 부르는 것</li>
+</ul>
+</li>
+<li><p><code>data.set(&#39;a&#39;, 4)</code> : 새로운 값을 넣은 map 생성</p>
+<ul>
+<li><p>기존 map이 수정되는 것이 아니다 </p>
+</li>
+<li><p><code>const newData = data.set(&#39;a&#39;, 4)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="built_in">Map</span>, fromJS&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> newData = fromJS(&#123;</span><br><span class="line">  a: <span class="number">4</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d: <span class="number">3</span>,</span><br><span class="line">    e: <span class="number">4</span>,</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>data.setIn([&#39;c&#39;, &#39;d&#39;], 10)</code> : 내부의 키에 값을 넣는 map을 생성하려고 할 때</p>
+<ul>
+<li>마찬가지로 기존 객체가 변경되지는 않는다.</li>
+</ul>
+</li>
+<li><p><code>data.updateIn([&#39;c&#39;, &#39;d&#39;], 불리언값 =&gt; !불리언값)</code> : 해당 값을 바꾸려 할 때</p>
+</li>
+<li><p><code>data.merge({a: 10, b: 10})</code> : 값 여러 개를 동시에 바꾸려고 할 때</p>
+</li>
+<li><p><code>data.mergeIn([&#39;c&#39;], {d: 10, e: 10})</code> : 내부의 값 여러 개를 동시에 바꾸려고 할 때</p>
+<ul>
+<li><p>체이닝 방식으로도 기술 가능하다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newData = data.setIn([<span class="string">'c'</span>, <span class="string">'d'</span>], <span class="number">10</span>)</span><br><span class="line">					.setIn([<span class="string">'c'</span>, <span class="string">'e'</span>], <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="List-사용"><a href="#List-사용" class="headerlink" title="List 사용"></a><code>List</code> 사용</h2><p>배열 대신 사용하는 것</p>
+<p><code>map</code>, <code>filter</code>, <code>sort</code>, <code>push</code>, <code>pop</code>을 내장하고 있다.</p>
+<p>마찬가지로 List 자체를 변경하는 게 아니라, 새로운 List를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;List&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> list = List([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>,]);</span><br></pre></td></tr></table></figure>
+<p>객체들의 list를 만들어야 할 때는</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;List, <span class="built_in">Map</span>, fromJS&#125; = Immutable;</span><br><span class="line"><span class="keyword">const</span> list1 = List([</span><br><span class="line">    <span class="built_in">Map</span>(&#123;<span class="attr">value</span>: <span class="number">1</span>&#125;),</span><br><span class="line">    <span class="built_in">Map</span>(&#123;<span class="attr">value</span>: <span class="number">2</span>&#125;)</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> list2 = fromJS([</span><br><span class="line">   &#123;<span class="attr">value</span>: <span class="number">1</span>&#125;,</span><br><span class="line">   &#123;<span class="attr">value</span>: <span class="number">2</span>&#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>메서드들도 똑같이 쓸 수 있다. </p>
+<ul>
+<li><p><code>list.toJS()</code></p>
+</li>
+<li><p><code>list1.get(0)</code> // 이 경우 반환되는 것은 <code>{value:1}</code> 객체</p>
+</li>
+<li><p><code>list.getIn([0, &#39;value&#39;])</code> // 이 경우 0번 째 방의 value라는 키의 값, 즉 1</p>
+</li>
+<li><p><code>list.set(0, Map({value: 10}))</code> // 이 경우 0번째 방의 객체를 바꾸겠다</p>
+</li>
+<li><p><code>list.setIn([0, &#39;value&#39;], 10)</code> // 이 경우 0번째 방의 객체의 value 키의 값을 바꾸겠다</p>
+<ul>
+<li><p><code>list.update(0, item =&gt; item.set(&#39;value&#39;, item.get(&#39;value&#39;)*5))</code></p>
+<p>// 기존 값을 참고해서 업데이트 해야할 때</p>
+<p>// 0번 방의 value 필드의 값을 기존 value 값에 * 5를 한 것으로 바꾸겠다</p>
+<ul>
+<li>첫 번째 파라미터 : 선택할 인덱스 값</li>
+<li>두 번째 파라미터 : 선택한 원소를 업데이트하는 메서드</li>
+</ul>
+</li>
+<li><p><code>list.setIn([0, &#39;value&#39;], list.ginIn([0, &#39;value&#39;]*5))</code>와 같다</p>
+</li>
+</ul>
+</li>
+<li><p><code>list.push(Map({value:3}))</code></p>
+<ul>
+<li><strong>마찬가지로 기존 것에 push 하는 게 아니라, 새로운 것을 만들어 push한다는 것에 유의</strong></li>
+</ul>
+</li>
+<li><p><code>list.unshift(Map({value:0}))</code> // 맨 앞에 넣고 싶을 때</p>
+</li>
+<li><p><code>list.delete(1)</code> // 1번 방에 있는 객체 삭제</p>
+<ul>
+<li><code>list.pop()</code>은 맨 끝에 있는 것</li>
+</ul>
+</li>
+<li><p><code>list.size</code> // <strong>length가 아니다</strong></p>
+</li>
+<li><p><code>list.isEmpth()</code>도 가능</p>
+</li>
+</ul>
+<h1 id="bindActionCreators"><a href="#bindActionCreators" class="headerlink" title="bindActionCreators"></a>bindActionCreators</h1><p><code>connect</code> 시에 사용하는 <code>mapDispatchToProps</code> 메서드에 사용할 수 있는 외부 모듈로 각각의 액션에 <code>dispatch</code> 설정을 해줄 필요가 없다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">    (state) =&gt; (&#123;</span><br><span class="line">        value: state.input.get(<span class="string">'value'</span>)</span><br><span class="line">    &#125;),</span><br><span class="line">    (dispatch) =&gt; (&#123;</span><br><span class="line">        inputActions: bindActionCreators(inputActions, dispatch),</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        inputActions: &#123;</span></span><br><span class="line"><span class="comment">        	setInput: (value) =&gt; dispatch(inputActions.setInput(value))</span></span><br><span class="line"><span class="comment">        	// 액션생성함수들을 자동으로 연결시킴</span></span><br><span class="line"><span class="comment">    	&#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        todosActions: bindActionCreators(todosActions, dispatch)</span><br><span class="line">        <span class="comment">// 첫 번째 파라미터는 액션 생성 함수가 들어있는 객체 모듈, 두 번째 파라미터는 dispatch</span></span><br><span class="line">    &#125;)</span><br><span class="line">)(TodoInputContainer);</span><br></pre></td></tr></table></figure>
+<h1 id="Ducks"><a href="#Ducks" class="headerlink" title="Ducks"></a>Ducks</h1><p>액션 타입, 액션 생성 함수, 리듀서 모두 한 파일에서 모듈화하여 관리하는 파일 구조</p>
+<h2 id="규칙"><a href="#규칙" class="headerlink" title="규칙"></a>규칙</h2><ul>
+<li><code>export default</code>를 이용하여 리듀서, 액션 생성 메서드를 내보내야 한다.</li>
+<li>액션 타입의 명명규칙은 <code>npm-module-or-app/reducer/ACTION_TYPE</code> 형식이다.<ul>
+<li>여러 프로젝트로 나누거나 라이브러리를 만든 게 아니라면 <code>npm-module-or-app/reducer/</code>은 생략이 가능하다.</li>
+</ul>
+</li>
+<li>외부 리듀서에서 액션 타입이 필요할 때는 액션 타입 또한 내보내도 된다.</li>
+</ul>
+<h1 id="redux-actions을-통한-관리"><a href="#redux-actions을-통한-관리" class="headerlink" title="redux-actions을 통한 관리"></a><code>redux-actions</code>을 통한 관리</h1><p><code>yarn add redux-action</code>으로 의존 설정을 해준 뒤</p>
+<p><code>import {createAction, handleActions} from &#39;redux-actions&#39;</code>으로 불러 실행한다.</p>
+<h2 id="createAction"><a href="#createAction" class="headerlink" title="createAction"></a>createAction</h2><p>액션 생성 메서드를 단축한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 액션 생성 메서드</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = createAction(types.INCREMENT);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> setColor = createAction(types.SET_COLOR);</span><br><span class="line"><span class="comment">// setColor는 파라미터를 계속 객체로 받는다면,</span></span><br><span class="line"><span class="comment">// 가독성을 위해 해당 부분을 명시해도 좋다.</span></span><br><span class="line"><span class="comment">// export const setColor = createAction(types.SET_COLOR, (&#123;index, color&#125;) =&gt; (&#123;index, color&#125;))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 생성할 때</span></span><br><span class="line">increment(<span class="number">3</span>);</span><br><span class="line">setColor(&#123;<span class="attr">index</span>:<span class="number">5</span>, <span class="attr">color</span>:<span class="string">'#fff'</span>&#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    type: 'INCREAMENT',</span></span><br><span class="line"><span class="comment">   	payload : 3</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    type: 'SET_COLOR',</span></span><br><span class="line"><span class="comment">    payload : &#123;</span></span><br><span class="line"><span class="comment">        index : 5,</span></span><br><span class="line"><span class="comment">        color: '#fff'</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="handleActions"><a href="#handleActions" class="headerlink" title="handleActions"></a>handleActions</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = handleActions(&#123;</span><br><span class="line">    INCREMENT: <span class="function">(<span class="params">state, action</span>) =&gt;</span> (&#123;</span><br><span class="line">        counter: state.counter + action.payload</span><br><span class="line">    &#125;),</span><br><span class="line">    INCREMENT: <span class="function">(<span class="params">state, action</span>) =&gt;</span> (&#123;</span><br><span class="line">        counter: state.counter - action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;, &#123;<span class="attr">counter</span>: <span class="number">0</span>&#125;);</span><br><span class="line"><span class="comment">// 첫 번째 파라미터는 액션에 따라 실행할 함수를 가진 객체를 넣는다</span></span><br><span class="line"><span class="comment">// 두 번째 파라미터는 기본 값을 넣는다</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/21/use-react05-ex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          리액트를 다루는 기술05 (실습)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/27/use-react04-ex/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">리액트를 다루는 기술04 (실습)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Immutable"><span class="nav-number">1.</span> <span class="nav-text">Immutable</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fromJS-사용"><span class="nav-number">1.1.</span> <span class="nav-text">fromJS 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#사용법"><span class="nav-number">1.1.1.</span> <span class="nav-text">사용법</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-사용"><span class="nav-number">1.2.</span> <span class="nav-text">List 사용</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bindActionCreators"><span class="nav-number">2.</span> <span class="nav-text">bindActionCreators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ducks"><span class="nav-number">3.</span> <span class="nav-text">Ducks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#규칙"><span class="nav-number">3.1.</span> <span class="nav-text">규칙</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redux-actions을-통한-관리"><span class="nav-number">4.</span> <span class="nav-text">redux-actions을 통한 관리</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#createAction"><span class="nav-number">4.1.</span> <span class="nav-text">createAction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#handleActions"><span class="nav-number">4.2.</span> <span class="nav-text">handleActions</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

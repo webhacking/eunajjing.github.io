@@ -103,7 +103,7 @@
         
           <section id="main">
   
-    <article id="post-정보처리기사-DB_3"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-181127"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/01/정보처리기사-DB_3/">정보처리기사-DB_3</a>
+      <a class="article-title" href="/2018/11/27/181127/">설치한 것들, 설정 정리</a>
     </h1>
   
 
@@ -119,85 +119,201 @@
     
     <div class="article-meta">
       
-	<a href="/2018/10/01/정보처리기사-DB_3/" class="article-date">
-	  <time datetime="2018-10-01T09:59:27.000Z" itemprop="datePublished">10월 1, 2018</time>
+	<a href="/2018/11/27/181127/" class="article-date">
+	  <time datetime="2018-11-27T01:40:18.000Z" itemprop="datePublished">11월 27, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="이상과-정규화"><a href="#이상과-정규화" class="headerlink" title="이상과 정규화"></a>이상과 정규화</h1><hr>
-<h2 id="이상"><a href="#이상" class="headerlink" title="이상"></a>이상</h2><p>DB 내 데이터의 중복과 종속으로 인해 발생되는 문제점</p>
-<ul>
-<li>삭제 이상<br>: 원하지 않는 자료까지 함께 삭제가 이루어지는 이상</li>
-<li>삽입 이상 : NULL이면 안되는 값에 NULL이 들어가 삽입이 안되는 이상</li>
-<li>갱신 이상 : 갱신 과정에서 일부만 갱신되어 정보의 파악이 안되는 현상</li>
-</ul>
-<h2 id="함수적-종속"><a href="#함수적-종속" class="headerlink" title="함수적 종속"></a>함수적 종속</h2><ul>
-<li>완전 함수 종속</li>
-<li>부분 함수 종속</li>
-<li>이행적 함수 종속</li>
-</ul>
-<h2 id="정규화"><a href="#정규화" class="headerlink" title="정규화"></a>정규화</h2><ol>
-<li>제1정규형(원자값)<br>: 한 릴레이션을 구성하는 모든 도메인이 원자값으로만 구성</li>
-<li>제2정규형(부분 함수 종속 제거)<br>: 모든 속성이 기본키에 완전 함수 종속이 되도록 구성</li>
-<li>제3정규형(이행적 함수 종속 분해)</li>
-<li>보이스-코드 정규형(후보키가 아닌 결정자 관계 제거)<br>: 릴레이션에서 모든 결정자가 후보키(PK)가 되도록 하는 과정</li>
-<li>제4정규형(다치 종속 관계 제거)</li>
-<li>제5정규형(조인 종속 관계 제거)<br>: 조인 종속이 후보키를 통해서만 성립이 되도록 하는 정규형</li>
+        <ol>
+<li>web App는 was에서 실행됨</li>
 </ol>
-<h2 id="역정규화"><a href="#역정규화" class="headerlink" title="역정규화"></a>역정규화</h2><h3 id="릴레이션-역정규화"><a href="#릴레이션-역정규화" class="headerlink" title="릴레이션 역정규화"></a>릴레이션 역정규화</h3><h4 id="릴레이션-병합"><a href="#릴레이션-병합" class="headerlink" title="릴레이션 병합"></a>릴레이션 병합</h4><h4 id="릴레이션-분할"><a href="#릴레이션-분할" class="headerlink" title="릴레이션 분할"></a>릴레이션 분할</h4><ul>
-<li>수직 분할</li>
-<li>수평 분할</li>
+<blockquote>
+<h5 id="was의-종류"><a href="#was의-종류" class="headerlink" title="was의 종류"></a>was의 종류</h5><ul>
+<li>tomcat</li>
+<li>jboss</li>
+<li>webLogic</li>
+<li>webSphere</li>
+<li>JEUS(관공서 시스템의 대부분이 돌아감)</li>
 </ul>
-<h3 id="속성-역정규화-파생-속성-추가"><a href="#속성-역정규화-파생-속성-추가" class="headerlink" title="속성 역정규화(파생 속성 추가)"></a>속성 역정규화(파생 속성 추가)</h3><h1 id="트랜잭션"><a href="#트랜잭션" class="headerlink" title="트랜잭션"></a>트랜잭션</h1><ul>
-<li>원자성 : 모두 수행되거나 모두 수행되지 않거나</li>
-<li>일관성 : 완료되면 일관성 있는 DB 상태여야 한다</li>
-<li>격리성 : 하나의 트랜잭션이 수행 중에는 다른 트랜잭션이 접근 할 수 없음</li>
-<li>영속성 : 트랜잭션이 성공적으로 완료된 후 결과는 지속적으로 유지되어야 함</li>
-</ul>
-<h2 id="트랜잭션-스케줄"><a href="#트랜잭션-스케줄" class="headerlink" title="트랜잭션 스케줄"></a>트랜잭션 스케줄</h2><ul>
-<li>직렬 스케줄 : 순차적</li>
-<li>비직렬 스케줄 : 비순차적</li>
-<li>직렬 가능 스케줄 : 직렬 스케줄 기법의 결과와 비직렬 스케줄 기법의 결과가 동일하게 나오는 경우</li>
-</ul>
-<h2 id="회복"><a href="#회복" class="headerlink" title="회복"></a>회복</h2><ul>
-<li>로그 : 트랜잭션이 수행되어 변경되는 데이터베이스 상황 정보를 기록(로그파일)하는 것</li>
-</ul>
-<h3 id="회복-기법"><a href="#회복-기법" class="headerlink" title="회복 기법"></a>회복 기법</h3><ul>
-<li>즉시 갱신 기법 : 트랜잭션 실행 중에 변경되는 내용을 바로 DB에 적용</li>
-<li>지연 갱신 기법 : 트랜잭션이 부분 완료되면 DB에 적용</li>
-<li>검사 시점 기법 : 트랜잭션 실행 중 검사 시점을 지정해 그 때 완료된 내용을 DB에 적용</li>
-<li>그림자 페이징 : 로그를 사용하지 않고, DB를 동일한 크기의 단위인 페이지로 나누어 각 페이지마다 복사하여 보관하는 기법. 장애가 발생되면 그림자 페이지를 이용해 회복</li>
-</ul>
-<h3 id="REDO-재수행-UNDO-취소"><a href="#REDO-재수행-UNDO-취소" class="headerlink" title="REDO(재수행) UNDO(취소)"></a>REDO(재수행) UNDO(취소)</h3><h3 id="병행-제어"><a href="#병행-제어" class="headerlink" title="병행 제어"></a>병행 제어</h3><p>: 여러 트랜잭션이 실행되는 경우 트랜잭션 간의 격리성을 유지해 에러가 발생하지 않도록 하는 것</p>
-<h4 id="병행-제어를-하지-않았을-때의-문제점"><a href="#병행-제어를-하지-않았을-때의-문제점" class="headerlink" title="병행 제어를 하지 않았을 때의 문제점"></a>병행 제어를 하지 않았을 때의 문제점</h4><ul>
-<li>갱신 분실</li>
-<li>모순성</li>
-<li>연쇄 복귀</li>
-<li>비완료 의존성 : 하나의 트랜잭션 수행이 실패한 후 회복되기 전 다른 트랜잭션이 실패한 갱신 결과를 참조하는 현상</li>
-</ul>
-<h4 id="로킹"><a href="#로킹" class="headerlink" title="로킹"></a>로킹</h4><ul>
-<li>트랜잭션의 고립성 같은 것,</li>
-<li>하나의 트랜잭션이 이미 DB에 접근해 있으면 다른 트랜잭션이 접근하지 못하게 막음</li>
-<li>LOCK과 UNLOCK, 교착 상태가 있다.</li>
-<li><p>공유락과 배타락이 있다.</p>
+</blockquote>
+<ol start="2">
+<li><p>was는 java를 기반으로 만들어졌기에 jvm이 필요함</p>
 </li>
-<li><p>2단계 로킹 기법에는 확장 단계와 축소 단계가 있다.</p>
+<li><p>때문에 open <strong>JDK</strong>(JRE가 포함되어 있음)를 설치</p>
+</li>
+<li><p>자바 EE라는 기술 명세가 있는데 이에 맞춰 구현될 수 있도록 하는 게 Java EE Implement라는 구현체</p>
+<p>타 was와 달리 <strong>톰캣</strong>은 java EE와 관련된 기술 중 서블릿, jsp, jstl, el 등 웹 관련한 것만 지원</p>
+<p>즉 서블릿, jsp는 모든 was에서 돌아가지만 ejb는 톰캣에서 돌아가지 않는다.</p>
+<p>만약 ejb를 처리할 일이 있다면 스프링 프레임워크를 사용해 pojo로 처리하면 된다.</p>
+</li>
+<li><p>html, css, java script를 기본으로 제이쿼리, 부트스트랩, 앵귤러, 뷰, 리액트, 엠버 등 응용 라이브러리 이용</p>
+</li>
+<li>응용 라이브러리를 쉽게 다운 받기 위해서 npm 이용</li>
+<li>때문에 <strong>node</strong> 사용(npm을 이용해 라이브러리를 관리)</li>
+</ol>
+<h3 id="기술"><a href="#기술" class="headerlink" title="기술"></a>기술</h3><ul>
+<li>서블릿</li>
+<li>jsp</li>
+<li>sql</li>
+<li>jdbc - 대용으로 orl 사용</li>
+<li>jstl, el</li>
+<li>스프링 프레임워크 - IOC 컨테이너, 웹 mvc, aop</li>
+<li>라이브러리 관리를 위한 <strong>Gradle</strong> 사용</li>
+<li>마리아 db 이용</li>
+<li>git</li>
+<li>IDE는 <strong>이클립스</strong> 사용</li>
+<li><strong>비주얼 스튜디오 코드</strong> 사용</li>
+<li>패키지 매니저 역할로 <strong>scoop</strong> 사용</li>
+</ul>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><h3 id="open-jdk"><a href="#open-jdk" class="headerlink" title="open jdk"></a>open jdk</h3><p><a href="https://jdk.java.net/11/" target="_blank" rel="noopener">설치 경로-11버전-</a></p>
+<h4 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h4><ol>
+<li><p>java_home 환경 변수 설정</p>
+<p>시스템 설정 - 고급 시스템 설정 - 시스템 속성 - 환경변수로 java_home 생성 - JDK까지만 경로 알려주기</p>
+</li>
+<li><p>path 환경 변수 설정<br>PATH 경로 맨 앞에 bin까지의 경로 복사, 세미콜론이나 콜론 찍어주기</p>
+</li>
+</ol>
+<h4 id="설정-확인"><a href="#설정-확인" class="headerlink" title="설정 확인"></a>설정 확인</h4><p>cmd에서</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo %java_home%</span><br><span class="line"><span class="comment">// 결과로 jdk 경로가 출력되어야 정상</span></span><br><span class="line">javac -version</span><br><span class="line">java -version</span><br><span class="line"><span class="comment">// 결과로 버전이 출력되어야 정상</span></span><br></pre></td></tr></table></figure>
+<h3 id="비주얼-스튜디오-코드"><a href="#비주얼-스튜디오-코드" class="headerlink" title="비주얼 스튜디오 코드"></a>비주얼 스튜디오 코드</h3><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">설치 경로</a></p>
+<h3 id="git-client"><a href="#git-client" class="headerlink" title="git client"></a>git client</h3><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">설치 경로, cmd</a></p>
+<h4 id="설정-확인-1"><a href="#설정-확인-1" class="headerlink" title="설정 확인"></a>설정 확인</h4><p>cmd 창에서</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">// 버전이 뜨면 정상</span><br></pre></td></tr></table></figure>
+<h3 id="이클립스"><a href="#이클립스" class="headerlink" title="이클립스"></a>이클립스</h3><p>공식 홈페이지에서 인스톨러를 다운 받고, update 진행</p>
+<h4 id="설정-1"><a href="#설정-1" class="headerlink" title="설정"></a>설정</h4><ul>
+<li>워크스페이스 디렉토리 선택</li>
+<li>preferences - General - Workspace - <strong>Text file endcodeing을 utf-8</strong>로 설정</li>
+<li>preferences - General - Editors - Text Editors에서 tab width를 2로 하고<br>tabs 대신 스페이스를 넣게끔 설정<br>show print margin 선택-칼럼은 100<br>show whitespace characters 체크<br>show line numbers 체크(기본으로 체크되어 있음)</li>
+<li>java 11 버전을 지원하는 플러그인을 설치 (이클립스 마켓플레이스 이용)<br>java - installed JREs에서 확인할 수 있음</li>
+<li>JAVA - Code Style - Formatter에서 구글 스타일 xml import<br><a href="https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml" target="_blank" rel="noopener">구글의 코드 스타일 가이드</a></li>
+<li>java - compiler에서 level을 맞춰준다</li>
+<li>web에서 css, html, jsp 인코딩을 utf-8로 맞춰준다</li>
+</ul>
+<blockquote>
+<p>자바는 모든 것을 2byte-<em>utf-8이 아닌 그의 원형인 유니코드를 쓴다-</em>로 저장하므로, 외부로 내보낼 땐 utf-8-<em>3byte</em>-로 매번 변환시키는 작업이 필요하다.</p>
+</blockquote>
+<h3 id="톰캣"><a href="#톰캣" class="headerlink" title="톰캣"></a>톰캣</h3><p><a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">공식홈페이지</a>에서 다운로드</p>
+<ul>
+<li>preferences - server - runtime Environment에서 다운로드 받은 톰캣 add</li>
+</ul>
+<h3 id="Scoop-패키지-관리자-설치"><a href="#Scoop-패키지-관리자-설치" class="headerlink" title="Scoop 패키지 관리자 설치"></a>Scoop 패키지 관리자 설치</h3><p>맥의 경우 homebrew</p>
+<p>scoop을 이용하기 위해서는 파워쉘이 일정 버전 이상(3 이상)이어야 하기에 윈도우 파워쉘(Windows PowrShell)의 버전을 확인​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-Host | Select-Object Version</span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.microsoft.com/ko-kr/powershell/scripting/setup/installing-windows-powershell?view=powershell-6" target="_blank" rel="noopener">파워쉘 업데이트</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop install curl</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.microsoft.com/en-us/download/details.aspx?id=53344" target="_blank" rel="noopener">net framework</a></p>
+<p><strong>배우다가 스쿱 다운로드 실패로 중단</strong></p>
+<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><p>빌드 도구가 하는 역할</p>
+<ul>
+<li>compile</li>
+<li>test (report도 만든다)</li>
+<li>아카이브 (.jar, .war, .zip)</li>
+<li>deployment</li>
+</ul>
+<p>기존에 많이 쓰던 ant의 경우</p>
+<ul>
+<li>build.xml에 빌드 정보 설정</li>
+</ul>
+<p>외부 라이브러리 자동 다운로드를 위해 메이븐 등장</p>
+<ul>
+<li>build.xml이 pom.xml가 된다.</li>
+</ul>
+<p>빌드 명령을 정교하게 작성하고 싶어짐</p>
+<p>스크립트 언어로 자바 호환 언어인 groovy 이용</p>
+<p>그레이드 등장, 그레이드의 경우</p>
+<ul>
+<li>build.gradle에 빌드 정보 설정</li>
+</ul>
+<p>그레이드는 메이븐과 호환이 된다.</p>
+<p><a href="https://gradle.org/install/" target="_blank" rel="noopener">그레이드 공홈</a>에서 binary-only를 다운로드</p>
+<ul>
+<li>환경변수 설정 필요</li>
+<li><strong>path 맨 앞에 bin까지의 경로 넣어주고, 세미콜론 찍으며 확인</strong></li>
+</ul>
+<p>cmd에서 확인 가능</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle --version</span><br><span class="line">// 버전이 제대로 떠야 정상</span><br></pre></td></tr></table></figure>
+<h3 id="마리아-db"><a href="#마리아-db" class="headerlink" title="마리아 db"></a>마리아 db</h3><p><a href="https://downloads.mariadb.org/mariadb/10.3.11/" target="_blank" rel="noopener">공홈에서 다운로드</a></p>
+<ul>
+<li><p>default instance properties 설정 시 utf-8로 설정해줘야 함</p>
+</li>
+<li><p>서비스에서 mysql에 maria db가 있는지 확인하고, 상태가 시작됨인지 확인</p>
+</li>
+<li><p>마리아 db bin 경로를  path 환경변수에 설정</p>
+</li>
+<li><p>cmd에서 확인   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">// 패스워드 입력하는 창 나오고, 입력하면</span><br><span class="line">// welcom 마리아 db 문구가 나오며 maria db 명령이 실행 준비됨</span><br><span class="line"></span><br><span class="line">show databases;</span><br><span class="line">// 가지고 있는 database를 보여준다</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="타임-스태프"><a href="#타임-스태프" class="headerlink" title="타임 스태프"></a>타임 스태프</h4><p>: 각 트랜잭션이 데이터에 접근할 시간을 미리 지정해 기억시킨 뒤 그 시간의 순서에 따라 순서대로 데이터에 접근하여 수행하는 방법</p>
+<h3 id="깃허브에-repo-준비"><a href="#깃허브에-repo-준비" class="headerlink" title="깃허브에 repo 준비"></a>깃허브에 repo 준비</h3><ol>
+<li><p>원격에 repo를 만든 뒤 로컬에 클론을 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone ~url~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>새로운 프로젝트를 만든다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle init --type java-application</span><br><span class="line">// 강의는 groovy로 진행되기에 1, junit을 쓸 예정이므로 1 입력함</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>​    jsp를 만들 때 <code>&lt;% %&gt;</code> 사이에 자바를 넣듯, 특정 영역에 집어넣는 언어를 <strong>dsl</strong>(Domain-specific language)이라 한다.</p>
+<blockquote>
+<p>완성된 폴더에는 샘플 소스도 들어가 있다.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle build</span><br></pre></td></tr></table></figure>
+<p>컴파일을 자동으로 실행하며, 필요한 라이브러리를 알아서 다운로드한다. <strong>build라는 폴더가 생성</strong>된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle run</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>왜인지 내가 했더니 에러가 났다…</p>
+<p>그래서 다시 지우고 하니까 또 된다. 왜 에러가 났을까?</p>
+</blockquote>
+<p><strong>이클립스에서는 제대로 된 폴더 구조를 보여주지 않는다. 이를 해결하기 위해 이클립스에선 window에서 show view - navigator로 확인한다.</strong></p>
+<ul>
+<li><p>프로젝트는 그레이드로 만든다!</p>
+</li>
+<li><p>이후에 import를 이용해 existing projects into workspace로 불러온다.</p>
+<p><em>이 때 파일은 옮겨지는 게 아니라, 그대로 있고 이클립스에서 만질 수 있도록만 만드는 것</em></p>
+</li>
+<li><p>이클립스의 파일들</p>
+<ul>
+<li>.settings</li>
+<li>.classpath</li>
+<li>.project</li>
+</ul>
+<p>이것들이 없으면 project를 찾을 수 없다고 뜬다.</p>
+<p>때문에 그레이드에 자동으로 생성할 수 있는 기능을 이용한다.</p>
+</li>
+<li><p>build.gradle</p>
+</li>
+</ul>
+<p>​    </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">            id <span class="string">'java'</span></span><br><span class="line">            id <span class="string">'application'</span></span><br><span class="line">            id <span class="string">'eclipse'</span></span><br><span class="line">            <span class="comment">// 이클립스가 읽을 수 있도록 플러그인을 장착</span></span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">        	jcenter()</span><br><span class="line">    		&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">        	implementation <span class="string">'com.google.guava:guava:26.0-jre'</span></span><br><span class="line">        	testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">   		 	&#125;</span><br><span class="line"></span><br><span class="line">mainClassName = <span class="string">'bitcamp.newdeal.lms.App'</span></span><br></pre></td></tr></table></figure>
+<p>이후에 cmd에서 명령어 실행</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle eclipse</span><br><span class="line">// 이클립스 설정 파일을 만들기 시작</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>저장/변경/삭제 명단을 작성(stageing-area에 올린다)<br>명단에 작성할 것이 있는가</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">// git 폴더의 하위 모든 요소를 검사해 스테이지에 올린다</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>로컬 저장소에 저장(snapshot)<br>이 순간 로컬의 .git에 저장된다.<br>저장하는 행위를 커밋이라 한다.​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;커밋 메시지&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>서버에 업로드, 푸시​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<h4 id="깃허브-임시-비밀번호-만들기"><a href="#깃허브-임시-비밀번호-만들기" class="headerlink" title="깃허브 임시 비밀번호 만들기"></a>깃허브 임시 비밀번호 만들기</h4><p>settings - Developer settings - personal access tokens에서 New personal access token 생성 후 보이는 토큰을 잘 보관하기</p>
+</blockquote>
+<h3 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h3><p><a href="https://github.com/eunajjing/newdeal-exam/tree/master/newdeal-project-01" target="_blank" rel="noopener">오늘 만든 프로젝트(?)</a></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
 
       
       
@@ -215,7 +331,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/45/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/45/">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/">47</a><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/47/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/45/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/45/">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/">47</a><a class="page-number" href="/page/48/">48</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/47/">Next</a>
   </nav>
 
 </section>
@@ -268,7 +384,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">43</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">52</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -316,8 +432,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/19/use-react03/">리액트를 다루는 기술03 - css</a></h6>
-              <span>2월 19, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/04/06/react-lib/">리액트의 라이브러리</a></h6>
+              <span>4월 6, 2019</span>
             </div>
 
           </li>
@@ -328,8 +444,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/use-react02/">리액트를 다루는 기술02</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-react-loadable/">react-loadable</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -340,8 +456,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/use-react01/">리액트를 다루는 기술01</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-git/">아직도 배울 게 많은 git</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -352,8 +468,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/17/react02-1/">리액트 인 액션 PART2 - 렌더링과 생명주기 메서드</a></h6>
-              <span>2월 17, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-yarn-eject-error/">yarn eject 중 에러가 발생했다</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -364,8 +480,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/11/react01/">리액트 인 액션 PART1</a></h6>
-              <span>2월 11, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/27/use-react08/">리액트를 다루는 기술08</a></h6>
+              <span>3월 27, 2019</span>
             </div>
 
           </li>
@@ -376,8 +492,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/01/29/2019-01-29-maria-DB-if-SQL/">maria DB if SQL</a></h6>
-              <span>1월 29, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/03/26/use-react07/">리액트를 다루는 기술07</a></h6>
+              <span>3월 26, 2019</span>
             </div>
 
           </li>
@@ -392,7 +508,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>리액트의 라이브러리 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="react 라이브러리 정리CSSnode-sassSass를 CSS로 변환  SCSS의 문법 변수의 사용 가능 mixin 생성 가능 재사용되는 스타일 블록을 함수처럼 사용 가능   $.자식요소 사용 가능 부모의 요소와 자식의 요소가 함께 사용됐을 때   @import 구문 사용 가능   open-colorSass 라이브러리 중 하나로 색상 팔레트임 사용을 위해">
+<meta property="og:type" content="article">
+<meta property="og:title" content="리액트의 라이브러리">
+<meta property="og:url" content="http://eunajjing.github.io/2019/04/06/react-lib/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="react 라이브러리 정리CSSnode-sassSass를 CSS로 변환  SCSS의 문법 변수의 사용 가능 mixin 생성 가능 재사용되는 스타일 블록을 함수처럼 사용 가능   $.자식요소 사용 가능 부모의 요소와 자식의 요소가 함께 사용됐을 때   @import 구문 사용 가능   open-colorSass 라이브러리 중 하나로 색상 팔레트임 사용을 위해">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-06T10:35:39.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="리액트의 라이브러리">
+<meta name="twitter:description" content="react 라이브러리 정리CSSnode-sassSass를 CSS로 변환  SCSS의 문법 변수의 사용 가능 mixin 생성 가능 재사용되는 스타일 블록을 함수처럼 사용 가능   $.자식요소 사용 가능 부모의 요소와 자식의 요소가 함께 사용됐을 때   @import 구문 사용 가능   open-colorSass 라이브러리 중 하나로 색상 팔레트임 사용을 위해">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-react-lib" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      리액트의 라이브러리
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/04/06/react-lib/" class="article-date">
+	  <time datetime="2019-04-06T06:13:18.000Z" itemprop="datePublished">4월 6, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="react-라이브러리-정리"><a href="#react-라이브러리-정리" class="headerlink" title="react 라이브러리 정리"></a>react 라이브러리 정리</h1><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="node-sass"><a href="#node-sass" class="headerlink" title="node-sass"></a>node-sass</h3><p><code>Sass</code>를 CSS로 변환</p>
+<blockquote>
+<h1 id="SCSS의-문법"><a href="#SCSS의-문법" class="headerlink" title="SCSS의 문법"></a>SCSS의 문법</h1><ul>
+<li>변수의 사용 가능</li>
+<li><code>mixin</code> 생성 가능<ul>
+<li>재사용되는 스타일 블록을 함수처럼 사용 가능</li>
+</ul>
+</li>
+<li><code>$.자식요소</code> 사용 가능<ul>
+<li>부모의 요소와 자식의 요소가 함께 사용됐을 때</li>
+</ul>
+</li>
+<li><code>@import</code> 구문 사용 가능</li>
+</ul>
+</blockquote>
+<h3 id="open-color"><a href="#open-color" class="headerlink" title="open-color"></a>open-color</h3><p><code>Sass</code> 라이브러리 중 하나로 색상 팔레트임</p>
+<p>사용을 위해선 <code>@import &#39;~open-color/open-color&#39;;</code></p>
+<h3 id="include-media"><a href="#include-media" class="headerlink" title="include-media"></a>include-media</h3><p><code>Sass</code> 라이브러리 중 하나로 반응형 디자인을 쉽게 만들어줌</p>
+<p>사용을 위해선 <code>@import &#39;~include-media/dist/include-media&#39;;</code> 구문 필요</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">include</span> media(<span class="string">"&gt;phone"</span>, <span class="string">"&lt;=tablet"</span>) &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="classnames"><a href="#classnames" class="headerlink" title="classnames"></a>classnames</h3><p>CSS 클래스를 조건부로 설정하거나 여러 종류의 파라미터를 조합해 CSS 클래스를 설정할 수 있음</p>
+<p><code>classNames.bind()</code> 사용 가능</p>
+<h3 id="styled-components"><a href="#styled-components" class="headerlink" title="styled-components"></a>styled-components</h3><p>자바스크립트 파일안에 스타일까지 작성 가능</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Box = styled.div<span class="string">`</span></span><br><span class="line"><span class="string">  /* props 로 넣어준 값을 직접 전달해줄 수 있습니다. */</span></span><br><span class="line"><span class="string">  background: <span class="subst">$&#123;props =&gt; props.color || <span class="string">'blue'</span>&#125;</span>;</span></span><br><span class="line"><span class="string">  padding: 1rem;</span></span><br><span class="line"><span class="string">  display: flex;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><h3 id="redux-1"><a href="#redux-1" class="headerlink" title="redux"></a>redux</h3><p>상태 관리 로직을 컴포넌트 밖에서 관리하는 라이브러리</p>
+<ul>
+<li><code>createStore(리듀서)</code></li>
+<li><code>combineReducers({객체})</code><ul>
+<li>서브 리듀서들을 하나로 합쳐 통합 리듀서를 만들어주는 역할</li>
+</ul>
+</li>
+<li><code>bindActionCreators(액션 생성 함수가 있는 객체 모듈, dispatch)</code><ul>
+<li>액션 생성함수 자동 바인딩</li>
+</ul>
+</li>
+<li><code>applyMiddkeware()</code></li>
+</ul>
+<h3 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h3><ul>
+<li><code>Provider</code><ul>
+<li>리액트 어플리케이션에 손쉽게 스토어를 연동할 수 있도록 돕는 컴포넌트</li>
+</ul>
+</li>
+<li><code>connect(stateToProps, dispatchToProps)(뷰 컴포넌트)</code><ul>
+<li>뷰단 컴포넌트를 어플리케이션의 데이터 레이어와 묶는다</li>
+</ul>
+</li>
+</ul>
+<h3 id="react-actions"><a href="#react-actions" class="headerlink" title="react-actions"></a>react-actions</h3><ul>
+<li><code>createAction(액션정의)</code></li>
+<li><code>handleActions(액션에 따라 실행할 함수들이 담긴 객체, 기본 값)</code><ul>
+<li>리듀서 만들 때 활용</li>
+</ul>
+</li>
+</ul>
+<h2 id="middleware"><a href="#middleware" class="headerlink" title="middleware"></a>middleware</h2><h3 id="redux-logger"><a href="#redux-logger" class="headerlink" title="redux-logger"></a>redux-logger</h3><h3 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h3><p>객체가 아닌 함수도 디스패치할 수 있게 하는 미들웨어</p>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><p>요청의 응답 정보를 지닌 객체를 반환</p>
+<h3 id="redux-promise-middleware"><a href="#redux-promise-middleware" class="headerlink" title="redux-promise-middleware"></a>redux-promise-middleware</h3><p>Promise 객체를 payload로 전달하면 요청을 시작, 성공, 실패할 때 액션의 뒷부분에 <code>_PENDING</code>, <code>_FULFILLED</code>, <code>_REJECTED</code>를 붙여서 반환</p>
+<ul>
+<li><code>createPromise()</code></li>
+</ul>
+<h3 id="redux-pender"><a href="#redux-pender" class="headerlink" title="redux-pender"></a>redux-pender</h3><p>액션 객체 안 <code>payload</code>가 <code>Promise</code> 형태라면 액션의 뒷부분에 관련 접미사를 붙여 반환(<code>redux-promise-middleware</code> 와 유사하지만 객체가 온다는 게 좀 다름)</p>
+<ul>
+<li><code>penderMiddleware()</code></li>
+<li><code>pender()</code><ul>
+<li><code>…pender({ type: 액션타입명, 함수 : (state, action) =&gt; {} })</code></li>
+<li>type에 접미사를 붙인 액션 핸들러들이 담긴 객체를 생성</li>
+</ul>
+</li>
+<li><code>applyPenders()</code><ul>
+<li><code>…pender()</code> 를 여러 번 생성해야할 때</li>
+</ul>
+</li>
+</ul>
+<h2 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h2><h3 id="react-router-dom"><a href="#react-router-dom" class="headerlink" title="react-router-dom"></a>react-router-dom</h3><ul>
+<li><code>Route</code></li>
+<li><code>Link</code></li>
+<li><code>NavLink</code></li>
+</ul>
+<h3 id="query-string"><a href="#query-string" class="headerlink" title="query-string"></a>query-string</h3><h3 id="cross-env"><a href="#cross-env" class="headerlink" title="cross-env"></a>cross-env</h3><ul>
+<li>window의 경우 node_path를 쓰기 위함</li>
+</ul>
+<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><h3 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h3><ul>
+<li>Map</li>
+<li>fromJS</li>
+<li>List</li>
+</ul>
+<h2 id="react-loadable"><a href="#react-loadable" class="headerlink" title="react-loadable"></a>react-loadable</h2><p>페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.</p>
+<ul>
+<li><code>Loadable({})</code></li>
+<li><code>preload()</code></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/27/2019-03-27-react-loadable/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react-loadable</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#react-라이브러리-정리"><span class="nav-number">1.</span> <span class="nav-text">react 라이브러리 정리</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">1.1.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node-sass"><span class="nav-number">1.1.1.</span> <span class="nav-text">node-sass</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SCSS의-문법"><span class="nav-number">2.</span> <span class="nav-text">SCSS의 문법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#open-color"><span class="nav-number">2.0.1.</span> <span class="nav-text">open-color</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include-media"><span class="nav-number">2.0.2.</span> <span class="nav-text">include-media</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classnames"><span class="nav-number">2.0.3.</span> <span class="nav-text">classnames</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#styled-components"><span class="nav-number">2.0.4.</span> <span class="nav-text">styled-components</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux"><span class="nav-number">2.1.</span> <span class="nav-text">redux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redux-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">redux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-redux"><span class="nav-number">2.1.2.</span> <span class="nav-text">react-redux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-actions"><span class="nav-number">2.1.3.</span> <span class="nav-text">react-actions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#middleware"><span class="nav-number">2.2.</span> <span class="nav-text">middleware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redux-logger"><span class="nav-number">2.2.1.</span> <span class="nav-text">redux-logger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redux-thunk"><span class="nav-number">2.2.2.</span> <span class="nav-text">redux-thunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#axios"><span class="nav-number">2.2.3.</span> <span class="nav-text">axios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redux-promise-middleware"><span class="nav-number">2.2.4.</span> <span class="nav-text">redux-promise-middleware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redux-pender"><span class="nav-number">2.2.5.</span> <span class="nav-text">redux-pender</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-router"><span class="nav-number">2.3.</span> <span class="nav-text">react-router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router-dom"><span class="nav-number">2.3.1.</span> <span class="nav-text">react-router-dom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-string"><span class="nav-number">2.3.2.</span> <span class="nav-text">query-string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-env"><span class="nav-number">2.3.3.</span> <span class="nav-text">cross-env</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ETC"><span class="nav-number">2.4.</span> <span class="nav-text">ETC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable"><span class="nav-number">2.4.1.</span> <span class="nav-text">immutable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-loadable"><span class="nav-number">2.5.</span> <span class="nav-text">react-loadable</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

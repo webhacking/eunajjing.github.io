@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>리액트를 다루는 기술04 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="리덕스 state를 컴포넌트 밖에서 관리하기 위해 사용  용어 스토어:  state 저장하고 있는 객체 액션 : 상태에 변화를 일으켜야 할 때 스토어에 전달하는 객체 리듀서 : 액션을 참고해서 스토어의 state를 어떻게 바꿀 것인지 결정해서 바꿈 디스패치 : 액션을 전달하는 행위  규칙 스토어는 단 한 개이다 리듀서는 여러 개를 만들 수 있다 모든 변화는">
+<meta property="og:type" content="article">
+<meta property="og:title" content="리액트를 다루는 기술04">
+<meta property="og:url" content="http://eunajjing.github.io/2019/02/26/use-react04/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="리덕스 state를 컴포넌트 밖에서 관리하기 위해 사용  용어 스토어:  state 저장하고 있는 객체 액션 : 상태에 변화를 일으켜야 할 때 스토어에 전달하는 객체 리듀서 : 액션을 참고해서 스토어의 state를 어떻게 바꿀 것인지 결정해서 바꿈 디스패치 : 액션을 전달하는 행위  규칙 스토어는 단 한 개이다 리듀서는 여러 개를 만들 수 있다 모든 변화는">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-06T07:19:34.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="리액트를 다루는 기술04">
+<meta name="twitter:description" content="리덕스 state를 컴포넌트 밖에서 관리하기 위해 사용  용어 스토어:  state 저장하고 있는 객체 액션 : 상태에 변화를 일으켜야 할 때 스토어에 전달하는 객체 리듀서 : 액션을 참고해서 스토어의 state를 어떻게 바꿀 것인지 결정해서 바꿈 디스패치 : 액션을 전달하는 행위  규칙 스토어는 단 한 개이다 리듀서는 여러 개를 만들 수 있다 모든 변화는">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-use-react04" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      리액트를 다루는 기술04
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/02/26/use-react04/" class="article-date">
+	  <time datetime="2019-02-26T06:09:18.000Z" itemprop="datePublished">2월 26, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="리덕스"><a href="#리덕스" class="headerlink" title="리덕스"></a>리덕스</h1><ul>
+<li><code>state</code>를 컴포넌트 밖에서 관리하기 위해 사용</li>
+</ul>
+<h2 id="용어"><a href="#용어" class="headerlink" title="용어"></a>용어</h2><ul>
+<li><code>스토어</code>:  <code>state</code> 저장하고 있는 객체</li>
+<li><code>액션</code> : 상태에 변화를 일으켜야 할 때 스토어에 전달하는 객체</li>
+<li><code>리듀서</code> : 액션을 참고해서 스토어의 state를 어떻게 바꿀 것인지 결정해서 바꿈</li>
+<li><code>디스패치</code> : 액션을 전달하는 행위</li>
+</ul>
+<h2 id="규칙"><a href="#규칙" class="headerlink" title="규칙"></a>규칙</h2><ul>
+<li>스토어는 단 한 개이다</li>
+<li>리듀서는 여러 개를 만들 수 있다</li>
+<li>모든 변화는 리듀서 함수로 일어나야 한다.<ul>
+<li>리듀서 함수에서 외부 네트워크, 데이터베이스에 직접 접근해선 안된다.</li>
+<li>리듀서 함수 내부에서는 <code>new Date()</code>와 <code>Math.random()</code>을 사용하면 안된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="액션"><a href="#액션" class="headerlink" title="액션"></a>액션</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">"INCREMENT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>type</code> </p>
+<ul>
+<li>어떤 작업을 하는 액션인지 정의</li>
+<li>대문자와 _로 구성한다.</li>
+<li>필수 값이다.</li>
+<li>값은 고정이다.</li>
+</ul>
+</li>
+<li><p>예시</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">"INCREMENT"</span>,</span><br><span class="line">    text: <span class="string">'리액트 배우기'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">"INCREMENT"</span>,</span><br><span class="line">    todos: &#123;</span><br><span class="line">        id: <span class="number">1</span>,</span><br><span class="line">        text: <span class="string">'리액트 배우기'</span>,</span><br><span class="line">        done: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="액션-생성함수"><a href="#액션-생성함수" class="headerlink" title="액션 생성함수"></a>액션 생성함수</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> INCREMENT = <span class="string">'INCREMENT'</span>;</span><br><span class="line"><span class="keyword">const</span> DECREMENT = <span class="string">'DECREMENT'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> increment = <span class="function">(<span class="params">diff</span>) =&gt;</span> &#123;</span><br><span class="line">    type: INCREMENT</span><br><span class="line">    diff: diff</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> decrement = <span class="function">(<span class="params">diff</span>) =&gt;</span> &#123;</span><br><span class="line">    type: DECREMENT</span><br><span class="line">    diff: diff</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="리듀서"><a href="#리듀서" class="headerlink" title="리듀서"></a>리듀서</h2><ul>
+<li>파라미터<ul>
+<li>현재 상태</li>
+<li>액션 객체</li>
+</ul>
+</li>
+<li>initialState 값을 설정해준다</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 액션 함수를 위에 쓴 뒤에</span></span><br><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">    number: <span class="number">0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>리듀서 함수 시작</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> INCREMENT:</span><br><span class="line">        	retrun &#123;<span class="attr">number</span>: state.number + action.diff&#125;;</span><br><span class="line">        <span class="keyword">case</span> DECREMENT:</span><br><span class="line">        	retrun &#123;<span class="attr">number</span>: state.number - action.diff&#125;;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	retrun state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>만약 액션 객체 안에 많은 속성들이 있다면</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">    number: <span class="number">0</span>,</span><br><span class="line">    foo: <span class="string">'bar'</span>,</span><br><span class="line">    baz: <span class="string">'qux'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> INCREMENT:</span><br><span class="line">        	retrun <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">                number: state.number + action.diff</span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="keyword">case</span> DECREMENT:</span><br><span class="line">        	retrun <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">                number: state.number - action.diff</span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	retrun state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a><code>Object.assign</code></h1><p>파라미터로 전달된 객체들을 순서대로 합친다.</p>
+<p>역순으로 객체를 왼쪽으로 덮어쓰면서 새 객체를 만들어준다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">console</span>.log(target);</span><br><span class="line">&gt; <span class="comment">// expected output: Object &#123; a: 1, b: 2 &#125;</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="keyword">const</span> source = &#123; <span class="attr">b</span>: <span class="number">4</span>, <span class="attr">c</span>: <span class="number">5</span> &#125;;</span><br><span class="line">&gt; <span class="keyword">const</span> returnedTarget = <span class="built_in">Object</span>.assign(target, source);</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">console</span>.log(target);</span><br><span class="line">&gt; <span class="comment">// expected output: Object &#123; a: 1, b: 4, c: 5 &#125;</span></span><br><span class="line">&gt; <span class="comment">// assign 메서드 진행하며 이미 값이 바뀜</span></span><br><span class="line">&gt; <span class="built_in">console</span>.log(returnedTarget);</span><br><span class="line">&gt; <span class="comment">// expected output: Object &#123; a: 1, b: 4, c: 5 &#125;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>근데 이렇게 쓰는 것보다 전개 연산자를 이용해서 더 많이 쓴다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state= initalState, action</span>) </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">&gt;         <span class="keyword">case</span> INCREMENT:</span><br><span class="line">&gt;             <span class="keyword">return</span> &#123;</span><br><span class="line">&gt;                 ...state,</span><br><span class="line">&gt;                 number: state.number + action.diff</span><br><span class="line">&gt;             &#125;;</span><br><span class="line">&gt;         <span class="keyword">case</span> ....</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h2 id="스토어"><a href="#스토어" class="headerlink" title="스토어"></a>스토어</h2><h3 id="createStore-counter"><a href="#createStore-counter" class="headerlink" title="createStore(counter)"></a><code>createStore(counter)</code></h3><ul>
+<li>스토어 생성 메서드</li>
+<li>파라미터<ul>
+<li>리듀서 함수(필수)</li>
+<li>기본값(옵션)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(counter);</span><br></pre></td></tr></table></figure>
+<h3 id="store-subscribe-콜백함수"><a href="#store-subscribe-콜백함수" class="headerlink" title="store.subscribe(콜백함수)"></a><code>store.subscribe(콜백함수)</code></h3><ul>
+<li>보통 <code>react-redux</code>의 <code>connect()</code>가 대신함</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unsubscribe = store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 스토어 상태에 변화가 일어날 때마다 실행된다.</span></span><br><span class="line">   <span class="built_in">console</span>.log(store.getState()); </span><br><span class="line">    <span class="comment">// 현재 스토어 상태를 콘솔에 찍음</span></span><br><span class="line">    <span class="comment">// 구독을 취소하는 unsubscribe()가 반환된다.</span></span><br><span class="line">    <span class="comment">// 나중에 구독을 취소할 때는 unsubscribe()을 부르면 됨</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/27/use-react04-ex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          리액트를 다루는 기술04 (실습)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/19/use-react03/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">리액트를 다루는 기술03 - css</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#리덕스"><span class="nav-number">1.</span> <span class="nav-text">리덕스</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#용어"><span class="nav-number">1.1.</span> <span class="nav-text">용어</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#규칙"><span class="nav-number">1.2.</span> <span class="nav-text">규칙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#액션"><span class="nav-number">1.3.</span> <span class="nav-text">액션</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#액션-생성함수"><span class="nav-number">1.3.1.</span> <span class="nav-text">액션 생성함수</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#리듀서"><span class="nav-number">1.4.</span> <span class="nav-text">리듀서</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-assign"><span class="nav-number">2.</span> <span class="nav-text">Object.assign</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#스토어"><span class="nav-number">2.1.</span> <span class="nav-text">스토어</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createStore-counter"><span class="nav-number">2.1.1.</span> <span class="nav-text">createStore(counter)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#store-subscribe-콜백함수"><span class="nav-number">2.1.2.</span> <span class="nav-text">store.subscribe(콜백함수)</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              <span id="busuanzi_value_site_uv"></span> 
+              <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
