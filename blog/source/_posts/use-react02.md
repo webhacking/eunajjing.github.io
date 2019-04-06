@@ -37,6 +37,7 @@ class ValidationSample extends Component {
             validated: this.state.password === '0000'
         });
         this.password.focus();
+        // this.password는 ref가 password인 컴포넌트를 부르는 것
     }
     render() {
         return (
@@ -44,7 +45,10 @@ class ValidationSample extends Component {
                 <input type="password" name="password" onChange={this.handleChange}
                 className={this.state.validated ? 'success' : 'failure'} 
                 ref={(ref) => this.password=ref} />
-                {*/이 때 ref는 password가 된다/*}
+                {*/이 때 ref는 password가 된다
+                 만약 다른 이름으로 지정하고 싶다면
+                 this.하고_싶은_이름 = ref
+                 /*}
                 <button onClick={this.handleButtonClick}>검증하기</button>
             </div>
         );
@@ -246,7 +250,7 @@ class IterationSample extends Component {
 
 ## `filter()`
 
-이렇게 romove를 구현할 수도 있다.
+이렇게 romove를 구현할 수도 있다.
 
 ```javascript
 class IterationSample extends Component {
