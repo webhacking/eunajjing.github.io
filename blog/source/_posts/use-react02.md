@@ -131,9 +131,10 @@ class App extends Component {
 syntax : `arr.map(callback, [thisArg])`
 
 - `callback` : 새로운 배열 요소를 생성하는 함수
-  - `currentValue` : 현재 처리하고 있는 요소
-  - `index` : 현재 처리하고 있는 요소의 index 값
-  - `array` : 현재 처리하고 있는 원본 배열
+  - 파라미터들
+    - `currentValue` : 현재 처리하고 있는 요소
+    - `index` : 현재 처리하고 있는 요소의 index 값
+    - `array` : 현재 처리하고 있는 원본 배열
 - `thisArg` : 옵션 항목. 콜백 함수 내부에서 사용할 this 레퍼런스
 
 ```javascript
