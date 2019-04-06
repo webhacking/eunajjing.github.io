@@ -264,6 +264,7 @@ class IterationSample extends Component {
                 // 삭제 후 동작이 안되는 걸 보니 옵셔널이 아닌 것 같다)
                 // i는 인덱스
                 return i !== index
+                // filter는 배열을 리턴한다.
             })
         })
     }
