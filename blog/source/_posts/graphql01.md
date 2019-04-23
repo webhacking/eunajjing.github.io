@@ -79,7 +79,7 @@ categories:
 
 ![](https://cdn-images-1.medium.com/max/1600/1*PHxksCXy0Wh5ryANEZkfDQ.jpeg)
 
-- 요청하는 리소스마다 `endPoint`  가 다른 `REST API` 와는 달리 
+- 요청하는 리소스마다 `endPoint`  가 다른 `REST API` 와는 달리 
 
 - 클라이언트측에서 쿼리를 만들어서 서버로 보내면 우리가 원하는대로 결과를 반환
 
