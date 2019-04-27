@@ -32,7 +32,7 @@ categories: [개발공부]
 
 
 
-##교육 기관 알아보기
+## 교육 기관 알아보기
 
 다들 알겠지만 국비 교육 과정은  [HRD-Net](http://www.hrd.go.kr/hrdp/ti/ptiao/PTIAO0100L.do) 에서 볼 수 있다.
 
