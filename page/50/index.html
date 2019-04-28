@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-node-js" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-181127" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/21/node-js/">node.js</a>
+      <a class="article-title" href="/2018/11/27/181127/">설치한 것들, 설정 정리</a>
     </h1>
   
 
@@ -118,216 +118,201 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/21/node-js/" class="article-date">
-	  <time datetime="2018-11-21T07:53:21.000Z" itemprop="datePublished">11월 21, 2018</time>
+	<a href="/2018/11/27/181127/" class="article-date">
+	  <time datetime="2018-11-27T01:40:18.000Z" itemprop="datePublished">11월 27, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="노드JS"><a href="#노드JS" class="headerlink" title="노드JS"></a>노드JS</h1><h2 id="공부하게-된-계기"><a href="#공부하게-된-계기" class="headerlink" title="공부하게 된 계기"></a>공부하게 된 계기</h2><p>프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다.</p>
-<h2 id="참고한-것"><a href="#참고한-것" class="headerlink" title="참고한 것"></a>참고한 것</h2><p><a href="https://book.naver.com/bookdb/book_detail.nhn?bid=11738465" target="_blank" rel="noopener">Do it! Node.js</a></p>
-<p>근데 많이 참고하진 않았다…<br>변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에게 그렇게 요구 받았다.(프로젝트 시작 전 우리가 어떤 기능을 쓸 것인지에 대해 고민해보고, 각자 특정 부분을 맡아 공부 후 다른 팀원에게 설명하는 식으로 스터디를 진행했다)</p>
-<p>참고한 책은 모든 장이 연결되어 순차적으로 한 웹사이트를 구현하는 방식에 대해 이야기하고 있어서… 예를 들어 우리 프로젝트에서는 몽고 디비를 빼자고 해서, 나는 공부할 당시엔 몽고 디비를 간략히 보거나 아예 보지 않아도 됐다. 이런 식으로 특정 장을 훑듯 보고 다음 장으로 건너 뛰니, 제대로 이해가 되지 않은 파트가 발목을 잡아 정말 이해해야할 예제 소스가 잘 이해가 되지 않았다.</p>
-<p>사실 노드를 써서 이번 프로젝트를 진행한 것도 사실이고, 내 블로그도 노드를 기반으로 해서 만든 프레임웤이긴 한데. 아직도 잘 모르겠다. 그냥 그 때 그 때 검색하면서 진행을 해서…</p>
-<h2 id="정말-본론-시작-당시에-정리한-문서"><a href="#정말-본론-시작-당시에-정리한-문서" class="headerlink" title="정말 본론 시작 - 당시에 정리한 문서"></a>정말 본론 시작 - 당시에 정리한 문서</h2><h3 id="시작하기-전에"><a href="#시작하기-전에" class="headerlink" title="시작하기 전에"></a>시작하기 전에</h3><ul>
-<li>node.js 다운로드 후 설치 : <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> (8.12.0 LTS 버전을 이용하였습니다)</li>
-<li>이클립스에서 사용할 예정이므로 이클립스에서 node.js 플러그인 설치(<a href="http://marketplace.eclipse.org/content/nodeclipse" target="_blank" rel="noopener">http://marketplace.eclipse.org/content/nodeclipse</a>)</li>
-</ul>
-<h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><p>자바 스크립트를 이용해 서버를 만들 수 있는 개발 도구</p>
-<h3 id="node-js-특징"><a href="#node-js-특징" class="headerlink" title="node.js 특징"></a>node.js 특징</h3><ul>
-<li>비동기 입출력 가능</li>
-<li>이벤트 기반</li>
-<li>모듈과 패키지</li>
-</ul>
-<h3 id="npm-Node-Package-Manager"><a href="#npm-Node-Package-Manager" class="headerlink" title="npm(Node Package Manager)"></a>npm(Node Package Manager)</h3><ul>
-<li>노드 패키지의 설치, 삭제를 지원하는 프로그램</li>
-<li>패키지(모듈+α)는 만든 이가 다른 사람도 사용할 수 있도록 인터넷에 공유해놓는 게 일반적</li>
-</ul>
-<h3 id="노드에서-사용할-수-있는-대표적인-전역-객체"><a href="#노드에서-사용할-수-있는-대표적인-전역-객체" class="headerlink" title="노드에서 사용할 수 있는 대표적인 전역 객체"></a>노드에서 사용할 수 있는 대표적인 전역 객체</h3><ul>
-<li>console</li>
-<li>exports</li>
-<li>process</li>
-</ul>
-<h3 id="노드에서-사용할-수-있는-대표적인-전역-변수"><a href="#노드에서-사용할-수-있는-대표적인-전역-변수" class="headerlink" title="노드에서 사용할 수 있는 대표적인 전역 변수"></a>노드에서 사용할 수 있는 대표적인 전역 변수</h3><ul>
-<li>__filename</li>
-<li>__dirname</li>
-</ul>
-<h4 id="console의-메서드들"><a href="#console의-메서드들" class="headerlink" title="console의 메서드들"></a>console의 메서드들</h4><h5 id="log"><a href="#log" class="headerlink" title="log()"></a>log()</h5><table>
-<thead>
-<tr>
-<th style="text-align:center">형식</th>
-<th style="text-align:center">특수문자</th>
-<th style="text-align:center">예시 코드</th>
-<th style="text-align:center">콘솔</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%d</td>
-<td style="text-align:center">숫자</td>
-<td style="text-align:center">console.log(“ 숫자 : %d”, 10)</td>
-<td style="text-align:center">숫자 : 10</td>
-</tr>
-<tr>
-<td style="text-align:center">%s</td>
-<td style="text-align:center">문자열</td>
-<td style="text-align:center">console.log(“ 문자 : %s”,  문지은)</td>
-<td style="text-align:center">문자 :  문지은</td>
-</tr>
-<tr>
-<td style="text-align:center">%j</td>
-<td style="text-align:center">JSON</td>
-<td style="text-align:center">console.log(“JSON : %j”, { 팀장 : “ 이주원”})</td>
-<td style="text-align:center">JSON {“ 팀장” : “ 이주원”}</td>
-</tr>
-</tbody>
-</table>
-<h4 id="log-외"><a href="#log-외" class="headerlink" title="log() 외"></a>log() 외</h4><table>
-<thead>
-<tr>
-<th>메서드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dir(object)</td>
-<td>객체 속성 출력</td>
-</tr>
-<tr>
-<td>time( 객체명)</td>
-<td>실행 시간 측정을 위해 실행 시작 시간 기록</td>
-</tr>
-<tr>
-<td>timeEnd( 객체명)</td>
-<td>실행 시간 측정을 위해 실행 종료 시간 기록</td>
-</tr>
-</tbody>
-</table>
-<h3 id="모듈-사용-exports"><a href="#모듈-사용-exports" class="headerlink" title="모듈 사용(exports)"></a>모듈 사용(exports)</h3><p>기존에 여러 개로 나눠둔 무언가를 필요에 따라 맞춰다가 쓰는 식</p>
-<h4 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h4><h5 id="module1-js"><a href="#module1-js" class="headerlink" title="module1.js"></a>module1.js</h5><pre><code>exports.methodName = function() {
-    retrun result;
-};
-</code></pre><h5 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h5><pre><code>var module = require(&apos;module1&apos;);
-// require()
-// : 모듈을 불러올 때 사용하며 파라미터는 모듈의 이름이나 모듈의 경로
-// 모듈 객체가 리턴되어 모듈객체.함수명(); 으로 접근 가능
-// 만약 이름에 해당하는 파일이 없다면, 이름에 해당하는 폴더를 찾아 그 안의 index.js 실행
-module.methodName();
-</code></pre><h4 id="exports와-module-exports"><a href="#exports와-module-exports" class="headerlink" title="exports와 module.exports"></a>exports와 module.exports</h4><p><a href="https://blog.naver.com/writer0713/221277554277" target="_blank" rel="noopener">이해에 참고했던 블로그</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">exports</th>
-<th style="text-align:center">module.exports</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">여러 개의 변수,  함수를 각각의 속성으로 추가 가능</td>
-<td style="text-align:center">하나의 변수나 함수,  객체를 직접 할당,  참조가 끊기면 빈 객체 리턴됨 (단 하나의 객체만 사용 가능하다고 이해)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="process"><a href="#process" class="headerlink" title="process"></a>process</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">속성 /  메서드</th>
-<th style="text-align:center">설명</th>
-<th>예시</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">argv</td>
-<td style="text-align:center">프로세스를 실행할 때 전달되는 파라미터 정보를 가진 속성</td>
-<td>process.argv.length :  파라미터 개수 process.argv[2]     : 2 번 배열의 파라미터</td>
-</tr>
-<tr>
-<td style="text-align:center">env</td>
-<td style="text-align:center">환경 변수 정보를 가진 속성</td>
-<td>process.env[‘OS’] : OS  환경 변수의 값(data)</td>
-</tr>
-<tr>
-<td style="text-align:center">exit()</td>
-<td style="text-align:center">프로세스를 끝내는 메서드</td>
-</tr>
-</tbody>
-</table>
-<h3 id="내장-모듈과-외장-모듈"><a href="#내장-모듈과-외장-모듈" class="headerlink" title="내장 모듈과 외장 모듈"></a>내장 모듈과 외장 모듈</h3><ul>
-<li>내장 모듈 : 사용자가 직접 만든 js 모듈</li>
-<li>외장 모듈 : 다른 사람이 만들어 놓아 사용자가 npm 패키지를 이용해 다운로드한 js 모듈</li>
-</ul>
-<blockquote>
-<p>외장 모듈 경로 : 프로젝트 폴더 &gt; node_modules 폴더 &gt; 모듈명 폴더</p>
-</blockquote>
-<blockquote>
-<p>만약 매번 프로젝트마다 같은 패키지를 이용한다면 brackets-nodejs에 node_modules 폴더를 이동시키면 된다.</p>
-</blockquote>
-<h4 id="내장-모듈-사용하기-path만-정리"><a href="#내장-모듈-사용하기-path만-정리" class="headerlink" title="내장 모듈 사용하기(path만 정리)"></a>내장 모듈 사용하기(path만 정리)</h4><blockquote>
-<p>모든 내장 모듈은 <a href="http://nodejs.org/api" target="_blank" rel="noopener">여기</a>에서 볼 수 있다</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">메서드</th>
-<th style="text-align:center">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">join()</td>
-<td style="text-align:center">여러 개의 이름을 모두 합쳐 하나의 파일 패스로 만들며,  구분자 등을 알아서 조정</td>
-</tr>
-<tr>
-<td style="text-align:center">dirname()</td>
-<td style="text-align:center">파일 패스에서 디렉터리 이름만 반환</td>
-</tr>
-<tr>
-<td style="text-align:center">basename()</td>
-<td style="text-align:center">파일 패스에서 파일 이름만 반환</td>
-</tr>
-<tr>
-<td style="text-align:center">extname()</td>
-<td style="text-align:center">파일 패스에서 확장자만 반환</td>
-</tr>
-</tbody>
-</table>
-<h4 id="외장-모듈-사용하기"><a href="#외장-모듈-사용하기" class="headerlink" title="외장 모듈 사용하기"></a>외장 모듈 사용하기</h4><h5 id="사용-예시"><a href="#사용-예시" class="headerlink" title="사용 예시"></a>사용 예시</h5><blockquote>
-<p>기존에 nconf라는 외부 모듈을 설치했다는 전제 하<br>외장모듈 설치 단축키 : % npm install 외장모듈이름</p>
-</blockquote>
-<pre><code>var nconf = require(&apos;nconf&apos;);
-// 외부 모듈의 경우 경로가 아닌 모듈의 이름을 직접 불러야 함
-nconf.modulInMethod();
-</code></pre><h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><p>% npm init 명령어를 실행하면 생기는 json 파일로, 프로젝트에 대한 기본 정보가 들어 있으며 현재 프로젝트에 설치된 외부 모듈의 의존도 함께 기록됨향후 다른 PC에서 같은 모듈들을 사용하고 싶다면 package.json만 옮겨서 가져가면 된다.</p>
-<blockquote>
-<p>사용법</p>
-</blockquote>
-<blockquote>
-<ol>
-<li>% npm init: package.json 파일 생성</li>
-<li>% npm install 외부모듈이름 –save : 의존 설정할 외부모듈을 설치한다. package.json이 있는 상태에서 설치된 것들만 package.json이 기록한다.</li>
-<li>향후 다른 PC로 옮길 때 PC로 json 파일 옮기고,</li>
+        <ol>
+<li>web App는 was에서 실행됨</li>
 </ol>
-</blockquote>
 <blockquote>
-<p>% npm install</p>
+<h5 id="was의-종류"><a href="#was의-종류" class="headerlink" title="was의 종류"></a>was의 종류</h5><ul>
+<li>tomcat</li>
+<li>jboss</li>
+<li>webLogic</li>
+<li>webSphere</li>
+<li>JEUS(관공서 시스템의 대부분이 돌아감)</li>
+</ul>
 </blockquote>
+<ol start="2">
+<li><p>was는 java를 기반으로 만들어졌기에 jvm이 필요함</p>
+</li>
+<li><p>때문에 open <strong>JDK</strong>(JRE가 포함되어 있음)를 설치</p>
+</li>
+<li><p>자바 EE라는 기술 명세가 있는데 이에 맞춰 구현될 수 있도록 하는 게 Java EE Implement라는 구현체</p>
+<p>타 was와 달리 <strong>톰캣</strong>은 java EE와 관련된 기술 중 서블릿, jsp, jstl, el 등 웹 관련한 것만 지원</p>
+<p>즉 서블릿, jsp는 모든 was에서 돌아가지만 ejb는 톰캣에서 돌아가지 않는다.</p>
+<p>만약 ejb를 처리할 일이 있다면 스프링 프레임워크를 사용해 pojo로 처리하면 된다.</p>
+</li>
+<li><p>html, css, java script를 기본으로 제이쿼리, 부트스트랩, 앵귤러, 뷰, 리액트, 엠버 등 응용 라이브러리 이용</p>
+</li>
+<li>응용 라이브러리를 쉽게 다운 받기 위해서 npm 이용</li>
+<li>때문에 <strong>node</strong> 사용(npm을 이용해 라이브러리를 관리)</li>
+</ol>
+<h3 id="기술"><a href="#기술" class="headerlink" title="기술"></a>기술</h3><ul>
+<li>서블릿</li>
+<li>jsp</li>
+<li>sql</li>
+<li>jdbc - 대용으로 orl 사용</li>
+<li>jstl, el</li>
+<li>스프링 프레임워크 - IOC 컨테이너, 웹 mvc, aop</li>
+<li>라이브러리 관리를 위한 <strong>Gradle</strong> 사용</li>
+<li>마리아 db 이용</li>
+<li>git</li>
+<li>IDE는 <strong>이클립스</strong> 사용</li>
+<li><strong>비주얼 스튜디오 코드</strong> 사용</li>
+<li>패키지 매니저 역할로 <strong>scoop</strong> 사용</li>
+</ul>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><h3 id="open-jdk"><a href="#open-jdk" class="headerlink" title="open jdk"></a>open jdk</h3><p><a href="https://jdk.java.net/11/" target="_blank" rel="noopener">설치 경로-11버전-</a></p>
+<h4 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h4><ol>
+<li><p>java_home 환경 변수 설정</p>
+<p>시스템 설정 - 고급 시스템 설정 - 시스템 속성 - 환경변수로 java_home 생성 - JDK까지만 경로 알려주기</p>
+</li>
+<li><p>path 환경 변수 설정<br>PATH 경로 맨 앞에 bin까지의 경로 복사, 세미콜론이나 콜론 찍어주기</p>
+</li>
+</ol>
+<h4 id="설정-확인"><a href="#설정-확인" class="headerlink" title="설정 확인"></a>설정 확인</h4><p>cmd에서</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo %java_home%</span><br><span class="line"><span class="comment">// 결과로 jdk 경로가 출력되어야 정상</span></span><br><span class="line">javac -version</span><br><span class="line">java -version</span><br><span class="line"><span class="comment">// 결과로 버전이 출력되어야 정상</span></span><br></pre></td></tr></table></figure>
+<h3 id="비주얼-스튜디오-코드"><a href="#비주얼-스튜디오-코드" class="headerlink" title="비주얼 스튜디오 코드"></a>비주얼 스튜디오 코드</h3><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">설치 경로</a></p>
+<h3 id="git-client"><a href="#git-client" class="headerlink" title="git client"></a>git client</h3><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">설치 경로, cmd</a></p>
+<h4 id="설정-확인-1"><a href="#설정-확인-1" class="headerlink" title="설정 확인"></a>설정 확인</h4><p>cmd 창에서</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">// 버전이 뜨면 정상</span><br></pre></td></tr></table></figure>
+<h3 id="이클립스"><a href="#이클립스" class="headerlink" title="이클립스"></a>이클립스</h3><p>공식 홈페이지에서 인스톨러를 다운 받고, update 진행</p>
+<h4 id="설정-1"><a href="#설정-1" class="headerlink" title="설정"></a>설정</h4><ul>
+<li>워크스페이스 디렉토리 선택</li>
+<li>preferences - General - Workspace - <strong>Text file endcodeing을 utf-8</strong>로 설정</li>
+<li>preferences - General - Editors - Text Editors에서 tab width를 2로 하고<br>tabs 대신 스페이스를 넣게끔 설정<br>show print margin 선택-칼럼은 100<br>show whitespace characters 체크<br>show line numbers 체크(기본으로 체크되어 있음)</li>
+<li>java 11 버전을 지원하는 플러그인을 설치 (이클립스 마켓플레이스 이용)<br>java - installed JREs에서 확인할 수 있음</li>
+<li>JAVA - Code Style - Formatter에서 구글 스타일 xml import<br><a href="https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml" target="_blank" rel="noopener">구글의 코드 스타일 가이드</a></li>
+<li>java - compiler에서 level을 맞춰준다</li>
+<li>web에서 css, html, jsp 인코딩을 utf-8로 맞춰준다</li>
+</ul>
 <blockquote>
-<p>명령어 실행 : package.json의 의존 속성을 참고해 패키지 설치</p>
+<p>자바는 모든 것을 2byte-<em>utf-8이 아닌 그의 원형인 유니코드를 쓴다-</em>로 저장하므로, 외부로 내보낼 땐 utf-8-<em>3byte</em>-로 매번 변환시키는 작업이 필요하다.</p>
 </blockquote>
+<h3 id="톰캣"><a href="#톰캣" class="headerlink" title="톰캣"></a>톰캣</h3><p><a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">공식홈페이지</a>에서 다운로드</p>
+<ul>
+<li>preferences - server - runtime Environment에서 다운로드 받은 톰캣 add</li>
+</ul>
+<h3 id="Scoop-패키지-관리자-설치"><a href="#Scoop-패키지-관리자-설치" class="headerlink" title="Scoop 패키지 관리자 설치"></a>Scoop 패키지 관리자 설치</h3><p>맥의 경우 homebrew</p>
+<p>scoop을 이용하기 위해서는 파워쉘이 일정 버전 이상(3 이상)이어야 하기에 윈도우 파워쉘(Windows PowrShell)의 버전을 확인​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-Host | Select-Object Version</span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.microsoft.com/ko-kr/powershell/scripting/setup/installing-windows-powershell?view=powershell-6" target="_blank" rel="noopener">파워쉘 업데이트</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop install curl</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.microsoft.com/en-us/download/details.aspx?id=53344" target="_blank" rel="noopener">net framework</a></p>
+<p><strong>배우다가 스쿱 다운로드 실패로 중단</strong></p>
+<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><p>빌드 도구가 하는 역할</p>
+<ul>
+<li>compile</li>
+<li>test (report도 만든다)</li>
+<li>아카이브 (.jar, .war, .zip)</li>
+<li>deployment</li>
+</ul>
+<p>기존에 많이 쓰던 ant의 경우</p>
+<ul>
+<li>build.xml에 빌드 정보 설정</li>
+</ul>
+<p>외부 라이브러리 자동 다운로드를 위해 메이븐 등장</p>
+<ul>
+<li>build.xml이 pom.xml가 된다.</li>
+</ul>
+<p>빌드 명령을 정교하게 작성하고 싶어짐</p>
+<p>스크립트 언어로 자바 호환 언어인 groovy 이용</p>
+<p>그레이드 등장, 그레이드의 경우</p>
+<ul>
+<li>build.gradle에 빌드 정보 설정</li>
+</ul>
+<p>그레이드는 메이븐과 호환이 된다.</p>
+<p><a href="https://gradle.org/install/" target="_blank" rel="noopener">그레이드 공홈</a>에서 binary-only를 다운로드</p>
+<ul>
+<li>환경변수 설정 필요</li>
+<li><strong>path 맨 앞에 bin까지의 경로 넣어주고, 세미콜론 찍으며 확인</strong></li>
+</ul>
+<p>cmd에서 확인 가능</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle --version</span><br><span class="line">// 버전이 제대로 떠야 정상</span><br></pre></td></tr></table></figure>
+<h3 id="마리아-db"><a href="#마리아-db" class="headerlink" title="마리아 db"></a>마리아 db</h3><p><a href="https://downloads.mariadb.org/mariadb/10.3.11/" target="_blank" rel="noopener">공홈에서 다운로드</a></p>
+<ul>
+<li><p>default instance properties 설정 시 utf-8로 설정해줘야 함</p>
+</li>
+<li><p>서비스에서 mysql에 maria db가 있는지 확인하고, 상태가 시작됨인지 확인</p>
+</li>
+<li><p>마리아 db bin 경로를  path 환경변수에 설정</p>
+</li>
+<li><p>cmd에서 확인   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">// 패스워드 입력하는 창 나오고, 입력하면</span><br><span class="line">// welcom 마리아 db 문구가 나오며 maria db 명령이 실행 준비됨</span><br><span class="line"></span><br><span class="line">show databases;</span><br><span class="line">// 가지고 있는 database를 보여준다</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="깃허브에-repo-준비"><a href="#깃허브에-repo-준비" class="headerlink" title="깃허브에 repo 준비"></a>깃허브에 repo 준비</h3><ol>
+<li><p>원격에 repo를 만든 뒤 로컬에 클론을 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone ~url~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>새로운 프로젝트를 만든다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle init --type java-application</span><br><span class="line">// 강의는 groovy로 진행되기에 1, junit을 쓸 예정이므로 1 입력함</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>​    jsp를 만들 때 <code>&lt;% %&gt;</code> 사이에 자바를 넣듯, 특정 영역에 집어넣는 언어를 <strong>dsl</strong>(Domain-specific language)이라 한다.</p>
+<blockquote>
+<p>완성된 폴더에는 샘플 소스도 들어가 있다.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle build</span><br></pre></td></tr></table></figure>
+<p>컴파일을 자동으로 실행하며, 필요한 라이브러리를 알아서 다운로드한다. <strong>build라는 폴더가 생성</strong>된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle run</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>왜인지 내가 했더니 에러가 났다…</p>
+<p>그래서 다시 지우고 하니까 또 된다. 왜 에러가 났을까?</p>
+</blockquote>
+<p><strong>이클립스에서는 제대로 된 폴더 구조를 보여주지 않는다. 이를 해결하기 위해 이클립스에선 window에서 show view - navigator로 확인한다.</strong></p>
+<ul>
+<li><p>프로젝트는 그레이드로 만든다!</p>
+</li>
+<li><p>이후에 import를 이용해 existing projects into workspace로 불러온다.</p>
+<p><em>이 때 파일은 옮겨지는 게 아니라, 그대로 있고 이클립스에서 만질 수 있도록만 만드는 것</em></p>
+</li>
+<li><p>이클립스의 파일들</p>
+<ul>
+<li>.settings</li>
+<li>.classpath</li>
+<li>.project</li>
+</ul>
+<p>이것들이 없으면 project를 찾을 수 없다고 뜬다.</p>
+<p>때문에 그레이드에 자동으로 생성할 수 있는 기능을 이용한다.</p>
+</li>
+<li><p>build.gradle</p>
+</li>
+</ul>
+<p>​    </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">            id <span class="string">'java'</span></span><br><span class="line">            id <span class="string">'application'</span></span><br><span class="line">            id <span class="string">'eclipse'</span></span><br><span class="line">            <span class="comment">// 이클립스가 읽을 수 있도록 플러그인을 장착</span></span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">        	jcenter()</span><br><span class="line">    		&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">        	implementation <span class="string">'com.google.guava:guava:26.0-jre'</span></span><br><span class="line">        	testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">   		 	&#125;</span><br><span class="line"></span><br><span class="line">mainClassName = <span class="string">'bitcamp.newdeal.lms.App'</span></span><br></pre></td></tr></table></figure>
+<p>이후에 cmd에서 명령어 실행</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle eclipse</span><br><span class="line">// 이클립스 설정 파일을 만들기 시작</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>저장/변경/삭제 명단을 작성(stageing-area에 올린다)<br>명단에 작성할 것이 있는가</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">// git 폴더의 하위 모든 요소를 검사해 스테이지에 올린다</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>로컬 저장소에 저장(snapshot)<br>이 순간 로컬의 .git에 저장된다.<br>저장하는 행위를 커밋이라 한다.​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;커밋 메시지&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>서버에 업로드, 푸시​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<h4 id="깃허브-임시-비밀번호-만들기"><a href="#깃허브-임시-비밀번호-만들기" class="headerlink" title="깃허브 임시 비밀번호 만들기"></a>깃허브 임시 비밀번호 만들기</h4><p>settings - Developer settings - personal access tokens에서 New personal access token 생성 후 보이는 토큰을 잘 보관하기</p>
+</blockquote>
+<h3 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h3><p><a href="https://github.com/eunajjing/newdeal-exam/tree/master/newdeal-project-01" target="_blank" rel="noopener">오늘 만든 프로젝트(?)</a></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
 
       
       
@@ -345,7 +330,7 @@ nconf.modulInMethod();
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/49/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/51/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/49/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="space">&hellip;</span><a class="page-number" href="/page/65/">65</a><a class="extend next" rel="next" href="/page/51/">Next</a>
   </nav>
 
 </section>
@@ -398,7 +383,7 @@ nconf.modulInMethod();
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">53</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">56</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -439,6 +424,30 @@ nconf.modulInMethod();
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/04/28/deploy-using-github/">깃허브에 클라이언트 단 파일 올리기</a></h6>
+              <span>4월 28, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/04/28/react-lines-ellipsis/">react-lines-ellipsis</a></h6>
+              <span>4월 28, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -488,30 +497,6 @@ nconf.modulInMethod();
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/03/27/use-react08/">리액트를 다루는 기술08</a></h6>
-              <span>3월 27, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/03/26/use-react07/">리액트를 다루는 기술07</a></h6>
-              <span>3월 26, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -522,7 +507,7 @@ nconf.modulInMethod();
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
