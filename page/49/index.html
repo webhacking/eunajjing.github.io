@@ -55,9 +55,34 @@
 
 
   
+  
+  <div class="site-header-image">
+    <!-- <img id="originBg" width="100%" alt="Hike News" src=""> -->
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <!-- <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+  
+  
+  -->
 
 
-<header id="allheader" class="site-header" role="banner">
+
+
+<header id="allheader" class="site-header" role="banner" style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);">
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -84,7 +109,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
                     
               </ul>
             </div>
@@ -146,8 +171,7 @@
 </ol>
 </blockquote>
 <hr>
-<p>##교육 기관 알아보기</p>
-<p>다들 알겠지만 국비 교육 과정은  <a href="http://www.hrd.go.kr/hrdp/ti/ptiao/PTIAO0100L.do" target="_blank" rel="noopener">HRD-Net</a> 에서 볼 수 있다.</p>
+<h2 id="교육-기관-알아보기"><a href="#교육-기관-알아보기" class="headerlink" title="교육 기관 알아보기"></a>교육 기관 알아보기</h2><p>다들 알겠지만 국비 교육 과정은  <a href="http://www.hrd.go.kr/hrdp/ti/ptiao/PTIAO0100L.do" target="_blank" rel="noopener">HRD-Net</a> 에서 볼 수 있다.</p>
 <p>본 사람이라면 알겠지만 개발 관련 교육 기관은 너무나 많고, 교육도 세부적으로 많이 갈린다. 흔히 개발을 백과 프론트로 많이 나누어서 말을 하시는 것 같은데 신청할 당시 나는 뭘 하고 싶다, 이런 것도 없었다. <em>-근데 굳이 뭐 하나를 지향해서 교육과정을 듣는 게 의미가 있었을까 이런 생각도 든다. 그냥 시기나 장소 잘 맞는 교육과정 하나 열심히 듣고, 나중에 안 배운 지식이 필요하거든 그 때 따로 배우면 되지 않나…? 이것도 내가 너무 안일한가-</em> 그런데 한 가지 분명히 하고 싶었던 게 있다면 <strong>모바일을 너무 배우고 싶었다</strong>.</p>
 <p>그런데 모바일 관련해서도 알려준다는 교육 기관이 너무 많았고, 교육 기관 내 교육 과정도 수가 너무 많아서 어떤 게 좋을지 감이 잘 오지 않았다. 주변에 조언을 여쭈니, 국비 교육 과정을 들은 언니는 우선 순위를 정했다고 했다.</p>
 <blockquote>
@@ -463,7 +487,7 @@
   
     <a href="/categories" class="mobile-nav-link">Categories</a>
   
-    <a href="/about" class="mobile-nav-link">About</a>
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
   
 </nav> -->
     <footer id="footer" class="site-footer">
@@ -494,6 +518,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
