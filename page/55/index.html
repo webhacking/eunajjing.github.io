@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-node-js" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Education_review" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/21/node-js/">node.js</a>
+      <a class="article-title" href="/2018/11/26/Education_review/">국비 교육 과정 수료 후기</a>
     </h1>
   
 
@@ -118,216 +118,137 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/21/node-js/" class="article-date">
-	  <time datetime="2018-11-21T07:53:21.000Z" itemprop="datePublished">11월 21, 2018</time>
+	<a href="/2018/11/26/Education_review/" class="article-date">
+	  <time datetime="2018-11-26T07:18:18.000Z" itemprop="datePublished">11월 26, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="노드JS"><a href="#노드JS" class="headerlink" title="노드JS"></a>노드JS</h1><h2 id="공부하게-된-계기"><a href="#공부하게-된-계기" class="headerlink" title="공부하게 된 계기"></a>공부하게 된 계기</h2><p>프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다.</p>
-<h2 id="참고한-것"><a href="#참고한-것" class="headerlink" title="참고한 것"></a>참고한 것</h2><p><a href="https://book.naver.com/bookdb/book_detail.nhn?bid=11738465" target="_blank" rel="noopener">Do it! Node.js</a></p>
-<p>근데 많이 참고하진 않았다…<br>변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에게 그렇게 요구 받았다.(프로젝트 시작 전 우리가 어떤 기능을 쓸 것인지에 대해 고민해보고, 각자 특정 부분을 맡아 공부 후 다른 팀원에게 설명하는 식으로 스터디를 진행했다)</p>
-<p>참고한 책은 모든 장이 연결되어 순차적으로 한 웹사이트를 구현하는 방식에 대해 이야기하고 있어서… 예를 들어 우리 프로젝트에서는 몽고 디비를 빼자고 해서, 나는 공부할 당시엔 몽고 디비를 간략히 보거나 아예 보지 않아도 됐다. 이런 식으로 특정 장을 훑듯 보고 다음 장으로 건너 뛰니, 제대로 이해가 되지 않은 파트가 발목을 잡아 정말 이해해야할 예제 소스가 잘 이해가 되지 않았다.</p>
-<p>사실 노드를 써서 이번 프로젝트를 진행한 것도 사실이고, 내 블로그도 노드를 기반으로 해서 만든 프레임웤이긴 한데. 아직도 잘 모르겠다. 그냥 그 때 그 때 검색하면서 진행을 해서…</p>
-<h2 id="정말-본론-시작-당시에-정리한-문서"><a href="#정말-본론-시작-당시에-정리한-문서" class="headerlink" title="정말 본론 시작 - 당시에 정리한 문서"></a>정말 본론 시작 - 당시에 정리한 문서</h2><h3 id="시작하기-전에"><a href="#시작하기-전에" class="headerlink" title="시작하기 전에"></a>시작하기 전에</h3><ul>
-<li>node.js 다운로드 후 설치 : <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> (8.12.0 LTS 버전을 이용하였습니다)</li>
-<li>이클립스에서 사용할 예정이므로 이클립스에서 node.js 플러그인 설치(<a href="http://marketplace.eclipse.org/content/nodeclipse" target="_blank" rel="noopener">http://marketplace.eclipse.org/content/nodeclipse</a>)</li>
-</ul>
-<h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><p>자바 스크립트를 이용해 서버를 만들 수 있는 개발 도구</p>
-<h3 id="node-js-특징"><a href="#node-js-특징" class="headerlink" title="node.js 특징"></a>node.js 특징</h3><ul>
-<li>비동기 입출력 가능</li>
-<li>이벤트 기반</li>
-<li>모듈과 패키지</li>
-</ul>
-<h3 id="npm-Node-Package-Manager"><a href="#npm-Node-Package-Manager" class="headerlink" title="npm(Node Package Manager)"></a>npm(Node Package Manager)</h3><ul>
-<li>노드 패키지의 설치, 삭제를 지원하는 프로그램</li>
-<li>패키지(모듈+α)는 만든 이가 다른 사람도 사용할 수 있도록 인터넷에 공유해놓는 게 일반적</li>
-</ul>
-<h3 id="노드에서-사용할-수-있는-대표적인-전역-객체"><a href="#노드에서-사용할-수-있는-대표적인-전역-객체" class="headerlink" title="노드에서 사용할 수 있는 대표적인 전역 객체"></a>노드에서 사용할 수 있는 대표적인 전역 객체</h3><ul>
-<li>console</li>
-<li>exports</li>
-<li>process</li>
-</ul>
-<h3 id="노드에서-사용할-수-있는-대표적인-전역-변수"><a href="#노드에서-사용할-수-있는-대표적인-전역-변수" class="headerlink" title="노드에서 사용할 수 있는 대표적인 전역 변수"></a>노드에서 사용할 수 있는 대표적인 전역 변수</h3><ul>
-<li>__filename</li>
-<li>__dirname</li>
-</ul>
-<h4 id="console의-메서드들"><a href="#console의-메서드들" class="headerlink" title="console의 메서드들"></a>console의 메서드들</h4><h5 id="log"><a href="#log" class="headerlink" title="log()"></a>log()</h5><table>
-<thead>
-<tr>
-<th style="text-align:center">형식</th>
-<th style="text-align:center">특수문자</th>
-<th style="text-align:center">예시 코드</th>
-<th style="text-align:center">콘솔</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%d</td>
-<td style="text-align:center">숫자</td>
-<td style="text-align:center">console.log(“ 숫자 : %d”, 10)</td>
-<td style="text-align:center">숫자 : 10</td>
-</tr>
-<tr>
-<td style="text-align:center">%s</td>
-<td style="text-align:center">문자열</td>
-<td style="text-align:center">console.log(“ 문자 : %s”,  문지은)</td>
-<td style="text-align:center">문자 :  문지은</td>
-</tr>
-<tr>
-<td style="text-align:center">%j</td>
-<td style="text-align:center">JSON</td>
-<td style="text-align:center">console.log(“JSON : %j”, { 팀장 : “ 이주원”})</td>
-<td style="text-align:center">JSON {“ 팀장” : “ 이주원”}</td>
-</tr>
-</tbody>
-</table>
-<h4 id="log-외"><a href="#log-외" class="headerlink" title="log() 외"></a>log() 외</h4><table>
-<thead>
-<tr>
-<th>메서드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dir(object)</td>
-<td>객체 속성 출력</td>
-</tr>
-<tr>
-<td>time( 객체명)</td>
-<td>실행 시간 측정을 위해 실행 시작 시간 기록</td>
-</tr>
-<tr>
-<td>timeEnd( 객체명)</td>
-<td>실행 시간 측정을 위해 실행 종료 시간 기록</td>
-</tr>
-</tbody>
-</table>
-<h3 id="모듈-사용-exports"><a href="#모듈-사용-exports" class="headerlink" title="모듈 사용(exports)"></a>모듈 사용(exports)</h3><p>기존에 여러 개로 나눠둔 무언가를 필요에 따라 맞춰다가 쓰는 식</p>
-<h4 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h4><h5 id="module1-js"><a href="#module1-js" class="headerlink" title="module1.js"></a>module1.js</h5><pre><code>exports.methodName = function() {
-    retrun result;
-};
-</code></pre><h5 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h5><pre><code>var module = require(&apos;module1&apos;);
-// require()
-// : 모듈을 불러올 때 사용하며 파라미터는 모듈의 이름이나 모듈의 경로
-// 모듈 객체가 리턴되어 모듈객체.함수명(); 으로 접근 가능
-// 만약 이름에 해당하는 파일이 없다면, 이름에 해당하는 폴더를 찾아 그 안의 index.js 실행
-module.methodName();
-</code></pre><h4 id="exports와-module-exports"><a href="#exports와-module-exports" class="headerlink" title="exports와 module.exports"></a>exports와 module.exports</h4><p><a href="https://blog.naver.com/writer0713/221277554277" target="_blank" rel="noopener">이해에 참고했던 블로그</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">exports</th>
-<th style="text-align:center">module.exports</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">여러 개의 변수,  함수를 각각의 속성으로 추가 가능</td>
-<td style="text-align:center">하나의 변수나 함수,  객체를 직접 할당,  참조가 끊기면 빈 객체 리턴됨 (단 하나의 객체만 사용 가능하다고 이해)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="process"><a href="#process" class="headerlink" title="process"></a>process</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">속성 /  메서드</th>
-<th style="text-align:center">설명</th>
-<th>예시</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">argv</td>
-<td style="text-align:center">프로세스를 실행할 때 전달되는 파라미터 정보를 가진 속성</td>
-<td>process.argv.length :  파라미터 개수 process.argv[2]     : 2 번 배열의 파라미터</td>
-</tr>
-<tr>
-<td style="text-align:center">env</td>
-<td style="text-align:center">환경 변수 정보를 가진 속성</td>
-<td>process.env[‘OS’] : OS  환경 변수의 값(data)</td>
-</tr>
-<tr>
-<td style="text-align:center">exit()</td>
-<td style="text-align:center">프로세스를 끝내는 메서드</td>
-</tr>
-</tbody>
-</table>
-<h3 id="내장-모듈과-외장-모듈"><a href="#내장-모듈과-외장-모듈" class="headerlink" title="내장 모듈과 외장 모듈"></a>내장 모듈과 외장 모듈</h3><ul>
-<li>내장 모듈 : 사용자가 직접 만든 js 모듈</li>
-<li>외장 모듈 : 다른 사람이 만들어 놓아 사용자가 npm 패키지를 이용해 다운로드한 js 모듈</li>
-</ul>
+        <h1 id="개발-관련-국비-교육-과정-수료-후기"><a href="#개발-관련-국비-교육-과정-수료-후기" class="headerlink" title="개발 관련 국비 교육 과정 수료 후기"></a>개발 관련 국비 교육 과정 수료 후기</h1><h2 id="교육-과정을-듣게-된-경위"><a href="#교육-과정을-듣게-된-경위" class="headerlink" title="교육 과정을 듣게 된 경위"></a>교육 과정을 듣게 된 경위</h2><p><strong>읽기 귀찮으시면 아래 요약있어요</strong></p>
+<p>대학을 졸업한 뒤, 나는 1년여 정도를 방송국에서 작가 업무를 했다. 프로그램은 시사였다. 소문대로 방송국 근무 환경은 좋지 않았고, 그 중 내가 속한 프로그램은 해당 방송국에서 절대 꺼지지 않는 3대 등불로 꼽히던 곳이었다. 힘들지 않았다면 거짓말이겠지만 재미가 있어 버틸 수 있던 시간이었다. 내가 업무 중에서 가장 좋아했던 특성은, 새로운 회차를 만들 적마다 매번 새로운 지식을 배워야 하는 점이었다. 프로그램을 만들고자 하는 주제와<em>-흔히 방송 은어로 ‘야마’라고 했다-</em>이를 뒷받침할 수 있는 근거들, 프로그램의 주제를 정면으로 반박 당할 수 있는 논리와 이에 대한 대응 지식에 대해. 제작진인 나는 매번 관련 서적을 읽고, 논문을 읽고, 전문가들의 의견을 구할 수 있는 입장에 있었다.</p>
+<p>학창시절을 돌이켜보면 나는 학구열이 높았지만, 무언가 하나를 지속적으로 진행하는 끈기는 약한 학생이었다. 그런 점에서 방송은 최적의 공부 환경이었다. 해당 회차를 털고 나면 그 회차 주제와 관련이 있어 공부하던 것들을 버리고, 다음에 나올 방송과 연계된 새로운 공부를 할 수 있었으니까. 그래서 방송국에서 1년을 버틸 수 있었다. 결과적으로 현재 방송 업무를 하지 않지만, 내가 직업군에서 무엇을 중요시 여기는지. 나 자신을 알 수 있던 시간들이었다. 이런 경험 때문에 나는 다음에 지원할 직군도 늘 배우는 환경이길 바랐다.</p>
+<p>내가 처음 만든 방송 주제에 대해 기억한다. 나는 ‘21세기의 인재상’과 관련한 방송에 대해 프로그램을 만들었는데, 떠오르는 산업인 4차 산업과 관련된 직군에 대해 많이 들여다볼 수 있던 시간이었다. 취재원 중 한 명은 흥미로운 역사를 지닌 이였다. 그는 군대에 있을 적, 갑작스럽게 어떤 아이디어를 떠올렸고 이를 구체적으로 발달시켜 사업을 시작하게 되었다. 전역 후, 그는 그 구체화된 것을 구현하기 위해 학교에서 개발을 배웠다. 방송에 나오는 이가 대부분 그렇듯, 시간이 흘러 그는 그 아이디어로 사업을 시작해 <em>현재 시점서는</em> 성공했다. 인터뷰할 당시에는 그냥 재미있는 이라고 여겼지만 방송국에서 퇴사를 하고 난 뒤 그가 부러웠다. 특정한 아이디어, 혹은 무언갈 만들겠다는 계획이 있다면 이를 직접 만들 수 있는 능력을  가지고 싶었다.</p>
+<p>그래서 국비 교육 과정으로 개발을 배우게 되었다. 사실 이를 시작할 땐 취업을 하기 위해, 좋은 개발자가 되기 위해, 같이 특정한 목표는 없었다. 그냥 개발을 좀 배워보고 싶었고, 배울 수 있는 루트를 알아보다보니 고용노동부가 특정한 사업들을 통해 취업준비생들에게 교육에 관한 재정적 지원을 해준다는 걸 알게 되어 신청했을 뿐이었다. 취업을 하게 되면 좋은 것이지만, 결국 나와 맞지 않아 중도 포기하거나 취업을 못하게 된다고 해도 어쩔 수 없다는 마음가짐이었다. 지금 돌이켜보면 약간 무모하기도 했다. 또래들은 취업 전선에 허덕이고 있는데, 그저 배우고 싶다는 이유로 취업과 관계 없을 수도 있는 걸 6개월 동안 수강하다니. 6개월이 지난 지금, 어제 나는 최종적으로 해당 교육과정을 수료했다. 즐겁고 힘들고 과거의 나를 한 대 패고 싶던 시간이기도 했지만 후회하진 않는다. 이에 대해 기록해보고자 한다.</p>
 <blockquote>
-<p>외장 모듈 경로 : 프로젝트 폴더 &gt; node_modules 폴더 &gt; 모듈명 폴더</p>
-</blockquote>
-<blockquote>
-<p>만약 매번 프로젝트마다 같은 패키지를 이용한다면 brackets-nodejs에 node_modules 폴더를 이동시키면 된다.</p>
-</blockquote>
-<h4 id="내장-모듈-사용하기-path만-정리"><a href="#내장-모듈-사용하기-path만-정리" class="headerlink" title="내장 모듈 사용하기(path만 정리)"></a>내장 모듈 사용하기(path만 정리)</h4><blockquote>
-<p>모든 내장 모듈은 <a href="http://nodejs.org/api" target="_blank" rel="noopener">여기</a>에서 볼 수 있다</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">메서드</th>
-<th style="text-align:center">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">join()</td>
-<td style="text-align:center">여러 개의 이름을 모두 합쳐 하나의 파일 패스로 만들며,  구분자 등을 알아서 조정</td>
-</tr>
-<tr>
-<td style="text-align:center">dirname()</td>
-<td style="text-align:center">파일 패스에서 디렉터리 이름만 반환</td>
-</tr>
-<tr>
-<td style="text-align:center">basename()</td>
-<td style="text-align:center">파일 패스에서 파일 이름만 반환</td>
-</tr>
-<tr>
-<td style="text-align:center">extname()</td>
-<td style="text-align:center">파일 패스에서 확장자만 반환</td>
-</tr>
-</tbody>
-</table>
-<h4 id="외장-모듈-사용하기"><a href="#외장-모듈-사용하기" class="headerlink" title="외장 모듈 사용하기"></a>외장 모듈 사용하기</h4><h5 id="사용-예시"><a href="#사용-예시" class="headerlink" title="사용 예시"></a>사용 예시</h5><blockquote>
-<p>기존에 nconf라는 외부 모듈을 설치했다는 전제 하<br>외장모듈 설치 단축키 : % npm install 외장모듈이름</p>
-</blockquote>
-<pre><code>var nconf = require(&apos;nconf&apos;);
-// 외부 모듈의 경우 경로가 아닌 모듈의 이름을 직접 불러야 함
-nconf.modulInMethod();
-</code></pre><h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><p>% npm init 명령어를 실행하면 생기는 json 파일로, 프로젝트에 대한 기본 정보가 들어 있으며 현재 프로젝트에 설치된 외부 모듈의 의존도 함께 기록됨향후 다른 PC에서 같은 모듈들을 사용하고 싶다면 package.json만 옮겨서 가져가면 된다.</p>
-<blockquote>
-<p>사용법</p>
-</blockquote>
-<blockquote>
+<p>요약</p>
 <ol>
-<li>% npm init: package.json 파일 생성</li>
-<li>% npm install 외부모듈이름 –save : 의존 설정할 외부모듈을 설치한다. package.json이 있는 상태에서 설치된 것들만 package.json이 기록한다.</li>
-<li>향후 다른 PC로 옮길 때 PC로 json 파일 옮기고,</li>
+<li>사회생활 중 어떤 사람을 만나 개발을 배우고 싶어짐</li>
+<li>근데 비전공자에 개발 1도 모름(그런데 정보처리기사 필기는 공부를 한 상태<em>-퇴사한 뒤 바로 국비 지원을 신청할 수 있는 상황이 아니었기에, 그 기간 동안 뭘 해볼까 하다가 많은 이들이 개발 첫 걸음으로 정보처리기사 공부를 추천하기에 공부를 했다.-</em>)</li>
+<li>이클립스 툴(코딩 툴)을 이용해본 적 있음(<em>어쩌다가 코딩 일일클래스? 같은 걸 듣게 되었는데 거기서 만져봄</em>)</li>
+<li>간단한 별찍기 알고리즘은 이해할 수 있었다.(<em>마찬가지로 일일 클래스에서 배웠고 이해는 할 수 있지만 짤 수 있진 않았다</em>)</li>
+<li>2번의 정처기 공부 경험과 3번의 이클립스 툴 경험, 4번의 알고리즘 이해 부분을 보고 ‘뭐지 얘는?’ 싶은 분들도 있겠지만(특히 나처럼 1도 모르는 상태로 시작하려는 사람들에게)개발의 맛을 좀 보신 분들은 아시죠, 2, 3, 4가 개발에 대한 지식이 있는 상태라는 말은 아니라는 거…</li>
+<li>취업 욕심이 그리 급하지 않아 안일한 상태로 시작</li>
 </ol>
 </blockquote>
+<hr>
+<h2 id="교육-기관-알아보기"><a href="#교육-기관-알아보기" class="headerlink" title="교육 기관 알아보기"></a>교육 기관 알아보기</h2><p>다들 알겠지만 국비 교육 과정은  <a href="http://www.hrd.go.kr/hrdp/ti/ptiao/PTIAO0100L.do" target="_blank" rel="noopener">HRD-Net</a> 에서 볼 수 있다.</p>
+<p>본 사람이라면 알겠지만 개발 관련 교육 기관은 너무나 많고, 교육도 세부적으로 많이 갈린다. 흔히 개발을 백과 프론트로 많이 나누어서 말을 하시는 것 같은데 신청할 당시 나는 뭘 하고 싶다, 이런 것도 없었다. <em>-근데 굳이 뭐 하나를 지향해서 교육과정을 듣는 게 의미가 있었을까 이런 생각도 든다. 그냥 시기나 장소 잘 맞는 교육과정 하나 열심히 듣고, 나중에 안 배운 지식이 필요하거든 그 때 따로 배우면 되지 않나…? 이것도 내가 너무 안일한가-</em> 그런데 한 가지 분명히 하고 싶었던 게 있다면 <strong>모바일을 너무 배우고 싶었다</strong>.</p>
+<p>그런데 모바일 관련해서도 알려준다는 교육 기관이 너무 많았고, 교육 기관 내 교육 과정도 수가 너무 많아서 어떤 게 좋을지 감이 잘 오지 않았다. 주변에 조언을 여쭈니, 국비 교육 과정을 들은 언니는 우선 순위를 정했다고 했다.</p>
 <blockquote>
-<p>% npm install</p>
+<ol>
+<li>학원이 얼마나 집에서 가까운지(이 언니는 집이 무척 멀었다)</li>
+<li>교육 시작일이 언제인지(취준생 입장에서는 빨리 시작해서 빨리 배우고 취업을 하고 싶으니까)</li>
+</ol>
 </blockquote>
+<p>나도 이런 우선 순위를 세워보기로 했다. 하지만 우선 순위에 둘 항목조차 무얼 할지 결정하지 못해서, 구글을 통해 국비 교육 과정 후기라던지, 같은 고민을 하시는 분들의 글을 엄청 찾아 읽었다. 그러다가 개발자 커뮤니티 사이트 내에서 국비 교육 과정 수강생들에 대한 안좋은 이야기도 많이 봤고, 현업하시는 분들 입장에서는 그러실 수도 있겠다 싶어서. 교육 과정 이후에 개발 업무로 근무하게 된다면 계속 공부하는 이가 되어야겠다는 다짐도 했다.</p>
+<p>구글링을 하다보니 이야기가 많이 나오는 학원들이 있었다. 블랙리스트급으로 여긴 가지 마세요, 하는 학원도 있었고<em>-심지어 다양한 사이트에서 비추글이 있는 것도 있었다-</em>나는 여기 들었는데 괜찮더라, 이런 학원도 있었다. 일단 괜찮다는 학원들을 리스트업해서 어떤 교육 과정을 신청할 수 있는지를 알아보고, 점차 우선 순위를 정할 수 있었다.</p>
 <blockquote>
-<p>명령어 실행 : package.json의 의존 속성을 참고해 패키지 설치</p>
+<ol>
+<li><p>구글링 결과 괜찮은 학원이더라, 라는 평이 있는지</p>
+<p>(아래에서 이야기하겠지만 hrd-net의 후기는 별로 믿을만하지 못한 것 같다.)</p>
+</li>
+<li><p>내가 배우고 싶은 모바일 과정이 있는지</p>
+</li>
+<li><p>교육 기관이 서울에 있는지</p>
+</li>
+<li><p>괜찮다는 강사가 진행하는지</p>
+</li>
+<li><p>비전공자의 비율이 많은지(나는 많길 바랐다)</p>
+</li>
+<li><p>취업률</p>
+</li>
+</ol>
 </blockquote>
+<p>사실 교육 기관의 위치는 집에서 가까우면 가까울수록 좋다. 그러나 위의 우선 순위에 모두 해당하는 기관은 모두 한 지역에 집중되어 있었다. 그래서 집에서 가까운지 여부도 중요하지만<em>-프로젝트 기간에는 집이 가까운 게 우주대깡패급이었다. 집 최고!-</em>고려 대상에서 제외가 되었다. </p>
+<p>리스트업 후에는 면담을 진행했는데<em>-기관 측에서는 면접이라 이름하는데, 면접이랄 것도 없었다. 그냥 얼굴보고 사람이 이상하진 않은지 그런 것만 확인하는 것 같다-</em>리스트업한 모든 기관에서 면접 합격 통보<em>-합격이랄 것도 없이 신청하면 그냥 되는 경우가 많고, 스타 강사의 경우에는 시험을 보는 경우도 왕왕 있다고는 들었다-</em>를 받았다. 나의 경우 교육 기관 선택에 가장 큰 영향을 준 건 4번이었다. 결국에는 괜찮다는 평을 받은 그 강사에게 수업을 듣진 못했지만<em>-내가 교육 기간을 착각해서 그 강사가 하는 줄 알고 신청했는데 알고 보니 다음 달에 진행할 강사였다-</em>지금 돌이켜 생각하니 그냥 강사가 누구든 내가 열심히하면 되는 문제였던 것 같다.</p>
+<h2 id="기초-강의"><a href="#기초-강의" class="headerlink" title="기초 강의"></a>기초 강의</h2><p>내가 선택한 교육 기관은 전공자들도, 비전공자들도 섞여있는데다가 굉장히 다양한<em>-프로그래밍에 원래 관심이 있었지만 전공이 아닌 사람이나, 타 언어를 사용해 개발을 했던 전직 실무자, 컴공은 아니지만 관련 계열 전공을 한 자 등-</em>수강생들을 한데 모아 가르치는 곳이었다. 기관 측은 아예 프로그래밍 지식이 없는 이들을 위해 매달 기초 강의를 제공을 해줬는데, 사실 지금 돌이켜보니 별 도움은 되지 않았으나 툴을 익힌다던가 원리에 대해 맛을 보고 가는 경험은 좋았던 것 같다. 그 때는 뭐가 뭔지 하나도 모르니까 처음에는 철학 수업에 들어온 줄 알고 착각했다. 추상화가 뭐고, 그러니까 상속을 받으면…. <em>나도 자바 기초 강의를 듣다가 대학교에서 배운 플라톤의 이데아에 대해 떠올리게 될 줄 상상도 못했다.</em></p>
+<h2 id="본-강의"><a href="#본-강의" class="headerlink" title="본 강의"></a>본 강의</h2><p>나는 6개월 강의를 들었다. 크게 3개의 분류로 나눠지는 진도였다.</p>
+<ol>
+<li>자바 언어</li>
+<li>웹</li>
+<li>스프링</li>
+</ol>
+<p>각각의 진도가 끝날 때마다 프로젝트를 진행했다. 사실 1번이 끝났을 때 구현한 프로젝트는 프로젝트라고 하기에도 민망할 정도였고, 2번부터 어디서 본 듯한 웹사이트 구현까지는 가능했다. 여기서 비전공자들이라면 들 법한 생각.</p>
+<h5 id="정말-아예-모르는-상태로-시작해서-전공자들이랑-비등하게-프로젝트-구현이-가능할까"><a href="#정말-아예-모르는-상태로-시작해서-전공자들이랑-비등하게-프로젝트-구현이-가능할까" class="headerlink" title="정말 아예 모르는 상태로 시작해서, 전공자들이랑 비등하게 프로젝트 구현이 가능할까?"></a>정말 아예 모르는 상태로 시작해서, 전공자들이랑 비등하게 프로젝트 구현이 가능할까?</h5><p>사실 구현까지는 가능하다고 생각한다 <em>-물론 알고리즘이라던가, 자료 구조 같이 세부적인 내용까지 고려해서 효율 높은 구현은 안될 것 같지만-</em>6개월 동안 공부하면서 느낀 건, 정말 공부하는만큼 느는 것 같다는 것. 나와 마지막 프로젝트에서 만난 한 분은 매일 저녁마다 새로운 공부를 하는 이였다. 다음날 내가 등원하면 요상한 게 구현되어 있었다. 그가 한 짓이었다. 그는 개발이 재밌다고 했고, 우리 기수에서 두번째로 빠르게 취업을 했다.<em>-전공자들보다 빨리 취업을 했다.-</em>나도 그처럼 열정 넘치게 개발에 몰두했으면 좋았으련만…. 나는 그가 아니니까 뭐, 할 수 있는 만큼 했다는 것에 의의를 둔다.</p>
+<p>아래는 내가 위에서 설명한 3개의 분류를 조금씩 자세히 설명한 것들이다.</p>
+<h3 id="Java와-Oracle"><a href="#Java와-Oracle" class="headerlink" title="Java와 Oracle"></a>Java와 Oracle</h3><p>지금 돌이켜 생각해보면 자바를 그렇게까지 열심히 공부할 필요가 있었을까, 하는 의문도 들지만 프로그래밍 언어를 처음 접하기엔 좋았던 것 같다. 나중에 웹에 들어간 뒤 자바의 많은 것을 잊는 나 자신을 발견하기도 했지만(…) 어쨌든 스프링에서 다시 만나기도 하고, 다른 언어를 배우는 근간을 세울 수 있다는 점에서 유익했다. 나중에 다른 언어-파이썬이라던가, C#등-을 배울 때 비교 대상으로 쓸 수 있을 것 같긴 하다.</p>
+<p>오라클 또한 DB를 공부하는 첫 걸음으로 썼다. 기본적인 CRUD(자료 넣기, 자료 읽기, 자료 업데이트 하기, 자료 삭제하기를 줄여서 crud라 한다)를 배웠고 그 안에 프로시저, 트리거, 커서 등을 만들어 사용하는 방법을 배웠는데 어떤 db를 사용하는지에 따라 문법이 조금씩 달라져서… 자바와 마찬가지로 비교군으로 쓰기 좋았다.</p>
+<h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><p>웹이라고 통칭했지만 배운 건 세부적으로 다음과 같다.</p>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>Java Script</li>
+<li>Ajax</li>
+<li>Json</li>
+<li>Bootstrap</li>
+<li>각종 API 활용</li>
+<li>WAS</li>
+</ul>
+<p>내가 제일 어려워했던 건 css였다. 그러니까, 예제까지는 괜찮았는데 어쨌든 실제 구현에 들어갔을 적 화면에서 내가 원하는 대로 변형이 잘 안되니까 미칠 것 같았다. <em>-‘왜 옆으로 안가니’라고 곡소리가 나게 만드는 대표적인 구현으로, 우리끼리는 차라리 모니터를 오려서 붙이자는 우스갯소리도 했다-</em> 그 외에는 사실 다… 하다보니 되었다. 사실 지금도 공공데이터 api를 json으로 받아와 파싱하는 건 조금 자신 없긴 한데(…) 쉬는 기간동안 연습을 많이 해볼 작정이다.</p>
+<h3 id="스프링과-mybatis"><a href="#스프링과-mybatis" class="headerlink" title="스프링과 mybatis"></a>스프링과 mybatis</h3><p>위에서는 스프링, 이러고 넘어갔지만 왜인지 mybatis를 빼먹으면 섭섭할 것 같아서 같이 기록. 개인적으로 스프링이 모든 걸 자동화하는 터라 처음에는 너무 혼돈의 도가니였는데-<em>어떤 분께 스프링이 너무 어렵다, 말씀 드리니 스프링이 어려운 게 아니라 그 전의 기초가 잘 안되어 있는 것 같다는 현답을 주신 적이 있다</em>-내가 어려워하는 이유를 곰곰이 생각해보니 세팅을 꼼꼼하게 잘 못하는 성격 탓인 것 같았다. 그러나 이 무지는 현재까지도 계속 진행 중. 변명 아닌 변명을 좀 해보자면, 3차 프로젝트의 모든 세팅을 한 사람이 몰아서 한데다가 그가 메서드 이름까지 모든 걸 만들어둬서, 나는 그 안, 비워진 메서드를 채워넣는 식으로 작업을 했다. 그래서 결국 세팅도… 다시 공부해야할 필요를 느낀다. <em>쓰다보니 제대로 아는 게 없는 것 같네</em></p>
+<h3 id="그-외-따로-공부했던-것"><a href="#그-외-따로-공부했던-것" class="headerlink" title="그 외, 따로 공부했던 것"></a>그 외, 따로 공부했던 것</h3><p>다른 포스팅에서 언급했듯 우리는 node.js와 aws를 사용했다. 노드의 경우 크롬 확장프로그램 때문에 사용할 수밖에 없었고, aws는 프로젝트 중에 사진 첨부 때문에 어쩌다보니 사용하게 됐다. 사실 구현을 한 소스를 봐도 정확히 뭐가 어떤 역할을 하는지 설명하라고 그러면 못할 것 같다. 정말 이런 말을 하고 싶지 않지만 내가 구현하지 않은 부분을 잘 모르겠다.-<em>이걸 포트폴리오랍시고 낼 수 있을까도 너무 염려스럽다</em>-현재로서는 내가 만든-<em>만들었다고 할 수 있을지 모를</em>-이 프로젝트를 내가 공부할 판이다-<em>근데 다들 그런 것 같았다</em>-원래는 서로가 서로의 소스에 대해 설명하는 시간을 가지려고 했으나 어쩌다보니… 결국…. 못했다. 우리 기수의 유일한 취업자들이 다 나랑 같은 팀일 건 또 뭐람.</p>
+<p>내가 우리 프로젝트에서 맡아 구현한 부분은 아래와 같다.</p>
+<ul>
+<li>웹소켓을 이용한 실시간 알림 처리<br>(관련 포스팅을 해두었다)</li>
+<li>트리거를 이용한 db 자동 인서트, 업데이트<br>(관련 포스팅을 해두었다)</li>
+<li>프로젝트 프론트 단</li>
+<li>하이차트를 이용한 관리자 통계</li>
+<li>데이터 테이블을 이용한 관리자 단 유저 관리 및 유저의 게시물 관리, 신고 확인 및 신고 처리<br>(유저를 강제로 탈퇴 시키거나, 유저가 쓴 게시물 블라인드 처리, 신고한 게시물과 댓글을 확인하고 블라인드 처리하는 것)</li>
+<li>TinyMCE 에디터기 웹팩 번들링 및 커스터마이징</li>
+</ul>
+<p>쓰고보니 정말 별 걸 안했다… 그래서 개인 프로젝트에 더 욕심을 내는 것 같기도 하고.</p>
+<p>아, 2차 프로젝트는 이런 걸 했다.</p>
+<ul>
+<li>ajax를 이용한 비동기 댓글 crud</li>
+<li>페이징 처리를 한 게시판 만들기</li>
+<li>게시글 crud</li>
+<li>썸머노트 에디터기를 이용한 게시물 작성 뷰단 구현</li>
+</ul>
+<p>사실 3차는 2차에서 한 것을 제외하고 맡고 싶었던 터라 선택지가 많이 없었는데-<em>원래 회원가입을 하고 싶었는데 가위바위보에서 졌다</em>-지금 생각해보면 그냥 2차에서 한 거에서 더 디벨롭 시키는 방향을 욕심내도 되지 않았을까 싶다.</p>
+<h2 id="강의-수료-후-아쉬운-점-및-느낀점"><a href="#강의-수료-후-아쉬운-점-및-느낀점" class="headerlink" title="강의 수료 후, 아쉬운 점 및 느낀점"></a>강의 수료 후, 아쉬운 점 및 느낀점</h2><p>어쩌다가 다른 기수나 다른 교육 기관에서 교육 받으신 분들과 교류하는 기회가 있었는데 <strong>기관마다, 강사마다 가르치는 차이가 크다</strong>는 걸 알게 됐다. 심지어 같은 분야의 수업인데도 강사가 누구인지에 따라 배우는 분야도 차이가 났다.<em>-어떤 반은 언어를 두 개 배웠다고도 하고, 나의 경우 RDBMS(관계형 데이터베이스)만 배웠는데 어디는 또 NOSQL도 배웠다고 해서 혼란의 도가니-</em>결국 느낀 건, 그냥 진짜 궁금하면 내가 하는 수밖에 없다는 것. 떠먹여주는 걸 바라면 안된다는 것.</p>
+<p>나의 경우에는 갑작스러운 강사 교체가 이루어져서, 진도에서 분류 2에 해당하는 웹단을 한 번 더 듣는 일이 발생했는데, 처음에는 기관 측에서 분명 부족한 부분이 있으면 보강해주겠다고 했지만 그런 일은 벌어지지 않았고(…) 객관적으로 봤을 때 다른 기관에서 배운 이들 뿐만 아니라 다른 기수보다 우리 기수가 배운 것이 더 적지 않을까 하는 걱정도 된다.</p>
+<p>제일 아쉬운 점은 <strong>모바일</strong>을 안 배웠다는 것. 도대체 나는 왜 이 수업을 들은 것인가 약간 자괴감에 휩싸이긴 하지만서도 안드로이드가 자바 기반이기 때문에 혼자서도 할 수 있을 것 같다는 희망을 얻게 되어 혼자서나마 공부해볼 작정이다.</p>
+<hr>
+<p>이번 프로젝트에서 뼈 저리게 느낀 건, 의외로 개발적인 부분은 아니었다. 제일 난관이었던 건 <strong>협업의 어려움</strong>이었다. 사실 나는 대학에 진학해 일반적인 대학 교육 과정을 수료했으므로 팀플을 경험한 적이 수도 없이 많았다. 혼자 독박도 써봤고, 의도찮게 민폐도 끼쳐봤고<em>-인과응보라고, 성적이 좋지 않았지만-</em>함께 하는 이와 의견 충돌을 겪으며 더 나은 대안을 생각해보는 일련의 과정을 겪은 적이 있었다. 심지어 이번에 함께 프로젝트에 참여하는 이들은 나와 친한 이들이었다.<em>-수료 프로젝트를 만드는 것이니만큼, 하고 싶은 이와 팀을 할 수 있도록 강사님이 배려해주셨다-</em>그래서 대학 팀플보다 쉬우면 쉬웠지, 어렵진 않으리라 여겼다. 왜냐하면 일단 구성원 중 프리라이딩을 할 사람이 없으리라 여겼고, 모두 다 맡은 바 소임을 다할 이들이었기 때문에. 사람이 좋으니까 잘 되리라 여겼는데. 이게 오만이었을 줄은 상상도 못했다.</p>
+<p>처음 협업이 어렵다고 느낀 건, 다름 아닌 뷰단 구성에서부터였다. 주제를 합의하는 건 굉장히 쉬웠는데 사람들마다 머리 속에 그리는 뷰단의 모습이 제각각이었다. 넣고 싶은 기능도 달랐고, 사이드바에 무엇을 넣을 건지, 네브 바(메뉴)는 어떻게 만들 것인지, 테마는 어떻게 갈 것인지. 이를 구체화해서 명시해야 하는 문서 작업에 들어가면서 정말 머리채 잡기 전까지 피 터지게 싸워댔다. 감정적으로 고조되었다가 화해하고, 술 마시고(…) 그걸 반복했다. 서로 잘하고자 하는 욕심이 있었기에 싸움은 더 격했다.</p>
+<p>어찌 어찌 뷰단을 합의 보고 난 뒤에 다시 싸우게 된 건 서로가 서로의 소스를 이해하지 못하는 상황이 닥치고 나서였다. 병합을 하면 충돌이 났고, 충돌이 가시적으로 보이지 않아도 됐던 기능이 안되었다가, 대환멸의 서막이었다. 서로가 서로의 소스를 읽기에는 너무 바빴고, 확인을 하지도 않고 병합을 해버리는 상황들이 반복되며-<em>물론 그건 대부분 특정인들이 그랬지만 그들은 프로젝트 끝까지 습관을 고치지 못했다</em>-감정적으로 갈등이 쌓여갔다.</p>
+<p>사실 자바를 배울 적에 강사님이 말씀하시길</p>
+<blockquote>
+<p>“코딩 스타일이 있다. 편한 대로 하면 된다”</p>
+</blockquote>
+<p>고 했건만 서로의 스타일을 인정하지 못했다. 솔직히 말해서 위와 같은 뷰단, 스타일 합의 부분은 우리가 평등하기 때문에 갈등이 더 심한 것 같았다. 그냥 누가 ‘이렇게 해!’라고 시키면 군말 없이 할 법한 것도 왜 그렇게 해야만하는지 서로를 설득하는데 너무 많은 노력이 필요했다. 코딩을 잘해봤자 같이 배우는 입장에서 얼마나 특출나게 잘하겠으며, 같은 곳에서 같은 사람에게 코딩을 배웠는데 얼마나 많이 벗어난 코드를 구현했을까. 그저 프로젝트가 조금씩 궤도에 오르며, 에러가 미친 듯이 나기 시작하며 스트레스를 받기 시작하고 조금만 건들이면 툭, 터지는 그런 상황이었던 것 같다.</p>
+<p>왜 면접에서 협업을 해본 경험이 있는지 그렇게 물어대는지 알 수 있던 경험이었다. 모든 갈등의 병합이 효율적이고 성공적이었던 것만은 아니지만 이후 협업은 보다 나아지리라 믿는다.</p>
+<p>+) 아 그리고 생각보다 커뮤니케이션이 어려운 사람이 많았다. 물론 내가 부족한 탓도 있으리라 여기지만, 말이 너무 이해하기 어려워서 차라리 문서로 정리해서 달라고 말씀드리니 글로 자신의 생각을 적는 것도 힘들어하는 이들이 많아서 조금 놀랐다. 도대체 어떻게 커뮤니케이션을 하는 게 효과적인 건지 고민하는 계기가 되었다.</p>
+<h2 id="통합해서"><a href="#통합해서" class="headerlink" title="통합해서"></a>통합해서</h2><p>이 글을 과연 누가 읽을까, 를 고민하다가 누구에게 필요한 글을 쓰고 싶은 걸까, 를 고민해봤다. 나는 이 글을 나처럼 국비교육과정을 고민하는 이들이 읽기를 바라기에 그들에게 하고 싶은 말을 몇 자 적는 것으로 이 포스팅을 마치고자 한다.</p>
+<ul>
+<li>노력하는 만큼 배울 수 있던 시간이었습니다.</li>
+<li>국비교육과정은 세금으로 운영되기에, 예산이 널널한 기간에 듣는 게 좋습니다.<br>(만약 연말에 듣게 된다면 제 때 훈련 수당이 지급되지 않을 가능성이 높습니다)</li>
+<li>세상은 넓고 다양한 사람이 많습니다.</li>
+<li>공부도, 취업도 누가 떠먹여주진 않는 것 같습니다.</li>
+</ul>
+<p>6개월을 고생해 만든 <a href="http://13.124.12.183/copyNpaste/index.htm" target="_blank" rel="noopener">수료 프로젝트</a>는 이것이고, 사실 에러가 너무 많이 나서(…) 공개가 약간 민망한 감이 있기도 하고 과연 aws는 언제까지 살아있을지 알 수가 없다. 왜냐하면 내 aws 계정이 아니기 때문!</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
 
       
       
@@ -345,7 +266,7 @@ nconf.modulInMethod();
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/54/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="space">&hellip;</span><a class="page-number" href="/page/67/">67</a><a class="extend next" rel="next" href="/page/56/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/54/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="space">&hellip;</span><a class="page-number" href="/page/68/">68</a><a class="extend next" rel="next" href="/page/56/">Next</a>
   </nav>
 
 </section>
@@ -398,7 +319,7 @@ nconf.modulInMethod();
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">58</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">58</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -458,6 +379,18 @@ nconf.modulInMethod();
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/04/29/for-developer/">나의 개발 이야기 후기</a></h6>
+              <span>4월 29, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/04/29/data-mining/">데이터 마이닝</a></h6>
               <span>4월 29, 2019</span>
             </div>
@@ -500,18 +433,6 @@ nconf.modulInMethod();
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/03/27/2019-03-27-react-loadable/">react-loadable</a></h6>
-              <span>3월 27, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -522,7 +443,7 @@ nconf.modulInMethod();
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
