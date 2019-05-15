@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-2018-12-04" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-android1" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/04/2018-12-04/">2018-12-04 수업 내용 정리</a>
+      <a class="article-title" href="/2018/12/05/android1/">안드로이드 스튜디오를 이용해 안드로이드 앱 만들기</a>
     </h1>
   
 
@@ -118,108 +118,65 @@
     
     <div class="article-meta">
       
-	<a href="/2018/12/04/2018-12-04/" class="article-date">
-	  <time datetime="2018-12-04T00:21:18.000Z" itemprop="datePublished">12월 4, 2018</time>
+	<a href="/2018/12/05/android1/" class="article-date">
+	  <time datetime="2018-12-05T00:06:18.000Z" itemprop="datePublished">12월 5, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/안드로이드/">안드로이드</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p>리턴 값은 프로그램의 유연성을 위해 인터페이스 자료형으로 한다.</p>
-</li>
-<li><p>try-with-resources</p>
-<ul>
-<li><p>자바 버전 7에 추가된 기능으로 try에 자원 객체를 전달하면 finally 블록으로 close 처리를 하지 않아도, try 코드 블록이 끝나면 자동으로 자원을 종료해주는 기능</p>
-</li>
-<li><p>closeable 인터페이스를 상속한 객체만이 try 소괄호 안으로 들어올 수 있다</p>
-</li>
-<li><p>만약 해당 인터페이스를 상속 받지 못했다면 try 구문에 올 수 없다</p>
-</li>
-<li><p>try 문의 존재 이유가 finally이기 때문에 try-with-resources로 구현했다면 굳이 catch 문을 구현하지 않는다. 이 경우 메서드에서 예외처리가 같이 명시되어 있어야 한다.</p>
-</li>
-<li><p>PreparedStatement로 쿼리문을 날릴 때, ‘? 처리가 try 소괄호 안에서 처리가 불가능하다</p>
-<ul>
-<li><p>이 경우에는 set을 try 구문 안(중괄호 속)에서 입력</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Board <span class="title">findByNo</span><span class="params">(<span class="keyword">int</span> no)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">  <span class="keyword">try</span> (</span><br><span class="line">      Connection con = DriverManager.getConnection(<span class="string">"jdbc:mariadb://localhost:3306/studydb"</span>, <span class="string">"study"</span>, <span class="string">"1111"</span>);</span><br><span class="line">      PreparedStatement stmt = con.prepareStatement(</span><br><span class="line">          <span class="string">"select bno, cont, cdt, view, mno, lno"</span> + <span class="string">" from board where bno=?"</span>);) &#123;</span><br><span class="line">    stmt.setInt(<span class="number">1</span>, no);</span><br><span class="line">    <span class="keyword">try</span> (ResultSet rs = stmt.executeQuery()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (rs.next()) &#123;</span><br><span class="line">        Board board = <span class="keyword">new</span> Board();</span><br><span class="line">        board.setNo(rs.getInt(<span class="string">"bno"</span>));</span><br><span class="line">        board.setContents(rs.getString(<span class="string">"cont"</span>));</span><br><span class="line">        board.setCreatedDate(rs.getDate(<span class="string">"cdt"</span>));</span><br><span class="line">        board.setViewCount(rs.getInt(<span class="string">"view"</span>));</span><br><span class="line">        board.setWriterNo(rs.getInt(<span class="string">"mno"</span>));</span><br><span class="line">        board.setLessonNo(rs.getInt(<span class="string">"lno"</span>));</span><br><span class="line">        <span class="keyword">return</span> board;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>만약 try 소괄호 안, 마지막 구문은 <strong>세미콜론 생략</strong>이 가능하다</p>
-</li>
-</ul>
-</li>
-<li><p>만약 try 문을 구현한 메서드에서 예외를 던지게 설정되어 있다면 (throws Exception) catch 블록을 따로 구현할 필요가 없다.</p>
-</li>
-</ul>
-<h2 id="MyBatis-적용"><a href="#MyBatis-적용" class="headerlink" title="MyBatis 적용"></a>MyBatis 적용</h2><ol>
-<li><p>gradle에 의존 설정을 해준 뒤 <code>gradle eclipse</code> 실행해 설정 파일 갱신</p>
-</li>
-<li><p><code>src/main/resources/자바경로/comf</code>에 <code>mybatis-config.xml</code>를 둔다.<br>  <code>resources</code>가 없으면 생성</p>
-<p><code>mybatis-config.xml</code>에 자바 소스 폴더로 등록 후 <code>gradle eclipse</code> 재실행</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;driver&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;url&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;username&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;password&#125;"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"org/mybatis/example/BlogMapper.xml"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>jdbc.properties</code> 파일 작성해서 해당 프로퍼티가 안으로 들어갈 수 있도록 설정</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=org.mariadb.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mariadb://localhost:3306/studydb</span><br><span class="line">jdbc.username=study</span><br><span class="line">jdbc.password=1111</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">--</span> <span class="attr">xml</span>은 이렇게 수정된다 <span class="attr">--</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">--</span> <span class="attr">properties</span>의 경로 설정해준다<span class="attr">--</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"com/eomcs/lms/conf/jdbc.properties"</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">--</span> <span class="attr">db</span> 연결 정보를 설정, <span class="attr">default</span>는 아래와 같다</span></span><br><span class="line"><span class="tag">	즉 <span class="attr">db</span> 연결 정보를 여러 개 설정할 수 있다 <span class="attr">--</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">--</span> 트랜젝션 관리는 <span class="attr">jdbc</span>를 쓰겠다 <span class="attr">--</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">--</span> <span class="attr">db</span> 커넥션 풀 <span class="attr">--</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driver&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.url&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.username&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">--</span> <span class="attr">value</span>와 프로퍼티 파일의 이름이 같아야 한다 <span class="attr">--</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">--</span> <span class="attr">sql</span>을 보관할 <span class="attr">xml</span> 파일 경로 설정 <span class="attr">--</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"com/eomcs/lms/mapper/BoardMapper.xml"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p><code>src/main/resources/자바경로/mapper/BoardMapper.xml</code>에 파일 작성(sql문들)</p>
-</li>
-<li><p>실행 클래스에서 mybatis의 <code>SqlSessionFactory</code> 객체 준비</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String resource = <span class="string">"com/eomcs/lmes/conf/mybatis-config.xml"</span>;</span><br><span class="line">&lt;!-- 팩토리 패턴 --&gt;</span><br><span class="line">InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">&lt;!-- 빌더 패턴 --&gt;</span><br><span class="line">SqlSessionFactory sqlSessionFactory =</span><br><span class="line">      <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">      </span><br><span class="line">BoardDao boardDao = <span class="keyword">new</span> MariaDBBoardDao(sqlSessionFactory);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><p>inputStream : 설계도의 역할</p>
-</li>
-<li><p>SqlSessionFactoryBuilder는 전문적으로 SqlSessionFactory를 만듦</p>
-</li>
-<li><p>객체 생성 과정이 복잡할 때는 대부분 *Builder 클래스를 활용해 생성 - 빌더 패턴</p>
-</li>
-<li>디자인 패턴 중 하나인 <strong>빌더 패턴</strong>, <strong>팩토리 패턴</strong></li>
-<li>팩토리 패턴은 간단한 조립의 기능 수행, 빌더는 보다 큰 기능을 수행한다</li>
-</ul>
-</blockquote>
-<p>dao가 사용할 수 있도록 생성자에 해당 객체 주입</p>
-</li>
-<li><p>dao 단에서 세션 생성</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Board&gt; <span class="title">findAll</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">try</span> (SqlSession sqlSession = sqlSessionFactory.openSession()) &#123;</span><br><span class="line">    <span class="keyword">return</span> sqlSession.selectList(<span class="string">"DoardDao.findAll"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>실습 중 에러 기록</p>
-<ul>
-<li><p>mapper의 namespace 대소문자 오타</p>
-</li>
-<li><p>인터페이스 상속 받은 메서드 오타</p>
-</li>
-<li>메서드 실행 시 필요한 파라미터 값 넘기지 않음</li>
-<li><strong>gradle eclipse</strong> 실행 후 새로고침 에러</li>
-</ul>
-</blockquote>
-</li>
-<li><p>mybatis의 경우 오토커밋이 안되기 때문에 커밋 설정을 따로 해줘야 한다.<br>트랜젝션 관리 때문에 오토커밋을 자동으로 실행하는 옵션을 설정할 수 없다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">insert</span><span class="params">(Board board)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (SqlSession sqlSession = sqlSessionFactory.openSession()) &#123;</span><br><span class="line">      <span class="keyword">int</span> count = sqlSession.insert(<span class="string">"BoardDao.insert"</span>, board);</span><br><span class="line">      sqlSession.commit();</span><br><span class="line">      <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>별명 지정 가능</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"com/eomcs/lms/conf/jdbc.properties"</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 프로퍼티 아래로 들어와야 한다 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.eomcs.lms.domain"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>db 내 컬럼과 domain의 이름이 다를 때<br>매퍼의 상위에 아래 코드를 기술해 지정해주고,</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"board"</span> <span class="attr">id</span>=<span class="string">"boardMap"</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- board 칼럼을 프로퍼티 이름과 연결 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"bno"</span> <span class="attr">property</span>=<span class="string">"no"</span>/&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- pk는 result가 아니라 id로 해줘야 한다 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"cont"</span> <span class="attr">property</span>=<span class="string">"contents"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>sql 태그에서 파라미터맵이나, resultMap으로 위를 가리켜 실행</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultMap</span>=<span class="string">"boardMap"</span>&gt;</span></span><br><span class="line">    select bno, cont, cdt, view from board</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
+        <h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><ol>
+<li>Java JDK 설치 및 환경변수 설정</li>
+<li>안드로이드 스튜디오 설치</li>
 </ol>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello, World!"></a>Hello, World!</h2><ul>
+<li>MainActivity<ul>
+<li>프로그램을 제일 먼저 실행시키는 부분</li>
+</ul>
+</li>
+<li>R.class<ul>
+<li>안드로이드는 모든 것에 다 복잡한 숫자의 id가 붙어있다.</li>
+<li>id를 사용자가 직접 타이핑해서 사용하는 건 힘들기 때문에 R 클래스 안 아이디 사용에 관한 static 변수/메서드를 구현해 놓아 사용자가 보다 쉬운 방식으로 요소를 이용할 수 있도록 했다.</li>
+</ul>
+</li>
+<li>자동 import 단축키 <strong>alt + Enter</strong></li>
+<li>상속 메서드들 보기 단축키  <strong>ctrl + o</strong></li>
+</ul>
+<h2 id="리스트-뷰-꾸미기"><a href="#리스트-뷰-꾸미기" class="headerlink" title="리스트 뷰 꾸미기"></a>리스트 뷰 꾸미기</h2><iframe width="760" height="453" src="https://www.youtube.com/embed/oj6DI3PvAr0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<blockquote>
+<h2 id="참고하고-있는-강의"><a href="#참고하고-있는-강의" class="headerlink" title="참고하고 있는 강의"></a>참고하고 있는 강의</h2><p>기존에 처음 html로 페이지를 만들 적에 이 분이 만든 강의를 처음 들었었는데, 당시에 많은 도움을 받았던 기억이 나 이번에도 이 분 강의를 듣는 중!</p>
+</blockquote>
+<h3 id="에러-트러블슈팅"><a href="#에러-트러블슈팅" class="headerlink" title="에러 트러블슈팅"></a>에러 트러블슈팅</h3><ul>
+<li><p>처음에는 강의와 똑같이 했는데도 실행이 안됐다. 강의가 만들어진지 좀 됐기 때문에, 나는 당연히 조금 최신 버전의 os와 에뮬레이터를 선택해 실행했는데… 이게 바로 에러의 서막이었다…</p>
+</li>
+<li><p>처음에는 맥과 JDK가 충돌나서 그런가 했다. 왜냐하면 지금 안드로이드 스튜디오를 맥 OS로 다운로드 받을 때, JDK 일부 버전에서 에러가 날 수도 있다는 경고가 뜨기 때문이다.</p>
+<blockquote>
+<p>관련하여 맥 OS에서 안드로이드 스튜디오로 앱 만드시는 분께 여쭤봤는데 본인은 잘만 돌아간다며 걱정 말라고….</p>
+</blockquote>
+</li>
+<li><p>avd에 관한 에러였는데, 찾아보니까 Emulated Performance 부분의 Graphics을 auto가 아니라 Software - GLES 2.0으로 바꾸면 된다고 했다.</p>
+</li>
+<li><p>나도 바꾸려고 했지만 바꿀 수 없게 블록 잼….</p>
+</li>
+<li><p>언제나 그렇듯 구글링하며 흐느끼다가 마음의 고향 <a href="https://stackoverflow.com/questions/44328225/cant-change-emulated-performance-of-avd-in-android-studio" target="_blank" rel="noopener">스택옾</a>에 갔고 해결책을 얻었다. 고마워여 스택옾…!</p>
+</li>
+<li><p>제일 위에 채택 받은 답변을 보면, 구글 플레이스토어를 지원하는 기기의 경우에 바꿀 수 없게 막혀있다고 했다.</p>
+</li>
+<li>즉 다른 기기를 선택하면 된다고…</li>
+<li>그래서 해결…</li>
+</ul>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/안드로이드/">안드로이드</a>
 
       
       
@@ -237,7 +194,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/50/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/52/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/50/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/52/">Next</a>
   </nav>
 
 </section>
@@ -290,7 +247,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">61</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">62</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크코스-React-Typescript/">우아한테크코스(React+Typescript)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -338,6 +295,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/05/15/woowahan01/">우아한테크코스 Typescript &amp; React 101 01</a></h6>
+              <span>5월 15, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/05/14/programmerInNewYork/">뉴욕의 프로그래머(2007)</a></h6>
               <span>5월 14, 2019</span>
             </div>
@@ -362,7 +331,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/05/07/createRef/">React.createRef()</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/05/07/css-flex/">flex 게임</a></h6>
               <span>5월 7, 2019</span>
             </div>
 
@@ -374,7 +343,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/05/07/css-flex/">flex 게임</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/05/07/createRef/">React.createRef()</a></h6>
               <span>5월 7, 2019</span>
             </div>
 
@@ -392,18 +361,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/04/29/for-developer/">나의 개발 이야기 후기</a></h6>
-              <span>4월 29, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -414,7 +371,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
