@@ -1,10 +1,10 @@
 ---
-title: 우아한테크코스 Typescript & React 101 01
+title: 우아한테크러닝 Typescript & React 101 01
 date: 2019-05-15 11:47:18
 tags:
 categories:
 - 개발공부
-- 우아한테크코스(React+Typescript)
+- 우아한테크러닝(React+Typescript)
 ---
 
 # 구구절절
