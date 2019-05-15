@@ -3,23 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>maria DB if SQL | ERecord</title>
+  <title>test | ERecord</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="maria DB IF문mysql의 문법처럼, maria DB 또한 if문을 쓸 수 있다. 그런데 내가 궁금한 건 select절에도 if문을 쓸 수 있느냐 여부였다. 즉 이렇게! 12select .... if (칼럼명 = &apos;~&apos;, 참일 때 실행, 거짓일 때 실행) &quot;별칭&quot; 백문이 불여일실행이라고, 해당 쿼리를 실행해보았다. 123456select r.rno,">
-<meta property="og:type" content="article">
-<meta property="og:title" content="maria DB if SQL">
-<meta property="og:url" content="http://eunajjing.github.io/2019/01/29/2019-01-29-maria-DB-if-SQL/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="test">
+<meta property="og:url" content="http://eunajjing.github.io/2019/05/15/test/index.html">
 <meta property="og:site_name" content="ERecord">
-<meta property="og:description" content="maria DB IF문mysql의 문법처럼, maria DB 또한 if문을 쓸 수 있다. 그런데 내가 궁금한 건 select절에도 if문을 쓸 수 있느냐 여부였다. 즉 이렇게! 12select .... if (칼럼명 = &apos;~&apos;, 참일 때 실행, 거짓일 때 실행) &quot;별칭&quot; 백문이 불여일실행이라고, 해당 쿼리를 실행해보았다. 123456select r.rno,">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-01-29T14:38:38.206Z">
+<meta property="og:updated_time" content="2019-05-15T05:31:59.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maria DB if SQL">
-<meta name="twitter:description" content="maria DB IF문mysql의 문법처럼, maria DB 또한 if문을 쓸 수 있다. 그런데 내가 궁금한 건 select절에도 if문을 쓸 수 있느냐 여부였다. 즉 이렇게! 12select .... if (칼럼명 = &apos;~&apos;, 참일 때 실행, 거짓일 때 실행) &quot;별칭&quot; 백문이 불여일실행이라고, 해당 쿼리를 실행해보았다. 123456select r.rno,">
+<meta name="twitter:title" content="test">
   
     <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
   
@@ -101,7 +98,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-2019-01-29-maria-DB-if-SQL" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-test" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -109,7 +106,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      maria DB if SQL
+      test
     </h1>
   
 
@@ -117,38 +114,26 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-maria-DB-if-SQL/" class="article-date">
-	  <time datetime="2019-01-29T08:55:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/05/15/test/" class="article-date">
+	  <time datetime="2019-05-15T05:30:18.000Z" itemprop="datePublished">5월 15, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="maria-DB-IF문"><a href="#maria-DB-IF문" class="headerlink" title="maria DB IF문"></a>maria DB IF문</h2><p>mysql의 문법처럼, maria DB 또한 if문을 쓸 수 있다.</p>
-<p>그런데 내가 궁금한 건 select절에도 if문을 쓸 수 있느냐 여부였다.</p>
-<p>즉 이렇게!</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> .... </span><br><span class="line"><span class="keyword">if</span> (칼럼명 = <span class="string">'~'</span>, 참일 때 실행, 거짓일 때 실행) <span class="string">"별칭"</span></span><br></pre></td></tr></table></figure>
-<p>백문이 불여일실행이라고,</p>
-<p>해당 쿼리를 실행해보았다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> r.rno, r.isFrom, r.targetTypeCode, r.targetCode,</span><br><span class="line">		r.reasonCode, r.rContent, r.processCode,</span><br><span class="line">		<span class="keyword">if</span> (r.targetTypeCode=<span class="string">'BOARD'</span>,</span><br><span class="line">		(<span class="keyword">select</span> <span class="keyword">mid</span> <span class="keyword">from</span> board <span class="keyword">where</span> bno=r.targetCode),</span><br><span class="line">		(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> <span class="keyword">comment</span> <span class="keyword">where</span> cno=r.targetCode)) <span class="string">"isTo"</span>,</span><br><span class="line">		b.title <span class="keyword">from</span> report r <span class="keyword">join</span> board b <span class="keyword">on</span> r.targetCode=b.bno;</span><br></pre></td></tr></table></figure>
-<p>처음에는 괄호를 안 써서 에러가 났다.</p>
-<p>문법 자체가 잘못된 건지 모르겠어서 강사 님께 문의를 드렸는데, 논리에 맞지 않는다고 하셨다.</p>
-<p>그런데 웃긴 게 내가 어쩌다가 실행한 sql이 되는 걸 확인을 했고</p>
-<p>(문제는 그 저장된 sql이 워크밴치가 응답없음이 뜨면서 날아가서…)</p>
-<p>계속 미련을 못 버리다가 괄호를 잘 치니까 되었다!!!!</p>
-<p>근데 위의 쿼리는 내가 원하는 값을 가져오질 못했다ㅠㅠㅠㅠ 원하는 값을 가져오려면 프로시저를 써야 했다.</p>
-<p>하여튼 문법적으로는 되는 쿼리다!</p>
+        <iframe src="https://www.notion.so/Get-Started-3b11361b4a07466f9fa0236e5f762c87">
 
+</iframe>
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
 
       
       
@@ -159,19 +144,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/11/react01/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          리액트 인 액션 PART1
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/29/2019-01-29-트리거-내-루프-제어/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/05/15/woowahan01/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">트리거 내 루프 제어</div>
+      <div class="article-nav-title">우아한테크코스 Typescript &amp; React 101 01</div>
     </a>
   
 </nav>
@@ -185,7 +161,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#maria-DB-IF문"><span class="nav-number">1.</span> <span class="nav-text">maria DB IF문</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>
