@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-29-complainZero-프로젝트-회고" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-01-29-트리거-내-루프-제어" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/">complainZero 프로젝트 회고</a>
+      <a class="article-title" href="/2019/01/29/2019-01-29-트리거-내-루프-제어/">트리거 내 루프 제어</a>
     </h1>
   
 
@@ -118,33 +118,35 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/" class="article-date">
-	  <time datetime="2019-01-29T06:58:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/01/29/2019-01-29-트리거-내-루프-제어/" class="article-date">
+	  <time datetime="2019-01-29T08:37:18.000Z" itemprop="datePublished">1월 29, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="뉴딜-과정이-끝났다"><a href="#뉴딜-과정이-끝났다" class="headerlink" title="뉴딜 과정이 끝났다"></a>뉴딜 과정이 끝났다</h2><h3 id="ComplainZero"><a href="#ComplainZero" class="headerlink" title="ComplainZero"></a><a href="https://github.com/eunajjing/complainzero" target="_blank" rel="noopener">ComplainZero</a></h3><p><img src="/images/complainZero.png" alt="메인화면"></p>
-<p>비교적 짧은 시간 내에 구현해야했던 <complainzero>는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다.</complainzero></p>
-<p>원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…</p>
-<p><img src="/images/role1.jpg" alt="공통권한"><br><img src="/images/role2.jpg" alt="유저권한"><br><img src="/images/role3.jpg" alt="관리자권한"></p>
-<h4 id="프로젝트-전반에-대한-회고"><a href="#프로젝트-전반에-대한-회고" class="headerlink" title="프로젝트 전반에 대한 회고"></a>프로젝트 전반에 대한 회고</h4><p>시간 압박에 쫓겨 개인적으로 배우는 프로젝트였다기보단 빨리 빨리 구현에 중점을 둔 프로젝트였다. 코드를 타이핑하는데에 급급해 문서 작성을 하지 않았고, 이 때문에 불필요한 작업들을 여러 번 하는 경우도 있었다. 내가 한 줄의 코드를 짜는 것보다 타인과 소통하며 협업하는 게 더 중요하다는 걸 배웠지만…. 소통이 안되는 건 내 문제인가….. 하하…</p>
-<h5 id="프로젝트-구현"><a href="#프로젝트-구현" class="headerlink" title="프로젝트 구현"></a>프로젝트 구현</h5><p>구현에 있어 제일 힘들었던 것은 프로시저와 트리거 내 루프문 제어였다. 포스팅을 통해 트러블 슈팅을 기록하겠지만, 왜 안되는지 알 수 없는… 그런 거였다. 레퍼런스가 많기에 구현에 그다지 오래 걸리지 않으리라 생각했는데 데이터베이스마다 조금씩 문법 차이가 있어 레퍼런스 예제 소스가 전혀 적용이 안됐다ㅠㅠㅠ 사용한 maria DB는 insert all과 같이 mysql에서 제공하는 다중 데이터 insert 문을 제공해주지 않았고, 트리거 내에서도 사용이 힘들었다. 이에 모든 걸 DB에서 처리해야겠다는 계획을 변경해 서비스 단에서 트랜젝션을 이용해 제어를 시도했다.</p>
-<p>프로시저 또한 힘들었다. 이것도 정말… 트러블 슈팅 꼭 기록할 것. 프로젝트 내 게시물 상세보기는 조건에 따라 join테이블이 달라지는데, 조건을 사용해야 했기에 결과적으로 DB 처리를 원하면 프로시저를 사용해야한다는 것을 알았다. 트랜젝션을 생성해 DB GUI 툴에서 실행했을 때 정상적인 값을 가지고 오는 것을 확인했건만 호출 결과와 mybatis의 연동이 자동으로 되지 않아 원인을 찾는데 많은 시간이 소비되었다.</p>
-<h5 id="아쉬운-점"><a href="#아쉬운-점" class="headerlink" title="아쉬운 점"></a>아쉬운 점</h5><p> 전반 회고 맥락과 비슷하게, 기능적으로는 배우는 게 많이 없었던 프로젝트였다. 이미 해보거나 잘하는 기능을 맡아 구현했다. 욕심 부리지 않기 위해 프로젝트 규모를 작게 잡아 되레 인원에 비해 너무 소소한 프로젝트였다고 생각한다. 사실… 우리가 4명이었지만 거의 3명인 조였고… 하아… 만약 기회가 된다면 펀딩 사이트처럼 연계 알림 후 결제 시스템을 구현해보거나, 카카오나 네이버 아이디를 이용한 회원가입을 구현해도 재밌었으리라 생각한다.</p>
-<p> 처음에 하지 않은 문서 작업이 뒤에서 크게 발목을 잡으리라 생각치 못한 프로젝트였다. 폴더 구조를 짜두고 시작한 것이 아닌 터라, 나중에 시큐리티 패턴식을 적용하거나 타일즈를 구현할 적마다 폴더 구조를 다시 맞춰야 하는 번거로움이 발생했고, 후에 적용하면 할수록 팀원 간 혼동도 잦았다. 또한 트러블슈팅을 하지 않아 팀원 내 똑같은 에러가 발생해도 팀원 내부에서 도움을 주지 못하고, 문제가 발생한 회원이 다시 레퍼런스를 찾아봐야 하는 등의 비효율적인 측면도 두드러진 프로젝트였다. 특별한 api를 적용하는 경험은 하지 못했지만 문서 작업과 협업에 대해 생각해보는 계기였다.</p>
+        <h2 id="트리거-내-루프"><a href="#트리거-내-루프" class="headerlink" title="트리거 내 루프"></a>트리거 내 루프</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> suggestionAlarm <span class="keyword">after</span> <span class="keyword">update</span> <span class="keyword">on</span> suggestion </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">DECLARE</span> done <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="literal">FALSE</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> CONTINUE <span class="keyword">HANDLER</span> <span class="keyword">FOR</span> <span class="keyword">NOT</span> <span class="keyword">FOUND</span> <span class="keyword">SET</span> done = <span class="literal">TRUE</span>;</span><br><span class="line"><span class="keyword">declare</span> _id <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> likelist <span class="keyword">where</span> bno=new.bno;</span><br><span class="line"><span class="keyword">declare</span> tempid <span class="built_in">VARCHAR</span>(<span class="number">40</span>);</span><br><span class="line">if new.statusCode = 'S02' then</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-1'</span>, new.bno, new.id);  </span><br><span class="line">  open _id;</span><br><span class="line">    ins_loop: LOOP</span><br><span class="line">      fetch _id into tempid;</span><br><span class="line">      if done then leave ins_loop;</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">      <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">      <span class="keyword">values</span>(<span class="string">'A03'</span>, new.bno, tempid);</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br><span class="line">  close _id;  </span><br><span class="line">else</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-2'</span>, new.bno, new.id);</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<p>사실 루프문은 처음 트리거 생성 때 트러블슈팅으로 넣어놨던 것이라 고생은 별로 안했는데, 하다보니 알게 된 것들을 기록</p>
+<ol>
+<li><p>커서 핸들러가 정확한 위치에 정의되지 않으면 에러가 발생<br>에러 내용은 다음과 같다.<br><code>Variable or condition declaration after cursor or handler declaration</code></p>
+</li>
+<li><p>루프문 제어의 경우 다양한 방식이 있는데, 나는 커서를 이용했기 때문에 위의 sql를 치는 것이 좋은 것 같다<br>만약 커서를 사용하지 않았더라면</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> suggestionAlarm <span class="keyword">after</span> <span class="keyword">update</span> <span class="keyword">on</span> suggestion </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">declare</span> _id <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> likelist <span class="keyword">where</span> bno=new.bno;</span><br><span class="line"><span class="keyword">declare</span> tempid <span class="built_in">VARCHAR</span>(<span class="number">40</span>);</span><br><span class="line"><span class="keyword">declare</span> x <span class="built_in">int</span> ;</span><br><span class="line">if new.statusCode = 'S02' then</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-1'</span>, new.bno, new.id);  </span><br><span class="line">  if((<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> likelist <span class="keyword">where</span> bno=new.bno) &gt; <span class="number">0</span>) <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">set</span> x = <span class="number">1</span>; </span><br><span class="line">    open _id;</span><br><span class="line">      while x &lt; (select count(*) from likelist where bno=new.bno) do    </span><br><span class="line">        fetch _id into tempid;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">        <span class="keyword">values</span>(<span class="string">'A03'</span>, new.bno, tempid);</span><br><span class="line">        <span class="keyword">set</span> x = x+<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">while</span>;</span><br><span class="line">    close _id;</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">else</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-2'</span>, new.bno, new.id);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<p>이렇게 해도 됐겠지만…</p>
+<p>위 소스를 그대로 치면 1과 같은 에러가 난다. 커서 핸들러가 없다고.</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
 
       
       
@@ -162,7 +164,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/32/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/34/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/32/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/34/">Next</a>
   </nav>
 
 </section>
@@ -215,7 +217,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">62</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">65</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -263,6 +265,42 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/05/17/woowahan02/">우아한테크러닝 Typescript &amp; React 101 02</a></h6>
+              <span>5월 17, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/16/javascript01/">우아한형제들 javascript 01</a></h6>
+              <span>5월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/16/react-troubleshooting01/">컴포넌트를 대문자로 쓰지 않았더니</a></h6>
+              <span>5월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/05/15/woowahan01/">우아한테크러닝 Typescript &amp; React 101 01</a></h6>
               <span>5월 15, 2019</span>
             </div>
@@ -293,42 +331,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/07/css-flex/">flex 게임</a></h6>
-              <span>5월 7, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/07/createRef/">React.createRef()</a></h6>
-              <span>5월 7, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/04/29/text-mining/">텍스트 마이닝</a></h6>
-              <span>4월 29, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -339,7 +341,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

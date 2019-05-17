@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-react-lib" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-data-mining" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/04/06/react-lib/">리액트의 라이브러리</a>
+      <a class="article-title" href="/2019/04/29/data-mining/">데이터 마이닝</a>
     </h1>
   
 
@@ -118,111 +118,102 @@
     
     <div class="article-meta">
       
-	<a href="/2019/04/06/react-lib/" class="article-date">
-	  <time datetime="2019-04-06T06:13:18.000Z" itemprop="datePublished">4월 6, 2019</time>
+	<a href="/2019/04/29/data-mining/" class="article-date">
+	  <time datetime="2019-04-29T05:45:00.000Z" itemprop="datePublished">4월 29, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="react-라이브러리-정리"><a href="#react-라이브러리-정리" class="headerlink" title="react 라이브러리 정리"></a>react 라이브러리 정리</h1><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="node-sass"><a href="#node-sass" class="headerlink" title="node-sass"></a>node-sass</h3><p><code>Sass</code>를 CSS로 변환</p>
-<blockquote>
-<h1 id="SCSS의-문법"><a href="#SCSS의-문법" class="headerlink" title="SCSS의 문법"></a>SCSS의 문법</h1><ul>
-<li>변수의 사용 가능</li>
-<li><code>mixin</code> 생성 가능<ul>
-<li>재사용되는 스타일 블록을 함수처럼 사용 가능</li>
+        <h1 id="데이터-마이닝"><a href="#데이터-마이닝" class="headerlink" title="데이터 마이닝"></a>데이터 마이닝</h1><ul>
+<li>데이터로부터 알려지지 않은 특성(unknown properties)을 발견하는 기술에 중점</li>
 </ul>
+<h2 id="분석기법"><a href="#분석기법" class="headerlink" title="분석기법"></a>분석기법</h2><h3 id="분류분석-Classification-Analysis"><a href="#분류분석-Classification-Analysis" class="headerlink" title="분류분석(Classification Analysis)"></a>분류분석(Classification Analysis)</h3><ul>
+<li>데이터가 어떤 그룹에 속하는지 예측하는데 사용</li>
+<li>K-최근접 이웃(K-Nearest Neighborhood), 의사결정 나무(Decision Tree), 베이지안 정리(Bayesian Theorem)를 이용한 분류, 인공신경망(Artificial Neural Network), 지지벡터기계(Support Vector Machine) 등을 세부 기법으로 사용</li>
+</ul>
+<h3 id="회귀분석-Regression-Analysis"><a href="#회귀분석-Regression-Analysis" class="headerlink" title="회귀분석(Regression Analysis)"></a>회귀분석(Regression Analysis)</h3><ul>
+<li>원인이 되는 변수(독립 변수)와 결과로 간주되는 변수(종속 변수) 관계가 성립될 때, 하나 또는 여러 개의 독립변수와 종속변수 간의 관계를 분석하는 통계 기법</li>
+<li>입력 데이터에서 변수간의 관계를 가장 잘 설명할 수 있는 y = a + bx 형태의 선형방정식을 찾아내고, 이를 통해 주어진 독립변수에 대해 종속 변수의 값을 예측</li>
+<li>독립변수의 개수에 따라 단순선형회귀와 다중회귀모형으로 나뉨(다중회귀모형이 많이 쓰인다)</li>
+</ul>
+<h3 id="군집분석Clustering-Analysis"><a href="#군집분석Clustering-Analysis" class="headerlink" title="군집분석Clustering Analysis)"></a>군집분석Clustering Analysis)</h3><ul>
+<li><p>특성에 따라 객체를 여러 개의 배타적인 집단으로 나누는 것</p>
 </li>
-<li><code>$.자식요소</code> 사용 가능<ul>
-<li>부모의 요소와 자식의 요소가 함께 사용됐을 때</li>
-</ul>
+<li><p>데이터의 자발적인 군집화를 유도</p>
 </li>
-<li><code>@import</code> 구문 사용 가능</li>
-</ul>
-</blockquote>
-<h3 id="open-color"><a href="#open-color" class="headerlink" title="open-color"></a>open-color</h3><p><code>Sass</code> 라이브러리 중 하나로 색상 팔레트임</p>
-<p>사용을 위해선 <code>@import &#39;~open-color/open-color&#39;;</code></p>
-<h3 id="include-media"><a href="#include-media" class="headerlink" title="include-media"></a>include-media</h3><p><code>Sass</code> 라이브러리 중 하나로 반응형 디자인을 쉽게 만들어줌</p>
-<p>사용을 위해선 <code>@import &#39;~include-media/dist/include-media&#39;;</code> 구문 필요</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">include</span> media(<span class="string">"&gt;phone"</span>, <span class="string">"&lt;=tablet"</span>) &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="classnames"><a href="#classnames" class="headerlink" title="classnames"></a>classnames</h3><p>CSS 클래스를 조건부로 설정하거나 여러 종류의 파라미터를 조합해 CSS 클래스를 설정할 수 있음</p>
-<p><code>classNames.bind()</code> 사용 가능</p>
-<h3 id="styled-components"><a href="#styled-components" class="headerlink" title="styled-components"></a>styled-components</h3><p>자바스크립트 파일안에 스타일까지 작성 가능</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Box = styled.div<span class="string">`</span></span><br><span class="line"><span class="string">  /* props 로 넣어준 값을 직접 전달해줄 수 있습니다. */</span></span><br><span class="line"><span class="string">  background: <span class="subst">$&#123;props =&gt; props.color || <span class="string">'blue'</span>&#125;</span>;</span></span><br><span class="line"><span class="string">  padding: 1rem;</span></span><br><span class="line"><span class="string">  display: flex;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><h3 id="redux-1"><a href="#redux-1" class="headerlink" title="redux"></a>redux</h3><p>상태 관리 로직을 컴포넌트 밖에서 관리하는 라이브러리</p>
+<li><p>군집으로 나뉜 뒤 각 군집의 특성과 군집간의 차이 등에 대해 분석</p>
+</li>
+<li><p>계층적 군집 방법과 비계층적 군집 방법이 있음</p>
 <ul>
-<li><code>createStore(리듀서)</code></li>
-<li><code>combineReducers({객체})</code><ul>
-<li>서브 리듀서들을 하나로 합쳐 통합 리듀서를 만들어주는 역할</li>
-</ul>
+<li><p>계층적 군집 방법(Hierarchical Clustering)</p>
+<p>n개의 군집으로 시작해 점차 군집의 개수를 줄여나가는 방법이다.</p>
 </li>
-<li><code>bindActionCreators(액션 생성 함수가 있는 객체 모듈, dispatch)</code><ul>
-<li>액션 생성함수 자동 바인딩</li>
-</ul>
-</li>
-<li><code>applyMiddkeware()</code></li>
-</ul>
-<h3 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h3><ul>
-<li><code>Provider</code><ul>
-<li>리액트 어플리케이션에 손쉽게 스토어를 연동할 수 있도록 돕는 컴포넌트</li>
-</ul>
-</li>
-<li><code>connect(stateToProps, dispatchToProps)(뷰 컴포넌트)</code><ul>
-<li>뷰단 컴포넌트를 어플리케이션의 데이터 레이어와 묶는다</li>
-</ul>
-</li>
-</ul>
-<h3 id="react-actions"><a href="#react-actions" class="headerlink" title="react-actions"></a>react-actions</h3><ul>
-<li><code>createAction(액션정의)</code></li>
-<li><code>handleActions(액션에 따라 실행할 함수들이 담긴 객체, 기본 값)</code><ul>
-<li>리듀서 만들 때 활용</li>
-</ul>
-</li>
-</ul>
-<h2 id="middleware"><a href="#middleware" class="headerlink" title="middleware"></a>middleware</h2><h3 id="redux-logger"><a href="#redux-logger" class="headerlink" title="redux-logger"></a>redux-logger</h3><h3 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h3><p>객체가 아닌 함수도 디스패치할 수 있게 하는 미들웨어</p>
-<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><p>요청의 응답 정보를 지닌 객체를 반환</p>
-<h3 id="redux-promise-middleware"><a href="#redux-promise-middleware" class="headerlink" title="redux-promise-middleware"></a>redux-promise-middleware</h3><p>Promise 객체를 payload로 전달하면 요청을 시작, 성공, 실패할 때 액션의 뒷부분에 <code>_PENDING</code>, <code>_FULFILLED</code>, <code>_REJECTED</code>를 붙여서 반환</p>
+<li><p>비계층적 군집 방법(Nonhierarchical Clustering)</p>
 <ul>
-<li><code>createPromise()</code></li>
-</ul>
-<h3 id="redux-pender"><a href="#redux-pender" class="headerlink" title="redux-pender"></a>redux-pender</h3><p>액션 객체 안 <code>payload</code>가 <code>Promise</code> 형태라면 액션의 뒷부분에 관련 접미사를 붙여 반환(<code>redux-promise-middleware</code> 와 유사하지만 객체가 온다는 게 좀 다름)</p>
+<li><p>n개의 개체를 g개의 군집으로 나눌 수 있는 모든 방법을 점검해 최적화한 군집을 형성</p>
+</li>
+<li><p>K-Means 군집화가 대표적인 예</p>
 <ul>
-<li><code>penderMiddleware()</code></li>
-<li><code>pender()</code><ul>
-<li><code>…pender({ type: 액션타입명, 함수 : (state, action) =&gt; {} })</code></li>
-<li>type에 접미사를 붙인 액션 핸들러들이 담긴 객체를 생성</li>
-</ul>
+<li><p>장점</p>
+<p>데이터의 내부구조에 대한 사전정보 없이 의미 있는 구조를 찾을 수 있으며, 객체간의 거리를 데이터 형태에 맞게 정의하면 모든 형태의 데이터에 대해 적용 가능</p>
 </li>
-<li><code>applyPenders()</code><ul>
-<li><code>…pender()</code> 를 여러 번 생성해야할 때</li>
+<li><p>단점</p>
+<p>가중치와 거리 정의가 어려우며 초기 군집수를 결정하기 어려움</p>
+</li>
 </ul>
 </li>
 </ul>
-<h2 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h2><h3 id="react-router-dom"><a href="#react-router-dom" class="headerlink" title="react-router-dom"></a>react-router-dom</h3><ul>
-<li><code>Route</code></li>
-<li><code>Link</code></li>
-<li><code>NavLink</code></li>
-<li><code>BrowserRouter</code><ul>
-<li>웹 브라우저에서 사용하는 라우터</li>
+</li>
 </ul>
 </li>
 </ul>
-<h3 id="query-string"><a href="#query-string" class="headerlink" title="query-string"></a>query-string</h3><h3 id="cross-env"><a href="#cross-env" class="headerlink" title="cross-env"></a>cross-env</h3><ul>
-<li>window의 경우 node_path를 쓰기 위함</li>
+<h3 id="연관분석-Association-Analysis"><a href="#연관분석-Association-Analysis" class="headerlink" title="연관분석(Association Analysis)"></a>연관분석(Association Analysis)</h3><ul>
+<li><p>흔히 말하는 장바구니 분석, 서열 분석</p>
+</li>
+<li><p>빈발 항목 집합과 연관 규칙 도출에 중점</p>
+</li>
 </ul>
-<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><h3 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h3><ul>
-<li>Map</li>
-<li>fromJS</li>
-<li>List</li>
-</ul>
-<h2 id="react-loadable"><a href="#react-loadable" class="headerlink" title="react-loadable"></a>react-loadable</h2><p>페이지 로딩을 할 때부터 청크파일들을 다른 자바스크립트파일들과 동일한 시점에서 로딩을 시작 할 수 있다.</p>
+<h2 id="관련-도구"><a href="#관련-도구" class="headerlink" title="관련 도구"></a>관련 도구</h2><h3 id="머하웃"><a href="#머하웃" class="headerlink" title="머하웃"></a>머하웃</h3><ul>
+<li><p>확장성 있는 기계학습 라이브러리</p>
+</li>
+<li><p>기본적으로 자바만 지원하나 MLlib와 혼용하면 스칼라와 파이썬까지 함께 쓸 수 있다.</p>
+</li>
+<li><p>머하웃 소프트웨어 스택은 아래와 같다.</p>
+<p><img src="http://www.dbguide.net/publishing/img/dbguide/bigdata_technology/412_bigdata_01.png" alt=""></p>
+</li>
+<li><p>주요 알고리즘</p>
 <ul>
-<li><code>Loadable({})</code></li>
-<li><code>preload()</code></li>
+<li>분류</li>
+<li>군집화</li>
+<li>추천 시스템</li>
+<li>장바구니 분석</li>
+</ul>
+</li>
+<li><p><a href="https://mahout.apache.org/" target="_blank" rel="noopener">공식 사이트 및 지원 알고리즘 확인</a></p>
+</li>
+</ul>
+<h3 id="Spark-MLlib"><a href="#Spark-MLlib" class="headerlink" title="Spark MLlib"></a>Spark MLlib</h3><ul>
+<li><p>현재 제일 많이 쓰임</p>
+</li>
+<li><p>하나에 귀속되지 않는 범용성 목적의 빅데이터 플랫폼</p>
+</li>
+<li><p>데이터를 메모리에 올리는 형태가 달라 머하웃과 같은 타 라이브러리와 비교 시 더 빠른 결과를 얻어낼 수 있어 많이 사용</p>
+</li>
+<li><p>2014년도 이후 머하웃에 추가된 알고리즘은 스파크 기반</p>
+</li>
+<li><p>위에서 언급한대로 자바, 스칼라, 파이썬을 지원하나 메인 언어는 스칼라</p>
+</li>
+<li><p>그래프 알고리즘</p>
+<p><img src="http://www.dbguide.net/publishing/img/dbguide/bigdata_technology/413_bigdata_02.png" alt=""></p>
+<ul>
+<li><a href="https://spark.apache.org/mllib/" target="_blank" rel="noopener">공식 사이트 및 활용법</a></li>
+</ul>
+</li>
 </ul>
 
       
@@ -230,7 +221,7 @@
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
 
       
       
@@ -248,7 +239,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/10/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/12/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/10/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/12/">Next</a>
   </nav>
 
 </section>
@@ -301,7 +292,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">62</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">65</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -349,6 +340,42 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/05/17/woowahan02/">우아한테크러닝 Typescript &amp; React 101 02</a></h6>
+              <span>5월 17, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/16/javascript01/">우아한형제들 javascript 01</a></h6>
+              <span>5월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/16/react-troubleshooting01/">컴포넌트를 대문자로 쓰지 않았더니</a></h6>
+              <span>5월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/05/15/woowahan01/">우아한테크러닝 Typescript &amp; React 101 01</a></h6>
               <span>5월 15, 2019</span>
             </div>
@@ -379,42 +406,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/07/css-flex/">flex 게임</a></h6>
-              <span>5월 7, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/07/createRef/">React.createRef()</a></h6>
-              <span>5월 7, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/04/29/text-mining/">텍스트 마이닝</a></h6>
-              <span>4월 29, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -425,7 +416,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

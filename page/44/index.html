@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-2018-12-18" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-01-09-node.js와-DB-사용" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/18/2018-12-18/">2018-12-18 수업 내용 정리</a>
+      <a class="article-title" href="/2019/01/09/2019-01-09-node.js와-DB-사용/">node.js와 DB 사용</a>
     </h1>
   
 
@@ -118,8 +118,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/12/18/2018-12-18/" class="article-date">
-	  <time datetime="2018-12-18T08:43:18.000Z" itemprop="datePublished">12월 18, 2018</time>
+	<a href="/2019/01/09/2019-01-09-node.js와-DB-사용/" class="article-date">
+	  <time datetime="2019-01-09T02:52:18.000Z" itemprop="datePublished">1월 9, 2019</time>
 	</a>
 
       
@@ -129,10 +129,93 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="프로시저의-호출"><a href="#프로시저의-호출" class="headerlink" title="프로시저의 호출"></a>프로시저의 호출</h2><h3 id="순수-원시-코드에서의-프로시저-호출"><a href="#순수-원시-코드에서의-프로시저-호출" class="headerlink" title="순수 원시 코드에서의 프로시저 호출"></a>순수 원시 코드에서의 프로시저 호출</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CallableStatement cstmt = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">// oracle procedure 사용시 준비</span></span><br><span class="line">String sql=<span class="string">"&#123;call usp_emplist(?,?)&#125;"</span>;</span><br><span class="line">cstmt  = conn.prepareCall(sql);</span><br><span class="line">cstmt.setInt(<span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">cstmt.registerOutParameter(<span class="number">2</span>, OracleTypes.CURSOR);</span><br><span class="line"><span class="comment">// 두번째 파라미터로 커서 타입을 명기해준다</span></span><br><span class="line"><span class="comment">// 두번째 파라미터에 rs의 주소값을 넣을 것</span></span><br><span class="line"><span class="keyword">boolean</span> result = cstmt.execute();</span><br><span class="line">rs = (ResultSet)cstmt.getObject(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 주소 정보 얻기</span></span><br><span class="line"><span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">	System.out.println(rs.getInt(<span class="number">1</span>) + <span class="string">"/"</span> + </span><br><span class="line">                       rs.getString(<span class="number">2</span>) + <span class="string">"/"</span> + </span><br><span class="line">                       rs.getInt(<span class="number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="node-js와-DB-사용"><a href="#node-js와-DB-사용" class="headerlink" title="node.js와 DB 사용"></a>node.js와 DB 사용</h2><ol>
+<li><p><code>npm install mysql</code> 모듈 설치</p>
+</li>
+<li><p><code>mysql.createConnection(DATABASE-CONFIG);</code> 커넥션</p>
+<ul>
+<li><p>커넥션 설정</p>
+<ul>
+<li><code>host</code>, <code>port</code> : DMBS 주소와 포트(기본 3306)</li>
+<li><code>user</code>, <code>password</code> : DBMS 사용자 계정과 암호</li>
+<li><code>database</code> : 데이터베이스 이름</li>
+<li><code>multipleStatements</code> : 동시에 여러 SQL 실행. 보안에 주의</li>
+<li><code>connectTimeout</code> : DBMS 연결 타임 아웃 시간. 기본은 10,000 ms</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dbConfig = &#123;</span><br><span class="line"> host : <span class="string">'localhost'</span>,</span><br><span class="line"> user : <span class="string">'root'</span>,</span><br><span class="line"> password : <span class="string">'1234'</span></span><br><span class="line"> database : <span class="string">'Moviest'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(dbConfig);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>커넥션 연결과 닫기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (err) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.error(<span class="string">'error connecting: '</span> + err.stack);</span><br><span class="line"> 		<span class="keyword">return</span>;</span><br><span class="line"> 	&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'connected as id '</span> +v connection.threadId);</span><br><span class="line">connection.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>커넥션 풀 사용하기</p>
+<ul>
+<li><p>생성</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql.createPool(Option)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>풀의 옵션풀 옵션</p>
+<ul>
+<li><code>waitForConnections</code> : 풀에 여유 커넥션이 없는 경우 대기 여부</li>
+<li><code>connectionLimit</code> : 최대 커넥션 개수. 기본 10개</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool = mysql.createPool(&#123;</span><br><span class="line"> host : <span class="string">'localhost'</span>,</span><br><span class="line"> user : <span class="string">'user'</span>,</span><br><span class="line"> password : <span class="string">'1234’,</span></span><br><span class="line"><span class="string"> connectionLimit : 50</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>풀에서 커넥션 얻기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection&#123;</span></span></span><br><span class="line"><span class="function"><span class="params"> <span class="regexp">//</span> connected! (unless <span class="string">`err`</span> is set</span>)</span></span><br><span class="line"><span class="function">&#125;);</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>풀에 커넥션 반환 <code>conn.release();</code></p>
+</li>
+<li><p>풀 닫기 <code>pool.end();</code></p>
+</li>
+</ul>
+</li>
+<li><p>커넥션 모듈 분리</p>
+<ul>
+<li><p>DB 커넥션 모듈</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> dbPool = mysql.createPool(dbConfig);</span><br><span class="line"><span class="built_in">module</span>.exports = dbPool;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>모듈 사용</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool = <span class="built_in">require</span>(‘./dbconnection’);</span><br><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, conn</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SQL 문 실행</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sql = <span class="string">'INSERT INTO movies ...'</span>;</span><br><span class="line">connection.query(sql,<span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">		<span class="built_in">console</span>.error(<span class="string">'INSERT Error'</span>, err);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'results : '</span>, results);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sql = <span class="string">'INSERT INTO movies (title, director, year) VALUES (?, ?, ?);'</span>;</span><br><span class="line"><span class="comment">// 인터스텔라, 크리스퍼 놀란, 2015가 순차적으로 들어간다</span></span><br><span class="line">connection.query(sql, [<span class="string">'인터스텔라'</span>, <span class="string">'크리스토퍼 놀란'</span>, <span class="number">2015</span>],<span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>)</span>&#123;</span><br><span class="line"> <span class="comment">// 에러와 결과 처리</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>insert 문 실행</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">	title : <span class="string">'메멘토'</span>,</span><br><span class="line">	director : <span class="string">'크리스토퍼 놀란'</span>,</span><br><span class="line">	year : <span class="number">2000</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> sql = <span class="string">'INSERT INTO movies SET ?'</span>;</span><br><span class="line">connection.query(sql, data, <span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// 에러 처리</span></span><br><span class="line"> <span class="comment">// 결과 사용</span></span><br><span class="line"> connection.release();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>실행 결과<ul>
+<li>affectedRow : 영향을 받은 열의 갯수</li>
+<li>insertID : 새로 추가한 경우 Primary Key</li>
+<li>changedRow : 변경된 열의 수 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>select 문 실행</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var sql = &apos;SELECT * FROM movies&apos;;</span><br><span class="line">conn.query(sql, function(err, results) &#123;</span><br><span class="line">	if ( err ) &#123;</span><br><span class="line">         console.error(&apos;Error&apos;, err);</span><br><span class="line">         return;</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 0 ; i &lt; results.length ; i++) &#123;</span><br><span class="line">         var movieInfo = results[i];</span><br><span class="line">         console.log(&apos;제목 : &apos; + movieInfo.title + &apos; 감독 : &apos; + movieInfo.director);</span><br><span class="line">    &#125;  </span><br><span class="line">    conn.release();      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>movieInfo</code>에 하나의 레코드가 반환된다</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 <blockquote>
-<p>psmt는 쿼리문을 미리 컴파일해놓기 때문에 실행할 때 파라미터만 보낸다. 때문에 보안성이 높은 것</p>
+<h3 id="SQL-Injection-방지하기"><a href="#SQL-Injection-방지하기" class="headerlink" title="SQL Injection 방지하기"></a>SQL Injection 방지하기</h3><p><code>mysql.escape()</code>을 사용하거나 PlaceHolder 사용하기 (?,?,?)</p>
 </blockquote>
+<h3 id="트랜잭션"><a href="#트랜잭션" class="headerlink" title="트랜잭션"></a>트랜잭션</h3><p><code>conn.beginTransaction(function(err) { } );</code></p>
+<ul>
+<li><code>conn.commit()</code> : 트랜잭션 내 변경 확정</li>
+<li><code>conn.rollback()</code> : 트랜잭션 내 변경 되돌리기</li>
+</ul>
+<p>예제</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">conn.beginTransaction(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">	conn.query(sql1, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">			conn.rollback();</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		conn.query(sql2, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">				conn.rollback();</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		conn.commit();</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -157,7 +240,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/43/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/45/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/43/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/45/">Next</a>
   </nav>
 
 </section>
@@ -210,7 +293,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">62</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">65</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -258,6 +341,42 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/05/17/woowahan02/">우아한테크러닝 Typescript &amp; React 101 02</a></h6>
+              <span>5월 17, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/16/javascript01/">우아한형제들 javascript 01</a></h6>
+              <span>5월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/16/react-troubleshooting01/">컴포넌트를 대문자로 쓰지 않았더니</a></h6>
+              <span>5월 16, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/05/15/woowahan01/">우아한테크러닝 Typescript &amp; React 101 01</a></h6>
               <span>5월 15, 2019</span>
             </div>
@@ -288,42 +407,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/07/css-flex/">flex 게임</a></h6>
-              <span>5월 7, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/07/createRef/">React.createRef()</a></h6>
-              <span>5월 7, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/04/29/text-mining/">텍스트 마이닝</a></h6>
-              <span>4월 29, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -334,7 +417,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
