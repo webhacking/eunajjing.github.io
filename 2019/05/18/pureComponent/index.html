@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>PureComponent | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="PureComponent리액트에는 컴포넌트를 만드는 방법이 크게 3가지이다.  일반 컴포넌트 퓨어 컴포넌트 함수형 컴포넌트  이 중 일반 컴포넌트와 퓨어 컴포넌트에 대해 알아보고자 한다. 큰 차이는, shouldComponentUpdate()퓨어 컴포넌트는 shouldComponentUpdate()가 이미 구현되어 있으며, state, props를 얕은 비">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PureComponent">
+<meta property="og:url" content="http://eunajjing.github.io/2019/05/18/pureComponent/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="PureComponent리액트에는 컴포넌트를 만드는 방법이 크게 3가지이다.  일반 컴포넌트 퓨어 컴포넌트 함수형 컴포넌트  이 중 일반 컴포넌트와 퓨어 컴포넌트에 대해 알아보고자 한다. 큰 차이는, shouldComponentUpdate()퓨어 컴포넌트는 shouldComponentUpdate()가 이미 구현되어 있으며, state, props를 얕은 비">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-05-18T06:31:49.327Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PureComponent">
+<meta name="twitter:description" content="PureComponent리액트에는 컴포넌트를 만드는 방법이 크게 3가지이다.  일반 컴포넌트 퓨어 컴포넌트 함수형 컴포넌트  이 중 일반 컴포넌트와 퓨어 컴포넌트에 대해 알아보고자 한다. 큰 차이는, shouldComponentUpdate()퓨어 컴포넌트는 shouldComponentUpdate()가 이미 구현되어 있으며, state, props를 얕은 비">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-pureComponent" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      PureComponent
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/05/18/pureComponent/" class="article-date">
+	  <time datetime="2019-05-18T06:30:18.000Z" itemprop="datePublished">5월 18, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PureComponent"><a href="#PureComponent" class="headerlink" title="PureComponent"></a>PureComponent</h1><p>리액트에는 컴포넌트를 만드는 방법이 크게 3가지이다.</p>
+<ul>
+<li>일반 컴포넌트</li>
+<li>퓨어 컴포넌트</li>
+<li>함수형 컴포넌트</li>
+</ul>
+<p>이 중 일반 컴포넌트와 퓨어 컴포넌트에 대해 알아보고자 한다.</p>
+<h2 id="큰-차이는-shouldComponentUpdate"><a href="#큰-차이는-shouldComponentUpdate" class="headerlink" title="큰 차이는, shouldComponentUpdate()"></a>큰 차이는, <code>shouldComponentUpdate()</code></h2><p>퓨어 컴포넌트는 <code>shouldComponentUpdate()</code>가 이미 구현되어 있으며, <code>state</code>, <code>props</code>를 얕은 비교를 하여 변경된 것이 있을 때 컴포넌트를 리렌더링한다.</p>
+<blockquote>
+<h3 id="얕은-복사-깊은-복사"><a href="#얕은-복사-깊은-복사" class="headerlink" title="얕은 복사, 깊은 복사"></a>얕은 복사, 깊은 복사</h3><h4 id="얕은-복사"><a href="#얕은-복사" class="headerlink" title="얕은 복사"></a>얕은 복사</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">&gt; <span class="keyword">const</span> b = a;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="깊은-복사"><a href="#깊은-복사" class="headerlink" title="깊은 복사"></a>깊은 복사</h4><p>자바스크립트는 기본 자료형(<code>number</code>, <code>String</code>, <code>boolean</code>)은 값을 복사할 때 완전히 복사한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">&gt; <span class="keyword">const</span> b = a;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>이 경우 <code>a</code>와 <code>b</code>는 독립적이다.</p>
+<p><strong>그럼 객체의 경우에는</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">&gt; <span class="keyword">const</span> b = &#123;...a&#125;;</span><br><span class="line">&gt; <span class="comment">// 객체 for문을 돌려서 하나하나 때려박던가 assign()을 이용하던가</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>때문에 만약 <code>state</code>나 <code>props</code>가 복잡한 구조를 가지고 있다면 얕은 비교로는 리렌더링 여부를 결정할 수 없기 때문에 제어가 힘들다.</p>
+<p>아, 퓨어 컴포넌트 안에서도 <code>shouldComponentUpdate()</code>를 기재해서 사용할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; PureComponent &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">	(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/18/setInterval_clearInterval_setTimeout/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          setInterval, clearInterval, setTimeout
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/17/woowahan02/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">우아한테크러닝 Typescript &amp; React 101 02</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PureComponent"><span class="nav-number">1.</span> <span class="nav-text">PureComponent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#큰-차이는-shouldComponentUpdate"><span class="nav-number">1.1.</span> <span class="nav-text">큰 차이는, shouldComponentUpdate()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#얕은-복사-깊은-복사"><span class="nav-number">1.1.1.</span> <span class="nav-text">얕은 복사, 깊은 복사</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#얕은-복사"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">얕은 복사</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#깊은-복사"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">깊은 복사</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
