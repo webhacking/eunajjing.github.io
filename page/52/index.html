@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-2018-12-18" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-newdeal_node" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/18/2018-12-18/">2018-12-18 수업 내용 정리</a>
+      <a class="article-title" href="/2019/01/07/newdeal_node/">node JS</a>
     </h1>
   
 
@@ -118,8 +118,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/12/18/2018-12-18/" class="article-date">
-	  <time datetime="2018-12-18T08:43:18.000Z" itemprop="datePublished">12월 18, 2018</time>
+	<a href="/2019/01/07/newdeal_node/" class="article-date">
+	  <time datetime="2019-01-07T03:43:18.000Z" itemprop="datePublished">1월 7, 2019</time>
 	</a>
 
       
@@ -129,9 +129,350 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="프로시저의-호출"><a href="#프로시저의-호출" class="headerlink" title="프로시저의 호출"></a>프로시저의 호출</h2><h3 id="순수-원시-코드에서의-프로시저-호출"><a href="#순수-원시-코드에서의-프로시저-호출" class="headerlink" title="순수 원시 코드에서의 프로시저 호출"></a>순수 원시 코드에서의 프로시저 호출</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CallableStatement cstmt = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">// oracle procedure 사용시 준비</span></span><br><span class="line">String sql=<span class="string">"&#123;call usp_emplist(?,?)&#125;"</span>;</span><br><span class="line">cstmt  = conn.prepareCall(sql);</span><br><span class="line">cstmt.setInt(<span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">cstmt.registerOutParameter(<span class="number">2</span>, OracleTypes.CURSOR);</span><br><span class="line"><span class="comment">// 두번째 파라미터로 커서 타입을 명기해준다</span></span><br><span class="line"><span class="comment">// 두번째 파라미터에 rs의 주소값을 넣을 것</span></span><br><span class="line"><span class="keyword">boolean</span> result = cstmt.execute();</span><br><span class="line">rs = (ResultSet)cstmt.getObject(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 주소 정보 얻기</span></span><br><span class="line"><span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">	System.out.println(rs.getInt(<span class="number">1</span>) + <span class="string">"/"</span> + </span><br><span class="line">                       rs.getString(<span class="number">2</span>) + <span class="string">"/"</span> + </span><br><span class="line">                       rs.getInt(<span class="number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="node-기초"><a href="#node-기초" class="headerlink" title="node 기초"></a>node 기초</h2><p><img src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fpostfiles.pstatic.net%2FMjAxODA3MThfMjQ2%2FMDAxNTMxOTAyMzg1MTg2.5rsGwSB2qJ6-wA9AZHK11ndP0jje_KV7oz-dPSeTz_wg._8ylBC4oisCJSn_njxg11g9erRzmICf8sFHyR_lNTRAg.PNG.nbb_pinetree%2FNodejs-Processing-Model.png%3Ftype%3Dw966%22&amp;type=cafe_wa740" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// parent를 부모로 하는 것들은</span></span><br><span class="line">    <span class="comment">// sayhello 함수를 쓸 수 있게 붙인다</span></span><br><span class="line">    <span class="comment">// prototype 원시타입</span></span><br><span class="line">    <span class="comment">// function 키워드가 class도 생성 가능</span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'Hello World, from Parent Class!'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Parent();</span><br><span class="line">obj.sayHello();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 상속</span></span><br><span class="line">util.inherits(Child, Parent);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="keyword">new</span> Child();</span><br><span class="line">obj2.sayHello();</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>기본 모듈<br><a href="https://nodejs.org/dist/latest-v10.x/docs/api/process.html" target="_blank" rel="noopener">https://nodejs.org/dist/latest-v10.x/docs/api/process.html</a> 문서 에서 확인</p>
+<ol>
+<li>프로세스 환경 : <code>os</code>, <code>process</code></li>
+<li>파일과 경로 , URL : <code>fs</code>, <code>path</code>, <code>URL</code>, <code>querystring</code>, <code>stream</code></li>
+<li>네트워크 모듈 : <code>http</code>, <code>net</code>, <code>dns</code> </li>
+</ol>
+</li>
+<li><p>전역객체(global)  (Java 에서 Console 클래스 사용하는 것처럼 ….)<br>별도의 모듈 로딩 없이 사용가능<br><code>global.console.log()</code>  &gt;&gt;  <code>console.log()</code>   &gt;&gt; global 생략가능</p>
+</li>
+<li><p>전역객체 </p>
+<ol>
+<li>process</li>
+<li>console</li>
+<li>Buffer</li>
+<li>require</li>
+<li><code>__filename</code>, <code>__dirname</code></li>
+<li>module</li>
+<li>exports</li>
+<li>Timeout 함수 등</li>
+</ol>
+</li>
+<li><p>실습</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// process.js</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(process.env);</span><br><span class="line"><span class="built_in">console</span>.log(process.arch);</span><br><span class="line"><span class="built_in">console</span>.log(process.platform);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// timeout.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'Hello World'</span>);</span><br><span class="line">&#125;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     sayHello();</span><br><span class="line">&#125;, <span class="number">2</span>*<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//interval.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayGoodbye</span>(<span class="params">who</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Good bye'</span>, who);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//console.js</span></span><br><span class="line"><span class="keyword">var</span> intVal = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">     name : <span class="string">'NodeJS'</span>,</span><br><span class="line">     how : <span class="string">'Interesting'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'intVal : '</span> + intVal);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'obj : '</span> + obj);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'obj : '</span>, obj);</span><br><span class="line">setInterval(sayGoodbye, <span class="number">1</span> * <span class="number">1000</span>, <span class="string">'Friend'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console_custom.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> output = fs.createWriteStream(<span class="string">'stdout.log'</span>);</span><br><span class="line"><span class="keyword">var</span> errorOutput = fs.createWriteStream(<span class="string">'error.log'</span>);</span><br><span class="line"><span class="keyword">var</span> Console = <span class="built_in">require</span>(<span class="string">'console'</span>).Console;</span><br><span class="line"><span class="keyword">var</span> logger = <span class="keyword">new</span> Console(output, errorOutput);</span><br><span class="line">logger.info(<span class="string">'info message'</span>);</span><br><span class="line">logger.log(<span class="string">'log message'</span>);</span><br><span class="line">logger.warn(<span class="string">'warning'</span>);</span><br><span class="line">logger.error(<span class="string">'error message'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// consoleTime.js</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'TIMER'</span>);</span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span> ; i &lt; <span class="number">100000</span>; i++ ) &#123;</span><br><span class="line">	sum += i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'sum : '</span>, sum);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'TIMER'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// util.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> str1 = util.format(<span class="string">'%d + %d + %d'</span>, <span class="number">1</span>, <span class="number">2</span>, (<span class="number">1</span>+<span class="number">2</span>));</span><br><span class="line"><span class="built_in">console</span>.log(str1);</span><br><span class="line"><span class="keyword">var</span> str2 = util.format(<span class="string">'%s %s'</span>, <span class="string">'Hello'</span>, <span class="string">' NodeJS'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str2);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Node.js 애플리케이션의 이벤트들</p>
+<ol>
+<li><p>클라이언트의 접속 요청</p>
+</li>
+<li><p>소켓에 데이터 도착</p>
+</li>
+<li><p>파일 오픈/읽기 완료</p>
+</li>
+<li><p>이벤트 처리</p>
+</li>
+<li><p>비동기 처리</p>
+</li>
+<li><p>리스너 함수</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">process.on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">'occur exit event'</span>);&#125;); </span><br><span class="line">process.once(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">'occur exit event'</span>);&#125;);</span><br><span class="line"></span><br><span class="line">process.emit(<span class="string">'exit'</span>);  <span class="comment">//이벤트 발생</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>경로 : path</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pathUtil = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>경로정보</p>
+<ul>
+<li>전역객체<br><code>__filename</code><br><code>__dirname</code></li>
+<li>같은 폴더 내 이미지 경로</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = __dirname + <span class="string">'/image.jpg'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// path.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pathUtil = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="string">'C:\NewDeal\Script\read.txt'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'dirname : '</span>, pathUtil.dirname(path));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'basename : '</span>, pathUtil.basename(path));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'extname : '</span>, pathUtil.extname(path));</span><br><span class="line"><span class="built_in">console</span>.log(__dirname);</span><br><span class="line"><span class="built_in">console</span>.log(__filename);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>파일 시스템 다루기 </p>
+<ul>
+<li><p>파일 시스템 모듈 : <code>fs</code> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(‘fs’);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>주요 기능</p>
+<ul>
+<li>파일 생성/읽기/쓰기/삭제 </li>
+<li>파일 접근성/속성 </li>
+<li>디렉토리 생성/읽기/삭제 </li>
+<li>파일 스트림주의 : 모든 플랫폼에 100% 호환되지 않음<br>(윈도우, 리눅스 파일 경로 다르듯)</li>
+</ul>
+</li>
+<li><p>fs 모듈 사용시</p>
+<ul>
+<li><p>비동기식 : callback 사용</p>
+</li>
+<li><p>논-블럭 방식</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'textfile.txt'</span>, <span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;&#125;); </span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'none_exist.txt'</span>, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ( err ) &#123; <span class="built_in">console</span>.error(<span class="string">'Readfile error '</span>, err); </span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">else</span> &#123; <span class="comment">// 정상 처리 &#125; </span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>동기식 : <code>readFileSync</code></p>
+<ul>
+<li><p>블럭방식 : 성능상 주의</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = fs.readFileSync(<span class="string">'textfile.txt'</span>, <span class="string">'utf8'</span>); </span><br><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">	<span class="keyword">var</span> data = fs.readFileSync(<span class="string">'none_exist.txt'</span>, <span class="string">'utf-8'</span>);&#125;</span><br><span class="line"><span class="keyword">catch</span> ( exception ) &#123; </span><br><span class="line">	<span class="built_in">console</span>.error(<span class="string">'Readfile Error : '</span>, exception); </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFile(<span class="string">'textData.txt'</span>, <span class="string">'Hello World'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">'Error : '</span>, err);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Write'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FileRead.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> file = <span class="string">'read.txt'</span>;</span><br><span class="line">fs.access(file, fs.F_OK, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'파일 없음'</span>);</span><br><span class="line">      process.exit(<span class="number">1</span>);      </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'파일 존재'</span>);</span><br><span class="line">      fs.stat(file, <span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">            <span class="built_in">console</span>.error(<span class="string">'File Stats Error'</span>, err);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">          </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'Create : '</span>, stats[<span class="string">'birthtime'</span>]);</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'size : '</span>, stats[<span class="string">'size'</span>]);</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'isFile : '</span>, stats.isFile());</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'isDirectory : '</span>, stats.isDirectory());</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'isBlockDevice : '</span>, stats.isBlockDevice());</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> ( stats.isFile() ) &#123;</span><br><span class="line">            fs.readFile(file, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">               <span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">                  <span class="built_in">console</span>.error(<span class="string">'File Read Error'</span>, err);</span><br><span class="line">                  <span class="keyword">return</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="comment">// encoding을 작성하지 않으면 Buffer로</span></span><br><span class="line">               <span class="keyword">var</span> str = data.toString(<span class="string">'utf-8'</span>);</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'File Contents : '</span>, str);</span><br><span class="line">            &#125;);               </span><br><span class="line">         &#125;      </span><br><span class="line">      &#125;);         </span><br><span class="line">   &#125;   </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>스트림 : 데이터 전송 흐름</p>
+<ul>
+<li><p>콘솔 입력/출력</p>
+</li>
+<li><p>파일 읽기/쓰기</p>
+</li>
+<li><p>서버/클라이언트 -데이터 전송</p>
+</li>
+<li><p>스트림종류</p>
+<ul>
+<li><p>읽기 스트림 : Readable Stream</p>
+<ul>
+<li>모드 : flowing, paused </li>
+<li>flowing mode <ul>
+<li>데이터를 자동으로 읽는 모드</li>
+<li>전달되는 데이터를 다루지 않으면 데이터 유실 </li>
+</ul>
+</li>
+<li>paused mode <ul>
+<li>데이터가 도착하면 대기 </li>
+<li>read() 함수로 데이터 읽기</li>
+</ul>
+</li>
+<li>상태<ul>
+<li>readable : 읽기 가능한 상태</li>
+<li>data : 읽을 수 있는 데이터 도착 </li>
+<li>end : 더 이상 읽을 데이터가 없는 상태</li>
+<li>close : 스트림이 닫힌 상태 </li>
+<li>error : 에러</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> is = fs.createReadStream(file);</span><br><span class="line"></span><br><span class="line">is.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'== READABLE EVENT'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">is.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'== DATA EVENT'</span>);</span><br><span class="line"> <span class="built_in">console</span>.log(chunk.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// end 이벤트</span></span><br><span class="line">is.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'== END EVENT'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> is = fs.createReadStream(file);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 'data' 이벤트가 없으면 paused mode</span></span><br><span class="line">is.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'== READABLE EVENT'</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 10바이트씩 읽기</span></span><br><span class="line"> <span class="keyword">while</span>( chunk = is.read(<span class="number">10</span>) ) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'chunk : '</span>, chunk.toString());</span><br><span class="line"> &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>쓰기 스트림 : Writeable Stream</p>
+<ul>
+<li>데이터 출력</li>
+<li>http 클라이언트의 요청 </li>
+<li>http서버의 응답 </li>
+<li>쓰기 스트림</li>
+<li>tcp 소켓</li>
+<li>이벤트<ul>
+<li>drain : 출력 스트림에 남은 데이터를 모두 보낸 이벤트 </li>
+<li>error : 에러 </li>
+<li>finish : 모든 데이터를 쓴 이벤트 </li>
+<li>pipe : 읽기 스트림과 연결(pipe)된 이벤트 </li>
+<li>unpipe : 연결(pipe) 해제 이벤트</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> os = fs.createWriteStream(<span class="string">'output.txt'</span>);</span><br><span class="line">os.on(<span class="string">'finish'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'== FINISH EVENT'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">os.write(<span class="string">'1234\n'</span>);</span><br><span class="line">os.write(<span class="string">'5678\n'</span>);</span><br><span class="line">os.end();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>읽기/쓰기 </p>
+</li>
+<li><p>변환</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>URL <code>var url = require(‘url&#39;);</code></p>
+<ul>
+<li><code>url.parse(urlStr[, parseQueryString][, slashesDenoteHost])</code><ul>
+<li>urlStr : URL 문자열 </li>
+<li>parseQueryString : 쿼리 문자열 파싱, 기본값 false </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> urlStr = <span class="string">'http://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&amp;tagmode=any&amp;format=json&amp;jsoncallback=?'</span>;</span><br><span class="line"><span class="keyword">var</span> parsed = url.parse(urlStr, <span class="literal">true</span>);</span><br><span class="line"><span class="built_in">console</span>.log(parsed);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'protocol : '</span>, parsed.protocol);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'host : '</span>, parsed.host);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'query : '</span>, parsed.query);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="모듈-만들기"><a href="#모듈-만들기" class="headerlink" title="모듈 만들기"></a>모듈 만들기</h2><ol>
+<li><p>모듈 만들기</p>
+<ul>
+<li>소스 코들 분리</li>
+<li>모듈 단위로</li>
+</ul>
+</li>
+<li><p>모듈 작성 방법 <code>module.exports</code></p>
+</li>
+<li><p>모듈 사용하기</p>
+<ul>
+<li><p>모듈 로딩 : <code>require</code><br><code>require(&#39;mymodule.js&#39;);</code></p>
+</li>
+<li><p>모듈 로딩 에러<br><code>require(&#39;mymodule.js&#39;);</code> </p>
+<p>이 경우 에러가 난다.<br>(<code>./mymodule.js</code>)  사용자가 생성 한 모듈처리 해야함</p>
+</li>
+</ul>
+</li>
+<li><p>모듈 만들기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mymodule.js</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.goodMorning = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// 모듈 함수 기능 작성</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.goodNight = <span class="function"><span class="keyword">function</span>(<span class="params">arg, callback</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// module 생략 가능</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>사용하기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> greeting = <span class="built_in">require</span>(<span class="string">'mymodule.js'</span>);</span><br><span class="line">greeting.goodMorning();</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>psmt는 쿼리문을 미리 컴파일해놓기 때문에 실행할 때 파라미터만 보낸다. 때문에 보안성이 높은 것</p>
+<p>exports 하지 않은 함수는 사용 불가^^</p>
+<p>예제)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">// student.js</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="keyword">var</span> student = &#123;</span><br><span class="line">&gt;  hour : <span class="number">0</span>,</span><br><span class="line">&gt;  study : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&gt;  <span class="keyword">this</span>.hour++;</span><br><span class="line">&gt;  <span class="built_in">console</span>.log(<span class="keyword">this</span>.hour + <span class="string">'시간째 공부 중'</span>);</span><br><span class="line">&gt;  &#125;</span><br><span class="line">&gt; &#125;;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">module</span>.exports = student;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>사용할 때는</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> you = <span class="built_in">require</span>(<span class="string">'student.js'</span>);</span><br><span class="line">&gt; you.study();</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><h3 id="서버-구동"><a href="#서버-구동" class="headerlink" title="서버 구동"></a>서버 구동</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>); </span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123; </span><br><span class="line">    res.end(‘Hello World’); </span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="http-요청-request"><a href="#http-요청-request" class="headerlink" title="http 요청( request)"></a>http 요청( request)</h3><p><code>var server = http.createServer(function(req, res){})</code></p>
+<ul>
+<li>req.url : 요청 url, 경로와 쿼리 문자열 </li>
+<li>req.method : 요청 메소드 </li>
+<li>req.headers : 요청 메시지의 헤더 </li>
+<li>req(streamable) : 요청 메시지 바디</li>
+</ul>
+<h3 id="요청-쿼리-문자열-분석"><a href="#요청-쿼리-문자열-분석" class="headerlink" title="요청 쿼리 문자열 분석"></a>요청 쿼리 문자열 분석</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="헤더-메시지-분석"><a href="#헤더-메시지-분석" class="headerlink" title="헤더 메시지 분석"></a>헤더 메시지 분석</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> headers = req.headers;</span><br><span class="line">headers.host</span><br><span class="line">headers.content-type</span><br><span class="line">headers.user-agent</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(‘HTTP Method : <span class="string">' + req.method);</span></span><br><span class="line"><span class="string">     console.log(‘HTTP URL : '</span> + req.url);</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'== HEADERS =='</span>);</span><br><span class="line">     <span class="built_in">console</span>.log(req.headers);</span><br><span class="line">     res.end(<span class="string">'Hello Node.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="응답"><a href="#응답" class="headerlink" title="응답"></a>응답</h3><ul>
+<li><p>응답 메시지</p>
+</li>
+<li><p>상태 코드와 상태 메시지</p>
+</li>
+<li><p>응답 메시지 헤더</p>
+</li>
+<li><p>응답 메시지 바디</p>
+</li>
+<li>메시지 상태<ul>
+<li>response.statusCode</li>
+<li>response.statusMessage</li>
+</ul>
+</li>
+<li>메시지 헤더<ul>
+<li>response.writeHead(statusCode, statusMessage, headers)<br>(statusMessage, headers  생략 가능)</li>
+<li>response.removeHeader(name)</li>
+<li>response.getHeader(name)</li>
+<li>response.setHeader(name, value)</li>
+</ul>
+</li>
+<li>메시지 바디<ul>
+<li>response.end()<ul>
+<li>data, encoding, callback을 파라미터로 가질 수 있으며 생략도 가능</li>
+</ul>
+</li>
+<li>response.write()<ul>
+<li>chunk, encoding, callback을 파라미터로 가질 수 있으며 생략도 가능</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 200 OK</span></span><br><span class="line">response.statusCode = <span class="number">200</span>;</span><br><span class="line">response.statusMessage = ‘OK’;</span><br><span class="line"><span class="comment">// 404 Error</span></span><br><span class="line">response.statusCode = <span class="number">404</span>;</span><br><span class="line">response.statusMessage = <span class="string">'Not found'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>응답 메시지<br><code>res.writeHead(200, { &#39;Content-Length&#39;: body.length, &#39;Content-Type&#39;: &#39;text/plain&#39; });</code></p>
+</li>
+<li><p>헤더 작성</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html"</span>);</span><br><span class="line">res.setHeader(<span class="string">"Content-Length“, body.length);</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>예제 파일들</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'Method : '</span>, req.method);</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'url : '</span>, req.url);</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'headers : '</span>, req.headers[<span class="string">'user-agent'</span>]);</span><br><span class="line">   </span><br><span class="line"> res.write(<span class="string">'Hello World'</span>);</span><br><span class="line"> res.end();</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"> res.statusCode = <span class="number">200</span>;</span><br><span class="line"> res.statusMessage = <span class="string">'OKOK'</span>;</span><br><span class="line"> res.setHeader(<span class="string">'content-type'</span>,<span class="string">'text/plain'</span>);  <span class="comment">//설정에 따라 Client 화면 다르게 보인다</span></span><br><span class="line"> </span><br><span class="line"> res.write(<span class="string">'&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello World&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;'</span>);</span><br><span class="line"> res.end();</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"> fs.access(<span class="string">'cat.jpg'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;\</span><br><span class="line"> <span class="comment">//이름 없는 이름 cat1.jpg 테이스 한후에</span></span><br><span class="line"> <span class="keyword">if</span> ( err ) &#123;</span><br><span class="line">   res.statusCode = <span class="number">404</span>;</span><br><span class="line">   res.end();</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  fs.readFile(<span class="string">'cat.jpg'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;   </span><br><span class="line">   res.end(data);</span><br><span class="line">  &#125;);</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;).listen(<span class="number">3333</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// URL 분석 : 쿼리 문자열</span></span><br><span class="line"> <span class="keyword">var</span> parsed = url.parse(req.url, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">// 이 때 parsed 안에는 프로토콜, 호스트 등의 정보가 담긴 json 객체</span></span><br><span class="line"> <span class="keyword">var</span> query = parsed.query;</span><br><span class="line">    <span class="comment">// 맵 구조로 돌아온다.</span></span><br><span class="line">    <span class="comment">// http://127.0.0.1:3000/cal?start=1&amp;end=10</span></span><br><span class="line">    <span class="comment">// 이런 url을 치면 실행됨</span></span><br><span class="line">    <span class="comment">// 이 때 query 안에는 start 키와 값, end 키와 값이 담긴 json 객체</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">// start와 end를 사용해 파라미터 값을 받을 수 있다</span></span><br><span class="line"> <span class="keyword">var</span> start = <span class="built_in">parseInt</span>(query.start);</span><br><span class="line">    <span class="comment">// 파라미터 이름이 start인 값</span></span><br><span class="line"> <span class="keyword">var</span> end = <span class="built_in">parseInt</span>(query.end);</span><br><span class="line">    <span class="comment">// 파라미터 이름이 end인 값</span></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">if</span> ( !start || !end ) &#123;</span><br><span class="line">     <span class="comment">// 파라미터가 없으면</span></span><br><span class="line">  res.statusCode = <span class="number">404</span>;</span><br><span class="line">  res.end(<span class="string">'Wrong Parameter'</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 합계 구하기</span></span><br><span class="line">  <span class="keyword">var</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = start ; i &lt; end ; i++) &#123;</span><br><span class="line">   result += i;</span><br><span class="line">  &#125;</span><br><span class="line">  res.statusCode = <span class="number">200</span>;</span><br><span class="line">  res.end(<span class="string">'Result : '</span> + result);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="정적-파일-서비스"><a href="#정적-파일-서비스" class="headerlink" title="정적 파일 서비스"></a>정적 파일 서비스</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> ( req.url == <span class="string">'/favicon.ico'</span> ) &#123;&#125;</span><br><span class="line"> <span class="keyword">else</span> <span class="keyword">if</span> ( req.url == <span class="string">'/image.png'</span> ) &#123;</span><br><span class="line"> res.writeHeader(<span class="number">200</span>, &#123;‘Content-Type<span class="string">':'</span>image/png<span class="string">'&#125;);</span></span><br><span class="line"><span class="string"> fs.read…</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string"> else if ( req.url == '</span>/music.mp3<span class="string">' ) &#123;</span></span><br><span class="line"><span class="string"> res.writeHead(200, &#123;'</span>Content-Type<span class="string">':'</span>audio/mp3<span class="string">'&#125;);</span></span><br><span class="line"><span class="string"> fs.createReadStream…</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string"> else if ( req.url == '</span>/movie.mp4<span class="string">' ) &#123;</span></span><br><span class="line"><span class="string"> res.writeHead(200, &#123;'</span>Content-Type<span class="string">':'</span>video/mp4<span class="string">'&#125;);</span></span><br><span class="line"><span class="string"> fs.createReadStream…</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>요청 URL의 경로를 실제 파일 경로 매핑</p>
+<ul>
+<li>myServier.com/resource/image.png -&gt; ./resources/image.png</li>
+<li>myServier.com/resource/audio.mp3 -&gt; ./resources/audio.mp3</li>
+</ul>
+</li>
+<li><p>요청 URL에서 경로 생성</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pathUtil = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> path = __dirname + pathUtil.sep + <span class="string">'resources'</span> + req.url;</span><br><span class="line"><span class="comment">// + 로 해야한다!</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="GET-POST-다루기"><a href="#GET-POST-다루기" class="headerlink" title="GET , POST 다루기"></a>GET , POST 다루기</h2><ul>
+<li><p>중복 POST 요청 방지</p>
+<ul>
+<li><p>POST 요청 처리 후 redirect 응답</p>
+</li>
+<li><p>PRG(Post-Redirect-Get) 패턴</p>
+</li>
+<li><p>리프레쉬 – Get 요청 중복(OK)</p>
+</li>
+<li><p>응답 메시지 작성 코드</p>
+<ul>
+<li>Redirection : 클라이언트 주소 옮기기<ul>
+<li>상태코드 : 302</li>
+<li>헤더 필드 : Location</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PRG 패턴 적용 코드</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">req.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// POST 요청 메세지 바디 분석/처리</span></span><br><span class="line"> res.statusCode = <span class="number">302</span>;</span><br><span class="line"> res.setHeader(‘Location’, URL);</span><br><span class="line"> res.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>폼 인코딩 방식(enctype)</p>
+<ul>
+<li>application/x-www-form-urlencoded  (default)</li>
+<li>multipart/form-data (파일 전송)</li>
+<li>text/plain</li>
+</ul>
+</li>
+<li><p>멀티파트 방식</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=<span class="string">"post"</span> action=<span class="string">"upload"</span></span><br><span class="line"> enctype=<span class="string">"multipart/form-data"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>post 요청</p>
+<ul>
+<li><p>요청 데이터 얻기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line">request.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'got %d bytes of data'</span>, chunk.length);</span><br><span class="line"> body += chunk;</span><br><span class="line">&#125;);</span><br><span class="line">request.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'there will be no more data.'</span>);</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'end : '</span> + body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>데이터 처리</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line"><span class="keyword">var</span> parsed = querystring.parse(body); </span><br><span class="line"><span class="built_in">console</span>.log(‘name1 : <span class="string">' + parsed.name1); </span></span><br><span class="line"><span class="string">console.log(‘name2 : '</span> + parsed.name2);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>실습</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</span><br><span class="line"><span class="comment">// 파라미터를 뽑아낼 수 있는 모듈</span></span><br><span class="line"><span class="keyword">var</span> movieList = [&#123;<span class="attr">title</span> : <span class="string">'비트'</span>, <span class="attr">director</span> : <span class="string">'뉴딜'</span>&#125;];</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(req.method.toLowerCase() == <span class="string">'post'</span>) &#123;</span><br><span class="line">        <span class="comment">// post 방식으로 전송되었다면</span></span><br><span class="line">        addNewMovie(req, res);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// get 방식으로 전송되었다면</span></span><br><span class="line">        showList(req, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">3000</span>);</span><br><span class="line"><span class="comment">// 3000번 포트 사용</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showList</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.writeHeader(<span class="number">200</span>, &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/html; charset=UTF-8'</span> &#125;);</span><br><span class="line">    <span class="comment">// 포트 번호, 클라이언트에게 응답할 뷰단 설정</span></span><br><span class="line">    res.write(<span class="string">'&lt;html&gt;'</span>);</span><br><span class="line">    res.write(<span class="string">'&lt;meta charset="UTF-8"&gt;'</span>);</span><br><span class="line">    res.write(<span class="string">'&lt;body&gt;'</span>);</span><br><span class="line"></span><br><span class="line">    res.write(<span class="string">'&lt;h3&gt;Favorite Movie&lt;/h3&gt;'</span>);</span><br><span class="line">    res.write(<span class="string">'&lt;div&gt;&lt;ul&gt;'</span>);</span><br><span class="line"></span><br><span class="line">    movieList.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// each문과 비슷한 역할</span></span><br><span class="line">        res.write(<span class="string">'&lt;li&gt;'</span> + item.title + <span class="string">'('</span> + item.director + <span class="string">')&lt;/li&gt;'</span>);</span><br><span class="line">    &#125;, <span class="keyword">this</span>);</span><br><span class="line">    res.write(<span class="string">'&lt;/ul&gt;&lt;/div&gt;'</span>);</span><br><span class="line"></span><br><span class="line">    res.write(</span><br><span class="line">        <span class="string">'&lt;form method="post" action="."&gt;&lt;h4&gt;새 영화 입력&lt;/h4&gt;'</span> +</span><br><span class="line">        <span class="string">'&lt;div&gt;&lt;input type="text" name="title" placeholder="영화제목"&gt;&lt;/div&gt;'</span> +</span><br><span class="line">        <span class="string">'&lt;div&gt;&lt;input type="text" name="director" placeholder="감독"&gt;&lt;/div&gt;'</span> +</span><br><span class="line">        <span class="string">'&lt;input type="submit" value="upload"&gt;'</span> +</span><br><span class="line">        <span class="string">'&lt;/form&gt;'</span></span><br><span class="line">        );</span><br><span class="line">    res.write(<span class="string">'&lt;/body&gt;'</span>);</span><br><span class="line">    res.write(<span class="string">'&lt;/html&gt;'</span>);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addNewMovie</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line">    req.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 데이터 들어오면 발생하는 이벤트 부착</span></span><br><span class="line">        body += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// PRG 방식, 데이터 들어올 때마다 누적</span></span><br><span class="line">    req.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 데이터 다 들어오면 발생하는 이벤트 부착</span></span><br><span class="line">        <span class="keyword">var</span> data = querystring.parse(body);</span><br><span class="line">        <span class="comment">// 데이터는 json 객체</span></span><br><span class="line">        <span class="keyword">var</span> titledata = data.title;</span><br><span class="line">        <span class="keyword">var</span> directordata = data.director;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 배열에 넣기</span></span><br><span class="line">        <span class="comment">// 자바스크립트의 배열은 스택구조임</span></span><br><span class="line">        <span class="comment">// 때문에 스택의 메서드를 사용할 수 있음</span></span><br><span class="line">        movieList.push(&#123;<span class="attr">title</span>:titledata, <span class="attr">director</span>:directordata&#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 이렇게 해도 된다</span></span><br><span class="line">        movieList.push(data);</span><br><span class="line">        <span class="comment">// json 객체 push</span></span><br><span class="line">        res.end(<span class="string">'success'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 하단에 처리를 이렇게 해도 된다.</span></span><br><span class="line">res.statusCode = <span class="number">302</span>;</span><br><span class="line">res.setHeader(<span class="string">'Location'</span>, <span class="string">'.'</span>);</span><br><span class="line"><span class="comment">// 화면 재요청, get 방식으로 요청했을 때의 함수를 탄다</span></span><br><span class="line">res.end();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="node를-이용한-파일-업로드"><a href="#node를-이용한-파일-업로드" class="headerlink" title="node를 이용한 파일 업로드"></a>node를 이용한 파일 업로드</h2><h3 id="formidable을-이용한-멀티파일-분석-모듈-이용"><a href="#formidable을-이용한-멀티파일-분석-모듈-이용" class="headerlink" title="formidable을 이용한 멀티파일 분석 모듈 이용"></a><code>formidable</code>을 이용한 멀티파일 분석 모듈 이용</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install formidable</span><br></pre></td></tr></table></figure>
+<h4 id="IncomingForm의-이벤트"><a href="#IncomingForm의-이벤트" class="headerlink" title="IncomingForm의 이벤트"></a>IncomingForm의 이벤트</h4><ul>
+<li><code>field</code>      &gt;  이름/값 도착 이벤트</li>
+<li><code>file</code>       &gt; 파일 도착 이벤트</li>
+<li><code>aborted</code>  &gt;  요청 중지(클라이언트)</li>
+<li><code>end</code>      &gt;  종료</li>
+</ul>
+<h4 id="IncomingForm의-프로퍼티"><a href="#IncomingForm의-프로퍼티" class="headerlink" title="IncomingForm의 프로퍼티"></a>IncomingForm의 프로퍼티</h4><p> form.uploadDir </p>
+<p> form.keepExtension 확장자 보존 </p>
+<p> form.multiples 다중 파일 업로드</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">form.parse(req, <span class="function"><span class="keyword">function</span>(<span class="params">err, fields, files</span>) </span>&#123;&#125;</span><br><span class="line">           <span class="comment">// fields : 이름 - 값(fields.이름) 데이터</span></span><br><span class="line">           <span class="comment">// files : 업로드 파일 정보</span></span><br></pre></td></tr></table></figure>
+<p>업로드 파일 정보 : <code>Formidable.File</code></p>
+<blockquote>
+<p>file.size 업로드 된 파일의 크기(바이트) </p>
+<p>file.path 파일 경로 </p>
+<p>file.name 파일 이름 </p>
+<p>file.type 파일 타입 </p>
+<p>file.lastModifiedDate 최종 변경일 </p>
+<p>file.hash 해쉬값</p>
+</blockquote>
+<h4 id="파일-업로드-서비스-구현"><a href="#파일-업로드-서비스-구현" class="headerlink" title="파일 업로드 서비스 구현"></a>파일 업로드 서비스 구현</h4><blockquote>
+<p>파일 업로드(formidable) - 임시 폴더 </p>
+<p>파일 업로드 후 </p>
+<p>-파일을 임시 폴더 -&gt; 리소스 저장소로 이동 </p>
+<p>-리소스 저장소에서 이름이 충돌되지 않도록 이름 변경 </p>
+<p>-날짜, 일련번호, 사용자 계정, …</p>
 </blockquote>
 
       
@@ -157,7 +498,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/51/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><span class="page-number current">52</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="space">&hellip;</span><a class="page-number" href="/page/81/">81</a><a class="extend next" rel="next" href="/page/53/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/51/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><span class="page-number current">52</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="space">&hellip;</span><a class="page-number" href="/page/82/">82</a><a class="extend next" rel="next" href="/page/53/">Next</a>
   </nav>
 
 </section>
@@ -210,7 +551,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">69</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">70</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -251,6 +592,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/20/programmers01/">어디가 틀린 거죠 아조씨 코딩 무지랭이는 처음인가요</a></h6>
+              <span>5월 20, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -312,18 +665,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/18/pureComponent/">PureComponent</a></h6>
-              <span>5월 18, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -334,7 +675,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

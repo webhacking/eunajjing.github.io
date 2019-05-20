@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-정보처리기사-DB_3" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-정보처리기사-DB_4" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/01/정보처리기사-DB_3/">정보처리기사-DB_3</a>
+      <a class="article-title" href="/2018/10/01/정보처리기사-DB_4/">정보처리기사-DB_4</a>
     </h1>
   
 
@@ -118,8 +118,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/10/01/정보처리기사-DB_3/" class="article-date">
-	  <time datetime="2018-10-01T09:59:27.000Z" itemprop="datePublished">10월 1, 2018</time>
+	<a href="/2018/10/01/정보처리기사-DB_4/" class="article-date">
+	  <time datetime="2018-10-01T10:37:51.000Z" itemprop="datePublished">10월 1, 2018</time>
 	</a>
 
       
@@ -129,67 +129,43 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="이상과-정규화"><a href="#이상과-정규화" class="headerlink" title="이상과 정규화"></a>이상과 정규화</h1><hr>
-<h2 id="이상"><a href="#이상" class="headerlink" title="이상"></a>이상</h2><p>DB 내 데이터의 중복과 종속으로 인해 발생되는 문제점</p>
-<ul>
-<li>삭제 이상<br>: 원하지 않는 자료까지 함께 삭제가 이루어지는 이상</li>
-<li>삽입 이상 : NULL이면 안되는 값에 NULL이 들어가 삽입이 안되는 이상</li>
-<li>갱신 이상 : 갱신 과정에서 일부만 갱신되어 정보의 파악이 안되는 현상</li>
+        <h1 id="인덱스"><a href="#인덱스" class="headerlink" title="인덱스"></a>인덱스</h1><ul>
+<li>인덱스 파일 : 데이터의 위치 관리 [키 값, 주소]</li>
+<li>데이터 파일 : 실제 데이터 기억</li>
 </ul>
-<h2 id="함수적-종속"><a href="#함수적-종속" class="headerlink" title="함수적 종속"></a>함수적 종속</h2><ul>
-<li>완전 함수 종속</li>
-<li>부분 함수 종속</li>
-<li>이행적 함수 종속</li>
+<h2 id="인덱스-구조"><a href="#인덱스-구조" class="headerlink" title="인덱스 구조"></a>인덱스 구조</h2><h3 id="B-트리"><a href="#B-트리" class="headerlink" title="B-트리"></a>B-트리</h3><p>: 검색 효율을 높이기 위해 자료 구조를 트리 구조로 나타내는 방법</p>
+<h3 id="B-트리-1"><a href="#B-트리-1" class="headerlink" title="B+-트리"></a>B+-트리</h3><p>: B-트리의 변형으로 인덱스 세트와 순차 세트로 구성</p>
+<h3 id="클러스터드-인덱스"><a href="#클러스터드-인덱스" class="headerlink" title="클러스터드 인덱스"></a>클러스터드 인덱스</h3><ul>
+<li>하나의 속성을 기준으로 정렬 후 테이블을 재구성해 인덱스를 만드는 방법</li>
+<li>물리적 순서와 인덱스 순서 동일</li>
+<li>하나의 테이블에 하나의 인덱스</li>
 </ul>
-<h2 id="정규화"><a href="#정규화" class="headerlink" title="정규화"></a>정규화</h2><ol>
-<li>제1정규형(원자값)<br>: 한 릴레이션을 구성하는 모든 도메인이 원자값으로만 구성</li>
-<li>제2정규형(부분 함수 종속 제거)<br>: 모든 속성이 기본키에 완전 함수 종속이 되도록 구성</li>
-<li>제3정규형(이행적 함수 종속 분해)</li>
-<li>보이스-코드 정규형(후보키가 아닌 결정자 관계 제거)<br>: 릴레이션에서 모든 결정자가 후보키(PK)가 되도록 하는 과정</li>
-<li>제4정규형(다치 종속 관계 제거)</li>
-<li>제5정규형(조인 종속 관계 제거)<br>: 조인 종속이 후보키를 통해서만 성립이 되도록 하는 정규형</li>
-</ol>
-<h2 id="역정규화"><a href="#역정규화" class="headerlink" title="역정규화"></a>역정규화</h2><h3 id="릴레이션-역정규화"><a href="#릴레이션-역정규화" class="headerlink" title="릴레이션 역정규화"></a>릴레이션 역정규화</h3><h4 id="릴레이션-병합"><a href="#릴레이션-병합" class="headerlink" title="릴레이션 병합"></a>릴레이션 병합</h4><h4 id="릴레이션-분할"><a href="#릴레이션-분할" class="headerlink" title="릴레이션 분할"></a>릴레이션 분할</h4><ul>
-<li>수직 분할</li>
-<li>수평 분할</li>
+<h3 id="넌-클러스터드-인덱스"><a href="#넌-클러스터드-인덱스" class="headerlink" title="넌 클러스터드 인덱스"></a>넌 클러스터드 인덱스</h3><ul>
+<li>주소값으로 인덱스를 만들어 검색</li>
+<li>여러 개의 인덱스</li>
 </ul>
-<h3 id="속성-역정규화-파생-속성-추가"><a href="#속성-역정규화-파생-속성-추가" class="headerlink" title="속성 역정규화(파생 속성 추가)"></a>속성 역정규화(파생 속성 추가)</h3><h1 id="트랜잭션"><a href="#트랜잭션" class="headerlink" title="트랜잭션"></a>트랜잭션</h1><ul>
-<li>원자성 : 모두 수행되거나 모두 수행되지 않거나</li>
-<li>일관성 : 완료되면 일관성 있는 DB 상태여야 한다</li>
-<li>격리성 : 하나의 트랜잭션이 수행 중에는 다른 트랜잭션이 접근 할 수 없음</li>
-<li>영속성 : 트랜잭션이 성공적으로 완료된 후 결과는 지속적으로 유지되어야 함</li>
+<h1 id="OODB"><a href="#OODB" class="headerlink" title="OODB"></a>OODB</h1><ul>
+<li>객체</li>
+<li>속성</li>
+<li>메시지</li>
+<li>메소드</li>
+<li>클래스</li>
+<li>캡슐화</li>
+<li>상속</li>
+<li>다형성</li>
+<li>복합 객체 : 한 객체가 가진 속성으로 다른 객체를 이용하기 위한 것, FK와 유사한 개념</li>
 </ul>
-<h2 id="트랜잭션-스케줄"><a href="#트랜잭션-스케줄" class="headerlink" title="트랜잭션 스케줄"></a>트랜잭션 스케줄</h2><ul>
-<li>직렬 스케줄 : 순차적</li>
-<li>비직렬 스케줄 : 비순차적</li>
-<li>직렬 가능 스케줄 : 직렬 스케줄 기법의 결과와 비직렬 스케줄 기법의 결과가 동일하게 나오는 경우</li>
+<h1 id="보안"><a href="#보안" class="headerlink" title="보안"></a>보안</h1><h2 id="정보-보안의-목표"><a href="#정보-보안의-목표" class="headerlink" title="정보 보안의 목표"></a>정보 보안의 목표</h2><ul>
+<li>기밀성 : 허락되지 않은 대상이 정보의 내용을 알 수 없도록 하는 것</li>
+<li>무결성 : 허락되지 않은 대상이 정보를 수정/삭제할 수 없는 것</li>
+<li>가용성 : 허락된 대상이 정보에 접근하고자 할 때 방해받지 않는 것</li>
 </ul>
-<h2 id="회복"><a href="#회복" class="headerlink" title="회복"></a>회복</h2><ul>
-<li>로그 : 트랜잭션이 수행되어 변경되는 데이터베이스 상황 정보를 기록(로그파일)하는 것</li>
+<h2 id="보안-어휘"><a href="#보안-어휘" class="headerlink" title="보안 어휘"></a>보안 어휘</h2><ul>
+<li>평문과 암호문</li>
+<li>암호화와 복호화</li>
+<li>대칭키 시스템 : 암호화와 복호화의 키가 동일</li>
+<li>비대칭키 시스템 : 암호화할 때는 공개키, 복호화할 때는 비밀키 이용, 공개키와 비밀키를 키 페어라고 한다.</li>
 </ul>
-<h3 id="회복-기법"><a href="#회복-기법" class="headerlink" title="회복 기법"></a>회복 기법</h3><ul>
-<li>즉시 갱신 기법 : 트랜잭션 실행 중에 변경되는 내용을 바로 DB에 적용</li>
-<li>지연 갱신 기법 : 트랜잭션이 부분 완료되면 DB에 적용</li>
-<li>검사 시점 기법 : 트랜잭션 실행 중 검사 시점을 지정해 그 때 완료된 내용을 DB에 적용</li>
-<li>그림자 페이징 : 로그를 사용하지 않고, DB를 동일한 크기의 단위인 페이지로 나누어 각 페이지마다 복사하여 보관하는 기법. 장애가 발생되면 그림자 페이지를 이용해 회복</li>
-</ul>
-<h3 id="REDO-재수행-UNDO-취소"><a href="#REDO-재수행-UNDO-취소" class="headerlink" title="REDO(재수행) UNDO(취소)"></a>REDO(재수행) UNDO(취소)</h3><h3 id="병행-제어"><a href="#병행-제어" class="headerlink" title="병행 제어"></a>병행 제어</h3><p>: 여러 트랜잭션이 실행되는 경우 트랜잭션 간의 격리성을 유지해 에러가 발생하지 않도록 하는 것</p>
-<h4 id="병행-제어를-하지-않았을-때의-문제점"><a href="#병행-제어를-하지-않았을-때의-문제점" class="headerlink" title="병행 제어를 하지 않았을 때의 문제점"></a>병행 제어를 하지 않았을 때의 문제점</h4><ul>
-<li>갱신 분실</li>
-<li>모순성</li>
-<li>연쇄 복귀</li>
-<li>비완료 의존성 : 하나의 트랜잭션 수행이 실패한 후 회복되기 전 다른 트랜잭션이 실패한 갱신 결과를 참조하는 현상</li>
-</ul>
-<h4 id="로킹"><a href="#로킹" class="headerlink" title="로킹"></a>로킹</h4><ul>
-<li>트랜잭션의 고립성 같은 것,</li>
-<li>하나의 트랜잭션이 이미 DB에 접근해 있으면 다른 트랜잭션이 접근하지 못하게 막음</li>
-<li>LOCK과 UNLOCK, 교착 상태가 있다.</li>
-<li><p>공유락과 배타락이 있다.</p>
-</li>
-<li><p>2단계 로킹 기법에는 확장 단계와 축소 단계가 있다.</p>
-</li>
-</ul>
-<h4 id="타임-스태프"><a href="#타임-스태프" class="headerlink" title="타임 스태프"></a>타임 스태프</h4><p>: 각 트랜잭션이 데이터에 접근할 시간을 미리 지정해 기억시킨 뒤 그 시간의 순서에 따라 순서대로 데이터에 접근하여 수행하는 방법</p>
 
       
     </div>
@@ -214,7 +190,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/77/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="page-number" href="/page/77/">77</a><span class="page-number current">78</span><a class="page-number" href="/page/79/">79</a><a class="page-number" href="/page/80/">80</a><a class="page-number" href="/page/81/">81</a><a class="extend next" rel="next" href="/page/79/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/77/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="page-number" href="/page/77/">77</a><span class="page-number current">78</span><a class="page-number" href="/page/79/">79</a><a class="page-number" href="/page/80/">80</a><span class="space">&hellip;</span><a class="page-number" href="/page/82/">82</a><a class="extend next" rel="next" href="/page/79/">Next</a>
   </nav>
 
 </section>
@@ -267,7 +243,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">69</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">70</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -308,6 +284,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/20/programmers01/">어디가 틀린 거죠 아조씨 코딩 무지랭이는 처음인가요</a></h6>
+              <span>5월 20, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -369,18 +357,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/18/pureComponent/">PureComponent</a></h6>
-              <span>5월 18, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -391,7 +367,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
