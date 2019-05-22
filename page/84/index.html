@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Page 73 | ERecord</title>
+  <title>Page 84 | ERecord</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -12,7 +12,7 @@
   <meta name="description" content="일상 및 개발 공부 기록용 블로그">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ERecord">
-<meta property="og:url" content="http://eunajjing.github.io/page/73/index.html">
+<meta property="og:url" content="http://eunajjing.github.io/page/84/index.html">
 <meta property="og:site_name" content="ERecord">
 <meta property="og:description" content="일상 및 개발 공부 기록용 블로그">
 <meta property="og:locale" content="ko">
@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-websocket" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-first" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/08/websocket/">websocket</a>
+      <a class="article-title" href="/2018/09/24/first/">first</a>
     </h1>
   
 
@@ -118,64 +118,47 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/08/websocket/" class="article-date">
-	  <time datetime="2018-11-08T07:27:20.000Z" itemprop="datePublished">11월 8, 2018</time>
+	<a href="/2018/09/24/first/" class="article-date">
+	  <time datetime="2018-09-24T00:08:52.000Z" itemprop="datePublished">9월 24, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="websocket을-이용한-간단한-알림-구현"><a href="#websocket을-이용한-간단한-알림-구현" class="headerlink" title="websocket을 이용한 간단한 알림 구현"></a>websocket을 이용한 간단한 알림 구현</h1><hr>
-<h2 id="유용하게-참고했던-링크들"><a href="#유용하게-참고했던-링크들" class="headerlink" title="유용하게 참고했던 링크들"></a>유용하게 참고했던 링크들</h2><p><a href="https://www.youtube.com/watch?v=gQyRxPjssWg" target="_blank" rel="noopener">시니어코딩</a></p>
-<ul>
-<li>유튜브 강좌</li>
-<li>스프링 시큐리티를 사용하지 않아 http세션과 웹소켓을 잇는 작업이 존재</li>
-<li>연속된 강의라서 도중에 강의만 따라해서는 모르는 과정이 있음, 이 부족한 부분은 깃허브에 소스가 오픈되어 있어서 보면서 해야함</li>
-</ul>
-<p><a href="https://blog.naver.com/allspacea7/221360046480" target="_blank" rel="noopener">블로그 포스팅</a></p>
-<ul>
-<li>xml 단에서 설정해야할 부분이 빠져있음</li>
-<li>간단하게 몇 건의 send를 받았는지 표기하는 예제</li>
-<li>개인적으로 제일 많은 도움을 받았음</li>
-<li>그런데 왜인지 똑같은 소스인데 override가 안되더라ㅠㅠ 근데 이건 안되어도 일단 기능은 제대로 발동해서 놔둠</li>
-</ul>
-<p><a href="http://victorydntmd.tistory.com/253" target="_blank" rel="noopener">블로그 포스팅</a></p>
-<ul>
-<li>위의 블로그 포스팅에서 누락된 것을 보기 위해 참고했었음</li>
-</ul>
-<hr>
-<h2 id="이상한-곳에서-계속-헤메이던-웹소켓-구현"><a href="#이상한-곳에서-계속-헤메이던-웹소켓-구현" class="headerlink" title="이상한 곳에서 계속 헤메이던 웹소켓 구현"></a>이상한 곳에서 계속 헤메이던 웹소켓 구현</h2><ul>
-<li>다들 저 위의 링크들을 따라하다보면 나…름 구현은 가능할 듯</li>
-<li>근데 내가 힘들었던 건 많이 참고했다는 블로그 포스팅을 보고 1차로 페이지 이동 시 웹소켓 발동까지는 했는데</li>
-<li>갑자기 실시간으로 알림 받기로 변경하라는 피드백을 받아서 일부를 수정하면서 생긴 것.</li>
-<li>인강은 <strong>디비에 있는 데이터를 뿌리지 않고 웹소켓이 보낸 데이터를 클라이언트 단에 단순히 뿌려주는 식으로 구현됨</strong></li>
-<li>그런데 나는 디비에서 가져와야 하기 때문에 쵸큼 달랐고 걍 핸들러에서 db에 select를 하게끔 만들었다.</li>
-<li><p>나는 send된 파라미터가 여러 개일 때만 처리하려고 했는데 왜인지 <strong>파라미터 여러 개 send</strong>가 먹지 않았던 문제가 제일 힘들었다. 나중에 알고보니까 아래처럼 써서 그랬던 거 같다.</p>
-<pre><code>websocket.send(&quot;~~~&quot;, &quot;~~~&quot;, &quot;~~&quot;);
-</code></pre></li>
-</ul>
-<ul>
-<li><p>이렇게 썼다면 되지 않았을까?<br>(어쩌다보니 이렇게 보낼 필요가 없어서 나는 시도는 안해봤다)</p>
-<pre><code>websocket.send(&quot;~~~~, ~~~~, ~~~&quot;);
-</code></pre></li>
-<li><p>그리구 인강에서 전역 변수로 빼서 사용하는 웹소켓, 나는 먹지 않아서 그냥 고치기 전? 전역 변수로 빼지 않고 사용하는 웹소켓으로 구현했다.</p>
-</li>
-</ul>
-<hr>
-<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><ul>
-<li><a href="http://websocket.org/echo.html" target="_blank" rel="noopener">웹소켓 테스트 가능 사이트</a></li>
-</ul>
+        <h1 id="깃허브를-이용해서-블로그-만들기"><a href="#깃허브를-이용해서-블로그-만들기" class="headerlink" title="깃허브를 이용해서 블로그 만들기"></a>깃허브를 이용해서 블로그 만들기</h1><hr>
+<h2 id="그러니까-도전은-한-3일-정도-된-듯"><a href="#그러니까-도전은-한-3일-정도-된-듯" class="headerlink" title="그러니까, 도전은 한 3일 정도 된 듯"></a>그러니까, 도전은 한 3일 정도 된 듯</h2><p>참고 <a href="http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/" target="_blank" rel="noopener">도움이 많이 된 포스트1</a><br><a href="https://blog.naver.com/deeptensorflow/220938535495" target="_blank" rel="noopener">도움이 많이 된 포스트2</a></p>
+<blockquote>
+<p>보통 블로그로는 지킬과 헥소를 많이 사용하는 것 같은데,<br>처음 블로그를 할 수 있음을 알려준 이가 헥소를 사용 중이기도 했고,<br>헥소가 검색이 더 잘된다는 말이 있어서 나도 헥소로 만들기로 결정하고 만들기 위해 엄청 끙끙댔다. 저장소만 한 5번은 다시 만든 듯ㅋㅋㅋㅋ 왜인지 계속 경로 에러가 나서, 노드도 다시 깔고 별 짓을 다했다. 솔직히 아직…. 나는 포털 사이트가 제공해주는 블로그 사이트가 제일 편한 것 같은데. 어쨌든 개발자를 꿈꾸는데 블로그 하나 제대로 못 만들면 안될 것 같아서ㅠㅠㅠㅠ 정처기 시험 며칠 남지도 않았는데 이러고 있다.</p>
+</blockquote>
+<h2 id="때려칠-뻔한-대환장에러파티"><a href="#때려칠-뻔한-대환장에러파티" class="headerlink" title="때려칠 뻔한 대환장에러파티"></a>때려칠 뻔한 대환장에러파티</h2><pre><code>hexo YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line ~
+</code></pre><blockquote>
+<p>나는 수많은 이들이 구글과 깃의 이슈로 물은 YAMLException 때문에 대부분의 시간을 버렸다. 재미있게도 핵소 공홈에도 이 에러…는 트러블슈팅으로까지 올라와있는데, 나에게 있어서 별 도움은 안됐다.</p>
+</blockquote>
+<p><a href="https://hexo.io/ko/docs/troubleshooting" target="_blank" rel="noopener">핵소 공홈 트러블 슈팅</a><br>// 18.09.24. 기준 제일 윗줄에서 확인 가능</p>
+<blockquote>
+<p>대부분의 사람들이 해결책이라며 내놓은 건, 따옴표 표기 같은 거였다. 화가 난 나는 에러 메시지가 뜬 줄부터 아래까지 모조리 따옴표를 넣어버리는 미친 짓도 벌여봤지만 계속 에러 잼…ㅎㅎㅎ… 헥소 나한테 외그래… 며칠 째 똑같은 에러를 보고 있자니 너무 화가 나서 걍 딴짓할 겸 헥소의 트러블 슈팅 모두를 읽기 시작. 그러다가…</p>
+</blockquote>
+<p><em>Make sure you are using soft tabs and add a space after colons.</em></p>
+<blockquote>
+<p>몇 번 반복하다가 맨 윗 문단의 마지막 문장이 눈에 띄어서, 혹시나 해서 살펴봤는데…. 내가 그 콜론 다음에 띄어쓰기를 잘못한 사람이었고…. 내가 추가로 쓴 옵션 칼럼에는 모조리 띄어쓰기가 없어서 나는 에러였다. 아니 근데 웃긴 게 그럼 띄어쓰기 없는 라인부터 에러라고 말을 해줘야지 왜 얘는 요상한 곳에서 에러 표기를 하는 거람.</p>
+</blockquote>
+<blockquote>
+<p>웹단 처음 들어와서 강사님이 에러가 나면 그 줄부터 보지 말고, 그 위부터 읽는 거라고 그렇게 귀에 뭐가 박힐 듯 잔소리를 해댔는데. 여기서도 똑같은 실수를 했다.</p>
+</blockquote>
+<h2 id="모든-헥소를-이용한-깃허브-블로그-가이드에는-브랜치-두-개-만들라는-팁이-있어야-하는-거-아닌가"><a href="#모든-헥소를-이용한-깃허브-블로그-가이드에는-브랜치-두-개-만들라는-팁이-있어야-하는-거-아닌가" class="headerlink" title="모든 헥소를 이용한 깃허브 블로그 가이드에는 브랜치 두 개 만들라는 팁이 있어야 하는 거 아닌가?"></a>모든 헥소를 이용한 깃허브 블로그 가이드에는 브랜치 두 개 만들라는 팁이 있어야 하는 거 아닌가?</h2><blockquote>
+<p>사실 블로그 배포에 성공한 건 한 3번 정도인데, 매번 당황하고 지웠던 건 다름 아닌 소스 관리를 어떻게 해야할지 모르겠다는 거. 아예 파일 구조가 달라져버리는 터라, 풀 받는데 계속 에러가 났다. 구글링을 좀 해보니, 저장소를 아예 두 개 파서 운용하시는 분도 계셨고, 브랜치를 두 개 판 분도 계셨다-사실 브랜치 두 개가 다수였다- 아니 그러면 처음부터 브랜치 두 개 파라고 이야기를 해주던가ㅠㅠㅠ(위에 내가 참고했다는 블로그에는 아쉽게도 브랜치 두 개 생성 얘기는 없었다) 농담이 아니라 이 블로그 때문에 명절 연휴 통째로 날릴 삘….</p>
+</blockquote>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
 
       
       
@@ -193,7 +176,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/72/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="page-number" href="/page/72/">72</a><span class="page-number current">73</span><a class="page-number" href="/page/74/">74</a><a class="page-number" href="/page/75/">75</a><span class="space">&hellip;</span><a class="page-number" href="/page/84/">84</a><a class="extend next" rel="next" href="/page/74/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/83/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/82/">82</a><a class="page-number" href="/page/83/">83</a><span class="page-number current">84</span>
   </nav>
 
 </section>

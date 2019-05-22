@@ -102,7 +102,7 @@
         
           <section id="main">
   
-    <article id="post-graphql01" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-copyNpaste" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +110,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/12/graphql01/">GraphQL</a>
+      <a class="article-title" href="/2019/01/13/copyNpaste/">copyNpaste 프로젝트를 마친 뒤 홀로 회고</a>
     </h1>
   
 
@@ -118,192 +118,64 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/12/graphql01/" class="article-date">
-	  <time datetime="2019-01-12T06:43:18.000Z" itemprop="datePublished">1월 12, 2019</time>
+	<a href="/2019/01/13/copyNpaste/" class="article-date">
+	  <time datetime="2019-01-13T12:16:25.000Z" itemprop="datePublished">1월 13, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/GraphQL/">GraphQL</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="GraphQL"><a href="#GraphQL" class="headerlink" title="GraphQL"></a><a href="https://graphql.org/" target="_blank" rel="noopener">GraphQL</a></h2><ul>
-<li>페이스북에서 만든 어플리케이션 레이어 쿼리 언어<ul>
-<li>API를 위한 쿼리 언어</li>
-</ul>
-</li>
-<li>기존에 백엔드와 프론트엔드를 통신하기 위해 <code>REST API</code> 를 썼던 것처럼, <code>REST API</code> 와 다른 Sever API 개발 방법론</li>
-<li>특정한 데이터베이스, 스토리지 엔진과 관계가 없고 기존 코드와 데이터에 의해 대체됨</li>
-</ul>
-<h3 id="일반적인-REST-API-는"><a href="#일반적인-REST-API-는" class="headerlink" title="일반적인 REST API 는"></a>일반적인 <code>REST API</code> 는</h3><p><img src="https://cdn-images-1.medium.com/max/1600/1*zIHqyyQZ9R_SjoFbFUdu0A.jpeg" alt=""></p>
+        <h2 id="copyNpaste-프로젝트-회고"><a href="#copyNpaste-프로젝트-회고" class="headerlink" title="copyNpaste 프로젝트 회고"></a>copyNpaste 프로젝트 회고</h2><p>취업 준비를 본격적으로 시작하면서 이력서를 작성 중인 요즘, 이력서 양식에서 프로젝트를 회고할 일이 있어 블로그에 함께 기록해둔다.</p>
 <ul>
-<li><p>여러 URL에서 데이터를 받아야와야 할 경우</p>
+<li><p><a href="https://www.youtube.com/watch?v=y1_02eXyKRw" target="_blank" rel="noopener">수료 발표 영상이 드디어 업로드 되었다</a></p>
 </li>
-<li><p>예시</p>
-<p><code>GET /accounts</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"accounts"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="string">"1"</span>,</span><br><span class="line">      <span class="string">"username"</span>: <span class="string">"velopert"</span>,</span><br><span class="line">      <span class="string">"email"</span>: <span class="string">"public.velopert@gmail.com"</span>,</span><br><span class="line">      <span class="string">"friends"</span>: [</span><br><span class="line">        <span class="string">"2"</span>,</span><br><span class="line">        <span class="string">"3"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"first_name"</span>: <span class="string">"Minjun"</span>,</span><br><span class="line">      <span class="string">"last_name"</span>: <span class="string">"Kim"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="string">"2"</span>,</span><br><span class="line">      <span class="string">"username"</span>: <span class="string">"jn4kim"</span>,</span><br><span class="line">      <span class="string">"email"</span>: <span class="string">"jn4kim@gmail.com"</span>,</span><br><span class="line">      <span class="string">"friends"</span>: [</span><br><span class="line">        <span class="string">"1"</span>,</span><br><span class="line">        <span class="string">"3"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"first_name"</span>: <span class="string">"Jayna"</span>,</span><br><span class="line">      <span class="string">"last_name"</span>: <span class="string">"Kim"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="string">"3"</span>,</span><br><span class="line">      <span class="string">"username"</span>: <span class="string">"abet"</span>,</span><br><span class="line">      <span class="string">"email"</span>: <span class="string">"abet@gmail.com"</span>,</span><br><span class="line">      <span class="string">"friends"</span>: [</span><br><span class="line">        <span class="string">"2"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"first_name"</span>: <span class="string">"Abet"</span>,</span><br><span class="line">      <span class="string">"last_name"</span>: <span class="string">"Bane"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>만약 이 데이터에서 특정 <code>id</code>의 <code>friends</code> 의 이름을 가져온다면 </p>
-<p>요청 url은 <code>GET /accounts/1/?include_friend_details=username,first_name</code> 이다.</p>
-<p>혹은 <code>GET /accounts_with_friend_details/1</code></p>
+<li><p><a href="https://github.com/eunajjing/CopyNPaste" target="_blank" rel="noopener">플젝 깃허브 주소</a></p>
 </li>
 </ul>
-<h3 id="REST-API-의-문제는"><a href="#REST-API-의-문제는" class="headerlink" title="REST API 의 문제는"></a><code>REST API</code> 의 문제는</h3><ul>
-<li>어플리케이션 규모가 커지면 수많은 <code>endPoint</code> 들이 생성된다.<ul>
-<li><code>endPoint</code> : 기능에서 필요로하는 정보들에 호응할 수 있는 포인트</li>
-</ul>
+<h3 id="프로젝트-시작-경위"><a href="#프로젝트-시작-경위" class="headerlink" title="프로젝트 시작 경위"></a>프로젝트 시작 경위</h3><p>사실 이 사이트의 아이디어는 내가 낸 것인데 나는 이 아이디어를</p>
+<p><img src="https://image.aladin.co.kr/product/1804/44/letslook/8994856250_f.jpg" alt=""></p>
+<p>라는 독립 잡지와(<em>현재 이 잡지는 전자책으로도 구매할 수 있다</em> <a href="https://book.naver.com/bookdb/book_detail.nhn?bid=7189630" target="_blank" rel="noopener">구매링크</a>) 연예인 전현무 님에게서 얻었다.</p>
+<p>전현무 님이 아나운서 시절 워낙 많은 시말서를 써서, 그 시말서 자료들을 동료 아나운서들도 참고해서 쓴다더라… 하는 이야기였는데 정확히 어떤 프로그램에서 본 건지는 기억이 나질 않는다.</p>
+<p>아무튼 사이트 첫 아이디어는 ‘어쨌든 살면서 누구나 한 번쯤은 쓰지만 일상적으로 쓰지 않는 문서의 문장들을 제공해주고, 관련 템플릿이나 작성에 요긴한 기능들이 있으면 좋겠다’ 였다. 나의 경우 대학 시절 성적 정정 메일을 보낼 때 이런 사이트가 있으면 좋겠다라는 생각을 많이 하기도 했었고. 다행히도 팀원들이 모두 좋은 아이디어라고 해줘서, 이런 서비스를 제공하는 사이트를 만들기로 했다</p>
+<p><strong>유저에게 보다 쉬운 글 작성을 돕는 사이트</strong></p>
+<p><img src="/images/intro.png" alt=""></p>
+<h3 id="그리하여-시작된-문서-작성의-늪"><a href="#그리하여-시작된-문서-작성의-늪" class="headerlink" title="그리하여 시작된 문서 작성의 늪"></a>그리하여 시작된 문서 작성의 늪</h3><p><img src="/images/plan.png" alt=""></p>
+<p><img src="/images/db.png" alt=""></p>
+<p>불행인지 다행인지 우리 팀은 대부분의 팀원들이 다 꼼꼼한 성격이었다. 그래서… 정말… 엄청난 회의록들과 트러블 슈팅 등… 프로젝트 산출물들이 기수 내 팀에서 제일 많이 나온 팀이었고… 물론 지금 와서 그 문서들의 소중함을 알기에 유의미했다고 생각하지만, 하는 내내 조금 불행했다. <code>프로그래밍 == 코드 타이핑</code>이라고 생각했기 때문에. 근데 나중에서야 알고 보니 실무에 가서도 문서 작업이 굉장히 많다는 걸 알았다.</p>
+<p>db 모델링의 경우 거의 혼자하다시피 했는데(…) PK 설정 부분에 대해 많이 고민할 수 있던 시간들이었다. 다행히도 언니들이 DB는 하고 싶은대로 하라고 해주셔서… 진짜 내가 맞다고 생각하는대로 해봤다. 물론 논리적인 문제는 없는지 강사님도 봐주시긴 했지만, 설계 전반을 혼자 해보는 경험이 인상적이었다.</p>
+<p>그리고 대망의 유스케이스(와 요구사항 명세서)</p>
+<p><img src="/images/usecase1.png" alt=""></p>
+<p><img src="/images/usecase2.png" alt=""></p>
+<p><em>포트폴리오에서 그대로 가져오다보니 내가 뭘 맡았는지도 가져오게 되었다</em></p>
+<p>이거 하는데 정말 많이 싸웠다. 사이트에 있으면 좋을 것 같다는 기능들이 각자 다 달라서… 뭐가 필요하니, 뭐가 경제적이니 진짜 멱살 잡기 전까지 싸웠다. 요구사항 명세가 끝나고 나니까 이제 스토리보드 대환장의 서막이 열렸고… 스토리보드 만드는 것도 진짜 더럽게 많이 싸웠다… 그리고 이 때서야 드디어 문서 작성의 중요성을 깨달았는데, 기존 회의록이 나의 옳음이나 틀림을 증명할 수 있는 증거가 되었다. (<em>이러라고 있는 회의록이 아니겠지만</em>)</p>
+<h3 id="프로젝트-구현"><a href="#프로젝트-구현" class="headerlink" title="프로젝트 구현"></a>프로젝트 구현</h3><p>이 프로젝트는 백 로직을 시작하기 전 모든 프론트를 만들고 시작하자는 팀 내의 합의가 있었다. 스프링 설정을 모두 마친 뒤 팀원 한 명이 우선적으로 하나의 jsp를 맡아 구현하는 방식으로 업무를 진행했고, 구현이 끝난 팀원은 또 다른, 아직 구현되지 않은 jsp를 할당 받아 구현하는 식이었다. 이 때문에 사이트 내 전체적인 통일성이 옅어졌고, 모든 소스를 통합한 뒤 한 번 더 프론트를 매만져야 하는 상황이 발생했다. 또한 Tiles를 적용했기에 중복적으로 사용되는 jsp의 경우 병합 후 스크립트 일부가 제대로 동작하지 않기도 했다. 결국 나는 스크립트 단 코드를 번복해서 짜야만 했다.</p>
+<p>이 사건을 통해 프로젝트 처음 세팅 단계에서 폴더 구조를 명확히 해야하고, 뷰 컴포넌트에 대한 협의의 필요성을 배웠다.</p>
+<p>웹소켓 적용의 경우 기존에 블로그에 포스팅하기도 했지만 이 프로젝트에서 내가 맡은 로직 중 가장 많은 시간이 들었던 부분이었다. 알림을 보내는 유저와 받는 유저가 모두 로그인 되어 있는 상태에서 알림 서비스를 구현한 예제들은 많았지만, 알림을 받아야 하는 대상이 로그아웃 되어있을 때에 대한 예제는 많지 않았다. 처음에는 이런 기능을 구현한 사이트들은 어떤 방식으로 했는지를 찾아봤으나 사용 언어나 DB가 맞지 않아 적용이 힘듦을 알았다. 결국 이 작업을 DB의 트리거와 프로시저로 연관시켜 구현을 시도했고, 찾을 수 있었던 레퍼런스 코드들을 프로젝트의 요구사항에 맞게 변경해 적용을 시켜야 했다.</p>
+<p>처음으로 트리거를 만들어보았고 조건문에 따른 로직을 처리했다. 프로시저도 만들어 호출해보는 등 이론적으로만 배웠던 부분을 실제로 적용하며 많이 배울 수 있는 시간이었다. 또한 효율적인 데이터 관리를 위해 DB 설계를 어떻게 하는 게 좋을지에 대해 고민하는 시간도 되었으며 요구사항에 따라 DB나 언어 선택을 다르게 하는 이유에 대해 생각해보는 계기도 되었다. (<em>이력서 그대로 긁어옴</em>)</p>
+<h3 id="아쉬운-점"><a href="#아쉬운-점" class="headerlink" title="아쉬운 점"></a>아쉬운 점</h3><ol>
+<li><p>​    Vue.js나 React 미적용</p>
+<p>많은 기능들이 비동기로 구현되기에 완성된 사이트는 실제 호스팅되는 사이트들보다 로딩이 느렸다. 또한 CDN으로 많은 프레임워크의 기능을 가져와 사용하기에 더더욱 느렸던 것 같다. 프론트 단을 템플릿을 사용하지 않고 만든 만큼, 차라리 vue.js나 react를 배워 조금이나마 해당 기능을 적용하려는 노력이 있었더라면, 혹은 해당 기능을 기반으로 하는 탬플릿을 사용하되 기능을 이해하려는 공부가 있었더라면 완성된 사이트가 보다 효율적이지 않았을까 싶다.</p>
+<p>이 프로젝트 이후로 리액트와 뷰에 대해 관심을 가지게 되었는데, 리액트보다는 일단 뷰를 하고 싶다는 생각이 들었다.</p>
 </li>
-<li><code>endPoint</code>와 그에 걸맞는 데이터를 반환해주는 API를 개발해야 했음</li>
-</ul>
-<h3 id="GraphQL-의-등장"><a href="#GraphQL-의-등장" class="headerlink" title="GraphQL 의 등장"></a><code>GraphQL</code> 의 등장</h3><p><img src="https://cdn-images-1.medium.com/max/1600/1*PHxksCXy0Wh5ryANEZkfDQ.jpeg" alt=""></p>
-<ul>
-<li><p>요청하는 리소스마다 <code>endPoint</code>  가 다른 <code>REST API</code> 와는 달리 </p>
+<li><p>회고 시간 부재</p>
+<p>구현을 마친 뒤 수료 발표를 위한 준비-문서 작업, 영상 편집, 발표 연습 등-에 너무 많은 시간을 할애한 탓에 팀원 각각이 구현한 소스에 대해 함께 보고, 왜 이렇게 구현했는지, 더 나은 방법은 없었을지 등에 대해 고민하는 회고 시간이 없었던 게 아쉽다. 개인적으로 프로젝트를 리팩토링해보고 싶은 욕심이 있어 수료 후 혼자 소스 분석하고 조금씩 손을 대보고 있는데, 타 팀원이 왜 이렇게 구현했을지를 고민하며 진행하니 어려움이 많은 요즘.</p>
 </li>
-<li><p>클라이언트측에서 쿼리를 만들어서 서버로 보내면 우리가 원하는대로 결과를 반환</p>
-<p><img src="https://blog.sapzil.org/public/img/2015-08-31-graphql-example.jpg" alt=""></p>
-<p><code>query</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">query &#123;</span><br><span class="line">    account(id: <span class="string">"1"</span>) &#123;</span><br><span class="line">        username</span><br><span class="line">        email</span><br><span class="line">        firstName</span><br><span class="line">        lastName</span><br><span class="line">        friends &#123;</span><br><span class="line">            firstName</span><br><span class="line">            username</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>result</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"data"</span>: &#123;</span><br><span class="line">    <span class="string">"account"</span>: &#123;</span><br><span class="line">      <span class="string">"username"</span>: <span class="string">"velopert"</span>,</span><br><span class="line">      <span class="string">"email"</span>: <span class="string">"public.velopert@gmail.com"</span>,</span><br><span class="line">      <span class="string">"firstName"</span>: <span class="string">"Minjun"</span>,</span><br><span class="line">      <span class="string">"lastName"</span>: <span class="string">"Kim"</span>,</span><br><span class="line">      <span class="string">"friends"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"firstName"</span>: <span class="string">"Jayna"</span>,</span><br><span class="line">          <span class="string">"username"</span>: <span class="string">"jn4kim"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"firstName"</span>: <span class="string">"Abet"</span>,</span><br><span class="line">          <span class="string">"username"</span>: <span class="string">"abet"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>협업 툴 미사용</p>
+<p>프로젝트를 진행하며 깃허브, 칸반보드, 구글 드라이브, 카카오톡 그룹 채팅, 면대면 대화 등을 활용해 팀원들과 협업했다. 위에서 언급한 협업 툴을 사용하는데도 조금씩 미숙했던 터라 팀원 모두가 더 효율적인 협업 툴을 찾아 적응하기보다는, 기존에 사용 중이던 협업 툴을 더 완벽하게 숙지해 사용하는데 중점을 두게 되었다. 나중에 프로젝트가 끝난 뒤, 학원 외부에서 토이 프로젝트를 하며 찾아보니 몰랐던 많은 협업 툴들이 시중에 나와 있었고 해당 툴들을 사용했더라면 보다 실용적이었으리라 생각된다.</p>
 </li>
-<li><p>필요한 정보를 쿼리로 만들어서 서버에 전달하면 서버가 알아서 주어진 틀대로 데이터를 보여준다</p>
-</li>
-<li><p>쿼리를 통해 <strong>딱 필요한 데이터만 <code>fetching</code>하기 때문에 overfetch, underfetch를 할 걱정이 없다</strong></p>
-</li>
-</ul>
-<h3 id="GraphQL-스키마-언어"><a href="#GraphQL-스키마-언어" class="headerlink" title="GraphQL 스키마 언어"></a>GraphQL 스키마 언어</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">type Character &#123;</span><br><span class="line"><span class="comment">// 객체 타입</span></span><br><span class="line"><span class="comment">// ! = non-nullable</span></span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">  <span class="comment">// 필드명 : String 타입이며 null일 수 없음</span></span><br><span class="line">  appearsIn: [Episode]!</span><br><span class="line">  <span class="comment">// 필드명 : Episode 객체의 배열이며 null이 아님</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 만약 필드명 : [Episode!]라면</span></span><br><span class="line">  <span class="comment">// 리스트 자체는 null일 수 있어도 null을 가질 수 없음</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="인자"><a href="#인자" class="headerlink" title="인자"></a>인자</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">type Starship &#123;</span><br><span class="line">  length(unit: LengthUnit = METER): Float</span><br><span class="line">  <span class="comment">// length라는 필드는 하나의 인자(unit)를 지닌다.</span></span><br><span class="line">  <span class="comment">// 만약 unit 인자를 전달받지 못한다면</span></span><br><span class="line">  <span class="comment">// default 값은 'METER'이다.</span></span><br><span class="line">  <span class="comment">// 자료형은 Float이다.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="스칼라-타입"><a href="#스칼라-타입" class="headerlink" title="스칼라 타입"></a>스칼라 타입</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 쿼리</span></span><br><span class="line">&#123;</span><br><span class="line">  hero &#123;</span><br><span class="line">    name</span><br><span class="line">    appearsIn</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 결과</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"data"</span>: &#123;</span><br><span class="line">    <span class="string">"hero"</span>: &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"R2-D2"</span>,</span><br><span class="line">      <span class="string">"appearsIn"</span>: [</span><br><span class="line">        <span class="string">"NEWHOPE"</span>,</span><br><span class="line">        <span class="string">"EMPIRE"</span>,</span><br><span class="line">        <span class="string">"JEDI"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>name</code> 과 <code>appearIn</code> 은 하위 쿼리가 없으므로 스칼라 타입이다.</li>
-</ul>
-<h5 id="타입-종류"><a href="#타입-종류" class="headerlink" title="타입 종류"></a>타입 종류</h5><ul>
-<li><p><code>Int</code>: 부호가 있는 32비트 정수.</p>
-</li>
-<li><p><code>Float</code>: 부호가 있는 부동소수점 값.</p>
-</li>
-<li><p><code>String</code>: UTF-8 문자열.</p>
-</li>
-<li><p><code>Boolean</code>: <code>true</code> 또는 <code>false</code>.</p>
-</li>
-<li><p><code>ID</code>: ID 스칼라 타입은 객체를 다시 요청하거나 캐시의 키로써 자주 사용되는 고유 식별자를 나타냅니다. ID 타입은 String 과 같은 방법으로 직렬화된다.</p>
-</li>
-<li><p>열거형 타입(<code>Enums</code>)</p>
-<ul>
-<li>특정 값들로 제한되는 특별한 종류의 스칼라</li>
-<li>타입의 인자가 허용된 값 중 하나임을 검증</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum Episode &#123;</span><br><span class="line">  NEWHOPE</span><br><span class="line">  EMPIRE</span><br><span class="line">  JEDI</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Episode 타입이라면 반드시 위의 셋 중 하나</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="커스텀-타입"><a href="#커스텀-타입" class="headerlink" title="커스텀 타입"></a>커스텀 타입</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scalar <span class="built_in">Date</span></span><br></pre></td></tr></table></figure>
-<p><em>이거는 사실 이해를 못하겠다. 믿는다 미래의 나…!</em></p>
-<h4 id="특수-타입"><a href="#특수-타입" class="headerlink" title="특수 타입"></a>특수 타입</h4><ul>
-<li>모든 GraphQL 서비스는 <code>query</code> 타입을 가진다.</li>
-<li><code>mutation</code> 타입은 가질 수도 있고 가지지 않을 수도 있다.</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">query &#123;</span><br><span class="line">  hero &#123;</span><br><span class="line">    name</span><br><span class="line">  &#125;</span><br><span class="line">  droid(id: <span class="string">"2000"</span>) &#123;</span><br><span class="line">    name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이 쿼리를 실행시키려면 우선 선행적으로</span></span><br><span class="line"><span class="comment">// hero와 droid 필드가 있는 Query 타입이 필요</span></span><br><span class="line"></span><br><span class="line">type 타입명 &#123;</span><br><span class="line">  hero(episode: Episode): Character</span><br><span class="line">  <span class="comment">// 객체 타입</span></span><br><span class="line">  droid(id: ID!): Droid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="다형성-지원"><a href="#다형성-지원" class="headerlink" title="다형성 지원"></a>다형성 지원</h4><ul>
-<li><p>인터페이스로 공통 필드 정의 가능</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">interface Character &#123;</span><br><span class="line">  id: ID!</span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">  friends: [Character]</span><br><span class="line">  appearsIn: [Episode]!</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// Character를 구현한 모든 타입은 이러한 인자와 리턴 타입을 가진 정확한 필드를 가져야 함</span></span><br><span class="line">  </span><br><span class="line">type Human implements Character &#123;</span><br><span class="line">  id: ID!</span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">  friends: [Character]</span><br><span class="line">  appearsIn: [Episode]!</span><br><span class="line">  starships: [Starship]</span><br><span class="line">  totalCredits: Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Droid implements Character &#123;</span><br><span class="line">  id: ID!</span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">  friends: [Character]</span><br><span class="line">  appearsIn: [Episode]!</span><br><span class="line">  primaryFunction: <span class="built_in">String</span></span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 추가 필드 구현도 가능</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>union 타입으로 여러 타입을 하나로 묶을 수 있음</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union SearchResult = Human | Droid | Starship</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>유니온 타입의 멤버는 구체적인 객체 타입이어야 한다.</p>
-<ul>
-<li>즉 <code>Human</code>, <code>Droid</code>, <code>Starship</code> 은 객체 타입이다.</li>
-</ul>
-</li>
-<li><p>인터페이스, 유니온 타입에서 다른 유니온 타입 사용이 불가하다</p>
-<ul>
-<li>만약 유니온 타입 반환 필드를 쓰고자 하면 프래그먼트를 사용해야 한다.</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// search가 유니온 타입을 반환하는 필드를 쿼리한다는 가정</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  search(text: <span class="string">"an"</span>) &#123;</span><br><span class="line">    ... on Human &#123;</span><br><span class="line">      name</span><br><span class="line">      height</span><br><span class="line">    &#125;</span><br><span class="line">    ... on Droid &#123;</span><br><span class="line">      name</span><br><span class="line">      primaryFunction</span><br><span class="line">    &#125;</span><br><span class="line">    ... on Starship &#123;</span><br><span class="line">      name</span><br><span class="line">      length</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="입력-타입"><a href="#입력-타입" class="headerlink" title="입력 타입"></a>입력 타입</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">input ReviewInput &#123;</span><br><span class="line">  stars: Int!</span><br><span class="line">  commentary: <span class="built_in">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>뮤테이션에서 특히 유용하다.</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mutation CreateReviewForEpisode($ep: Episode!, <span class="attr">$review</span>: ReviewInput!) &#123;</span><br><span class="line">  createReview(episode: $ep, <span class="attr">review</span>: $review) &#123;</span><br><span class="line">    stars</span><br><span class="line">    commentary</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"ep"</span>: <span class="string">"JEDI"</span>,</span><br><span class="line">  <span class="string">"review"</span>: &#123;</span><br><span class="line">    <span class="string">"stars"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="string">"commentary"</span>: <span class="string">"This is a great movie!"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>입력 객체 타입을 참조할 수 있지만, 입력 및 룰력 타입을 스키마에 혼합할 수 없다.</li>
-<li>필드에 인자를 가질 수 없다.</li>
-</ul>
-<h3 id="GraphQL-API-의-구성"><a href="#GraphQL-API-의-구성" class="headerlink" title="GraphQL API 의 구성"></a><code>GraphQL API</code> 의 구성</h3><ul>
-<li><p>GraphQL은 스키마가 미리 정의되어 있는 강타입 언어</p>
-</li>
-<li><p>주석은 <code>#</code>  으로 시작</p>
-</li>
-<li><p>GraphQL 문서에 쿼리 하나만 있는 경우가 아니면 <strong>명시적으로 쿼리임을 나타내야 한다.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">query sampleQuery &#123;</span><br><span class="line"><span class="comment">// 쿼리임을 명시적으로 선언</span></span><br><span class="line">	post</span><br><span class="line">	users</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="selection-set"><a href="#selection-set" class="headerlink" title="selection set"></a>selection set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 쿼리</span></span><br><span class="line">&#123;</span><br><span class="line">	id</span><br><span class="line">	text</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 결과</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"id"</span>: <span class="number">42</span>,</span><br><span class="line">	<span class="string">"text"</span>: <span class="string">"Hello, world!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="필드에는-인자를-넘길-수-있다"><a href="#필드에는-인자를-넘길-수-있다" class="headerlink" title="필드에는 인자를 넘길 수 있다"></a>필드에는 인자를 넘길 수 있다</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	pictureURL(width: <span class="number">50</span>, <span class="attr">height</span>: <span class="number">50</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 혹은</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  human(id: <span class="string">"1000"</span>) &#123;</span><br><span class="line">    name</span><br><span class="line">    height</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="필드-이름은-별명-alias-지정이-가능"><a href="#필드-이름은-별명-alias-지정이-가능" class="headerlink" title="필드 이름은 별명(alias) 지정이 가능"></a>필드 이름은 별명(alias) 지정이 가능</h4><p>같은 필드를 다른 인자로 가져올 때도 사용</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	fullName: name</span><br><span class="line">	smallPic: profilePic(size: <span class="number">64</span>)</span><br><span class="line">	bigPic: profilePic(size: <span class="number">1024</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="필드가-객체나-list-타입이라면-하위-객체의-selection-set를-반드시-명기"><a href="#필드가-객체나-list-타입이라면-하위-객체의-selection-set를-반드시-명기" class="headerlink" title="필드가 객체나 list 타입이라면 하위 객체의 selection set를 반드시 명기"></a>필드가 객체나 list 타입이라면 하위 객체의 selection set를 <strong>반드시</strong> 명기</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	id</span><br><span class="line">	text</span><br><span class="line">	author &#123;</span><br><span class="line">		name</span><br><span class="line">		pictureURL(width: <span class="number">50</span>, <span class="attr">height</span>: <span class="number">50</span>)</span><br><span class="line">		posts &#123;</span><br><span class="line">			id</span><br><span class="line">			text</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>GraphQL 쿼리의 가장 바깥 selection set는 ‘쿼리 루트’ 객체로부터 시작하도록 정해져 있다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	me &#123;</span><br><span class="line">		name</span><br><span class="line">	&#125;</span><br><span class="line">	post(id: <span class="string">"42"</span>) &#123;</span><br><span class="line">		title</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="프래그먼트-fragment"><a href="#프래그먼트-fragment" class="headerlink" title="프래그먼트(fragment)"></a>프래그먼트(fragment)</h4><ul>
-<li>같은 selection set이 한 쿼리 안에서 중복될 수 있다.</li>
-<li>글쓴이의 프로필과 댓글 작성자의 프로필이 같은 컴포넌트라면 같은 필드가 필요하기 때문</li>
-<li>중복을 제거하는데 프래그먼트를 사용할 수 있다.</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">query sampleQuery &#123;</span><br><span class="line">	post(id: <span class="string">"4"</span>) &#123;</span><br><span class="line">		id</span><br><span class="line">		text</span><br><span class="line">		author &#123;</span><br><span class="line">			...basicUserInfo</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	users &#123;</span><br><span class="line">		...basicUserInfo</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 타입에 대한 프래그먼트임을 명시</span></span><br><span class="line">fragment basicUserInfo on User &#123;</span><br><span class="line">	name</span><br><span class="line">	pictureURL(width: <span class="number">50</span>, <span class="attr">height</span>: <span class="number">50</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">query samplePolymorphicQuery &#123;</span><br><span class="line">	timeline &#123;</span><br><span class="line">		data &#123;</span><br><span class="line">            <span class="comment">// data가 Post 리스트일 때</span></span><br><span class="line">			<span class="comment">// 인라인 프래그먼트를 이렇게 지정</span></span><br><span class="line">			... on Post &#123;</span><br><span class="line">				title</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 인라인 프래그먼트가 아닐 때는 이렇게 지정</span></span><br><span class="line">			...basicUserInfo</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="메타-필드"><a href="#메타-필드" class="headerlink" title="메타 필드"></a>메타 필드</h4><ul>
-<li>리턴될 타입을 모르는 상황이 발생하면 클라이언트에서 데이터 처리를 어떻게 할 것인지 결정해야 함</li>
-<li><code>__typename</code> 을 사용하면 그 시점의 객체 타입의 이름이 리턴된다.</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  search(text: <span class="string">"an"</span>) &#123;</span><br><span class="line">    __typename</span><br><span class="line">    <span class="comment">// 일단 어떤 타입이든 어떤 객체 타입인지 데이터가 출력됨</span></span><br><span class="line">    ... on Human &#123;</span><br><span class="line">      <span class="comment">// 만약 객체 타입이 Human이라면</span></span><br><span class="line">      name</span><br><span class="line">    &#125;</span><br><span class="line">    ... on Droid &#123;</span><br><span class="line">      name</span><br><span class="line">    &#125;</span><br><span class="line">    ... on Starship &#123;</span><br><span class="line">      name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 결과</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"data"</span>: &#123;</span><br><span class="line">    <span class="string">"search"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"__typename"</span>: <span class="string">"Human"</span>,</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Han Solo"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"__typename"</span>: <span class="string">"Human"</span>,</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Leia Organa"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"__typename"</span>: <span class="string">"Starship"</span>,</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"TIE Advanced x1"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="변수-지정도-가능"><a href="#변수-지정도-가능" class="headerlink" title="변수 지정도 가능"></a>변수 지정도 가능</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">query HeroComparison($first: Int = <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">// 쿼리나 뮤테이션에 선언된 변수는</span></span><br><span class="line">    <span class="comment">// 프래그먼트에 접근이 가능하다.</span></span><br><span class="line">  leftComparison: hero(episode: EMPIRE) &#123;</span><br><span class="line">    ...comparisonFields</span><br><span class="line">  &#125;</span><br><span class="line">  rightComparison: hero(episode: JEDI) &#123;</span><br><span class="line">    ...comparisonFields</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fragment comparisonFields on Character &#123;</span><br><span class="line">  name</span><br><span class="line">  friendsConnection(first: $first) &#123;</span><br><span class="line">      <span class="comment">// 이 경우 프래그먼트에 3이 접근한다.</span></span><br><span class="line">    totalCount</span><br><span class="line">    edges &#123;</span><br><span class="line">      node &#123;</span><br><span class="line">        name</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="변수의-정의-episode-Episode"><a href="#변수의-정의-episode-Episode" class="headerlink" title="변수의 정의 ($episode: Episode)"></a>변수의 정의 <code>($episode: Episode)</code></h5><ul>
-<li>정적타입 언어의 함수에 대한 인자 정의</li>
-<li><code>$</code> 접두사가 붙은 모든 변수를 나열하고 그 뒤에 타입이 온다</li>
-<li>선언된 변수는 스칼라, 열거형, input object type이어야 한다.</li>
-<li><code>Episode</code> 타입 옆에 <code>!</code>가 없다면 옵셔널이다.</li>
-</ul>
-<h4 id="지시어"><a href="#지시어" class="headerlink" title="지시어"></a>지시어</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"episode"</span>: <span class="string">"JEDI"</span>,</span><br><span class="line">  <span class="string">"withFriends"</span>: <span class="literal">false</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">query Hero($episode: Episode, <span class="attr">$withFriends</span>: <span class="built_in">Boolean</span>!) &#123;</span><br><span class="line">  hero(episode: $episode) &#123;</span><br><span class="line">    name</span><br><span class="line">    friends @include(<span class="keyword">if</span>: $withFriends) &#123;</span><br><span class="line">      name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// true와 false의 결과가 다름을 확인할 수 있다</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>@include(if: Boolean)</code> : 참일 때만 필드가 결과에 포함된다.</li>
-<li><code>@skip(if: Boolean)</code> 인자가 <code>true</code> 이면 이 필드를 건너뛴다.</li>
-</ul>
-<h4 id="mutation"><a href="#mutation" class="headerlink" title="mutation"></a>mutation</h4><ul>
-<li>데이터의 읽기 외에 쓰기(변형)도 지원함</li>
-<li>쿼리는 필드를 순서 없이 평가</li>
-<li><strong>mutation의 필드는 항상 순서대로 평가</strong>, 즉 하나의 요청에서 두 개의 뮤테이션 건을 보낸다면 첫 번째 뮤테이션은 두 번째 요청 전에 완료가 보장된다.</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutation sampleMutation &#123;</span><br><span class="line">	setName(name: <span class="string">"Zuck"</span>) &#123;</span><br><span class="line">		newName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="참고-레퍼런스"><a href="#참고-레퍼런스" class="headerlink" title="참고 레퍼런스"></a>참고 레퍼런스</h3><ul>
-<li><p><a href="https://graphql-kr.github.io/learn/thinking-in-graphs/" target="_blank" rel="noopener">graphql-kr</a></p>
-</li>
-<li><p><a href="https://dev4us.tistory.com/17" target="_blank" rel="noopener">매력적인 쿼리 언어, GraphQL</a></p>
-</li>
-<li><p><a href="https://velopert.com/2318" target="_blank" rel="noopener">GraphQL 강좌 1편: GraphQL이 무엇인가?</a></p>
-</li>
-<li><p><a href="https://engineering.huiseoul.com/%ED%95%9C-%EB%8B%A8%EA%B3%84%EC%94%A9-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EB%8A%94-graphql-421ed6215008" target="_blank" rel="noopener">한 단계씩 배워보는 GraphQL</a></p>
-</li>
-<li><p><a href="https://medium.com/@kiyeopyang/%EA%B0%80%EC%9E%A5-%ED%98%84%EB%8C%80%EC%A0%81%EC%9D%B8-%EC%9B%B9%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90-3%ED%8E%B8-graphql-cb69ce1a64b5" target="_blank" rel="noopener">가장 현대적인 웹을 만들자</a></p>
-</li>
-<li><p><a href="https://blog.sapzil.org/2015/09/01/graphql-rfc/" target="_blank" rel="noopener">GraphQL 살펴보기</a></p>
-</li>
-</ul>
+</ol>
+<h3 id="총평"><a href="#총평" class="headerlink" title="총평"></a>총평</h3><p>힘들고 즐거웠다. 이론을 배울<br>적, 머리로는 분명 이해했다고 생각했는데 실제로 코드를 치면서 이해를 못하고 있음을 깨닫는 날도 있었고, 새로 구현해야 하는 기능 때문에 레퍼런스를 보고 예제 코드를 봐도 이해를 못하는 나 자신이 무척 싫어지는 날도<br>있었다. 그렇게 몇 날 며칠을 고생해 코드가 구현되었을 때는 고생했던 기억들이 씻은 듯 사라지며<br>즐거웠다.</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/GraphQL/">GraphQL</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
 
       
       
@@ -321,7 +193,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/49/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="space">&hellip;</span><a class="page-number" href="/page/83/">83</a><a class="extend next" rel="next" href="/page/51/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/49/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="space">&hellip;</span><a class="page-number" href="/page/84/">84</a><a class="extend next" rel="next" href="/page/51/">Next</a>
   </nav>
 
 </section>
@@ -374,7 +246,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">71</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">72</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -422,7 +294,19 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/05/22/promise-async-await/">자바스크립트 엔진 구조, promise, async와await</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/05/22/generator/">Generator</a></h6>
+              <span>5월 22, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/22/promise-async-await/">자바스크립트 엔진 구조, promise, async와 await</a></h6>
               <span>5월 22, 2019</span>
             </div>
 
@@ -476,18 +360,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/19/remove-in-map-func/">map((item, index)=&gt; {console.log(&#39;index 그만하기&#39;)})</a></h6>
-              <span>5월 19, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -498,7 +370,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

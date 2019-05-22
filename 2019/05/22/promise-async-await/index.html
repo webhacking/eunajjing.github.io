@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>자바스크립트 엔진 구조, promise, async와await | ERecord</title>
+  <title>자바스크립트 엔진 구조, promise, async와 await | ERecord</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -11,15 +11,15 @@
   
   <meta name="description" content="자바스크립트에서 비동기 처리하기시작하기 전에, 자바스크립트 엔진의 구조 Call Stack 요청이 들어올 때마다 call Stack에 새로운 프레임이 생기고, push되고 실행이 끝나면 pop된다.  Heap 동적으로 생성된 객체가 할당된다.  Task Queue 처리해야하는 Task들을 보관하는 임시 대기 큐가 있고, Call Stack이 비워지면 대기열">
 <meta property="og:type" content="article">
-<meta property="og:title" content="자바스크립트 엔진 구조, promise, async와await">
+<meta property="og:title" content="자바스크립트 엔진 구조, promise, async와 await">
 <meta property="og:url" content="http://eunajjing.github.io/2019/05/22/promise-async-await/index.html">
 <meta property="og:site_name" content="ERecord">
 <meta property="og:description" content="자바스크립트에서 비동기 처리하기시작하기 전에, 자바스크립트 엔진의 구조 Call Stack 요청이 들어올 때마다 call Stack에 새로운 프레임이 생기고, push되고 실행이 끝나면 pop된다.  Heap 동적으로 생성된 객체가 할당된다.  Task Queue 처리해야하는 Task들을 보관하는 임시 대기 큐가 있고, Call Stack이 비워지면 대기열">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/225AF03B58E4956C26">
-<meta property="og:updated_time" content="2019-05-22T05:37:32.035Z">
+<meta property="og:updated_time" content="2019-05-22T05:38:58.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="자바스크립트 엔진 구조, promise, async와await">
+<meta name="twitter:title" content="자바스크립트 엔진 구조, promise, async와 await">
 <meta name="twitter:description" content="자바스크립트에서 비동기 처리하기시작하기 전에, 자바스크립트 엔진의 구조 Call Stack 요청이 들어올 때마다 call Stack에 새로운 프레임이 생기고, push되고 실행이 끝나면 pop된다.  Heap 동적으로 생성된 객체가 할당된다.  Task Queue 처리해야하는 Task들을 보관하는 임시 대기 큐가 있고, Call Stack이 비워지면 대기열">
 <meta name="twitter:image" content="https://t1.daumcdn.net/cfile/tistory/225AF03B58E4956C26">
   
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      자바스크립트 엔진 구조, promise, async와await
+      자바스크립트 엔진 구조, promise, async와 await
     </h1>
   
 
@@ -195,6 +195,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/05/22/generator/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Generator
+        
+      </div>
+    </a>
   
   
     <a href="/2019/05/20/programmers01/" id="article-nav-older" class="article-nav-link-wrap">
