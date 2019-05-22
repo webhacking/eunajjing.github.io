@@ -1,5 +1,5 @@
 ---
-title: 자바스크립트 엔진 구조, promise, async/await
+title: 자바스크립트 엔진 구조, promise, async와 await
 date: 2019-05-22 14:33:18
 tags:
 categories:
