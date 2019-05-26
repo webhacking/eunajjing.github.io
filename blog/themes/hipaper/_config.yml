@@ -8,8 +8,8 @@ menu:
   Archives: archives
   Categories: categories
   About: https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1
+  Bookmark: https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87
 rss: /atom.xml
-
 
 # Set default keywords (Use a comma to separate)
 keywords: ""
@@ -17,37 +17,37 @@ keywords: ""
 # Put your favicon.ico into `hexo-site/themes/hipaper/source/` directory.
 favicon: css/images/favicon.ico
 
-
 # Put your avatar.jpg into `hexo-site/themes/hipaper/source/` directory.
 # url is target link (E.g. `url: https://hexo.io/logo.svg` or `url: css/images/mylogo.jpg`)
-avatar: 
+avatar:
   enable: false
   width: 124
   height: 124
   bottom: 10
   url: https://hexo.io/logo.svg
 
-
 # AboutPage background, support multiple images.
-about_big_image: [css/images/pose01.jpg, https://source.unsplash.com/collection/954550/1920x1080, https://source.unsplash.com/collection/954550/1920x1081]
-
+about_big_image:
+  [
+    css/images/pose01.jpg,
+    https://source.unsplash.com/collection/954550/1920x1080,
+    https://source.unsplash.com/collection/954550/1920x1081,
+  ]
 
 # Homepage thumbnail
 random_thumb: false
 
-
 # Content
 fancybox: true
-
 
 # Sidebar
 sidebar: right
 widgets:
-- search
-- category
-- social
-- recent_posts
-- archive
+  - search
+  - category
+  - social
+  - recent_posts
+  - archive
 
 # Social Links
 # Key is the name of FontAwsome icon.
@@ -57,18 +57,16 @@ social:
 
 # Search
 search:
-    insight: true # you need to install `hexo-generator-json-content` before using Insight Search
-    swiftype: # enter swiftype install key here
-    baidu: false # you need to disable other search engines to use Baidu search, options: true, false
-
+  insight: true # you need to install `hexo-generator-json-content` before using Insight Search
+  swiftype: # enter swiftype install key here
+  baidu: false # you need to disable other search engines to use Baidu search, options: true, false
 
 # comment ShortName, you can choose only ONE to display.
-duoshuo_shortname: 
-disqus_shortname: 
+duoshuo_shortname:
+disqus_shortname:
 livere_shortname: MTAyMC8yOTQ4MS82MDQ5
-uyan_uid: 
-wumii: 
-
+uyan_uid:
+wumii:
 
 # Code Highlight theme
 # Available value:
@@ -76,9 +74,8 @@ wumii:
 # https://github.com/chriskempson/tomorrow-theme
 highlight_theme: default
 
-
 # widget behavior
-archive_type: 'monthly'
+archive_type: "monthly"
 show_count: true
 
 # Google Webmaster tools verification setting
@@ -102,10 +99,10 @@ fb_app_id:
 # https://github.com/iissnan/hexo-theme-next/pull/410
 facebook_sdk:
   enable: false
-  app_id:       #<app_id>
-  fb_admin:     #<user_id>
-  like_button:  #true
-  webmaster:    #true
+  app_id: #<app_id>
+  fb_admin: #<user_id>
+  like_button: #true
+  webmaster: #true
 
 # CNZZ count
 cnzz_siteid: 1260716016
