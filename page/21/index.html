@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-text-mining" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-createRef" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/04/29/text-mining/">텍스트 마이닝</a>
+      <a class="article-title" href="/2019/05/07/createRef/">React.createRef()</a>
     </h1>
   
 
@@ -120,121 +120,37 @@
     
     <div class="article-meta">
       
-	<a href="/2019/04/29/text-mining/" class="article-date">
-	  <time datetime="2019-04-29T11:09:00.000Z" itemprop="datePublished">4월 29, 2019</time>
+	<a href="/2019/05/07/createRef/" class="article-date">
+	  <time datetime="2019-05-07T02:29:18.000Z" itemprop="datePublished">5월 7, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="텍스트-마이닝"><a href="#텍스트-마이닝" class="headerlink" title="텍스트 마이닝"></a>텍스트 마이닝</h1><ul>
-<li>데이터 마이닝의 세부 항목</li>
-<li>대부분의 데이터마이닝이 수치 데이터, 범주형 데이터를 집중적으로 보는 반면 텍스트 마이닝은 텍스트 데이터를 주로 다룸</li>
-<li>단어와 용어를 모르더라도 주요 개념, 데이터들의 관계와 경향을 발견하기 위해 <strong>텍스트 자료 콜렉션을 분석하는 프로세스</strong>가 중심</li>
-<li>데이터들을 쌓아 내용을 공고히하거나, 정리, 요약, 분류, 추출 가능</li>
-<li>자연어 처리 기술(NLP), 정보 검색 기술, 데이터마이닝 기술 분야의 혼합체</li>
-</ul>
-<p><img src="http://www.jidum.com/upload/ckeditor/2016/10/2016101815070952.png" alt="img"></p>
-<h2 id="적용-방법"><a href="#적용-방법" class="headerlink" title="적용 방법"></a>적용 방법</h2><ol>
-<li>텍스트(원천 데이터) 입력</li>
-<li>텍스트 마이닝 알고리즘 적용</li>
-<li>개념 및 범주 모델 작성</li>
-<li>데이터 분석</li>
-</ol>
-<h2 id="필요한-것"><a href="#필요한-것" class="headerlink" title="필요한 것"></a>필요한 것</h2><ul>
-<li>형태소 분석기</li>
-<li>구문 분석기</li>
-<li>대용량 데이터 처리 플랫폼 등</li>
-</ul>
-<h2 id="세부-분류"><a href="#세부-분류" class="headerlink" title="세부 분류"></a>세부 분류</h2><h3 id="언어학적-기반-텍스트-마이닝"><a href="#언어학적-기반-텍스트-마이닝" class="headerlink" title="언어학적 기반 텍스트 마이닝"></a>언어학적 기반 텍스트 마이닝</h3><ul>
-<li><p>특징</p>
-<ul>
-<li>자연어를 컴퓨터가 분석해 구조화함</li>
-<li>의미 및 컨텍스트를 기반으로 특정 개념을 관련 그룹으로 분류 가능</li>
-<li>관련 프레임웤을 이용하면 컴퓨터가 단어 양식, 문장 구조를 분석</li>
-</ul>
+        <h1 id="React-createRef"><a href="#React-createRef" class="headerlink" title="React.createRef()"></a><code>React.createRef()</code></h1><blockquote>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><p>DOM에 접근해 직접 다루어야 할 때 사용한다.</p>
 </li>
-<li><p>고려 대상</p>
-<ul>
-<li>동의어에 대한 처리 필요<ul>
-<li>확장 필요성 존재</li>
-</ul>
-</li>
-<li>텍스트의 모호성 때문에 관련 없는 결과가 다수 생성될 가능성 있음</li>
-<li>언어학적 자원(라이브러리, 동의어 등)을 세부 조정해 추출 프로세스 실행이 중요</li>
-<li>한국어 데이터의 경우 형태소 분석 문제가 추가로 발생</li>
-</ul>
-<blockquote>
-<h4 id="추출-프로세스의-단계"><a href="#추출-프로세스의-단계" class="headerlink" title="추출 프로세스의 단계"></a>추출 프로세스의 단계</h4><ol>
-<li>원천 데이터를 컴퓨터가 읽을 수 있는 표준 형식으로 변환</li>
-</ol>
-<p>(프로그램에 따라 표준 형식으로 변환된 추가 DB 생성이 없을 수도 있다)</p>
-<ol start="2">
-<li><p>후보 항 식별</p>
-<ul>
-<li><code>후보항</code> : 텍스트에서 개념을 식별하는데 사용되는 단어나 단어 그룹</li>
-<li><p>단일어, 복합어, 품사 패턴 추출기를 사용하여 텍스트 내 유의미한 자료 식별</p>
-</li>
-<li><p>식별 시 여러 개의 라이브러리를 함께 사용해 상호 보완적으로 쓰는 것이 일반적</p>
+<li><p>컴포넌트 내부에서만 작동하기 때문에 전역적이지 않다</p>
 </li>
 </ul>
-</li>
-</ol>
-<ul>
-<li><p>라이브러리에는</p>
-<ul>
-<li>사전<ul>
-<li>기본 사전(명사, 동사, 형용사 등이 담긴 품사 코드)</li>
-<li>유형 사전</li>
-<li>동의어 사전 등</li>
-</ul>
-</li>
-<li>관계 및 추출 지정, 조정 세팅</li>
-</ul>
-<p>등이 담긴다.</p>
-</li>
-</ul>
-<ol start="3">
-<li><p>동의어의 동등 클래스 및 통합 식별 (유사한 후보 항 식별)</p>
-<ul>
-<li>한 구문의 기본 양식, 동일 구문에 대한 두 개의 변형이 있는 단일 양식을 동등 클래스로 설정<ul>
-<li>라이브러리의 사용자 지정 양식과 최대 빈도 양식을 기반으로 식별 진행</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>유형 지정</p>
-<ul>
-<li>상위 레벨 개념 (상위 데이터와 하위 데이터 인지)</li>
-<li>사용자가 만든 추가 유형 등</li>
-</ul>
-</li>
-<li><p>색인화</p>
-</li>
-<li><p>패턴 및 이벤트 추출 매치 (일부 프로그램에서만 제공됨)</p>
-<ul>
-<li>색인된 것들과의 관계 추출 가능</li>
-</ul>
-</li>
-</ol>
 </blockquote>
-</li>
-</ul>
-<h3 id="규칙-기반-텍스트-마이닝"><a href="#규칙-기반-텍스트-마이닝" class="headerlink" title="규칙 기반 텍스트 마이닝"></a>규칙 기반 텍스트 마이닝</h3><ul>
-<li>언어학적 기반 텍스트 마이닝의 단점 보완</li>
-<li>비언어적 규칙으로 관련 결과, 비관련 결과를 구분</li>
-</ul>
+<p>기존의 <code>ref</code>생성 신텍스는</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref=&#123;(ref) =&gt; &#123;<span class="keyword">this</span>.refname = ref&#125;&#125; /&gt;</span><br><span class="line"><span class="comment">// 이제 이 input 요소를 제어할 때는</span></span><br><span class="line"><span class="comment">// this.refname.블라블라();</span></span><br><span class="line"><span class="comment">// 형식으로 제어한다.</span></span><br></pre></td></tr></table></figure>
+<p><strong>그런데</strong> <code>React.createRef()</code>을 사용할 경우</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReactTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	refname = React.createRef();</span><br><span class="line">	<span class="comment">// 위에서 선언해주고</span></span><br><span class="line">	</span><br><span class="line">	render() &#123;</span><br><span class="line">		&lt;input ref=&#123;<span class="keyword">this</span>.refname&#125;/&gt;</span><br><span class="line">		<span class="comment">// 이렇게 쓴다!</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	만약 포커싱 같은 것을 주고 싶으면</span><br><span class="line">	<span class="keyword">this</span>.refname.currnet.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>currnet가 핵심</strong></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
 
       
       
@@ -252,7 +168,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/20/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/88/">88</a><a class="extend next" rel="next" href="/page/22/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/20/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/89/">89</a><a class="extend next" rel="next" href="/page/22/">Next</a>
   </nav>
 
 </section>
@@ -305,7 +221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">75</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">76</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -353,6 +269,30 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/05/28/woowahan03/">우아한테크러닝 Typescript &amp; React 101 03, 04 saga</a></h6>
+              <span>5월 28, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/05/27/woowahan04/">우아한테크러닝 Typescript &amp; React 101 04</a></h6>
+              <span>5월 27, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/05/27/minRander/">렌더링의 최소화</a></h6>
               <span>5월 27, 2019</span>
             </div>
@@ -389,31 +329,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/05/23/woowahan03/">우아한테크러닝 Typescript &amp; React 101 03</a></h6>
-              <span>5월 23, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2019/05/22/generator/">Generator</a></h6>
-              <span>5월 22, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/22/promise-async-await/">자바스크립트 엔진 구조, promise, async와 await</a></h6>
               <span>5월 22, 2019</span>
             </div>
 
@@ -429,7 +345,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
