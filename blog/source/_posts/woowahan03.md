@@ -1,11 +1,13 @@
 ---
-title: 우아한테크러닝 Typescript & React 101 03
-date: 2019-05-23 18:44:18
+title: 우아한테크러닝 Typescript & React 101 03, 04 saga
+date: 2019-05-28 10:57:18
 tags:
 categories:
 - 개발공부
 - 우아한테크러닝(React+Typescript)
 ---
+
+> 원래는 그 회차 때 배운 것을 정리하려고 했는데, 회차 별로 정리하는 것보다는 주제로 정리하는 게 나을 것 같아 넘버링을 다시 하고 있다.
 
 # redux-saga
 
@@ -14,11 +16,11 @@ categories:
 - [프로미스, 어싱크/어웨이](https://eunajjing.github.io/2019/05/22/promise-async-await/)
 - [제너레이터](https://eunajjing.github.io/2019/05/22/generator/)
 
-이 포스트는 두 개의 포스트와 이어져있다.
+이 포스트는 두 개의 포스트와 이어져있다.
 
 ## 미들웨어
 
-미들웨어는 약간 이런 구조로 되어있다. 미들웨어 내에서 사용되는 인자들은 클로저로 넣어준다.
+미들웨어는 약간 이런 구조로 되어있다. 미들웨어 내에서 사용되는 인자들은 클로저로 넣어준다.
 
 ```javascript
 const middleware = (store) => {
@@ -57,11 +59,11 @@ const middleware = (store) => {
   - 상태를 새로 만들어(액션 객체) 디스패치
 - 리듀서가 객체를 받음
   - 이 경우, 리듀서 입장에서는 해당 상태가 어떻게 온 것인지 상관하지 않아도 됨
-  - 동기 데이터를 가지고 온 것과 같다
+  - 동기 데이터를 가지고 온 것과 같다
 
 ### `applyMiddleware`
 
-리덕스 패키지의 함수 중 하나로, 미들웨어를 인자로 넣어준다.
+리덕스 패키지의 함수 중 하나로, 미들웨어를 인자로 넣어준다.
 
 ```javascript
 const sagaMiddleware = createSagaMiddleware();
@@ -113,14 +115,14 @@ put(Actions.actionCreateFunc)
 
 일반적으로 제너레이터 펑션은 `yield` 키워드를 만나면 그 함수를 잠시 중단 시킨다. 그러나 제너레이터 펑션을 콜러 측에서 여러번 호출해 동시에 사용할 경우, `yield` 키워드와 관계 없이 제너레이터 펑션이 **동시에 실행**되어야 하므로 사용한다.
 
-만약 `all`을 사용하지 않는다면 해당 제너레이터 펑션은 `yield` 키워드를 만날 때마다 멈추므로 콜러 측에서 원활한 사용이 어렵다.
+만약 `all`을 사용하지 않는다면 해당 제너레이터 펑션은 `yield` 키워드를 만날 때마다 멈추므로 콜러 측에서 원활한 사용이 어렵다.
 
 ```javascript
 yield all([
         put(Actions.fetchSuccess),
         put(Actions.fetchFailure)
+  // 이 경우 Put 두 개가 동시에 실행되며, all 안의 것들이 수행되는 동안에도 아래 코드들이 실행된다.
       ]);
-      // all 구문 안을 실행 중에도 펑션이 멈추지 않고 계속 진행하며 내려간다
 ```
 
 ##### `take`
@@ -158,6 +160,21 @@ yield race({
 
 비동기를 사용할 때 쓰며, `async/await`의 `await`와 같은 역할을 수행한다.
 
+```javascript
+call(Api.fetchNumberOfSuccessfulOrder)
+// Api.fetchNumberOfSuccessfulOrder에서는 axio로 값을 불러 사용하고 있다
+```
+
+##### `select`
+
+사가의 제너레이터 안에서 스토어의 상태를 가지고 올 때, 스토어 전체를 리턴한다.
+
+```javascript
+const { monitoring, monitoringDuration } = yield select();
+```
+
+위의 코드는 스토어의 값 중에서 특정 값들만 가져오겠다고 비구조화 할당을 실시한 것
+
 #### `typesafe-actions`
 
 - 리액트, 리덕스 타입스크립트와 함께 쓰이는 패키지
@@ -178,7 +195,7 @@ getType(Actions.startMonitoring);
 
 액션을 생성할 때, 문자열이나 함수를 받을 수 있는 함수. 쓰는 방법은 너무나 다양하다.
 
-자세한 방법은 [공식 문서 참조](https://github.com/piotrwitek/typesafe-actions#createaction)
+자세한 방법은 [공식 문서 참조](https://github.com/piotrwitek/typesafe-actions#createaction)
 
 ```javascript
 import { createAction } from 'typesafe-actions';
@@ -206,28 +223,35 @@ dispatch(getTodo('some_id', 'some_meta'));
 > import { createAction } from "typesafe-actions";
 > 
 > export const startMonitoring = createAction(
->   "@command/monitoring/start",
->   resolve => {
->     return () => resolve();
->   }
+> "@command/monitoring/start",
+> resolve => {
+>  return () => resolve();
+> }
 > );
 > // 위는 분명한 함수이며,
 > // 인자값으로 문자열이나 함수를 주면 상태의 속성이 되어 들어간다.
 > 
 > export const stopMonitoring = createAction(
->   "@command/monitoring/stop",
->   resolve => {
->     return () => resolve();
->   }
+> "@command/monitoring/stop",
+> resolve => {
+>  return () => resolve();
+> }
 > );
 > 
-> export const fetchSuccess = createAction("@fetch/success", resolve => {
->   return () => resolve();
-> });
+> export const updateOrderStatus = createAction(
+>   "@update/order/status",
+>   resolve => {
+>     return (success: number, failure: number) => resolve({ success, failure });
+>   } // 리턴 구문은 함수인데, 이 함수는 다른 함수를 리턴한다.
+>   
+>   // {
+>   //   success : success,
+>   //   failure : failure
+>   // }
 > 
-> export const fetchFailure = createAction("@fetch/failure", resolve => {
->   return () => resolve();
-> });
+>   // 얘가 리듀서의 두번째 인자의 액션의 페이로드 안에 들어간다.
+>   // action: ActionType<typeof Actions> 부분
+> );
 > ```
 
 > ## 왜 이런 패턴을 쓰나요?
@@ -235,6 +259,8 @@ dispatch(getTodo('some_id', 'some_meta'));
 > 사실 나는 왜 이렇게 쓰는지 잘 모르겠어서 따로 질문을 드렸는데, 액션을 생성할 때마다 타입을 제외한 상태 속성을 계속 만들어주기 번거롭기 때문이라고 한다.
 >
 > > 사실 처음 질문한 의도는 `resolve => {...}` 이 구문이었는데 질문을 내가 잘못드린 것 같다... 근데 정리하다보니까 이해가 됐다.
+>
+> 하다보면 이런 생각이 들 수도 있다. **액션 내에 조건문을 걸어 하나의 액션으로 boolean 값을 관리하고 싶다.** 그러나 리덕스 사상에서는 로직을 단순히 만드는 것을 추천하므로, 각각의 액션을 따로 설정함이 옳다.
 
 #### 그래서 진짜 `index.ts`
 
@@ -286,4 +312,154 @@ export default function*() {
 }
 ```
 
-> 아직까지 비동기로 처리하는 로직을 붙이지 않아서, 그게 덧붙여지면 해당 예제가 더 완벽히 이해가 될 것 같다!
+> ## 해당 예제의 문제점
+>
+> 실제 비동기 호출 시 응답이 늦을 수도 있는데, 이 경우 `race`에서 상태를 모니터링 중지로 만들어도 `put({type...})` 단에서는 디스패치가 일어난다. 즉, 상태는 바뀌었는데 UI는 변경되지 않는 상황이 연출될 수 있다.
+
+#### 그래서 고쳐진 `index.ts`
+
+```javascript
+import { all, fork, take, select, delay, put, call } from "redux-saga/effects";
+import { getType } from "typesafe-actions";
+import * as Actions from "../actions";
+import * as Api from "../apis/orders";
+
+function* monitoringWorkflow() {
+  while (true) {
+    yield take(getType(Actions.startMonitoring));
+
+    let polling = true;
+
+    while (polling) {
+      const [succResp, failResp] = yield all([
+        call(Api.fetchNumberOfSuccessfulOrder),
+        // 안에서 프로미스 객체가 반환되며, 해당 객체는 reslve가 된 것
+        // yield를 써도 똑같이 된다
+        call(Api.fetchNumberOfFailedOrder)
+      ]);
+      // all은 동기적, 웨이팅을 한다.
+      // 값이 나올 때까지 밑으로 내려가지 않음
+
+      yield put(
+        Actions.updateOrderStatus(
+          succResp.result.success,
+          failResp.result.failure
+        )
+      );
+
+      const { monitoring, monitoringDuration } = yield select();
+
+      // 이전 예제가 상태가 바뀌었음에도 ui가 달라지지 않을 가능성을 내포하고 있다.
+      // 때문에 해당 예제는 스토어를 직접 보면서 판단
+
+      if (!monitoring) {
+        polling = false;
+      }
+
+      yield delay(monitoringDuration);
+      // 바로 적용하지 않고 200 밀리초를 재운 뒤 적용한다.
+    }
+  }
+}
+
+export default function*() {
+  yield fork(monitoringWorkflow);
+}
+```
+
+> ## saga에서 비동기를 요청하는 방법
+>
+> ### `yield`를 이용
+>
+> ```javascript
+> yield Api.blahblah();
+> ```
+>
+> 그 즉시 호출되며, 사가에게 값(프로미스 객체)을 넘기고 제어권이 함수 밖으로 넘어간다. `yield`로 멈춰진 제너레이터 함수는 멈춘다.
+>
+> ### `call()`을 이용
+>
+> ```javascript
+> call(Api.blahblah());
+> ```
+>
+> > ## saga의 이펙터들은 객체를 만들어 리턴한다
+> >
+> > saga 이펙터들이 만드는 객체는 사가가 해석할 수 있는 플레인 객체이다.
+> >
+> > saga는 이펙터가 리턴한 객체를 받아, 해당 객체의 내용을 확인 후 판단해 실행한다.
+>
+> ### 두 개의 차이
+>
+> #### 테스트 상황
+>
+> `yield`로 불러온 프로미스 객체의 경우, 테스트 코드 작성 시 진짜 API를 호출해 불러온 것이기 때문에 문제 발생 시 어디서 난 것인지를 확인하기 힘들다.
+>
+> 반면 `call()`을 사용해 호출한 경우, 테스트할 때 성공/실패 응답을 넣어 호출하면 사가 입장에서는 테스트로 온 객체인지 여부를 판단하지 않기 때문에 테스트가 더 쉽다.
+
+#### saga의 에러처리
+
+##### 일단, api에서 가져올 때 임의로 에러를 내보자
+
+```javascript
+export function fetchNumberOfSuccessfulOrder(): Promise<
+  INumberOfSuccessfulOrderResponse
+> {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${endpoint.orders.request.success}?error=random`)
+      .then((resp: AxiosResponse) => resolve(resp.data))
+      .catch((err: AxiosError) => reject(new ApiError(err)));
+  });
+  // 에러 발생 렌덤하게
+  // 프로미스 객체의 일반적인 에러와 마찬가지로, resolve의 두 번째 인자로 잡아도,
+	// catch 구문에서 잡아도 무방하다
+}
+```
+
+##### saga
+
+```javascript
+function* monitoringWorkflow() {
+  while (yield take(getType(Actions.startMonitoring))) {
+    let polling = true;
+
+    while (polling) {
+      try {
+        const [succResp, failResp] = yield all([
+          call(Api.fetchNumberOfSuccessfulOrder),
+          call(Api.fetchNumberOfFailedOrder)
+        ]);
+
+        yield put(
+          Actions.updateOrderStatus(
+            succResp.result.success,
+            failResp.result.failure
+          )
+        );
+      } catch (e) {
+        // 사가는 throw로 에러가 던지기 때문에 캐치 구문으로 잡는다
+        if (e instanceof Api.ApiError) {
+          yield put(Actions.addNotification("error", e.errorMessage));
+        } else {
+          console.error(e);
+          // 만약 if문을 타지 않았다는 건, 런타임 익셉션이란 소리
+        }
+        // 에러 처리 로직은 요구사항에 따라 달리 만들 수도 있다
+      }
+
+      const { monitoring, duration }: StoreState = yield select();
+
+      if (!monitoring) {
+        polling = false;
+      }
+
+      yield delay(duration);
+    }
+  }
+}
+```
+
+> 에러에 대한 액션, 그걸 처리하는 리듀서 로직도 설정해주어야 한다.
+>
+> 위의 예제는 에러를 디스패치해서 유저 단에서도 확인할 수 있다.
