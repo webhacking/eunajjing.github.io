@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2019-02-26-리액트를-다루는-기술04" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-use-react04" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/02/26/2019-02-26-리액트를-다루는-기술04/">mobx</a>
+      <a class="article-title" href="/2019/02/26/use-react04/">리액트를 다루는 기술04</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/02/26/2019-02-26-리액트를-다루는-기술04/" class="article-date">
-	  <time datetime="2019-02-26T04:26:18.000Z" itemprop="datePublished">2월 26, 2019</time>
+	<a href="/2019/02/26/use-react04/" class="article-date">
+	  <time datetime="2019-02-26T06:09:18.000Z" itemprop="datePublished">2월 26, 2019</time>
 	</a>
 
       
@@ -131,22 +131,81 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MOBX"><a href="#MOBX" class="headerlink" title="MOBX"></a>MOBX</h1><blockquote>
-<p>책에 있는 내용이 아닌, 저자 블로그를 보고 개념을 익힘</p>
-<p>하다가 굳이 mobx를 할 필요가 있겠냐는 말을 들어서(hook과 관련된 말이었다) 일단 리덕스를 더 해보기로 결정…</p>
-<p>~홀드~</p>
+        <h1 id="리덕스"><a href="#리덕스" class="headerlink" title="리덕스"></a>리덕스</h1><ul>
+<li><code>state</code>를 컴포넌트 밖에서 관리하기 위해 사용</li>
+</ul>
+<h2 id="용어"><a href="#용어" class="headerlink" title="용어"></a>용어</h2><ul>
+<li><code>스토어</code>:  <code>state</code> 저장하고 있는 객체</li>
+<li><code>액션</code> : 상태에 변화를 일으켜야 할 때 스토어에 전달하는 객체</li>
+<li><code>리듀서</code> : 액션을 참고해서 스토어의 state를 어떻게 바꿀 것인지 결정해서 바꿈</li>
+<li><code>디스패치</code> : 액션을 전달하는 행위</li>
+</ul>
+<h2 id="규칙"><a href="#규칙" class="headerlink" title="규칙"></a>규칙</h2><ul>
+<li>스토어는 단 한 개이다</li>
+<li>리듀서는 여러 개를 만들 수 있다</li>
+<li>모든 변화는 리듀서 함수로 일어나야 한다.<ul>
+<li>리듀서 함수에서 외부 네트워크, 데이터베이스에 직접 접근해선 안된다.</li>
+<li>리듀서 함수 내부에서는 <code>new Date()</code>와 <code>Math.random()</code>을 사용하면 안된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="액션"><a href="#액션" class="headerlink" title="액션"></a>액션</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">"INCREMENT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>type</code> </p>
+<ul>
+<li>어떤 작업을 하는 액션인지 정의</li>
+<li>대문자와 _로 구성한다.</li>
+<li>필수 값이다.</li>
+<li>값은 고정이다.</li>
+</ul>
+</li>
+<li><p>예시</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">"INCREMENT"</span>,</span><br><span class="line">    text: <span class="string">'리액트 배우기'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">"INCREMENT"</span>,</span><br><span class="line">    todos: &#123;</span><br><span class="line">        id: <span class="number">1</span>,</span><br><span class="line">        text: <span class="string">'리액트 배우기'</span>,</span><br><span class="line">        done: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="액션-생성함수"><a href="#액션-생성함수" class="headerlink" title="액션 생성함수"></a>액션 생성함수</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> INCREMENT = <span class="string">'INCREMENT'</span>;</span><br><span class="line"><span class="keyword">const</span> DECREMENT = <span class="string">'DECREMENT'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> increment = <span class="function">(<span class="params">diff</span>) =&gt;</span> &#123;</span><br><span class="line">    type: INCREMENT</span><br><span class="line">    diff: diff</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> decrement = <span class="function">(<span class="params">diff</span>) =&gt;</span> &#123;</span><br><span class="line">    type: DECREMENT</span><br><span class="line">    diff: diff</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="리듀서"><a href="#리듀서" class="headerlink" title="리듀서"></a>리듀서</h2><ul>
+<li>파라미터<ul>
+<li>현재 상태</li>
+<li>액션 객체</li>
+</ul>
+</li>
+<li>initialState 값을 설정해준다</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 액션 함수를 위에 쓴 뒤에</span></span><br><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">    number: <span class="number">0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>리듀서 함수 시작</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> INCREMENT:</span><br><span class="line">        	retrun &#123;<span class="attr">number</span>: state.number + action.diff&#125;;</span><br><span class="line">        <span class="keyword">case</span> DECREMENT:</span><br><span class="line">        	retrun &#123;<span class="attr">number</span>: state.number - action.diff&#125;;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	retrun state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>만약 액션 객체 안에 많은 속성들이 있다면</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">    number: <span class="number">0</span>,</span><br><span class="line">    foo: <span class="string">'bar'</span>,</span><br><span class="line">    baz: <span class="string">'qux'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> INCREMENT:</span><br><span class="line">        	retrun <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">                number: state.number + action.diff</span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="keyword">case</span> DECREMENT:</span><br><span class="line">        	retrun <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">                number: state.number - action.diff</span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	retrun state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a><code>Object.assign</code></h1><p>파라미터로 전달된 객체들을 순서대로 합친다.</p>
+<p>역순으로 객체를 왼쪽으로 덮어쓰면서 새 객체를 만들어준다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">console</span>.log(target);</span><br><span class="line">&gt; <span class="comment">// expected output: Object &#123; a: 1, b: 2 &#125;</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="keyword">const</span> source = &#123; <span class="attr">b</span>: <span class="number">4</span>, <span class="attr">c</span>: <span class="number">5</span> &#125;;</span><br><span class="line">&gt; <span class="keyword">const</span> returnedTarget = <span class="built_in">Object</span>.assign(target, source);</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">console</span>.log(target);</span><br><span class="line">&gt; <span class="comment">// expected output: Object &#123; a: 1, b: 4, c: 5 &#125;</span></span><br><span class="line">&gt; <span class="comment">// assign 메서드 진행하며 이미 값이 바뀜</span></span><br><span class="line">&gt; <span class="built_in">console</span>.log(returnedTarget);</span><br><span class="line">&gt; <span class="comment">// expected output: Object &#123; a: 1, b: 4, c: 5 &#125;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="observable"><a href="#observable" class="headerlink" title="observable"></a>observable</h2><p>관찰 받고 있는 상태, Observable State를 만들어준다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, reaction, computed, autorun &#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> calculator = observable(&#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="reaction"><a href="#reaction" class="headerlink" title="reaction"></a>reaction</h2><p>관찰 받고 있는 상태가 바뀔 때 사용</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reaction(</span><br><span class="line">  () =&gt; calculator.a,</span><br><span class="line">  (value, reaction) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`a 값이 <span class="subst">$&#123;value&#125;</span> 로 바뀌었네요!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 이 경우 A의 값이 바뀔 때마다 실행된다.</span></span><br></pre></td></tr></table></figure>
-<h2 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h2><p>연산된 값을 사용해야 할 때 사용</p>
-<p>의존하는 값이 바뀔 때 미리 값을 계산해놓고 조회할 때 캐싱된 데이터를 사용한다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = computed(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> calculator.a + calculator.b;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">sum.observe(<span class="function"><span class="params">()</span> =&gt;</span> calculator.a);</span><br><span class="line"><span class="comment">// a 값을 주시, a 값이 바뀔 때마다 자동으로 실행</span></span><br><span class="line">sum.observe(<span class="function"><span class="params">()</span> =&gt;</span> calculator.b); <span class="comment">// b 값을 주시</span></span><br></pre></td></tr></table></figure>
-<h2 id="autorun"><a href="#autorun" class="headerlink" title="autorun"></a>autorun</h2><p><code>reaction()</code>, <code>computed()</code>의 <code>observe()</code>대신 쓸 수 있다.</p>
-<p>함수 내에서 조회하는 값을 자동으로 주시하고 있다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">autorun(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`a 값이 <span class="subst">$&#123;calculator.a&#125;</span> 로 바뀌었네요!`</span>));</span><br><span class="line">autorun(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`b 값이 <span class="subst">$&#123;calculator.b&#125;</span> 로 바뀌었네요!`</span>));</span><br><span class="line">autorun(<span class="function"><span class="params">()</span> =&gt;</span> sum.get());</span><br></pre></td></tr></table></figure>
-<p>computed 로 만든 값의 .get() 함수를 호출해주면, 하나하나 observe 해주지 않아도 된다.</p>
+<blockquote>
+<p>근데 이렇게 쓰는 것보다 전개 연산자를 이용해서 더 많이 쓴다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state= initalState, action</span>) </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">&gt;         <span class="keyword">case</span> INCREMENT:</span><br><span class="line">&gt;             <span class="keyword">return</span> &#123;</span><br><span class="line">&gt;                 ...state,</span><br><span class="line">&gt;                 number: state.number + action.diff</span><br><span class="line">&gt;             &#125;;</span><br><span class="line">&gt;         <span class="keyword">case</span> ....</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h2 id="스토어"><a href="#스토어" class="headerlink" title="스토어"></a>스토어</h2><h3 id="createStore-counter"><a href="#createStore-counter" class="headerlink" title="createStore(counter)"></a><code>createStore(counter)</code></h3><ul>
+<li>스토어 생성 메서드</li>
+<li>파라미터<ul>
+<li>리듀서 함수(필수)</li>
+<li>기본값(옵션)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(counter);</span><br></pre></td></tr></table></figure>
+<h3 id="store-subscribe-콜백함수"><a href="#store-subscribe-콜백함수" class="headerlink" title="store.subscribe(콜백함수)"></a><code>store.subscribe(콜백함수)</code></h3><ul>
+<li>보통 <code>react-redux</code>의 <code>connect()</code>가 대신함</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unsubscribe = store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 스토어 상태에 변화가 일어날 때마다 실행된다.</span></span><br><span class="line">   <span class="built_in">console</span>.log(store.getState()); </span><br><span class="line">    <span class="comment">// 현재 스토어 상태를 콘솔에 찍음</span></span><br><span class="line">    <span class="comment">// 구독을 취소하는 unsubscribe()가 반환된다.</span></span><br><span class="line">    <span class="comment">// 나중에 구독을 취소할 때는 unsubscribe()을 부르면 됨</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -171,7 +230,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/40/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="page-number" href="/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="space">&hellip;</span><a class="page-number" href="/page/91/">91</a><a class="extend next" rel="next" href="/page/42/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/40/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="page-number" href="/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="space">&hellip;</span><a class="page-number" href="/page/92/">92</a><a class="extend next" rel="next" href="/page/42/">Next</a>
   </nav>
 
 </section>
@@ -224,7 +283,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">78</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">79</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -265,6 +324,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/06/01/hook/">Hook</a></h6>
+              <span>6월 1, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -326,18 +397,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/26/19-05-26/">확장프로그램들</a></h6>
-              <span>5월 26, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -348,7 +407,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
