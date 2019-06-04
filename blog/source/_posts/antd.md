@@ -1,10 +1,10 @@
 ---
-title: antd
-date: 2019-05-29 12:16:18
+title: 우아한테크러닝 Typescript & React 101 05 ANTD
+date: 2019-06-04 12:17:18
 tags:
 categories:
 - 개발공부
-- React
+- 우아한테크러닝(React+Typescript)
 ---
 
 # antd
@@ -84,5 +84,231 @@ categories:
 
 `justify`에 들어갈 수 있는 값 뿐만 아니라, Row가 가질 수 있는 속성들 또한 많다. 자세한 사항은 [요기](https://ant.design/components/grid/#components-grid-demo-flex)
 
-> antd 디자인의 컴포넌트들에 어떤 요소가 있고, 뭘 적용했는지에 대해 굳이 필기를 할 필요를 느끼질 못해서(공식 홈페이지에 영문이지만 다 기술되어 있어서, 향후에 쓰더라도 그걸 보면서 개발하는 게 나을 것 같다는 생각을 했다.) 
+> ~~antd 디자인의 컴포넌트들에 어떤 요소가 있고, 뭘 적용했는지에 대해 굳이 필기를 할 필요를 느끼질 못해서(공식 홈페이지에 영문이지만 다 기술되어 있어서, 향후에 쓰더라도 그걸 보면서 개발하는 게 나을 것 같다는 생각을 했다.)~~ 는 개뿔 그냥 하나하나 서술..
+
+## 컴포넌트
+
+### Menu
+
+![](/images/woowahan05/menu.png)
+
+`Menu.Item` 나  `SubMenu` 라는 하위 컴포넌트를 **반드시 가지며** 하위 컴포넌트들은 배열 형태를 취하기 때문에 반드시 `key`라는 속성을 지닌다.
+
+#### 속성들
+
+##### `theme`
+
+Menu 컴포넌트 뿐만 아니라, 해당 컴포넌트 자손 요소의 색에도 영향을 주는 속성. 
+
+##### `defaultSelectedKeys`
+
+처음 페이지가 렌더링되었을 때 기본으로 선택될 메뉴를 지정하는 것으로, 값으로 **배열**이 들어간다. 메뉴는 실제로 배열 형태를 취하기 때문에, 해당 배열의 키를 서술해준다. 
+
+#### 자손들
+
+##### `Menu.Item`
+
+하위 요소는 자동으로 중앙이다.
+
+```html
+<Menu.Item key="dashboard">
+  <Icon type="dashboard" />
+  대시보드
+</Menu.Item>
+```
+
+##### `SubMenu`
+
+```html
+<SubMenu key="order"
+  title={
+    <span>
+      <Icon type="rise" />
+      거래 관리
+    </span>
+  }
+{/*리액트는 속성에 리액트 컴포넌트를 기술할 수 있다.*/}
+>
+  <Menu.Item key="1">주문 시스템</Menu.Item>
+  <Menu.Item key="2">정산 시스템</Menu.Item>
+</SubMenu>
+```
+
+### Drawer
+
+![](/images/woowahan05/drawer.png)
+
+```html
+<Drawer title="알림" placement="right" closable={false} visible={false}>
+  <p>Some contents...</p>
+  <p>Some contents...</p>
+  <p>Some contents...</p>
+</Drawer>
+```
+
+`visible` 은 열림 여부로, 차후 사용자 인터렉션에 따라 제어한다.
+
+### Content
+
+#### PageHeader
+
+![](/images/woowahan05/pageHeader.png)
+
+```html
+<PageHeader title={<span>대시보드</span>}
+  extra={[
+    <Input.Search/>,
+    <Button/>,
+    <Button>
+      <Avatar/>
+    </Button>,
+    <Button>
+      <Badge>
+        <Icon/>
+      </Badge>
+    </Button>
+  ]}
+/>
+```
+
+컴포넌트들의 각종 속성들은 임의로 생략 표기. `PageHeader` 의 `extra` 속성에 배열로 컴포넌트를 넣을 수 있고, 배열 안 컴포넌트들은 자동으로 우측 정렬된다.
+
+### form
+
+#### export 단
+
+```javascript
+export const Login = Form.create({ name: "loginForm" })(LoginComponent);
+```
+
+antd가 제공하는 form을 사용하기 위해서는, `Form.create` 를 사용하여 컴포넌트 래핑이 필요하다. 폼에서 쓰이는 다양한 도구들을 제공한다.
+
+객체 형태로 들어가는 요소들을 다양한데, 그 중 예시로 쓰인 `name` 은 form 구성 컴포넌트의 id 접두사를 붙이는데 사용된다. 예를 들어, username을 입력할 수 있는 input 박스의 경우 Id는 `loginForm_inputId` 로 생성된다.
+
+> 더 자세한 사항을 보고 싶다면 [공홈보다 더 나은 건 없지](https://ant.design/components/form/?locale=en-US#Form.create(options))
+
+#### type 정의
+
+```javascript
+export interface ILoginComponentProps {
+  authentication: IAuthentication | null;
+  requestLogin(username: string, password: string): void;
+  // 액션을 디스패치 해야하므로 함수를 만들어준다.
+}
+
+interface IProps {
+  form: any;
+}
+```
+
+#### form 구현
+
+```jsx
+class LoginComponent extends React.PureComponent<IProps & ILoginComponentProps> {
+  onSubmit = event => {
+  	event.preventDefault();
+		this.props.form.validateFields((err, values) => {
+  	  // 파라미터로 들어오는 values에는
+    	// form 요소의 데이터들이 들어있으며, 객체로 이루어져있다.
+	  	if (err) return;
+  		this.props.requestLogin(values.username, values.password);
+  		// 액션 디스패치
+		});
+	};
+
+	render() {
+		const { getFieldDecorator } = this.props.form;
+ 	 // 폼에서 제공하는 함수로 폼 요소에 대한 유효성 검사, 에러 메시지 출력 등을 수행
+ 	 // 함수를 리턴하는 특성이 있다, 자세한 사항은 아래 참고
+
+		if (this.props.authentication) return <Redirect to={{ pathname: "/"}} />
+ 	 // 만약 로그인이 되어있으면 리다이랙트
+
+	return (
+  	<Card>
+    	<Form onSubmit={this.onSubmit}>
+      	<Form.Item>
+        	{*/id절 생략/*}
+      	</Form.Item>
+      	<Form.Item>
+       	 {getFieldDecorator("password", {
+       	   rules: [{ required: true, message: "비번좀..." }]
+       	 })(
+       	   <Input prefix={<Icon type="lock"/>} type="password" placeholder="Password" />
+      	  )}
+      	</Form.Item>
+      	<Form.Item>
+        	{getFieldDecorator("remember", {
+         	 valuePropName: "checked",
+          	initialValue: true
+   	     })(<Checkbox>나 좀 기억해줘</Checkbox>)}
+    	    <br />
+      	  <Button>로그인</Button>
+      	</Form.Item>
+    	</Form>
+  	</Card>
+	);
+	}
+}
+```
+
+##### `getFieldDecorator("id", {option})(<component/>)`
+
+- `option`
+
+  - `rules` : 유효성 검사 규칙으로, 배열이 들어간다.
+
+    ```jsx
+    <Form.Item>
+      {getFieldDecorator("username", {
+        rules: [{ required: true, message: "아이디좀..." }]
+      })(
+        <Input prefix={ <Icon type="user"/> } placeholder="Username" />
+      )}
+    </Form.Item>
+    ```
+
+  - `valuePropName` : `input`이 아닐 때 기재하는 옵션으로, 어떤 요소인지를 쓴다.
+
+  - `initialValue` : 기본값으로 `value`를 지니므로 `input` 같은 경우에는 기재하지 않아도 된다.
+
+  ```jsx
+  <Form.Item>
+    {getFieldDecorator("remember", {
+     valuePropName: "checked",
+      initialValue: true
+   	})(<Checkbox>나 좀 기억해줘</Checkbox>)}
+    <br />
+    <Button>로그인</Button>
+  </Form.Item>
+  ```
+
+- `function(<component/>)`
+
+  - 위에 서술했다시피 해당 함수는 함수를 리턴한다.
+  - 함수의 인자로 컴포넌트를 넣는다.
+
+> ## 상위에서는 어떻게 state와 dispath 메서드를 넣어주나
+>
+> ```javascript
+> import * as React from "react";
+> import { connect } from "react-redux";
+> import { IStoreState } from "../store";
+> import { requestLogin } from "../actions";
+> import { Login as LoginComponent, ILoginComponentProps } from "../components";
+> 
+> const Login: React.FC<ILoginComponentProps> = props => (
+>   <LoginComponent {...props} />
+> );
+> 
+> export default connect(
+>   (state: IStoreState) => ({
+>     authentication: state.authentication
+>   }),
+>   dispatch => ({
+>     requestLogin: (username: string, password: string) =>
+>       dispatch(requestLogin(username, password))
+>   })
+> )(Login);
+> ```
 

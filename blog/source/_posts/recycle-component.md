@@ -1,6 +1,6 @@
 ---
 title: 컴포넌트 재사용법
-date: 2019-05-20 16:37:18
+date: 2019-06-04 18:18:18
 tags:
 categories:
 - 개발공부
@@ -71,6 +71,88 @@ export const Counter = props => {
   );
 };
 ```
+
+## children을 통한 재사용
+
+### 라우터 단
+
+```javascript
+import * as React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { DefaultLayout } from "../containers";
+import * as Pages from "../pages";
+
+interface IProps {}
+
+const Router: React.FC<IProps> = () => {
+  return (
+    <BrowserRouter>
+      <DefaultLayout>
+        <Route exact path="/" component={Pages.Dashboard} />
+        <Route exact path="/orders" component={Pages.Order} />
+      </DefaultLayout>
+    </BrowserRouter>
+  );
+};
+
+export default Router;
+```
+
+`DefaultLayout`으로 컴포넌트를 감싼다.
+
+```javascript
+// import 구문, 타입 정의 생략
+
+class LayoutContainer extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <Row>
+          <Col>
+            <Header/>
+            <Sider/>
+          </Col>
+          <Col>
+            <Drawer/>
+            <Content>
+              <Row>
+                <Col>
+                	{this.props.children}
+                	{/* 여기에 컴포넌트가 주입된다 */}
+                </Col>
+              </Row>
+            </Content>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
+```
+
+라우터를 타고 들어온 컴포넌트가 `this.props.childeren` 으로 주입된다.
+
+### `component` 속성으로 들어온 컴포넌트
+
+```javascript
+import * as React from "react";
+import { Row, Col, Card } from "antd";
+import { OrderStatusContiner } from "../containers";
+import { PageHeader } from "../components";
+
+export default class Dashboard extends React.PureComponent {
+  render() {
+    return (
+      <React.Fragment>
+        <PageHeader label="대시보드" />
+        <OrderStatusContiner />
+      </React.Fragment>
+    );
+  }
+}
+```
+
+위의 소스는 페이지와 같은 역할을 한다. 페이지가 많아지면 위와 같은 소스는 **만드는 페이지마다 `PageHeader`의 `label`의 값을 하나하나 넣어줘야 한다는 문제**가 있다. 만약 페이지가 많다면, `label`에 들어갈 상태를 만들어 관리하는 게 더 낫다.
 
 > # 컴포넌트 재사용을 잘하려면
 >
