@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>우아한테크러닝 Typescript &amp; React 101 05 ANTD | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="antd페이스북 이노베이션 랩 리액트 부트 캠프에서도 그렇고, 우아한형제들 테크러닝에서도 지속적으로 사용 중인 UI 라이브러리, antd. 해당 라이브러리는 css와 js가 분리되어 있어 각각 임포트가 필요하다는 특징이 있다. 레이아웃그리드출판 시스템에서 출발하였으며, 일반적으로 반응형 웹을 만들 때 주로 쓰인다. 보통 한 줄 당 12칼럼을 지닌 게 일반적">
+<meta property="og:type" content="article">
+<meta property="og:title" content="우아한테크러닝 Typescript &amp; React 101 05 ANTD">
+<meta property="og:url" content="http://eunajjing.github.io/2019/06/04/antd/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="antd페이스북 이노베이션 랩 리액트 부트 캠프에서도 그렇고, 우아한형제들 테크러닝에서도 지속적으로 사용 중인 UI 라이브러리, antd. 해당 라이브러리는 css와 js가 분리되어 있어 각각 임포트가 필요하다는 특징이 있다. 레이아웃그리드출판 시스템에서 출발하였으며, 일반적으로 반응형 웹을 만들 때 주로 쓰인다. 보통 한 줄 당 12칼럼을 지닌 게 일반적">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://eunajjing.github.io/images/woowahan05/menu.png">
+<meta property="og:image" content="http://eunajjing.github.io/images/woowahan05/drawer.png">
+<meta property="og:image" content="http://eunajjing.github.io/images/woowahan05/pageHeader.png">
+<meta property="og:updated_time" content="2019-06-04T09:26:47.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="우아한테크러닝 Typescript &amp; React 101 05 ANTD">
+<meta name="twitter:description" content="antd페이스북 이노베이션 랩 리액트 부트 캠프에서도 그렇고, 우아한형제들 테크러닝에서도 지속적으로 사용 중인 UI 라이브러리, antd. 해당 라이브러리는 css와 js가 분리되어 있어 각각 임포트가 필요하다는 특징이 있다. 레이아웃그리드출판 시스템에서 출발하였으며, 일반적으로 반응형 웹을 만들 때 주로 쓰인다. 보통 한 줄 당 12칼럼을 지닌 게 일반적">
+<meta name="twitter:image" content="http://eunajjing.github.io/images/woowahan05/menu.png">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-antd" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      우아한테크러닝 Typescript &amp; React 101 05 ANTD
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/04/antd/" class="article-date">
+	  <time datetime="2019-06-04T03:17:18.000Z" itemprop="datePublished">6월 4, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h1><p>페이스북 이노베이션 랩 리액트 부트 캠프에서도 그렇고, 우아한형제들 테크러닝에서도 지속적으로 사용 중인 UI 라이브러리, antd. 해당 라이브러리는 <strong>css와 js가 분리</strong>되어 있어 각각 임포트가 필요하다는 특징이 있다.</p>
+<h2 id="레이아웃"><a href="#레이아웃" class="headerlink" title="레이아웃"></a>레이아웃</h2><h3 id="그리드"><a href="#그리드" class="headerlink" title="그리드"></a>그리드</h3><p>출판 시스템에서 출발하였으며, 일반적으로 반응형 웹을 만들 때 주로 쓰인다. 보통 한 줄 당 12칼럼을 지닌 게 일반적이나, antd는 24칼럼을 가지고 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Row</span>&gt;</span></span><br><span class="line">    &#123;/* 로우로 시작 */&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span>&gt;</span></span><br><span class="line">    &#123;/* 1~24 */&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">Num</span>&gt;</span>1<span class="tag">&lt;/<span class="name">Num</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span>&gt;</span></span><br><span class="line">    &#123;/* 이 안에서도 Row를 부르게 되면, 안의 Col은 부모를 24로 나눈 값으로 정렬된다 */&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">Num</span>&gt;</span>2<span class="tag">&lt;/<span class="name">Num</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Num</span>&gt;</span>3<span class="tag">&lt;/<span class="name">Num</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Num</span>&gt;</span>4<span class="tag">&lt;/<span class="name">Num</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Row</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;8&#125;</span>&gt;</span>col-8<span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;8&#125;</span> <span class="attr">offset</span>=<span class="string">&#123;8&#125;</span>&gt;</span></span><br><span class="line">        col-8</span><br><span class="line">      <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Row</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>offset</code> 속성을 가진 것은 중간에 여백을 가질 수 있다. 자세한 사항은 <a href="https://ant.design/components/grid/#components-grid-demo-offset" target="_blank" rel="noopener">요기</a></p>
+<h4 id="Gutter"><a href="#Gutter" class="headerlink" title="Gutter"></a>Gutter</h4><p><code>Col</code> 사이에 여백을 주는 것도 가능하다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Row</span> <span class="attr">gutter</span>=<span class="string">&#123;16&#125;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;6&#125;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Row</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>gutter</code>는 픽셀 값을 지닌다.</p>
+<h3 id="플렉스"><a href="#플렉스" class="headerlink" title="플렉스"></a>플렉스</h3><p>플렉스 컨테이너와 플렉스 아이템으로 구성된다. 플렉스는 브라우저 호환성을 고민해봐야 하는 문제인데, 플렉스 요소를 지닌 하위 요소들은 자동으로 플렉스 속성을 상속 받는다.</p>
+<p>재밌는 점은, 원래 그리드 시스템과 플렉스는 혼용되기 어려운데, antd에서는 같이 쓸 수 있도록(<em>…?</em>) 구현해놨다는 점.</p>
+<p>상위 Row에 플렉스 속성을 걸어 쓴다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Row</span> <span class="attr">type</span>=<span class="string">"flex"</span> <span class="attr">justify</span>=<span class="string">"start"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;4&#125;</span>&gt;</span>col-4<span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;4&#125;</span>&gt;</span>col-4<span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;4&#125;</span>&gt;</span>col-4<span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">&#123;4&#125;</span>&gt;</span>col-4<span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Row</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>justify</code>에 들어갈 수 있는 값 뿐만 아니라, Row가 가질 수 있는 속성들 또한 많다. 자세한 사항은 <a href="https://ant.design/components/grid/#components-grid-demo-flex" target="_blank" rel="noopener">요기</a></p>
+<blockquote>
+<p><del>antd 디자인의 컴포넌트들에 어떤 요소가 있고, 뭘 적용했는지에 대해 굳이 필기를 할 필요를 느끼질 못해서(공식 홈페이지에 영문이지만 다 기술되어 있어서, 향후에 쓰더라도 그걸 보면서 개발하는 게 나을 것 같다는 생각을 했다.)</del> 는 개뿔 그냥 하나하나 서술..</p>
+</blockquote>
+<h2 id="컴포넌트"><a href="#컴포넌트" class="headerlink" title="컴포넌트"></a>컴포넌트</h2><h3 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h3><p><img src="/images/woowahan05/menu.png" alt=""></p>
+<p><code>Menu.Item</code> 나  <code>SubMenu</code> 라는 하위 컴포넌트를 <strong>반드시 가지며</strong> 하위 컴포넌트들은 배열 형태를 취하기 때문에 반드시 <code>key</code>라는 속성을 지닌다.</p>
+<h4 id="속성들"><a href="#속성들" class="headerlink" title="속성들"></a>속성들</h4><h5 id="theme"><a href="#theme" class="headerlink" title="theme"></a><code>theme</code></h5><p>Menu 컴포넌트 뿐만 아니라, 해당 컴포넌트 자손 요소의 색에도 영향을 주는 속성. </p>
+<h5 id="defaultSelectedKeys"><a href="#defaultSelectedKeys" class="headerlink" title="defaultSelectedKeys"></a><code>defaultSelectedKeys</code></h5><p>처음 페이지가 렌더링되었을 때 기본으로 선택될 메뉴를 지정하는 것으로, 값으로 <strong>배열</strong>이 들어간다. 메뉴는 실제로 배열 형태를 취하기 때문에, 해당 배열의 키를 서술해준다. </p>
+<h4 id="자손들"><a href="#자손들" class="headerlink" title="자손들"></a>자손들</h4><h5 id="Menu-Item"><a href="#Menu-Item" class="headerlink" title="Menu.Item"></a><code>Menu.Item</code></h5><p>하위 요소는 자동으로 중앙이다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Menu.Item</span> <span class="attr">key</span>=<span class="string">"dashboard"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Icon</span> <span class="attr">type</span>=<span class="string">"dashboard"</span> /&gt;</span></span><br><span class="line">  대시보드</span><br><span class="line"><span class="tag">&lt;/<span class="name">Menu.Item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="SubMenu"><a href="#SubMenu" class="headerlink" title="SubMenu"></a><code>SubMenu</code></h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">SubMenu</span> <span class="attr">key</span>=<span class="string">"order"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">title</span>=<span class="string">&#123;</span></span></span><br><span class="line">    &lt;span&gt;</span><br><span class="line">      <span class="tag">&lt;<span class="name">Icon</span> <span class="attr">type</span>=<span class="string">"rise"</span> /&gt;</span></span><br><span class="line">      거래 관리</span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#123;/*리액트는 속성에 리액트 컴포넌트를 기술할 수 있다.*/&#125;</span><br><span class="line">&gt;</span><br><span class="line">  <span class="tag">&lt;<span class="name">Menu.Item</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>주문 시스템<span class="tag">&lt;/<span class="name">Menu.Item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Menu.Item</span> <span class="attr">key</span>=<span class="string">"2"</span>&gt;</span>정산 시스템<span class="tag">&lt;/<span class="name">Menu.Item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">SubMenu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Drawer"><a href="#Drawer" class="headerlink" title="Drawer"></a>Drawer</h3><p><img src="/images/woowahan05/drawer.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Drawer</span> <span class="attr">title</span>=<span class="string">"알림"</span> <span class="attr">placement</span>=<span class="string">"right"</span> <span class="attr">closable</span>=<span class="string">&#123;false&#125;</span> <span class="attr">visible</span>=<span class="string">&#123;false&#125;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Some contents...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Some contents...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Some contents...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Drawer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>visible</code> 은 열림 여부로, 차후 사용자 인터렉션에 따라 제어한다.</p>
+<h3 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h3><h4 id="PageHeader"><a href="#PageHeader" class="headerlink" title="PageHeader"></a>PageHeader</h4><p><img src="/images/woowahan05/pageHeader.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;PageHeader title=&#123;&lt;span&gt;대시보드&lt;/span&gt;&#125;</span><br><span class="line">  extra=&#123;[</span><br><span class="line">    <span class="tag">&lt;<span class="name">Input.Search</span>/&gt;</span>,</span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span>/&gt;</span>,</span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Avatar</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Button</span>&gt;</span>,</span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Badge</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Icon</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Badge</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">  ]&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>컴포넌트들의 각종 속성들은 임의로 생략 표기. <code>PageHeader</code> 의 <code>extra</code> 속성에 배열로 컴포넌트를 넣을 수 있고, 배열 안 컴포넌트들은 자동으로 우측 정렬된다.</p>
+<h3 id="form"><a href="#form" class="headerlink" title="form"></a>form</h3><h4 id="export-단"><a href="#export-단" class="headerlink" title="export 단"></a>export 단</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Login = Form.create(&#123; <span class="attr">name</span>: <span class="string">"loginForm"</span> &#125;)(LoginComponent);</span><br></pre></td></tr></table></figure>
+<p>antd가 제공하는 form을 사용하기 위해서는, <code>Form.create</code> 를 사용하여 컴포넌트 래핑이 필요하다. 폼에서 쓰이는 다양한 도구들을 제공한다.</p>
+<p>객체 형태로 들어가는 요소들을 다양한데, 그 중 예시로 쓰인 <code>name</code> 은 form 구성 컴포넌트의 id 접두사를 붙이는데 사용된다. 예를 들어, username을 입력할 수 있는 input 박스의 경우 Id는 <code>loginForm_inputId</code> 로 생성된다.</p>
+<blockquote>
+<p>더 자세한 사항을 보고 싶다면 <a href="https://ant.design/components/form/?locale=en-US#Form.create(options" target="_blank" rel="noopener">공홈보다 더 나은 건 없지</a>)</p>
+</blockquote>
+<h4 id="type-정의"><a href="#type-정의" class="headerlink" title="type 정의"></a>type 정의</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> interface ILoginComponentProps &#123;</span><br><span class="line">  authentication: IAuthentication | <span class="literal">null</span>;</span><br><span class="line">  requestLogin(username: string, <span class="attr">password</span>: string): <span class="keyword">void</span>;</span><br><span class="line">  <span class="comment">// 액션을 디스패치 해야하므로 함수를 만들어준다.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface IProps &#123;</span><br><span class="line">  form: any;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="form-구현"><a href="#form-구현" class="headerlink" title="form 구현"></a>form 구현</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">PureComponent</span>&lt;<span class="title">IProps</span> &amp; <span class="title">ILoginComponentProps</span>&gt; </span>&#123;</span><br><span class="line">  onSubmit = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  	event.preventDefault();</span><br><span class="line">		<span class="keyword">this</span>.props.form.validateFields(<span class="function">(<span class="params">err, values</span>) =&gt;</span> &#123;</span><br><span class="line">  	  <span class="comment">// 파라미터로 들어오는 values에는</span></span><br><span class="line">    	<span class="comment">// form 요소의 데이터들이 들어있으며, 객체로 이루어져있다.</span></span><br><span class="line">	  	<span class="keyword">if</span> (err) <span class="keyword">return</span>;</span><br><span class="line">  		<span class="keyword">this</span>.props.requestLogin(values.username, values.password);</span><br><span class="line">  		<span class="comment">// 액션 디스패치</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	render() &#123;</span><br><span class="line">		<span class="keyword">const</span> &#123; getFieldDecorator &#125; = <span class="keyword">this</span>.props.form;</span><br><span class="line"> 	 <span class="comment">// 폼에서 제공하는 함수로 폼 요소에 대한 유효성 검사, 에러 메시지 출력 등을 수행</span></span><br><span class="line"> 	 <span class="comment">// 함수를 리턴하는 특성이 있다, 자세한 사항은 아래 참고</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.props.authentication) <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Redirect</span> <span class="attr">to</span>=<span class="string">&#123;&#123;</span> <span class="attr">pathname:</span> "/"&#125;&#125; /&gt;</span></span></span><br><span class="line"><span class="xml"> 	 // 만약 로그인이 되어있으면 리다이랙트</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">	return (</span></span><br><span class="line">  	&lt;Card&gt;</span><br><span class="line">    	&lt;Form onSubmit=&#123;this.onSubmit&#125;&gt;</span><br><span class="line">      	&lt;Form.Item&gt;</span><br><span class="line">        	&#123;*/id절 생략/*&#125;</span><br><span class="line">      	&lt;/Form.Item&gt;</span><br><span class="line">      	&lt;Form.Item&gt;</span><br><span class="line">       	 &#123;getFieldDecorator("password", &#123;</span><br><span class="line">       	   rules: [&#123; required: true, message: "비번좀..." &#125;]</span><br><span class="line">       	 &#125;)(</span><br><span class="line">       	   &lt;Input prefix=&#123;&lt;Icon type="lock"/&gt;&#125; type="password" placeholder="Password" /&gt;</span><br><span class="line">      	  )&#125;</span><br><span class="line">      	&lt;/Form.Item&gt;</span><br><span class="line">      	&lt;Form.Item&gt;</span><br><span class="line">        	&#123;getFieldDecorator("remember", &#123;</span><br><span class="line">         	 valuePropName: "checked",</span><br><span class="line">          	initialValue: true</span><br><span class="line">   	     &#125;)(&lt;Checkbox&gt;나 좀 기억해줘&lt;/Checkbox&gt;)&#125;</span><br><span class="line">    	    &lt;br /&gt;</span><br><span class="line">      	  &lt;Button&gt;로그인&lt;/Button&gt;</span><br><span class="line">      	&lt;/Form.Item&gt;</span><br><span class="line">    	&lt;/Form&gt;</span><br><span class="line">  	&lt;/Card&gt;</span><br><span class="line">	);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="getFieldDecorator-quot-id-quot-option-lt-component-gt"><a href="#getFieldDecorator-quot-id-quot-option-lt-component-gt" class="headerlink" title="getFieldDecorator(&quot;id&quot;, {option})(&lt;component/&gt;)"></a><code>getFieldDecorator(&quot;id&quot;, {option})(&lt;component/&gt;)</code></h5><ul>
+<li><p><code>option</code></p>
+<ul>
+<li><p><code>rules</code> : 유효성 검사 규칙으로, 배열이 들어간다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Form.Item&gt;</span><br><span class="line">  &#123;getFieldDecorator(<span class="string">"username"</span>, &#123;</span><br><span class="line">    rules: [&#123; <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">message</span>: <span class="string">"아이디좀..."</span> &#125;]</span><br><span class="line">  &#125;)(</span><br><span class="line">    &lt;Input prefix=&#123; &lt;Icon type=<span class="string">"user"</span>/&gt; &#125; placeholder=<span class="string">"Username"</span> /&gt;</span><br><span class="line">  )&#125;</span><br><span class="line">&lt;<span class="regexp">/Form.Item&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>valuePropName</code> : <code>input</code>이 아닐 때 기재하는 옵션으로, 어떤 요소인지를 쓴다.</p>
+</li>
+<li><p><code>initialValue</code> : 기본값으로 <code>value</code>를 지니므로 <code>input</code> 같은 경우에는 기재하지 않아도 된다.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;Form.Item&gt;</span><br><span class="line">  &#123;getFieldDecorator(<span class="string">"remember"</span>, &#123;</span><br><span class="line">   valuePropName: <span class="string">"checked"</span>,</span><br><span class="line">    initialValue: <span class="literal">true</span></span><br><span class="line"> 	&#125;)(<span class="xml"><span class="tag">&lt;<span class="name">Checkbox</span>&gt;</span>나 좀 기억해줘<span class="tag">&lt;/<span class="name">Checkbox</span>&gt;</span></span>)&#125;</span><br><span class="line">  &lt;br /&gt;</span><br><span class="line">  &lt;Button&gt;로그인&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>Form.Item&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>function(&lt;component/&gt;)</code></p>
+<ul>
+<li>위에 서술했다시피 해당 함수는 함수를 리턴한다.</li>
+<li>함수의 인자로 컴포넌트를 넣는다.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="상위에서는-어떻게-state와-dispath-메서드를-넣어주나"><a href="#상위에서는-어떻게-state와-dispath-메서드를-넣어주나" class="headerlink" title="상위에서는 어떻게 state와 dispath 메서드를 넣어주나"></a>상위에서는 어떻게 state와 dispath 메서드를 넣어주나</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line">&gt; <span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">"react-redux"</span>;</span><br><span class="line">&gt; <span class="keyword">import</span> &#123; IStoreState &#125; <span class="keyword">from</span> <span class="string">"../store"</span>;</span><br><span class="line">&gt; <span class="keyword">import</span> &#123; requestLogin &#125; <span class="keyword">from</span> <span class="string">"../actions"</span>;</span><br><span class="line">&gt; <span class="keyword">import</span> &#123; Login <span class="keyword">as</span> LoginComponent, ILoginComponentProps &#125; <span class="keyword">from</span> <span class="string">"../components"</span>;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="keyword">const</span> Login: React.FC&lt;ILoginComponentProps&gt; = <span class="function"><span class="params">props</span> =&gt;</span> (</span><br><span class="line">&gt;   <span class="xml"><span class="tag">&lt;<span class="name">LoginComponent</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span></span></span><br><span class="line"><span class="xml">&gt; );</span></span><br><span class="line"><span class="xml">&gt; </span></span><br><span class="line"><span class="xml">&gt; export default connect(</span></span><br><span class="line"><span class="xml">&gt;   (state: IStoreState) =&gt; (&#123;</span></span><br><span class="line"><span class="xml">&gt;     authentication: state.authentication</span></span><br><span class="line"><span class="xml">&gt;   &#125;),</span></span><br><span class="line"><span class="xml">&gt;   dispatch =&gt; (&#123;</span></span><br><span class="line"><span class="xml">&gt;     requestLogin: (username: string, password: string) =&gt;</span></span><br><span class="line"><span class="xml">&gt;       dispatch(requestLogin(username, password))</span></span><br><span class="line"><span class="xml">&gt;   &#125;)</span></span><br><span class="line"><span class="xml">&gt; )(Login);</span></span><br><span class="line"><span class="xml">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/04/recycle-component/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          컴포넌트 재사용법
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/04/router/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">우아한테크러닝 Typescript &amp; React 101 05 router</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#antd"><span class="nav-number">1.</span> <span class="nav-text">antd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#레이아웃"><span class="nav-number">1.1.</span> <span class="nav-text">레이아웃</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#그리드"><span class="nav-number">1.1.1.</span> <span class="nav-text">그리드</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#offset"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">offset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gutter"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Gutter</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#플렉스"><span class="nav-number">1.1.2.</span> <span class="nav-text">플렉스</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#컴포넌트"><span class="nav-number">1.2.</span> <span class="nav-text">컴포넌트</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Menu"><span class="nav-number">1.2.1.</span> <span class="nav-text">Menu</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#속성들"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">속성들</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#theme"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">theme</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defaultSelectedKeys"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">defaultSelectedKeys</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#자손들"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">자손들</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Menu-Item"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">Menu.Item</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SubMenu"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">SubMenu</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Drawer"><span class="nav-number">1.2.2.</span> <span class="nav-text">Drawer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content"><span class="nav-number">1.2.3.</span> <span class="nav-text">Content</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PageHeader"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">PageHeader</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#form"><span class="nav-number">1.2.4.</span> <span class="nav-text">form</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#export-단"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">export 단</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-정의"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">type 정의</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form-구현"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">form 구현</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#getFieldDecorator-quot-id-quot-option-lt-component-gt"><span class="nav-number">1.2.4.3.1.</span> <span class="nav-text">getFieldDecorator(&quot;id&quot;, {option})(&lt;component/&gt;)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#상위에서는-어떻게-state와-dispath-메서드를-넣어주나"><span class="nav-number">1.3.</span> <span class="nav-text">상위에서는 어떻게 state와 dispath 메서드를 넣어주나</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
