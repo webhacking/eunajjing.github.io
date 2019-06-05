@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-29-mybatis-프로시저" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-01-29-serialize-사용-시-controller-어노테이션" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/29/2019-01-29-mybatis-프로시저/">mybatis 프로시저 매핑 문제 트러블슈팅</a>
+      <a class="article-title" href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/">serialize 사용 시 controller 어노테이션</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-mybatis-프로시저/" class="article-date">
-	  <time datetime="2019-01-29T07:20:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/" class="article-date">
+	  <time datetime="2019-01-29T08:37:18.000Z" itemprop="datePublished">1월 29, 2019</time>
 	</a>
 
       
@@ -131,13 +131,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="mybatis-프로시저-매핑"><a href="#mybatis-프로시저-매핑" class="headerlink" title="mybatis - 프로시저 매핑"></a>mybatis - 프로시저 매핑</h2><p>만든 프로시저</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER //</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> <span class="string">`selectOneBoard`</span>(<span class="keyword">IN</span> bno <span class="built_in">int</span>(<span class="number">11</span>))</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> <span class="keyword">result</span> <span class="built_in">int</span>(<span class="number">4</span>); </span><br><span class="line">    <span class="keyword">set</span> <span class="keyword">result</span> = (<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> suggestion</span><br><span class="line">                            <span class="keyword">where</span> bno=bno</span><br><span class="line">                            <span class="keyword">and</span> statusCode=<span class="string">'S02'</span>);</span><br><span class="line">    if (result &gt; 0) then</span><br><span class="line">        <span class="keyword">select</span> bno, b.mid <span class="string">"mid"</span>, b.title <span class="string">"title"</span>, b.bContent <span class="string">"bContent"</span>,</span><br><span class="line">                <span class="keyword">DATE_FORMAT</span>(b.writeDate,<span class="string">'%Y-%m-%d'</span>) <span class="string">"WriteDate"</span>,</span><br><span class="line">                b.readCount <span class="string">"readCount"</span>, b.thumbNail <span class="string">"thumbNail"</span>,</span><br><span class="line">                b.categoryCode <span class="string">"categoryCode"</span>, b.bDelete <span class="string">"bDelete"</span> </span><br><span class="line">                s.link <span class="string">"link"</span></span><br><span class="line">        <span class="keyword">from</span> board b <span class="keyword">join</span> suggestion s <span class="keyword">using</span>(bno)</span><br><span class="line">        <span class="keyword">where</span> b.bDelete=<span class="string">'0'</span>;    </span><br><span class="line">    ELSE </span><br><span class="line">        <span class="keyword">SELECT</span> bno, <span class="keyword">mid</span>, title, bContent,</span><br><span class="line">                <span class="keyword">DATE_FORMAT</span>(writeDate,<span class="string">'%Y-%m-%d'</span>) WriteDate,</span><br><span class="line">                readCount, thumbNail, categoryCode, bDelete</span><br><span class="line">        <span class="keyword">FROM</span> board</span><br><span class="line">        <span class="keyword">WHERE</span> bDelete=<span class="string">'0'</span></span><br><span class="line">        <span class="keyword">and</span> bno = bno;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line">//</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
-<p><code>call selectOneBoard(~)</code>를 하면 DB 단에서는 정말 잘 실행되는데,</p>
-<p>결과 값인 vo를 가지고 못하는 문제가 발생했다.</p>
-<p>찾아보니 <a href="https://www.tutorialspoint.com/mybatis/mybatis_stored_procedures.htm" target="_blank" rel="noopener">이런 문서</a>를 발견했다.</p>
-<p>즉 resultMap을 이용해서 받거나, 파라미터로 보내는 vo로 리턴을 받아야 한다는 것!</p>
-<p>:&lt;… 너모 어렵다… 나는 resultMap으로 받아냈다!</p>
+        <h2 id="그래서-직렬화해서-어떻게-받나요…"><a href="#그래서-직렬화해서-어떻게-받나요…" class="headerlink" title="그래서 직렬화해서 어떻게 받나요…"></a>그래서 직렬화해서 어떻게 받나요…</h2><p><code>serialize()</code>에 대해서는 수업을 받은 적이 있고, 그 수업 내용은 블로그에도 있다. 그런데 아무리 고민해도 controller에서 어떻게 받아야 하는지 잘 모르겠더라. 그래서 포풍 검색을 했지만 잘 나오지 않았고… 계속 삽질하다 알아낸 것 기록</p>
+<p><strong>@ModelAttribute</strong></p>
+<p>어노테이션 기입 후 자료형을 vo에 맞춰서 받아준다!</p>
 
       
     </div>
@@ -162,7 +158,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/50/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/92/">92</a><a class="extend next" rel="next" href="/page/52/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/50/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/93/">93</a><a class="extend next" rel="next" href="/page/52/">Next</a>
   </nav>
 
 </section>
@@ -215,7 +211,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">79</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">80</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -263,6 +259,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/06/05/woowahan06-login/">우아한테크러닝 Typescript &amp; React 101 06 login</a></h6>
+              <span>6월 5, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/06/04/recycle-component/">컴포넌트 재사용법</a></h6>
               <span>6월 4, 2019</span>
             </div>
@@ -275,7 +283,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/06/04/antd/">우아한테크러닝 Typescript &amp; React 101 05 ANTD</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/06/04/router/">우아한테크러닝 Typescript &amp; React 101 05 router</a></h6>
               <span>6월 4, 2019</span>
             </div>
 
@@ -287,7 +295,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/06/04/router/">우아한테크러닝 Typescript &amp; React 101 05 router</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/06/04/antd/">우아한테크러닝 Typescript &amp; React 101 05 ANTD</a></h6>
               <span>6월 4, 2019</span>
             </div>
 
@@ -317,18 +325,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/27/woowahan04/">우아한테크러닝 Typescript &amp; React 101 04</a></h6>
-              <span>5월 27, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -339,7 +335,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

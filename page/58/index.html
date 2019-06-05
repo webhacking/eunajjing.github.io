@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-copyNpaste" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-01-14-maven_err" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/13/copyNpaste/">copyNpaste 프로젝트를 마친 뒤 홀로 회고</a>
+      <a class="article-title" href="/2019/01/14/2019-01-14-maven_err/">메이븐 업데이트가 안된다</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/13/copyNpaste/" class="article-date">
-	  <time datetime="2019-01-13T12:16:25.000Z" itemprop="datePublished">1월 13, 2019</time>
+	<a href="/2019/01/14/2019-01-14-maven_err/" class="article-date">
+	  <time datetime="2019-01-14T08:07:18.000Z" itemprop="datePublished">1월 14, 2019</time>
 	</a>
 
       
@@ -131,46 +131,19 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="copyNpaste-프로젝트-회고"><a href="#copyNpaste-프로젝트-회고" class="headerlink" title="copyNpaste 프로젝트 회고"></a>copyNpaste 프로젝트 회고</h2><p>취업 준비를 본격적으로 시작하면서 이력서를 작성 중인 요즘, 이력서 양식에서 프로젝트를 회고할 일이 있어 블로그에 함께 기록해둔다.</p>
+        <h2 id="메이븐-선생님-이게-무슨-일인가요-왜-업데이트가-안돼죠"><a href="#메이븐-선생님-이게-무슨-일인가요-왜-업데이트가-안돼죠" class="headerlink" title="메이븐 선생님 이게 무슨 일인가요 왜 업데이트가 안돼죠"></a>메이븐 선생님 이게 무슨 일인가요 왜 업데이트가 안돼죠</h2><p><img src="https://i.stack.imgur.com/uGiOI.jpg" alt=""></p>
+<p>프로젝트 진행 중에 브랜치 여러 개를 옮기며 병합했더니 갑자기 메이븐 업데이트가 되질 않았다.</p>
+<blockquote>
+<p>An internal error occurred during: “Updating Maven Project”. java.lang.NullPointerException</p>
+</blockquote>
+<p>이렇게 메시지가 떠서, 해당 에러 메시지를 구글링했더니 역시 <a href="https://stackoverflow.com/questions/19522897/an-internal-error-occurred-during-updating-maven-project-java-lang-nullpoint" target="_blank" rel="noopener">스텍오브플로우 짱</a></p>
+<p>요약하자면</p>
 <ul>
-<li><p><a href="https://www.youtube.com/watch?v=y1_02eXyKRw" target="_blank" rel="noopener">수료 발표 영상이 드디어 업로드 되었다</a></p>
-</li>
-<li><p><a href="https://github.com/eunajjing/CopyNPaste" target="_blank" rel="noopener">플젝 깃허브 주소</a></p>
-</li>
+<li><code>.settings</code> 폴더 삭제</li>
+<li><code>.project</code> 파일 삭제</li>
 </ul>
-<h3 id="프로젝트-시작-경위"><a href="#프로젝트-시작-경위" class="headerlink" title="프로젝트 시작 경위"></a>프로젝트 시작 경위</h3><p>사실 이 사이트의 아이디어는 내가 낸 것인데 나는 이 아이디어를</p>
-<p><img src="https://image.aladin.co.kr/product/1804/44/letslook/8994856250_f.jpg" alt=""></p>
-<p>라는 독립 잡지와(<em>현재 이 잡지는 전자책으로도 구매할 수 있다</em> <a href="https://book.naver.com/bookdb/book_detail.nhn?bid=7189630" target="_blank" rel="noopener">구매링크</a>) 연예인 전현무 님에게서 얻었다.</p>
-<p>전현무 님이 아나운서 시절 워낙 많은 시말서를 써서, 그 시말서 자료들을 동료 아나운서들도 참고해서 쓴다더라… 하는 이야기였는데 정확히 어떤 프로그램에서 본 건지는 기억이 나질 않는다.</p>
-<p>아무튼 사이트 첫 아이디어는 ‘어쨌든 살면서 누구나 한 번쯤은 쓰지만 일상적으로 쓰지 않는 문서의 문장들을 제공해주고, 관련 템플릿이나 작성에 요긴한 기능들이 있으면 좋겠다’ 였다. 나의 경우 대학 시절 성적 정정 메일을 보낼 때 이런 사이트가 있으면 좋겠다라는 생각을 많이 하기도 했었고. 다행히도 팀원들이 모두 좋은 아이디어라고 해줘서, 이런 서비스를 제공하는 사이트를 만들기로 했다</p>
-<p><strong>유저에게 보다 쉬운 글 작성을 돕는 사이트</strong></p>
-<p><img src="/images/intro.png" alt=""></p>
-<h3 id="그리하여-시작된-문서-작성의-늪"><a href="#그리하여-시작된-문서-작성의-늪" class="headerlink" title="그리하여 시작된 문서 작성의 늪"></a>그리하여 시작된 문서 작성의 늪</h3><p><img src="/images/plan.png" alt=""></p>
-<p><img src="/images/db.png" alt=""></p>
-<p>불행인지 다행인지 우리 팀은 대부분의 팀원들이 다 꼼꼼한 성격이었다. 그래서… 정말… 엄청난 회의록들과 트러블 슈팅 등… 프로젝트 산출물들이 기수 내 팀에서 제일 많이 나온 팀이었고… 물론 지금 와서 그 문서들의 소중함을 알기에 유의미했다고 생각하지만, 하는 내내 조금 불행했다. <code>프로그래밍 == 코드 타이핑</code>이라고 생각했기 때문에. 근데 나중에서야 알고 보니 실무에 가서도 문서 작업이 굉장히 많다는 걸 알았다.</p>
-<p>db 모델링의 경우 거의 혼자하다시피 했는데(…) PK 설정 부분에 대해 많이 고민할 수 있던 시간들이었다. 다행히도 언니들이 DB는 하고 싶은대로 하라고 해주셔서… 진짜 내가 맞다고 생각하는대로 해봤다. 물론 논리적인 문제는 없는지 강사님도 봐주시긴 했지만, 설계 전반을 혼자 해보는 경험이 인상적이었다.</p>
-<p>그리고 대망의 유스케이스(와 요구사항 명세서)</p>
-<p><img src="/images/usecase1.png" alt=""></p>
-<p><img src="/images/usecase2.png" alt=""></p>
-<p><em>포트폴리오에서 그대로 가져오다보니 내가 뭘 맡았는지도 가져오게 되었다</em></p>
-<p>이거 하는데 정말 많이 싸웠다. 사이트에 있으면 좋을 것 같다는 기능들이 각자 다 달라서… 뭐가 필요하니, 뭐가 경제적이니 진짜 멱살 잡기 전까지 싸웠다. 요구사항 명세가 끝나고 나니까 이제 스토리보드 대환장의 서막이 열렸고… 스토리보드 만드는 것도 진짜 더럽게 많이 싸웠다… 그리고 이 때서야 드디어 문서 작성의 중요성을 깨달았는데, 기존 회의록이 나의 옳음이나 틀림을 증명할 수 있는 증거가 되었다. (<em>이러라고 있는 회의록이 아니겠지만</em>)</p>
-<h3 id="프로젝트-구현"><a href="#프로젝트-구현" class="headerlink" title="프로젝트 구현"></a>프로젝트 구현</h3><p>이 프로젝트는 백 로직을 시작하기 전 모든 프론트를 만들고 시작하자는 팀 내의 합의가 있었다. 스프링 설정을 모두 마친 뒤 팀원 한 명이 우선적으로 하나의 jsp를 맡아 구현하는 방식으로 업무를 진행했고, 구현이 끝난 팀원은 또 다른, 아직 구현되지 않은 jsp를 할당 받아 구현하는 식이었다. 이 때문에 사이트 내 전체적인 통일성이 옅어졌고, 모든 소스를 통합한 뒤 한 번 더 프론트를 매만져야 하는 상황이 발생했다. 또한 Tiles를 적용했기에 중복적으로 사용되는 jsp의 경우 병합 후 스크립트 일부가 제대로 동작하지 않기도 했다. 결국 나는 스크립트 단 코드를 번복해서 짜야만 했다.</p>
-<p>이 사건을 통해 프로젝트 처음 세팅 단계에서 폴더 구조를 명확히 해야하고, 뷰 컴포넌트에 대한 협의의 필요성을 배웠다.</p>
-<p>웹소켓 적용의 경우 기존에 블로그에 포스팅하기도 했지만 이 프로젝트에서 내가 맡은 로직 중 가장 많은 시간이 들었던 부분이었다. 알림을 보내는 유저와 받는 유저가 모두 로그인 되어 있는 상태에서 알림 서비스를 구현한 예제들은 많았지만, 알림을 받아야 하는 대상이 로그아웃 되어있을 때에 대한 예제는 많지 않았다. 처음에는 이런 기능을 구현한 사이트들은 어떤 방식으로 했는지를 찾아봤으나 사용 언어나 DB가 맞지 않아 적용이 힘듦을 알았다. 결국 이 작업을 DB의 트리거와 프로시저로 연관시켜 구현을 시도했고, 찾을 수 있었던 레퍼런스 코드들을 프로젝트의 요구사항에 맞게 변경해 적용을 시켜야 했다.</p>
-<p>처음으로 트리거를 만들어보았고 조건문에 따른 로직을 처리했다. 프로시저도 만들어 호출해보는 등 이론적으로만 배웠던 부분을 실제로 적용하며 많이 배울 수 있는 시간이었다. 또한 효율적인 데이터 관리를 위해 DB 설계를 어떻게 하는 게 좋을지에 대해 고민하는 시간도 되었으며 요구사항에 따라 DB나 언어 선택을 다르게 하는 이유에 대해 생각해보는 계기도 되었다. (<em>이력서 그대로 긁어옴</em>)</p>
-<h3 id="아쉬운-점"><a href="#아쉬운-점" class="headerlink" title="아쉬운 점"></a>아쉬운 점</h3><ol>
-<li><p>​    Vue.js나 React 미적용</p>
-<p>많은 기능들이 비동기로 구현되기에 완성된 사이트는 실제 호스팅되는 사이트들보다 로딩이 느렸다. 또한 CDN으로 많은 프레임워크의 기능을 가져와 사용하기에 더더욱 느렸던 것 같다. 프론트 단을 템플릿을 사용하지 않고 만든 만큼, 차라리 vue.js나 react를 배워 조금이나마 해당 기능을 적용하려는 노력이 있었더라면, 혹은 해당 기능을 기반으로 하는 탬플릿을 사용하되 기능을 이해하려는 공부가 있었더라면 완성된 사이트가 보다 효율적이지 않았을까 싶다.</p>
-<p>이 프로젝트 이후로 리액트와 뷰에 대해 관심을 가지게 되었는데, 리액트보다는 일단 뷰를 하고 싶다는 생각이 들었다.</p>
-</li>
-<li><p>회고 시간 부재</p>
-<p>구현을 마친 뒤 수료 발표를 위한 준비-문서 작업, 영상 편집, 발표 연습 등-에 너무 많은 시간을 할애한 탓에 팀원 각각이 구현한 소스에 대해 함께 보고, 왜 이렇게 구현했는지, 더 나은 방법은 없었을지 등에 대해 고민하는 회고 시간이 없었던 게 아쉽다. 개인적으로 프로젝트를 리팩토링해보고 싶은 욕심이 있어 수료 후 혼자 소스 분석하고 조금씩 손을 대보고 있는데, 타 팀원이 왜 이렇게 구현했을지를 고민하며 진행하니 어려움이 많은 요즘.</p>
-</li>
-<li><p>협업 툴 미사용</p>
-<p>프로젝트를 진행하며 깃허브, 칸반보드, 구글 드라이브, 카카오톡 그룹 채팅, 면대면 대화 등을 활용해 팀원들과 협업했다. 위에서 언급한 협업 툴을 사용하는데도 조금씩 미숙했던 터라 팀원 모두가 더 효율적인 협업 툴을 찾아 적응하기보다는, 기존에 사용 중이던 협업 툴을 더 완벽하게 숙지해 사용하는데 중점을 두게 되었다. 나중에 프로젝트가 끝난 뒤, 학원 외부에서 토이 프로젝트를 하며 찾아보니 몰랐던 많은 협업 툴들이 시중에 나와 있었고 해당 툴들을 사용했더라면 보다 실용적이었으리라 생각된다.</p>
-</li>
-</ol>
-<h3 id="총평"><a href="#총평" class="headerlink" title="총평"></a>총평</h3><p>힘들고 즐거웠다. 이론을 배울<br>적, 머리로는 분명 이해했다고 생각했는데 실제로 코드를 치면서 이해를 못하고 있음을 깨닫는 날도 있었고, 새로 구현해야 하는 기능 때문에 레퍼런스를 보고 예제 코드를 봐도 이해를 못하는 나 자신이 무척 싫어지는 날도<br>있었다. 그렇게 몇 날 며칠을 고생해 코드가 구현되었을 때는 고생했던 기억들이 씻은 듯 사라지며<br>즐거웠다.</p>
+<p>sts  툴도 껐다가 다시 켰다.</p>
+<p>왜 이런 에러가 발생하는 걸까?</p>
 
       
     </div>
@@ -195,7 +168,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/57/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="page-number current">58</span><a class="page-number" href="/page/59/">59</a><a class="page-number" href="/page/60/">60</a><span class="space">&hellip;</span><a class="page-number" href="/page/92/">92</a><a class="extend next" rel="next" href="/page/59/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/57/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="page-number current">58</span><a class="page-number" href="/page/59/">59</a><a class="page-number" href="/page/60/">60</a><span class="space">&hellip;</span><a class="page-number" href="/page/93/">93</a><a class="extend next" rel="next" href="/page/59/">Next</a>
   </nav>
 
 </section>
@@ -248,7 +221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">79</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">80</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -296,6 +269,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/06/05/woowahan06-login/">우아한테크러닝 Typescript &amp; React 101 06 login</a></h6>
+              <span>6월 5, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/06/04/recycle-component/">컴포넌트 재사용법</a></h6>
               <span>6월 4, 2019</span>
             </div>
@@ -308,7 +293,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/06/04/antd/">우아한테크러닝 Typescript &amp; React 101 05 ANTD</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/06/04/router/">우아한테크러닝 Typescript &amp; React 101 05 router</a></h6>
               <span>6월 4, 2019</span>
             </div>
 
@@ -320,7 +305,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/06/04/router/">우아한테크러닝 Typescript &amp; React 101 05 router</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/06/04/antd/">우아한테크러닝 Typescript &amp; React 101 05 ANTD</a></h6>
               <span>6월 4, 2019</span>
             </div>
 
@@ -350,18 +335,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/27/woowahan04/">우아한테크러닝 Typescript &amp; React 101 04</a></h6>
-              <span>5월 27, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -372,7 +345,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
