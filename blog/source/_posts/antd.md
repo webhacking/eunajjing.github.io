@@ -17,7 +17,7 @@ categories:
 
 출판 시스템에서 출발하였으며, 일반적으로 반응형 웹을 만들 때 주로 쓰인다. 보통 한 줄 당 12칼럼을 지닌 게 일반적이나, antd는 24칼럼을 가지고 있다.
 
-```
+```html
 <Row>
     {/* 로우로 시작 */}
     <Col span={6}>
@@ -203,7 +203,7 @@ interface IProps {
 
 #### form 구현
 
-```jsx
+```javascript
 class LoginComponent extends React.PureComponent<IProps & ILoginComponentProps> {
   onSubmit = event => {
   	event.preventDefault();
@@ -258,7 +258,7 @@ class LoginComponent extends React.PureComponent<IProps & ILoginComponentProps> 
 
   - `rules` : 유효성 검사 규칙으로, 배열이 들어간다.
 
-    ```jsx
+    ```javascript
     <Form.Item>
       {getFieldDecorator("username", {
         rules: [{ required: true, message: "아이디좀..." }]
@@ -272,7 +272,7 @@ class LoginComponent extends React.PureComponent<IProps & ILoginComponentProps> 
 
   - `initialValue` : 기본값으로 `value`를 지니므로 `input` 같은 경우에는 기재하지 않아도 된다.
 
-  ```jsx
+  ```javascript
   <Form.Item>
     {getFieldDecorator("remember", {
      valuePropName: "checked",
