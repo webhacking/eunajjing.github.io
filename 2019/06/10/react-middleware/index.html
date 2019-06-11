@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>React middleware | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="미들웨어의 사용Redux의 store에도 접근할 수 있도록 store를 만들 적 설정해준다.  123const store = createStore(modules, applyMiddleware(logger, ReduxThunk));export default store; applyMiddleware사용할 미들웨어들을 인자로 받는다. 인자로 받은 미들웨어들은 순">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React middleware">
+<meta property="og:url" content="http://eunajjing.github.io/2019/06/10/react-middleware/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="미들웨어의 사용Redux의 store에도 접근할 수 있도록 store를 만들 적 설정해준다.  123const store = createStore(modules, applyMiddleware(logger, ReduxThunk));export default store; applyMiddleware사용할 미들웨어들을 인자로 받는다. 인자로 받은 미들웨어들은 순">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-06-10T12:39:58.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React middleware">
+<meta name="twitter:description" content="미들웨어의 사용Redux의 store에도 접근할 수 있도록 store를 만들 적 설정해준다.  123const store = createStore(modules, applyMiddleware(logger, ReduxThunk));export default store; applyMiddleware사용할 미들웨어들을 인자로 받는다. 인자로 받은 미들웨어들은 순">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-react-middleware" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      React middleware
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/10/react-middleware/" class="article-date">
+	  <time datetime="2019-06-10T12:42:18.000Z" itemprop="datePublished">6월 10, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="미들웨어의-사용"><a href="#미들웨어의-사용" class="headerlink" title="미들웨어의 사용"></a>미들웨어의 사용</h1><p><code>Redux</code>의 <code>store</code>에도 접근할 수 있도록 <code>store</code>를 만들 적 설정해준다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(modules, applyMiddleware(logger, ReduxThunk));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+<h2 id="applyMiddleware"><a href="#applyMiddleware" class="headerlink" title="applyMiddleware"></a><code>applyMiddleware</code></h2><p>사용할 미들웨어들을 인자로 받는다. 인자로 받은 미들웨어들은 순차적으로 실행되게 된다. 이렇게 만든 <code>store</code>를 리덕스 스토어로 사용한다.</p>
+<h2 id="redux-logger"><a href="#redux-logger" class="headerlink" title="redux-logger"></a><code>redux-logger</code></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createLogger &#125; <span class="keyword">from</span> <span class="string">"redux-logger"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> logger = createLogger();</span><br></pre></td></tr></table></figure>
+<p>어떤 디스패치가 행해져 스토어의 값이 변경되었는지 로그를 찍어주는 패키지. <code>createLogger()</code>를 통해 만든 미들웨어를 <code>applyMiddleware()</code>의 인자로 넘긴다.</p>
+<h2 id="ReduxThunk"><a href="#ReduxThunk" class="headerlink" title="ReduxThunk"></a><code>ReduxThunk</code></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ReduxThunk <span class="keyword">from</span> <span class="string">"redux-thunk"</span>;</span><br></pre></td></tr></table></figure>
+<p>만약 인자로 넘어온 <code>action</code> 이 함수라면 자동으로 디스패치를 가로채는 패키지. 비동기 처리 작업을 위해 사용한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line">thunk.withExtraArgument = createThunkMiddleware;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> thunk;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="왜-이런-작업을-수행하나"><a href="#왜-이런-작업을-수행하나" class="headerlink" title="왜 이런 작업을 수행하나?"></a>왜 이런 작업을 수행하나?</h1><p>실행되는 시점을 제어하기 위해. 즉, 호출 즉시 실행이 아니라 원하는 시점에 실행되길 바라기 때문</p>
+</blockquote>
+<h2 id="만약-직접-미들웨어를-만든다면"><a href="#만약-직접-미들웨어를-만든다면" class="headerlink" title="만약 직접 미들웨어를 만든다면"></a>만약 직접 미들웨어를 만든다면</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> middleware = <span class="function"><span class="params">store</span> =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(action);</span><br><span class="line">  <span class="built_in">console</span>.log(store.getState());</span><br><span class="line">  next(action);</span><br><span class="line">  <span class="built_in">console</span>.log(store.getState());</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> middleware;</span><br></pre></td></tr></table></figure>
+<p>미들웨어는 스토어의 값을 받아올 수 있으며, <code>next()</code> 를 이용해 다음 미들웨어로 액션을 넘길 수 있다.</p>
+<blockquote>
+<h1 id="노드와-다른-점"><a href="#노드와-다른-점" class="headerlink" title="노드와 다른 점"></a>노드와 다른 점</h1><p>노드의 경우 <code>next()</code> 구문을 만나면 하위의 구문은 무시된다. 반면 리액트의 미들웨어는 <strong>계속 실행된다</strong></p>
+</blockquote>
+<p><a href="https://eunajjing.github.io/2019/03/22/use-react06/">이전에 첫 공부를 하며 했던 포스팅</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/10/react-redux-remind/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          React Redux 복습
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/05/woowahan06-hook/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">우아한테크러닝 Typescript &amp; React 101 06 UI with hook</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#미들웨어의-사용"><span class="nav-number">1.</span> <span class="nav-text">미들웨어의 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#applyMiddleware"><span class="nav-number">1.1.</span> <span class="nav-text">applyMiddleware</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-logger"><span class="nav-number">1.2.</span> <span class="nav-text">redux-logger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReduxThunk"><span class="nav-number">1.3.</span> <span class="nav-text">ReduxThunk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#왜-이런-작업을-수행하나"><span class="nav-number">2.</span> <span class="nav-text">왜 이런 작업을 수행하나?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#만약-직접-미들웨어를-만든다면"><span class="nav-number">2.1.</span> <span class="nav-text">만약 직접 미들웨어를 만든다면</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#노드와-다른-점"><span class="nav-number">3.</span> <span class="nav-text">노드와 다른 점</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
