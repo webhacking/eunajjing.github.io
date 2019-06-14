@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-29-complainZero-프로젝트-회고" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-01-29-mybatis-프로시저" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/">complainZero 프로젝트 회고</a>
+      <a class="article-title" href="/2019/01/29/2019-01-29-mybatis-프로시저/">mybatis 프로시저 매핑 문제 트러블슈팅</a>
     </h1>
   
 
@@ -120,33 +120,31 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-complainZero-프로젝트-회고/" class="article-date">
-	  <time datetime="2019-01-29T06:58:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/01/29/2019-01-29-mybatis-프로시저/" class="article-date">
+	  <time datetime="2019-01-29T07:20:18.000Z" itemprop="datePublished">1월 29, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="뉴딜-과정이-끝났다"><a href="#뉴딜-과정이-끝났다" class="headerlink" title="뉴딜 과정이 끝났다"></a>뉴딜 과정이 끝났다</h2><h3 id="ComplainZero"><a href="#ComplainZero" class="headerlink" title="ComplainZero"></a><a href="https://github.com/eunajjing/complainzero" target="_blank" rel="noopener">ComplainZero</a></h3><p><img src="/images/complainZero.png" alt="메인화면"></p>
-<p>비교적 짧은 시간 내에 구현해야했던 <complainzero>는 많은 기능을 배제하고 할 수 있는 것에만 집중하기로 팀원들 내 합의 후 진행한 프로젝트였다.</complainzero></p>
-<p>원래는 게시판 겸 펀딩 사이트를 구현하려고 했는데 몸집이 너무 커지기도 커져서… 결국 중계 사이트를 만들었다. 유스케이스는 그리지 않아 권한 별  설정을 보여주기 위해 만든 PT…</p>
-<p><img src="/images/role1.jpg" alt="공통권한"><br><img src="/images/role2.jpg" alt="유저권한"><br><img src="/images/role3.jpg" alt="관리자권한"></p>
-<h4 id="프로젝트-전반에-대한-회고"><a href="#프로젝트-전반에-대한-회고" class="headerlink" title="프로젝트 전반에 대한 회고"></a>프로젝트 전반에 대한 회고</h4><p>시간 압박에 쫓겨 개인적으로 배우는 프로젝트였다기보단 빨리 빨리 구현에 중점을 둔 프로젝트였다. 코드를 타이핑하는데에 급급해 문서 작성을 하지 않았고, 이 때문에 불필요한 작업들을 여러 번 하는 경우도 있었다. 내가 한 줄의 코드를 짜는 것보다 타인과 소통하며 협업하는 게 더 중요하다는 걸 배웠지만…. 소통이 안되는 건 내 문제인가….. 하하…</p>
-<h5 id="프로젝트-구현"><a href="#프로젝트-구현" class="headerlink" title="프로젝트 구현"></a>프로젝트 구현</h5><p>구현에 있어 제일 힘들었던 것은 프로시저와 트리거 내 루프문 제어였다. 포스팅을 통해 트러블 슈팅을 기록하겠지만, 왜 안되는지 알 수 없는… 그런 거였다. 레퍼런스가 많기에 구현에 그다지 오래 걸리지 않으리라 생각했는데 데이터베이스마다 조금씩 문법 차이가 있어 레퍼런스 예제 소스가 전혀 적용이 안됐다ㅠㅠㅠ 사용한 maria DB는 insert all과 같이 mysql에서 제공하는 다중 데이터 insert 문을 제공해주지 않았고, 트리거 내에서도 사용이 힘들었다. 이에 모든 걸 DB에서 처리해야겠다는 계획을 변경해 서비스 단에서 트랜젝션을 이용해 제어를 시도했다.</p>
-<p>프로시저 또한 힘들었다. 이것도 정말… 트러블 슈팅 꼭 기록할 것. 프로젝트 내 게시물 상세보기는 조건에 따라 join테이블이 달라지는데, 조건을 사용해야 했기에 결과적으로 DB 처리를 원하면 프로시저를 사용해야한다는 것을 알았다. 트랜젝션을 생성해 DB GUI 툴에서 실행했을 때 정상적인 값을 가지고 오는 것을 확인했건만 호출 결과와 mybatis의 연동이 자동으로 되지 않아 원인을 찾는데 많은 시간이 소비되었다.</p>
-<h5 id="아쉬운-점"><a href="#아쉬운-점" class="headerlink" title="아쉬운 점"></a>아쉬운 점</h5><p> 전반 회고 맥락과 비슷하게, 기능적으로는 배우는 게 많이 없었던 프로젝트였다. 이미 해보거나 잘하는 기능을 맡아 구현했다. 욕심 부리지 않기 위해 프로젝트 규모를 작게 잡아 되레 인원에 비해 너무 소소한 프로젝트였다고 생각한다. 사실… 우리가 4명이었지만 거의 3명인 조였고… 하아… 만약 기회가 된다면 펀딩 사이트처럼 연계 알림 후 결제 시스템을 구현해보거나, 카카오나 네이버 아이디를 이용한 회원가입을 구현해도 재밌었으리라 생각한다.</p>
-<p> 처음에 하지 않은 문서 작업이 뒤에서 크게 발목을 잡으리라 생각치 못한 프로젝트였다. 폴더 구조를 짜두고 시작한 것이 아닌 터라, 나중에 시큐리티 패턴식을 적용하거나 타일즈를 구현할 적마다 폴더 구조를 다시 맞춰야 하는 번거로움이 발생했고, 후에 적용하면 할수록 팀원 간 혼동도 잦았다. 또한 트러블슈팅을 하지 않아 팀원 내 똑같은 에러가 발생해도 팀원 내부에서 도움을 주지 못하고, 문제가 발생한 회원이 다시 레퍼런스를 찾아봐야 하는 등의 비효율적인 측면도 두드러진 프로젝트였다. 특별한 api를 적용하는 경험은 하지 못했지만 문서 작업과 협업에 대해 생각해보는 계기였다.</p>
+        <h2 id="mybatis-프로시저-매핑"><a href="#mybatis-프로시저-매핑" class="headerlink" title="mybatis - 프로시저 매핑"></a>mybatis - 프로시저 매핑</h2><p>만든 프로시저</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER //</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> <span class="string">`selectOneBoard`</span>(<span class="keyword">IN</span> bno <span class="built_in">int</span>(<span class="number">11</span>))</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> <span class="keyword">result</span> <span class="built_in">int</span>(<span class="number">4</span>); </span><br><span class="line">    <span class="keyword">set</span> <span class="keyword">result</span> = (<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> suggestion</span><br><span class="line">                            <span class="keyword">where</span> bno=bno</span><br><span class="line">                            <span class="keyword">and</span> statusCode=<span class="string">'S02'</span>);</span><br><span class="line">    if (result &gt; 0) then</span><br><span class="line">        <span class="keyword">select</span> bno, b.mid <span class="string">"mid"</span>, b.title <span class="string">"title"</span>, b.bContent <span class="string">"bContent"</span>,</span><br><span class="line">                <span class="keyword">DATE_FORMAT</span>(b.writeDate,<span class="string">'%Y-%m-%d'</span>) <span class="string">"WriteDate"</span>,</span><br><span class="line">                b.readCount <span class="string">"readCount"</span>, b.thumbNail <span class="string">"thumbNail"</span>,</span><br><span class="line">                b.categoryCode <span class="string">"categoryCode"</span>, b.bDelete <span class="string">"bDelete"</span> </span><br><span class="line">                s.link <span class="string">"link"</span></span><br><span class="line">        <span class="keyword">from</span> board b <span class="keyword">join</span> suggestion s <span class="keyword">using</span>(bno)</span><br><span class="line">        <span class="keyword">where</span> b.bDelete=<span class="string">'0'</span>;    </span><br><span class="line">    ELSE </span><br><span class="line">        <span class="keyword">SELECT</span> bno, <span class="keyword">mid</span>, title, bContent,</span><br><span class="line">                <span class="keyword">DATE_FORMAT</span>(writeDate,<span class="string">'%Y-%m-%d'</span>) WriteDate,</span><br><span class="line">                readCount, thumbNail, categoryCode, bDelete</span><br><span class="line">        <span class="keyword">FROM</span> board</span><br><span class="line">        <span class="keyword">WHERE</span> bDelete=<span class="string">'0'</span></span><br><span class="line">        <span class="keyword">and</span> bno = bno;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line">//</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+<p><code>call selectOneBoard(~)</code>를 하면 DB 단에서는 정말 잘 실행되는데,</p>
+<p>결과 값인 vo를 가지고 못하는 문제가 발생했다.</p>
+<p>찾아보니 <a href="https://www.tutorialspoint.com/mybatis/mybatis_stored_procedures.htm" target="_blank" rel="noopener">이런 문서</a>를 발견했다.</p>
+<p>즉 resultMap을 이용해서 받거나, 파라미터로 보내는 vo로 리턴을 받아야 한다는 것!</p>
+<p>:&lt;… 너모 어렵다… 나는 resultMap으로 받아냈다!</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
 
       
       
@@ -164,7 +162,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/57/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="page-number current">58</span><a class="page-number" href="/page/59/">59</a><a class="page-number" href="/page/60/">60</a><span class="space">&hellip;</span><a class="page-number" href="/page/98/">98</a><a class="extend next" rel="next" href="/page/59/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/57/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="page-number current">58</span><a class="page-number" href="/page/59/">59</a><a class="page-number" href="/page/60/">60</a><span class="space">&hellip;</span><a class="page-number" href="/page/99/">99</a><a class="extend next" rel="next" href="/page/59/">Next</a>
   </nav>
 
 </section>
@@ -217,7 +215,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">85</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">86</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -258,6 +256,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/06/14/brackets/">javascript 중괄호와 소괄호의 늪</a></h6>
+              <span>6월 14, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -319,18 +329,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/06/05/woowahan06-login/">우아한테크러닝 Typescript &amp; React 101 06 login</a></h6>
-              <span>6월 5, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -341,7 +339,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

@@ -3,23 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>React.createRef() | ERecord</title>
+  <title>javascript 중괄호와 소괄호의 늪 | ERecord</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="React.createRef() Ref DOM에 접근해 직접 다루어야 할 때 사용한다.  컴포넌트 내부에서만 작동하기 때문에 전역적이지 않다    기존의 ref생성 신텍스는 1234&amp;lt;input ref=&amp;#123;(ref) =&amp;gt; &amp;#123;this.refname = ref&amp;#125;&amp;#125; /&amp;gt;// 이제 이 input 요소를 제어할 때는/">
+  <meta name="description" content="중괄호와 소괄호의 늪계속 반복되는 실수가 나와서, 또 미래의 내가 헤멜 가능성이 농후해서 적는다. 객체 리턴할 적에 하던 대로 중괄호로 시작하면 에러 난다. 즉 1234export const blahblah = (a = &amp;#123;&amp;#125;) =&amp;gt; &amp;#123;&amp;#123;  ...a,  blahblah : &quot;&quot;&amp;#125;&amp;#125;; 위의 코드는 에러">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React.createRef()">
-<meta property="og:url" content="http://eunajjing.github.io/2019/05/07/createRef/index.html">
+<meta property="og:title" content="javascript 중괄호와 소괄호의 늪">
+<meta property="og:url" content="http://eunajjing.github.io/2019/06/14/brackets/index.html">
 <meta property="og:site_name" content="ERecord">
-<meta property="og:description" content="React.createRef() Ref DOM에 접근해 직접 다루어야 할 때 사용한다.  컴포넌트 내부에서만 작동하기 때문에 전역적이지 않다    기존의 ref생성 신텍스는 1234&amp;lt;input ref=&amp;#123;(ref) =&amp;gt; &amp;#123;this.refname = ref&amp;#125;&amp;#125; /&amp;gt;// 이제 이 input 요소를 제어할 때는/">
+<meta property="og:description" content="중괄호와 소괄호의 늪계속 반복되는 실수가 나와서, 또 미래의 내가 헤멜 가능성이 농후해서 적는다. 객체 리턴할 적에 하던 대로 중괄호로 시작하면 에러 난다. 즉 1234export const blahblah = (a = &amp;#123;&amp;#125;) =&amp;gt; &amp;#123;&amp;#123;  ...a,  blahblah : &quot;&quot;&amp;#125;&amp;#125;; 위의 코드는 에러">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-05-13T05:51:44.153Z">
+<meta property="og:updated_time" content="2019-06-14T08:24:00.820Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React.createRef()">
-<meta name="twitter:description" content="React.createRef() Ref DOM에 접근해 직접 다루어야 할 때 사용한다.  컴포넌트 내부에서만 작동하기 때문에 전역적이지 않다    기존의 ref생성 신텍스는 1234&amp;lt;input ref=&amp;#123;(ref) =&amp;gt; &amp;#123;this.refname = ref&amp;#125;&amp;#125; /&amp;gt;// 이제 이 input 요소를 제어할 때는/">
+<meta name="twitter:title" content="javascript 중괄호와 소괄호의 늪">
+<meta name="twitter:description" content="중괄호와 소괄호의 늪계속 반복되는 실수가 나와서, 또 미래의 내가 헤멜 가능성이 농후해서 적는다. 객체 리턴할 적에 하던 대로 중괄호로 시작하면 에러 난다. 즉 1234export const blahblah = (a = &amp;#123;&amp;#125;) =&amp;gt; &amp;#123;&amp;#123;  ...a,  blahblah : &quot;&quot;&amp;#125;&amp;#125;; 위의 코드는 에러">
   
     <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
   
@@ -103,7 +103,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-createRef" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-brackets" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      React.createRef()
+      javascript 중괄호와 소괄호의 늪
     </h1>
   
 
@@ -119,37 +119,28 @@
     
     <div class="article-meta">
       
-	<a href="/2019/05/07/createRef/" class="article-date">
-	  <time datetime="2019-05-07T02:29:18.000Z" itemprop="datePublished">5월 7, 2019</time>
+	<a href="/2019/06/14/brackets/" class="article-date">
+	  <time datetime="2019-06-14T08:23:18.000Z" itemprop="datePublished">6월 14, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="React-createRef"><a href="#React-createRef" class="headerlink" title="React.createRef()"></a><code>React.createRef()</code></h1><blockquote>
-<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
-<li><p>DOM에 접근해 직접 다루어야 할 때 사용한다.</p>
-</li>
-<li><p>컴포넌트 내부에서만 작동하기 때문에 전역적이지 않다</p>
-</li>
-</ul>
-</blockquote>
-<p>기존의 <code>ref</code>생성 신텍스는</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref=&#123;(ref) =&gt; &#123;<span class="keyword">this</span>.refname = ref&#125;&#125; /&gt;</span><br><span class="line"><span class="comment">// 이제 이 input 요소를 제어할 때는</span></span><br><span class="line"><span class="comment">// this.refname.블라블라();</span></span><br><span class="line"><span class="comment">// 형식으로 제어한다.</span></span><br></pre></td></tr></table></figure>
-<p><strong>그런데</strong> <code>React.createRef()</code>을 사용할 경우</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReactTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	refname = React.createRef();</span><br><span class="line">	<span class="comment">// 위에서 선언해주고</span></span><br><span class="line">	</span><br><span class="line">	render() &#123;</span><br><span class="line">		&lt;input ref=&#123;<span class="keyword">this</span>.refname&#125;/&gt;</span><br><span class="line">		<span class="comment">// 이렇게 쓴다!</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	만약 포커싱 같은 것을 주고 싶으면</span><br><span class="line">	<span class="keyword">this</span>.refname.currnet.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>currnet가 핵심</strong></p>
+        <h1 id="중괄호와-소괄호의-늪"><a href="#중괄호와-소괄호의-늪" class="headerlink" title="중괄호와 소괄호의 늪"></a>중괄호와 소괄호의 늪</h1><p>계속 반복되는 실수가 나와서, 또 미래의 내가 헤멜 가능성이 농후해서 적는다. 객체 리턴할 적에 하던 대로 중괄호로 시작하면 에러 난다. 즉</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> blahblah = <span class="function">(<span class="params">a = &#123;&#125;</span>) =&gt;</span> &#123;&#123;</span><br><span class="line">  ...a,</span><br><span class="line">  blahblah : <span class="string">""</span></span><br><span class="line">&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p>위의 코드는 에러가 나기에, 아래처럼 써줘야 한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> blahblah = <span class="function">(<span class="params">a = &#123;&#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">  ...a,</span><br><span class="line">  blahblah : <span class="string">""</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
 
       
       
@@ -160,19 +151,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/05/07/css-flex/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          flex 게임
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/29/text-mining/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/12/pwa/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">텍스트 마이닝</div>
+      <div class="article-nav-title">PWA 코드랩에 다녀왔다</div>
     </a>
   
 </nav>
@@ -186,7 +168,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-createRef"><span class="nav-number">1.</span> <span class="nav-text">React.createRef()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">1.1.</span> <span class="nav-text">Ref</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#중괄호와-소괄호의-늪"><span class="nav-number">1.</span> <span class="nav-text">중괄호와 소괄호의 늪</span></a></li></ol>
     
     </div>
   </aside>
