@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>우아한테크러닝 Typescript &amp; React 101 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="안녕, 우아한테크러닝우아한테크러닝에 끝났다. 강의를 진행하셨던 민태 님은 마지막 강의를 시작하시며 “끝나지 않을 것 같았던 한 달이 끝났다”라는 말씀을 하셨다. 나도 그랬다. 5월과 6월은 리액트의 나날들이었다. 페이스북 이노베이션 랩에서 진행한 리액트 부트캠프(영원히 후기를 쓸 수 있을 것 같지 않지만 쓰려고 늘 노력할 것이다), 사비까지 들여 배운 리액">
+<meta property="og:type" content="article">
+<meta property="og:title" content="우아한테크러닝 Typescript &amp; React 101">
+<meta property="og:url" content="http://eunajjing.github.io/2019/06/20/woowahan/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="안녕, 우아한테크러닝우아한테크러닝에 끝났다. 강의를 진행하셨던 민태 님은 마지막 강의를 시작하시며 “끝나지 않을 것 같았던 한 달이 끝났다”라는 말씀을 하셨다. 나도 그랬다. 5월과 6월은 리액트의 나날들이었다. 페이스북 이노베이션 랩에서 진행한 리액트 부트캠프(영원히 후기를 쓸 수 있을 것 같지 않지만 쓰려고 늘 노력할 것이다), 사비까지 들여 배운 리액">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-06-20T08:09:12.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="우아한테크러닝 Typescript &amp; React 101">
+<meta name="twitter:description" content="안녕, 우아한테크러닝우아한테크러닝에 끝났다. 강의를 진행하셨던 민태 님은 마지막 강의를 시작하시며 “끝나지 않을 것 같았던 한 달이 끝났다”라는 말씀을 하셨다. 나도 그랬다. 5월과 6월은 리액트의 나날들이었다. 페이스북 이노베이션 랩에서 진행한 리액트 부트캠프(영원히 후기를 쓸 수 있을 것 같지 않지만 쓰려고 늘 노력할 것이다), 사비까지 들여 배운 리액">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-woowahan" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      우아한테크러닝 Typescript &amp; React 101
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/20/woowahan/" class="article-date">
+	  <time datetime="2019-06-20T08:09:18.000Z" itemprop="datePublished">6월 20, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="안녕-우아한테크러닝"><a href="#안녕-우아한테크러닝" class="headerlink" title="안녕, 우아한테크러닝"></a>안녕, 우아한테크러닝</h1><p>우아한테크러닝에 끝났다. 강의를 진행하셨던 민태 님은 마지막 강의를 시작하시며 “끝나지 않을 것 같았던 한 달이 끝났다”라는 말씀을 하셨다. 나도 그랬다. 5월과 6월은 리액트의 나날들이었다. 페이스북 이노베이션 랩에서 진행한 리액트 부트캠프(<del>영원히 후기를 쓸 수 있을 것 같지 않지만 쓰려고 늘 노력할 것이다</del>), 사비까지 들여 배운 리액트 강의를 수강했으니. 어떤 날은 리액트 강의만 순수 6시간을 들은 적도 있었다. 그래서 나는 리액트가 늘었나…? 그건 잘 모르겠고.</p>
+<p>해당 강의는 한 달 간 진행되었으며 일주일에 두 번, 잠실역 우아한형제들 작은집에서 이루어졌다. 한 번 갈 때마다 2시간 강의를 하셨으니, 순수 강의 시간으로는 16시간 정도된다. 한 달 간 배운 지식도 많았지만, 개인적으로 나는… 강의 정리 압박에 시달렸다. 압박 덕분에 정리를 했고, 정리하는 과정 중에서 배운 것도 많았지만. 정리하는 게 즐겁지만은 않았다</p>
+<p>처음 정리를 시작할 땐, 그 날 들은 강의를 다음 강의 시작 전까지 퍼블리싱 하는 걸 목표로 했다. <del>목표는 그랬다</del> 목표를 못 지킬 수밖에 없었던 변명을 하자면, 페이스북 이노베이션 랩을 가느라 판교로 오갔던 5월 말부터 정리를 할 수 있는 물리적인 시간이 부족했다. 게다가 강의는 화요일과 목요일에 진행되었는데, 목요일에 들은 강의의 경우 화요일까지 정리를 하면 됐지만, 화요일날 들은 강의는 목요일까지… 텀이 하루밖에 없었다! 결국 막판에는 목표가 무색하게 정리가 한 주씩 밀리기 시작했다. 강의가 끝나니 마감 기간이 없어져서… 한 동안 리액트 꼴도 보기 싫어서 안하다가, 죄책감에 시달렸다. 죄책감에 힘 입어 꾸역꾸역 조금씩 해내다가 강의가 끝난지 한 주가 지난 어제. 비로소 정리가 끝났다. 마지막 포스팅을 퍼블리싱하며 소리를 질렀다. 정말 우아한테크러닝이 끝났다!</p>
+<p>왜 나는 정리에 목숨을 걸었나. 내가 느끼기엔 강의 난도가 매 회차 조금씩 차이가 있어서… 쉬운 날에는 엄청 쉬웠고, 어려운 날에는 엄청 어려웠다. 이 모든 난도를 제대로 습득하기 위해서는, 이전에 배운 강의 내용을 완벽히 이해하고 있을 필요를 느꼈다. 공부하는 김에 다른 사람들도 보면(<del>정확히 말하면 잊어버렸을 미래의 나도 보면</del>) 좋을 것 같다는 생각이 들어서 시작을 했는데… 음….</p>
+<p>앞서 말했다시피 많은 리액트 강의를 들었던 5월과 6월. 우아한테크러닝은 내가 들었던 리액트 강의 중 제일 만족도가 높다. 원래 외부 교육용으로 개발된 게 아니라고 들었는데, 외부로도 기회를 열어주신 우아한형제들 측으로 감사드릴 뿐이다. 아, 마지막 강의 후 있었던 비어파티에서 외부 개발자 경쟁률이 11:1이라는 이야기를 들었고, 정말 당첨과도 같은 행운이었음을 다시 한 번 느꼈다.</p>
+<h2 id="내가-정리한-것들"><a href="#내가-정리한-것들" class="headerlink" title="내가 정리한 것들"></a>내가 정리한 것들</h2><blockquote>
+<p>소스 코드는 공개해도 되는 건지 잘 모르겠어서, 일단 넣지 않는다.</p>
+<p>소스가 올라왔던 페이스북 그룹은 비공개로 전환되었고, 모든 강의는 로컬이 아닌 sandbox.io에서 진행되어서 로컬에서 실행하려면 설정을 바꿔야 하는 번잡스러움이 생긴다. 근데 난 아직 모든 소스를 로컬에서 돌려보진 않았거든… 실험 삼아서 하나만 돌려봤다.</p>
+<blockquote>
+<p>예전에는 로컬에서 돌리려면 어케 설정을 바꾸는지 몰라가지고 끙끙댔는데, 내 경우 <code>tsconfig.json</code> 파일을 변경하니까 되었다!</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><p><a href="https://eunajjing.github.io/2019/05/15/woowahan01/">1회차 : 프로젝트의 생성과 리액트 컴포넌트 맛보기</a></p>
+</li>
+<li><p><a href="https://eunajjing.github.io/2019/05/20/woowahan02/">2회차 : 리덕스의 등장</a></p>
+</li>
+<li><p><a href="https://eunajjing.github.io/2019/05/27/woowahan04/">3회차 : API 호출</a></p>
+</li>
+<li><p><a href="https://eunajjing.github.io/2019/05/28/woowahan03/">4회차 : 사가의 등장</a></p>
+<ul>
+<li><a href="https://eunajjing.github.io/2019/05/22/promise-async-await/">promise, async/await</a></li>
+<li><a href="https://eunajjing.github.io/2019/05/22/generator/">generator</a></li>
+</ul>
+</li>
+<li><p>5회차 : 레이아웃과 라우터</p>
+<ul>
+<li><a href="https://eunajjing.github.io/2019/06/04/antd/">레이아웃 with ANTD</a></li>
+<li><a href="https://eunajjing.github.io/2019/06/04/router/">라우터</a></li>
+</ul>
+</li>
+<li><p>6회차 : 로그인/로그아웃과 HOOK</p>
+<ul>
+<li><p><a href="https://eunajjing.github.io/2019/06/05/woowahan06-login/">로그인/로그아웃</a></p>
+</li>
+<li><p><a href="https://eunajjing.github.io/2019/06/05/woowahan06-hook/">HOOK</a></p>
+<blockquote>
+<p>훅은 많이 안나가서 따로 공부하며 포스팅해야겠다</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>7회차 : 라이브코딩 진행(새로운 API 호출해 해당 데이터를 뷰에 뿌려주기)</p>
+</li>
+<li><p><a href="https://eunajjing.github.io/2019/06/19/woowahan08/">8회차 : 비동기 처리 시 유저 단의 스피너 로직</a></p>
+</li>
+</ul>
+<blockquote>
+<p>나 말고도 정리하시는 분이 계신 걸 확인했는데… 어느 날 그 분 블로그 가보니까 그 동안 정리하셨던 포스팅이 사라져있었다. 흑흑…. </p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/19/woowahan08/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">우아한테크러닝 Typescript &amp; React 101 08</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#안녕-우아한테크러닝"><span class="nav-number">1.</span> <span class="nav-text">안녕, 우아한테크러닝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#내가-정리한-것들"><span class="nav-number">1.1.</span> <span class="nav-text">내가 정리한 것들</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
