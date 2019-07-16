@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-websocket" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-node-js" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/08/websocket/">websocket</a>
+      <a class="article-title" href="/2018/11/21/node-js/">node.js</a>
     </h1>
   
 
@@ -120,64 +120,216 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/08/websocket/" class="article-date">
-	  <time datetime="2018-11-08T07:27:20.000Z" itemprop="datePublished">11월 8, 2018</time>
+	<a href="/2018/11/21/node-js/" class="article-date">
+	  <time datetime="2018-11-21T07:53:21.000Z" itemprop="datePublished">11월 21, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="websocket을-이용한-간단한-알림-구현"><a href="#websocket을-이용한-간단한-알림-구현" class="headerlink" title="websocket을 이용한 간단한 알림 구현"></a>websocket을 이용한 간단한 알림 구현</h1><hr>
-<h2 id="유용하게-참고했던-링크들"><a href="#유용하게-참고했던-링크들" class="headerlink" title="유용하게 참고했던 링크들"></a>유용하게 참고했던 링크들</h2><p><a href="https://www.youtube.com/watch?v=gQyRxPjssWg" target="_blank" rel="noopener">시니어코딩</a></p>
-<ul>
-<li>유튜브 강좌</li>
-<li>스프링 시큐리티를 사용하지 않아 http세션과 웹소켓을 잇는 작업이 존재</li>
-<li>연속된 강의라서 도중에 강의만 따라해서는 모르는 과정이 있음, 이 부족한 부분은 깃허브에 소스가 오픈되어 있어서 보면서 해야함</li>
+        <h1 id="노드JS"><a href="#노드JS" class="headerlink" title="노드JS"></a>노드JS</h1><h2 id="공부하게-된-계기"><a href="#공부하게-된-계기" class="headerlink" title="공부하게 된 계기"></a>공부하게 된 계기</h2><p>프로젝트에서 노드를 사용할 것 같다는 의견이 있어서 나름 낑낑거리며 공부했다. 프로젝트 막바지인 지금, 당시 정리해둔 문서가 많이 허접하긴 하지만 뭐… 공부했던 기록을 남겨둔다.</p>
+<h2 id="참고한-것"><a href="#참고한-것" class="headerlink" title="참고한 것"></a>참고한 것</h2><p><a href="https://book.naver.com/bookdb/book_detail.nhn?bid=11738465" target="_blank" rel="noopener">Do it! Node.js</a></p>
+<p>근데 많이 참고하진 않았다…<br>변명처럼 들리겠지만 당시에 나는 플젝에서 필요할 것만을 보고 싶었고, 실제로 프로젝트 팀원들에게 그렇게 요구 받았다.(프로젝트 시작 전 우리가 어떤 기능을 쓸 것인지에 대해 고민해보고, 각자 특정 부분을 맡아 공부 후 다른 팀원에게 설명하는 식으로 스터디를 진행했다)</p>
+<p>참고한 책은 모든 장이 연결되어 순차적으로 한 웹사이트를 구현하는 방식에 대해 이야기하고 있어서… 예를 들어 우리 프로젝트에서는 몽고 디비를 빼자고 해서, 나는 공부할 당시엔 몽고 디비를 간략히 보거나 아예 보지 않아도 됐다. 이런 식으로 특정 장을 훑듯 보고 다음 장으로 건너 뛰니, 제대로 이해가 되지 않은 파트가 발목을 잡아 정말 이해해야할 예제 소스가 잘 이해가 되지 않았다.</p>
+<p>사실 노드를 써서 이번 프로젝트를 진행한 것도 사실이고, 내 블로그도 노드를 기반으로 해서 만든 프레임웤이긴 한데. 아직도 잘 모르겠다. 그냥 그 때 그 때 검색하면서 진행을 해서…</p>
+<h2 id="정말-본론-시작-당시에-정리한-문서"><a href="#정말-본론-시작-당시에-정리한-문서" class="headerlink" title="정말 본론 시작 - 당시에 정리한 문서"></a>정말 본론 시작 - 당시에 정리한 문서</h2><h3 id="시작하기-전에"><a href="#시작하기-전에" class="headerlink" title="시작하기 전에"></a>시작하기 전에</h3><ul>
+<li>node.js 다운로드 후 설치 : <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> (8.12.0 LTS 버전을 이용하였습니다)</li>
+<li>이클립스에서 사용할 예정이므로 이클립스에서 node.js 플러그인 설치(<a href="http://marketplace.eclipse.org/content/nodeclipse" target="_blank" rel="noopener">http://marketplace.eclipse.org/content/nodeclipse</a>)</li>
 </ul>
-<p><a href="https://blog.naver.com/allspacea7/221360046480" target="_blank" rel="noopener">블로그 포스팅</a></p>
-<ul>
-<li>xml 단에서 설정해야할 부분이 빠져있음</li>
-<li>간단하게 몇 건의 send를 받았는지 표기하는 예제</li>
-<li>개인적으로 제일 많은 도움을 받았음</li>
-<li>그런데 왜인지 똑같은 소스인데 override가 안되더라ㅠㅠ 근데 이건 안되어도 일단 기능은 제대로 발동해서 놔둠</li>
+<h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><p>자바 스크립트를 이용해 서버를 만들 수 있는 개발 도구</p>
+<h3 id="node-js-특징"><a href="#node-js-특징" class="headerlink" title="node.js 특징"></a>node.js 특징</h3><ul>
+<li>비동기 입출력 가능</li>
+<li>이벤트 기반</li>
+<li>모듈과 패키지</li>
 </ul>
-<p><a href="http://victorydntmd.tistory.com/253" target="_blank" rel="noopener">블로그 포스팅</a></p>
-<ul>
-<li>위의 블로그 포스팅에서 누락된 것을 보기 위해 참고했었음</li>
+<h3 id="npm-Node-Package-Manager"><a href="#npm-Node-Package-Manager" class="headerlink" title="npm(Node Package Manager)"></a>npm(Node Package Manager)</h3><ul>
+<li>노드 패키지의 설치, 삭제를 지원하는 프로그램</li>
+<li>패키지(모듈+α)는 만든 이가 다른 사람도 사용할 수 있도록 인터넷에 공유해놓는 게 일반적</li>
 </ul>
-<hr>
-<h2 id="이상한-곳에서-계속-헤메이던-웹소켓-구현"><a href="#이상한-곳에서-계속-헤메이던-웹소켓-구현" class="headerlink" title="이상한 곳에서 계속 헤메이던 웹소켓 구현"></a>이상한 곳에서 계속 헤메이던 웹소켓 구현</h2><ul>
-<li>다들 저 위의 링크들을 따라하다보면 나…름 구현은 가능할 듯</li>
-<li>근데 내가 힘들었던 건 많이 참고했다는 블로그 포스팅을 보고 1차로 페이지 이동 시 웹소켓 발동까지는 했는데</li>
-<li>갑자기 실시간으로 알림 받기로 변경하라는 피드백을 받아서 일부를 수정하면서 생긴 것.</li>
-<li>인강은 <strong>디비에 있는 데이터를 뿌리지 않고 웹소켓이 보낸 데이터를 클라이언트 단에 단순히 뿌려주는 식으로 구현됨</strong></li>
-<li>그런데 나는 디비에서 가져와야 하기 때문에 쵸큼 달랐고 걍 핸들러에서 db에 select를 하게끔 만들었다.</li>
-<li><p>나는 send된 파라미터가 여러 개일 때만 처리하려고 했는데 왜인지 <strong>파라미터 여러 개 send</strong>가 먹지 않았던 문제가 제일 힘들었다. 나중에 알고보니까 아래처럼 써서 그랬던 거 같다.</p>
-<pre><code>websocket.send(&quot;~~~&quot;, &quot;~~~&quot;, &quot;~~&quot;);
-</code></pre></li>
+<h3 id="노드에서-사용할-수-있는-대표적인-전역-객체"><a href="#노드에서-사용할-수-있는-대표적인-전역-객체" class="headerlink" title="노드에서 사용할 수 있는 대표적인 전역 객체"></a>노드에서 사용할 수 있는 대표적인 전역 객체</h3><ul>
+<li>console</li>
+<li>exports</li>
+<li>process</li>
 </ul>
-<ul>
-<li><p>이렇게 썼다면 되지 않았을까?<br>(어쩌다보니 이렇게 보낼 필요가 없어서 나는 시도는 안해봤다)</p>
-<pre><code>websocket.send(&quot;~~~~, ~~~~, ~~~&quot;);
-</code></pre></li>
-<li><p>그리구 인강에서 전역 변수로 빼서 사용하는 웹소켓, 나는 먹지 않아서 그냥 고치기 전? 전역 변수로 빼지 않고 사용하는 웹소켓으로 구현했다.</p>
-</li>
+<h3 id="노드에서-사용할-수-있는-대표적인-전역-변수"><a href="#노드에서-사용할-수-있는-대표적인-전역-변수" class="headerlink" title="노드에서 사용할 수 있는 대표적인 전역 변수"></a>노드에서 사용할 수 있는 대표적인 전역 변수</h3><ul>
+<li>__filename</li>
+<li>__dirname</li>
 </ul>
-<hr>
-<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><ul>
-<li><a href="http://websocket.org/echo.html" target="_blank" rel="noopener">웹소켓 테스트 가능 사이트</a></li>
+<h4 id="console의-메서드들"><a href="#console의-메서드들" class="headerlink" title="console의 메서드들"></a>console의 메서드들</h4><h5 id="log"><a href="#log" class="headerlink" title="log()"></a>log()</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">형식</th>
+<th style="text-align:center">특수문자</th>
+<th style="text-align:center">예시 코드</th>
+<th style="text-align:center">콘솔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">숫자</td>
+<td style="text-align:center">console.log(“ 숫자 : %d”, 10)</td>
+<td style="text-align:center">숫자 : 10</td>
+</tr>
+<tr>
+<td style="text-align:center">%s</td>
+<td style="text-align:center">문자열</td>
+<td style="text-align:center">console.log(“ 문자 : %s”,  문지은)</td>
+<td style="text-align:center">문자 :  문지은</td>
+</tr>
+<tr>
+<td style="text-align:center">%j</td>
+<td style="text-align:center">JSON</td>
+<td style="text-align:center">console.log(“JSON : %j”, { 팀장 : “ 이주원”})</td>
+<td style="text-align:center">JSON {“ 팀장” : “ 이주원”}</td>
+</tr>
+</tbody>
+</table>
+<h4 id="log-외"><a href="#log-외" class="headerlink" title="log() 외"></a>log() 외</h4><table>
+<thead>
+<tr>
+<th>메서드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dir(object)</td>
+<td>객체 속성 출력</td>
+</tr>
+<tr>
+<td>time( 객체명)</td>
+<td>실행 시간 측정을 위해 실행 시작 시간 기록</td>
+</tr>
+<tr>
+<td>timeEnd( 객체명)</td>
+<td>실행 시간 측정을 위해 실행 종료 시간 기록</td>
+</tr>
+</tbody>
+</table>
+<h3 id="모듈-사용-exports"><a href="#모듈-사용-exports" class="headerlink" title="모듈 사용(exports)"></a>모듈 사용(exports)</h3><p>기존에 여러 개로 나눠둔 무언가를 필요에 따라 맞춰다가 쓰는 식</p>
+<h4 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h4><h5 id="module1-js"><a href="#module1-js" class="headerlink" title="module1.js"></a>module1.js</h5><pre><code>exports.methodName = function() {
+    retrun result;
+};
+</code></pre><h5 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h5><pre><code>var module = require(&apos;module1&apos;);
+// require()
+// : 모듈을 불러올 때 사용하며 파라미터는 모듈의 이름이나 모듈의 경로
+// 모듈 객체가 리턴되어 모듈객체.함수명(); 으로 접근 가능
+// 만약 이름에 해당하는 파일이 없다면, 이름에 해당하는 폴더를 찾아 그 안의 index.js 실행
+module.methodName();
+</code></pre><h4 id="exports와-module-exports"><a href="#exports와-module-exports" class="headerlink" title="exports와 module.exports"></a>exports와 module.exports</h4><p><a href="https://blog.naver.com/writer0713/221277554277" target="_blank" rel="noopener">이해에 참고했던 블로그</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">exports</th>
+<th style="text-align:center">module.exports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">여러 개의 변수,  함수를 각각의 속성으로 추가 가능</td>
+<td style="text-align:center">하나의 변수나 함수,  객체를 직접 할당,  참조가 끊기면 빈 객체 리턴됨 (단 하나의 객체만 사용 가능하다고 이해)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="process"><a href="#process" class="headerlink" title="process"></a>process</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">속성 /  메서드</th>
+<th style="text-align:center">설명</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">argv</td>
+<td style="text-align:center">프로세스를 실행할 때 전달되는 파라미터 정보를 가진 속성</td>
+<td>process.argv.length :  파라미터 개수 process.argv[2]     : 2 번 배열의 파라미터</td>
+</tr>
+<tr>
+<td style="text-align:center">env</td>
+<td style="text-align:center">환경 변수 정보를 가진 속성</td>
+<td>process.env[‘OS’] : OS  환경 변수의 값(data)</td>
+</tr>
+<tr>
+<td style="text-align:center">exit()</td>
+<td style="text-align:center">프로세스를 끝내는 메서드</td>
+</tr>
+</tbody>
+</table>
+<h3 id="내장-모듈과-외장-모듈"><a href="#내장-모듈과-외장-모듈" class="headerlink" title="내장 모듈과 외장 모듈"></a>내장 모듈과 외장 모듈</h3><ul>
+<li>내장 모듈 : 사용자가 직접 만든 js 모듈</li>
+<li>외장 모듈 : 다른 사람이 만들어 놓아 사용자가 npm 패키지를 이용해 다운로드한 js 모듈</li>
 </ul>
+<blockquote>
+<p>외장 모듈 경로 : 프로젝트 폴더 &gt; node_modules 폴더 &gt; 모듈명 폴더</p>
+</blockquote>
+<blockquote>
+<p>만약 매번 프로젝트마다 같은 패키지를 이용한다면 brackets-nodejs에 node_modules 폴더를 이동시키면 된다.</p>
+</blockquote>
+<h4 id="내장-모듈-사용하기-path만-정리"><a href="#내장-모듈-사용하기-path만-정리" class="headerlink" title="내장 모듈 사용하기(path만 정리)"></a>내장 모듈 사용하기(path만 정리)</h4><blockquote>
+<p>모든 내장 모듈은 <a href="http://nodejs.org/api" target="_blank" rel="noopener">여기</a>에서 볼 수 있다</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">메서드</th>
+<th style="text-align:center">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">join()</td>
+<td style="text-align:center">여러 개의 이름을 모두 합쳐 하나의 파일 패스로 만들며,  구분자 등을 알아서 조정</td>
+</tr>
+<tr>
+<td style="text-align:center">dirname()</td>
+<td style="text-align:center">파일 패스에서 디렉터리 이름만 반환</td>
+</tr>
+<tr>
+<td style="text-align:center">basename()</td>
+<td style="text-align:center">파일 패스에서 파일 이름만 반환</td>
+</tr>
+<tr>
+<td style="text-align:center">extname()</td>
+<td style="text-align:center">파일 패스에서 확장자만 반환</td>
+</tr>
+</tbody>
+</table>
+<h4 id="외장-모듈-사용하기"><a href="#외장-모듈-사용하기" class="headerlink" title="외장 모듈 사용하기"></a>외장 모듈 사용하기</h4><h5 id="사용-예시"><a href="#사용-예시" class="headerlink" title="사용 예시"></a>사용 예시</h5><blockquote>
+<p>기존에 nconf라는 외부 모듈을 설치했다는 전제 하<br>외장모듈 설치 단축키 : % npm install 외장모듈이름</p>
+</blockquote>
+<pre><code>var nconf = require(&apos;nconf&apos;);
+// 외부 모듈의 경우 경로가 아닌 모듈의 이름을 직접 불러야 함
+nconf.modulInMethod();
+</code></pre><h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><p>% npm init 명령어를 실행하면 생기는 json 파일로, 프로젝트에 대한 기본 정보가 들어 있으며 현재 프로젝트에 설치된 외부 모듈의 의존도 함께 기록됨향후 다른 PC에서 같은 모듈들을 사용하고 싶다면 package.json만 옮겨서 가져가면 된다.</p>
+<blockquote>
+<p>사용법</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>% npm init: package.json 파일 생성</li>
+<li>% npm install 외부모듈이름 –save : 의존 설정할 외부모듈을 설치한다. package.json이 있는 상태에서 설치된 것들만 package.json이 기록한다.</li>
+<li>향후 다른 PC로 옮길 때 PC로 json 파일 옮기고,</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>% npm install</p>
+</blockquote>
+<blockquote>
+<p>명령어 실행 : package.json의 의존 속성을 참고해 패키지 설치</p>
+</blockquote>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/nodeJS/">nodeJS</a>
 
       
       
@@ -195,7 +347,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/92/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/91/">91</a><a class="page-number" href="/page/92/">92</a><span class="page-number current">93</span><a class="page-number" href="/page/94/">94</a><a class="page-number" href="/page/95/">95</a><span class="space">&hellip;</span><a class="page-number" href="/page/104/">104</a><a class="extend next" rel="next" href="/page/94/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/92/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/91/">91</a><a class="page-number" href="/page/92/">92</a><span class="page-number current">93</span><a class="page-number" href="/page/94/">94</a><a class="page-number" href="/page/95/">95</a><span class="space">&hellip;</span><a class="page-number" href="/page/105/">105</a><a class="extend next" rel="next" href="/page/94/">Next</a>
   </nav>
 
 </section>
@@ -248,7 +400,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">88</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">89</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -289,6 +441,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a></h6>
+              <span>7월 16, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -350,18 +514,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/06/14/brackets/">javascript 중괄호와 소괄호의 늪</a></h6>
-              <span>6월 14, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -372,7 +524,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
