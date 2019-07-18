@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Back-End | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Back-End개발 환경 설정JDKJAVA 언어로 작성된 소스를 컴파일하고 관리하는데 사용하는 도구로, 컴파일한 결과를 실행하기 위해 JRE가 포함되어 있다. JRE(Java SE Runtime Environment)JAVA 언어로 작성된 프로그램을 실행하기 위한 프로그램 JDK가 OS 별로 설치 파일을 제공하는 이유JAVA는 운영체제에 독립적으로 작동한다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Back-End">
+<meta property="og:url" content="http://eunajjing.github.io/2019/07/17/boostcouse-servlet/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="Back-End개발 환경 설정JDKJAVA 언어로 작성된 소스를 컴파일하고 관리하는데 사용하는 도구로, 컴파일한 결과를 실행하기 위해 JRE가 포함되어 있다. JRE(Java SE Runtime Environment)JAVA 언어로 작성된 프로그램을 실행하기 위한 프로그램 JDK가 OS 별로 설치 파일을 제공하는 이유JAVA는 운영체제에 독립적으로 작동한다">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180124_133/15167752967943AqfC_PNG/1_5_1_____.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180124_22/1516782982944xjogH_PNG/1_5_3_ServletLifcycle.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180124_79/15167843899250uB2H_PNG/1_5_4_request_response.PNG">
+<meta property="og:image" content="https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/JqQ/image/z4szqsmS7gz_g3MS0LK49ZGh8JU.png">
+<meta property="og:updated_time" content="2019-07-18T12:22:51.789Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Back-End">
+<meta name="twitter:description" content="Back-End개발 환경 설정JDKJAVA 언어로 작성된 소스를 컴파일하고 관리하는데 사용하는 도구로, 컴파일한 결과를 실행하기 위해 JRE가 포함되어 있다. JRE(Java SE Runtime Environment)JAVA 언어로 작성된 프로그램을 실행하기 위한 프로그램 JDK가 OS 별로 설치 파일을 제공하는 이유JAVA는 운영체제에 독립적으로 작동한다">
+<meta name="twitter:image" content="https://cphinf.pstatic.net/mooc/20180124_133/15167752967943AqfC_PNG/1_5_1_____.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-boostcouse-servlet" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Back-End
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/17/boostcouse-servlet/" class="article-date">
+	  <time datetime="2019-07-17T11:36:18.000Z" itemprop="datePublished">7월 17, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/">부스트코스</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Back-End"><a href="#Back-End" class="headerlink" title="Back-End"></a>Back-End</h1><h2 id="개발-환경-설정"><a href="#개발-환경-설정" class="headerlink" title="개발 환경 설정"></a>개발 환경 설정</h2><h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><p><code>JAVA</code> 언어로 작성된 소스를 컴파일하고 관리하는데 사용하는 도구로, 컴파일한 결과를 실행하기 위해 <code>JRE</code>가 포함되어 있다.</p>
+<h4 id="JRE-Java-SE-Runtime-Environment"><a href="#JRE-Java-SE-Runtime-Environment" class="headerlink" title="JRE(Java SE Runtime Environment)"></a>JRE(Java SE Runtime Environment)</h4><p><code>JAVA</code> 언어로 작성된 프로그램을 실행하기 위한 프로그램</p>
+<h4 id="JDK가-OS-별로-설치-파일을-제공하는-이유"><a href="#JDK가-OS-별로-설치-파일을-제공하는-이유" class="headerlink" title="JDK가 OS 별로 설치 파일을 제공하는 이유"></a>JDK가 OS 별로 설치 파일을 제공하는 이유</h4><p><code>JAVA</code>는 운영체제에 독립적으로 작동한다. 독립적으로 파일이 실행되기 위해서는 실행되는 환경 즉, <code>JRE</code>가 제대고 갖춰져 있어야 하며, 이 때문에 <code>JDK</code>를 설치할 때 운영체제별로 다르게 설치해야 한다.</p>
+<h4 id="JAVA-환경설정"><a href="#JAVA-환경설정" class="headerlink" title="JAVA 환경설정"></a>JAVA 환경설정</h4><p>시스템 환경 설정을 하는 방법은 운영체제에 따라서 다르다. </p>
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><ul>
+<li>아파치 소프트웨어 재단에서 개발한 WAS(Web Application Server)</li>
+<li><p>오픈소스</p>
+</li>
+<li><p>기본적으로 <code>8080</code> 포트로 실행된다</p>
+</li>
+</ul>
+<h3 id="서블릿-컴파일-및-실행"><a href="#서블릿-컴파일-및-실행" class="headerlink" title="서블릿 컴파일 및 실행"></a>서블릿 컴파일 및 실행</h3><h4 id="시작하기-전에"><a href="#시작하기-전에" class="headerlink" title="시작하기 전에"></a>시작하기 전에</h4><ul>
+<li><code>Target runtime</code> 설정<ul>
+<li>최초 사용 시 <code>WAS</code>로 사용할 톰캣을 지정하되, 향후 만들 웹 어플리케이션은 기존 runtime을 사용하도록 설정하는 게 편하다</li>
+</ul>
+</li>
+</ul>
+<h4 id="서블릿"><a href="#서블릿" class="headerlink" title="서블릿"></a>서블릿</h4><ul>
+<li><code>url</code> 요청을 처리하는 프로그램</li>
+<li>서블릿 생성 시 <code>url mappings</code> 확인이 중요하다<ul>
+<li><code>프로토콜://ip(서버 도메인):포트/프로젝트명/url mapping</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="doGet-HttpServletRequest-HttpServletResponse"><a href="#doGet-HttpServletRequest-HttpServletResponse" class="headerlink" title="doGet(HttpServletRequest, HttpServletResponse)"></a><code>doGet(HttpServletRequest, HttpServletResponse)</code></h5><ul>
+<li>클라이언트가 <code>get</code> 메서드 요청 시 호출되는 메서드</li>
+</ul>
+<h6 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a><code>HttpServletResponse</code></h6><ul>
+<li><p>응답할 내용을 모아 추상화해놓은 객체</p>
+</li>
+<li><p><code>HttpServletResponse.setContentType()</code></p>
+<ul>
+<li><p>클라이언트에게 응답 결과를 알려줄 용도로, 이 타입을 보고 브라우저가 해석</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">	response.setContextType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">  <span class="comment">// 보내는 text는 html 파일이다</span></span><br><span class="line">  <span class="comment">// 해당 파일의 인코딩은 utf-8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>HttpServletResponse.getWriter()</code></p>
+<ul>
+<li><code>PrintWriter</code> 객체 리턴</li>
+</ul>
+</li>
+<li><p><code>PrintWriter(&quot;&quot;)</code></p>
+<ul>
+<li>파라미터 안에 <code>html</code> 태그를 넣을 수도 있다</li>
+</ul>
+</li>
+</ul>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
+<li>자바 웹 어플리케이션의 구성요소 중 동적인 처리를 하는 프로그램의 역할</li>
+<li><code>WAS</code>에 동작하는 <code>JAVA</code> 클래스</li>
+<li>서블릿은 HttpServlet 클래스를 상속</li>
+<li>대개<ul>
+<li>웹 페이지를 구성하는 화면(HTML)은 JSP로 표현</li>
+<li>복잡한 프로그래밍은 서블릿으로 구현</li>
+</ul>
+</li>
+</ul>
+<h3 id="자바-웹-어플리케이션의-폴더-구조"><a href="#자바-웹-어플리케이션의-폴더-구조" class="headerlink" title="자바 웹 어플리케이션의 폴더 구조"></a>자바 웹 어플리케이션의 폴더 구조</h3><p><img src="https://cphinf.pstatic.net/mooc/20180124_133/15167752967943AqfC_PNG/1_5_1_____.PNG" alt=""></p>
+<h4 id="WEB-INF"><a href="#WEB-INF" class="headerlink" title="WEB-INF"></a><code>WEB-INF</code></h4><h5 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a><code>web.xml</code></h5><ul>
+<li>해당 웹 어플리케이션에 대한 정보들을 다 지니고 있는 파일<ul>
+<li>클라이언트가 요청할 때 해당 <code>URL</code>로 요청을 하게 되면 <code>servlet-name</code>이 같은 서블릿을 찾아 특정 패키지 안에 있는 서블릿 실행</li>
+</ul>
+</li>
+<li><code>web.xml</code>이 변경되면 서버는 반드시 재시작되어야 한다</li>
+<li>servlet 3.0 미만에서는 필수 파일이었으나 3.0 이상은 어노테이션으로 기재도 가능</li>
+</ul>
+<h5 id="lib"><a href="#lib" class="headerlink" title="lib"></a><code>lib</code></h5><ul>
+<li>각종 자료 파일들을 넣는다</li>
+</ul>
+<h5 id="classes"><a href="#classes" class="headerlink" title="classes"></a><code>classes</code></h5><ul>
+<li>실제 <code>class</code>들 (<code>java</code> 패키지 같은)</li>
+</ul>
+<blockquote>
+<h4 id="파일-경로"><a href="#파일-경로" class="headerlink" title="파일 경로"></a>파일 경로</h4><p>워크스페이스 &gt; <code>.metadata</code> &gt; <code>.plugins</code> &gt; <code>org.eclipse.wst.server.core</code> &gt; <code>tmp0</code></p>
+<h5 id="tmp0"><a href="#tmp0" class="headerlink" title="tmp0"></a><code>tmp0</code></h5><ul>
+<li>이클립스가 톰캣을 사용하기 때문에</li>
+<li>톰캣의 디렉토리 구조와 거의 유사</li>
+</ul>
+<p><code>tmp0</code> &gt; <code>wtpwebapps</code> &gt; <code>프로젝트들</code></p>
+</blockquote>
+<h3 id="Servlet-작성-방법"><a href="#Servlet-작성-방법" class="headerlink" title="Servlet 작성 방법"></a>Servlet 작성 방법</h3><blockquote>
+<h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><ul>
+<li>클라이언트 요청 시 두 개의 객체가 자동으로 생성된다<ul>
+<li>요청을 받아내는 <code>request</code> 객체</li>
+<li>응답을 하는 <code>response</code> 객체</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="Servlet-3-0-이상"><a href="#Servlet-3-0-이상" class="headerlink" title="Servlet 3.0 이상"></a>Servlet 3.0 이상</h4><ul>
+<li>자바 어노테이션 사용<ul>
+<li><code>@WebServlet(&#39;/blahblah&#39;)</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="Servlet-3-0-미만"><a href="#Servlet-3-0-미만" class="headerlink" title="Servlet 3.0 미만"></a>Servlet 3.0 미만</h4><ul>
+<li><p><code>Servlet</code> 등록 시 <code>web.xml</code>에 등록</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">description</span>&gt;</span><span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>TenServlet<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>TenServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>exam.TenServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>TenServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/ttt<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Servlet-라이프-사이클"><a href="#Servlet-라이프-사이클" class="headerlink" title="Servlet 라이프 사이클"></a>Servlet 라이프 사이클</h3><h4 id="사용자가-만든-Servlet"><a href="#사용자가-만든-Servlet" class="headerlink" title="사용자가 만든 Servlet"></a>사용자가 만든 Servlet</h4><p><code>HttpServlet</code>의 3가지 메서드를 상속</p>
+<ul>
+<li><p><code>init()</code></p>
+</li>
+<li><p><code>service(request, response)</code></p>
+<ul>
+<li><p><code>HttpServlet</code>의 <code>service</code> 메서드는 템플릿 메서드 패턴으로 구현</p>
+<blockquote>
+<p><strong>템플릿 메서드 패턴</strong></p>
+<ul>
+<li>어떤 작업을 처리하는 일부를 서브 클래스로 캡슐화해 전체 일을 수행하는 구조는 바꾸지 않으면서 특정 단계에서 수행하는 내용을 바꾸는 패턴<ul>
+<li>동일 기능을 상위 클래스에서 정의하며 확장/변화가 필요한 부분만 서브 클래스에서 구현</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>출처 : <a href="https://gmlwjd9405.github.io/2018/07/13/template-method-pattern.html" target="_blank" rel="noopener">[Design Pattern] 템플릿 메서드 패턴이란</a></p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>doGet(request, response)</code></li>
+<li><code>doPost(request, response)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>destroy()</code></p>
+</li>
+</ul>
+<p><img src="https://cphinf.pstatic.net/mooc/20180124_22/1516782982944xjogH_PNG/1_5_3_ServletLifcycle.PNG" alt=""></p>
+<ul>
+<li><p><code>WAS</code>는 서블릿 요청을 받으면 해당 서블릿이 메모리에 있는지 확인</p>
+<ul>
+<li>메모리에 없다면<ul>
+<li>해당 서블릿 클래스를 메모리에 올림<ul>
+<li>객체가 생성되는 작업</li>
+</ul>
+</li>
+<li><code>init()</code> 실행</li>
+</ul>
+</li>
+<li>메모리에 있다면<ul>
+<li><code>service()</code> 실행<ul>
+<li>응답해야하는 모든 내용은 해당 메서드에 구현해야 함</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>WAS</code>가 종료되거나 웹 어플리케이션 갱신의 경우 <code>destroy()</code> 메서드 실행</li>
+</ul>
+</li>
+<li><p>서블릿은 서버에 <strong>서블릿 객체를 여러 개 만들지 않는다</strong></p>
+</li>
+</ul>
+<h2 id="Request-Response-객체의-이해"><a href="#Request-Response-객체의-이해" class="headerlink" title="Request, Response 객체의 이해"></a><code>Request</code>, <code>Response</code> 객체의 이해</h2><p><img src="https://cphinf.pstatic.net/mooc/20180124_79/15167843899250uB2H_PNG/1_5_4_request_response.PNG" alt=""></p>
+<h3 id="클라이언트와-서버의-통신"><a href="#클라이언트와-서버의-통신" class="headerlink" title="클라이언트와 서버의 통신"></a>클라이언트와 서버의 통신</h3><ul>
+<li>브라우저는 도메인과 포트 번호를 이용해 서버에 접속<ul>
+<li><code>path</code> 정보</li>
+<li>클라이언트 <code>ip</code> 등의 클라이언트 정보</li>
+</ul>
+</li>
+<li><p>클라이언트 정보를 서버에 전송</p>
+</li>
+<li><p><code>WAS</code>는 웹 브라우저로부터 <code>Servlet</code> 요청을 받으면</p>
+<ul>
+<li>요청할 때 가지고 온 정보를 <code>HttpServletRequest</code>객체를 생성하여 저장</li>
+<li>응답을 보낼 때 사용하기 위해 <code>HttpServletSponse</code>객체를 서블릿에게 전달</li>
+<li>생성된 두 객체를 서블릿에게 전달<ul>
+<li><code>service()</code>, <code>doGet()</code>, <code>doPost()</code> 메서드의 파라미터로 전달되어 사용됨</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h3><ul>
+<li><code>http 프로토콜</code>의 <code>request</code> 정보를 서블릿에게 전달하기 위한 목적으로 사용</li>
+<li><code>헤더 정보</code>, <code>파라미터</code>, <code>쿠키</code>, <code>URI</code>, <code>URL</code> 등의 정보를 읽어 들이는 메소드가 있다<ul>
+<li><code>getHeaderNames()</code><ul>
+<li>반환받을 때 <code>Enumeration&lt;String&gt;</code>으로 반환</li>
+<li>여러 개의 요소를 가지고 있어 이터레이터로 요소를 가지고 있는지를 검사</li>
+<li>첫 번째 요소는 <code>headername</code> 이다</li>
+</ul>
+</li>
+<li><code>getHeader(headername)</code><ul>
+<li><code>headerValue</code>를 반환</li>
+</ul>
+</li>
+<li><code>getParameter(&quot;name&quot;)</code><ul>
+<li>해당 파라미터의 value를 반환</li>
+<li>모든 value는 <strong>문자열로 반환</strong></li>
+</ul>
+</li>
+<li><code>getRequestURI()</code><ul>
+<li>도메인과 포트 이하에 있는 값을 리턴</li>
+</ul>
+</li>
+<li><code>getRemoteAddr()</code><ul>
+<li>요청한 클라이언트의 주소 등이 반환</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>URI</strong>(Uniform Resource Identifier)</p>
+<ul>
+<li>정보 리소스를 고유하게 식별하고 위치를 지정</li>
+<li><code>url</code> 과 <code>urn</code> 등의 하위 개념을 포함</li>
+<li><p><code>WAS</code> 등을 처리하는 자원 식별자</p>
+</li>
+<li><p><code>rewrite</code> 기술을 이용하여 만든 의미있는 식별자</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>rewrite</strong> 기술</p>
+<p>요청을 통해서 주어진 URL의 규칙을 변경해서 웹서비스를 보다 유연하게 만드는 방법</p>
+<ul>
+<li>의미론적 url로의 변경</li>
+<li>확장자의 치환</li>
+<li>리다이렉션</li>
+<li>내부 리다이렉션</li>
+</ul>
+<blockquote>
+<p>출처 : <a href="https://www.opentutorials.org/module/384/4337" target="_blank" rel="noopener">재작성(rewrite)</a></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>rest 서비스</li>
+<li>웹 기반의 구조 문법</li>
+</ul>
+<p><strong>URL</strong>(Uniform Resource Locator)</p>
+<ul>
+<li>특정 서버의 한 리소스에 대한 구체적인 위치를 서술</li>
+</ul>
+<p><strong>URN</strong>(Uniform Resource Name)</p>
+<ul>
+<li>콘텐츠를 이루는 한 리소스에 대해, 그 리소스의 위치에 영향 받지 않는 유일무이한 이름 역할</li>
+<li>리소스를 여기저기로 옮기더라도 문제없이 동작</li>
+<li>URL의 한계로 인해 착수</li>
+</ul>
+<blockquote>
+<p>출처</p>
+<ul>
+<li><a href="https://jjunii486.tistory.com/28" target="_blank" rel="noopener">URL과 URI는 무슨 차이일까?</a></li>
+<li><a href="https://mygumi.tistory.com/139" target="_blank" rel="noopener">URI vs URL vs URN</a></li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li><p><code>Body</code>의 <code>Stream</code>을 읽어 들이는 메소드를 가지고 있다</p>
+<ul>
+<li><p><code>Stream</code></p>
+<ul>
+<li>클라이언트와 서버 사이 맺어진 연결을 통해 양방향으로 주고받는 하나 이상의 <code>Message</code><ul>
+<li><code>Message</code><ul>
+<li>요청 / 응답의 단위로 다수의 <code>Frame</code>으로 이루어짐<ul>
+<li><code>Frame</code><ul>
+<li><code>http/2</code> 통신 상 제일 작은 정보의 단위</li>
+<li><code>Header</code> 혹은 <code>Data</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/JqQ/image/z4szqsmS7gz_g3MS0LK49ZGh8JU.png" alt=""></p>
+<blockquote>
+<p>출처 : <a href="https://brunch.co.kr/@sangjinkang/3" target="_blank" rel="noopener">HTTP/2에서 Frame, Stream의 의미</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HttpServletResponse-1"><a href="#HttpServletResponse-1" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h3><ul>
+<li>클라이언트에게 응답을 보내기 위한 <code>HttpServleResponse</code> 객체를 생성하여 서블릿에게 전달</li>
+<li>서블릿은 <code>HttpServleResponse</code> 객체를 이용하여 <code>content type</code>, <code>응답코드</code>, <code>응답 메시지</code> 등을 전송</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/">부스트코스</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/16/boostcouse-html/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Front-End</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Back-End"><span class="nav-number">1.</span> <span class="nav-text">Back-End</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#개발-환경-설정"><span class="nav-number">1.1.</span> <span class="nav-text">개발 환경 설정</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK"><span class="nav-number">1.1.1.</span> <span class="nav-text">JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JRE-Java-SE-Runtime-Environment"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">JRE(Java SE Runtime Environment)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK가-OS-별로-설치-파일을-제공하는-이유"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">JDK가 OS 별로 설치 파일을 제공하는 이유</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA-환경설정"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">JAVA 환경설정</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#서블릿-컴파일-및-실행"><span class="nav-number">1.1.3.</span> <span class="nav-text">서블릿 컴파일 및 실행</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#시작하기-전에"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">시작하기 전에</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#서블릿"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">서블릿</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#doGet-HttpServletRequest-HttpServletResponse"><span class="nav-number">1.1.3.2.1.</span> <span class="nav-text">doGet(HttpServletRequest, HttpServletResponse)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#HttpServletResponse"><span class="nav-number">1.1.3.2.1.1.</span> <span class="nav-text">HttpServletResponse</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet"><span class="nav-number">1.2.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#자바-웹-어플리케이션의-폴더-구조"><span class="nav-number">1.2.1.</span> <span class="nav-text">자바 웹 어플리케이션의 폴더 구조</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WEB-INF"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">WEB-INF</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#web-xml"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lib"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">lib</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classes"><span class="nav-number">1.2.1.1.3.</span> <span class="nav-text">classes</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#파일-경로"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">파일 경로</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tmp0"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">tmp0</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet-작성-방법"><span class="nav-number">1.2.2.</span> <span class="nav-text">Servlet 작성 방법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server"><span class="nav-number">1.2.3.</span> <span class="nav-text">server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Servlet-3-0-이상"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Servlet 3.0 이상</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Servlet-3-0-미만"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">Servlet 3.0 미만</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet-라이프-사이클"><span class="nav-number">1.2.4.</span> <span class="nav-text">Servlet 라이프 사이클</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#사용자가-만든-Servlet"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">사용자가 만든 Servlet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request-Response-객체의-이해"><span class="nav-number">1.3.</span> <span class="nav-text">Request, Response 객체의 이해</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#클라이언트와-서버의-통신"><span class="nav-number">1.3.1.</span> <span class="nav-text">클라이언트와 서버의 통신</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HttpServletRequest"><span class="nav-number">1.3.2.</span> <span class="nav-text">HttpServletRequest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HttpServletResponse-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">HttpServletResponse</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

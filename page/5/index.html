@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-osssession" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-gdg-io" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/29/osssession/">2019 OSS 오픈 소스 개발자 이야기</a>
+      <a class="article-title" href="/2019/07/02/gdg-io/">google I/O extended Seoul 후기</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/29/osssession/" class="article-date">
-	  <time datetime="2019-06-29T08:41:18.000Z" itemprop="datePublished">6월 29, 2019</time>
+	<a href="/2019/07/02/gdg-io/" class="article-date">
+	  <time datetime="2019-07-02T14:03:18.000Z" itemprop="datePublished">7월 2, 2019</time>
 	</a>
 
       
@@ -131,213 +131,185 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2019-오픈소스-개발자-이야기"><a href="#2019-오픈소스-개발자-이야기" class="headerlink" title="2019 오픈소스 개발자 이야기"></a>2019 오픈소스 개발자 이야기</h1><p>OSS에서 주최한 &lt;오픈소스 개발자 이야기&gt;라는 행사에 다녀왔다. 오픈 소스를 즐겨 쓰는 사람으로서, 오픈 소스에 기여하는 방법에 대해 관심이 있기도 했고 지난 날 해커톤에서 오픈 소스를 만들어보자는 이야기가 나왔기 때문에 유의미한 정보를 배울 수 있으리라 여겼다.</p>
-<h2 id="세션-내용-정리"><a href="#세션-내용-정리" class="headerlink" title="세션 내용 정리"></a>세션 내용 정리</h2><h3 id="오픈-소스-보고-응용하기"><a href="#오픈-소스-보고-응용하기" class="headerlink" title="오픈 소스 보고 응용하기"></a>오픈 소스 보고 응용하기</h3><p>연사자분은 학생들과 캠퍼스 핵 데이를 3년 정도 진행하셨는데, 하시면서 느낀 점은 다음과 같았다고 했다.</p>
+        <h1 id="GDG-I-O-Extended-Seoul"><a href="#GDG-I-O-Extended-Seoul" class="headerlink" title="GDG I/O Extended Seoul"></a>GDG I/O Extended Seoul</h1><p>GDG 상반기의 가장 큰 행사, I/O Extended에 다녀왔다. 금주에 너무 많은 일들이 있던 터라, 행사 당일에도 갈까말까를 엄청 고민했었는데. 결국 두 개의 세션만 듣고 귀가했다. <del>몸 상태가 너무 안 좋아서….</del> 그래도 늘 그렇듯 유익한 시간이었고, 향후 웹테크도 신청해뒀으니 그 때 더 배워야지, 하는 생각으로 돌아왔다.</p>
+<h2 id="What’s-new-in-Web"><a href="#What’s-new-in-Web" class="headerlink" title="What’s new in Web"></a>What’s new in Web</h2><h3 id="웹-업데이트"><a href="#웹-업데이트" class="headerlink" title="웹 업데이트"></a>웹 업데이트</h3><h4 id="신속성"><a href="#신속성" class="headerlink" title="신속성"></a>신속성</h4><ul>
+<li><p>모던 웹의 문제점 : 로드할 콘텐츠가 너무 많아 초기 렌더링할 때 느림</p>
 <ul>
-<li>학생들의 실력은 다양하나</li>
-<li>성능 이슈를 고려하지 않음</li>
-<li>협업을 어려워 함</li>
-<li>오픈소스를 사용만 함<ul>
-<li>참여하고 공부하지 않는 게 다반사</li>
+<li><p>해결을 위해 <code>image-lazy-loading</code> 도입</p>
+<ul>
+<li>사용자가 볼 수 있는 영역만 로딩하는 식으로, <code>html</code> 단에서는 이렇게 기재하면 된다.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">loading</span>=<span class="string">"lazy"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>해당 <code>img</code>가 클라이언트의 뷰에 등장하는 순간 로딩이 시작된다.</li>
+</ul>
+</li>
+<li><p>Portal</p>
+<ul>
+<li><p><code>iframe</code>이 최상위 레이어에 올라오지 못하는 반면, <code>portal</code>로 생성된 페이지의 경우 최상위 레이어로 올라오며, <strong>해당 콘텐츠로 이동</strong>이 가능하다.</p>
+<ul>
+<li><p>유저가 뉴스 사이트를 볼 때 기사 본문 아래 다른 관련 기사  링크를 포털로 구현한다면, 새 페이지로 끊김없이 이동할 수 있도록 하는 등이 가능하다.</p>
+<p><img src="https://cdn.clien.net/web/api/file/F01/8441837/141ad98d647f49.mp4" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>lighthouse</p>
+<ul>
+<li><p><code>budget.json</code> 구현</p>
+<ul>
+<li><p>즉 로딩 속도 개선을 위해 어떤 항목의 로딩 속도에 예산을 잡는 행위</p>
+</li>
+<li><p>그러나 예산을 잡는 게 처음하는 이에게는 약간 모호할 수 있어, 해당 <code>json</code>을 생성해주는 사이트도 존재</p>
+<ul>
+<li><a href="http://www.performancebudget.io/" target="_blank" rel="noopener"><code>performance budget</code>를 만들어준다</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="확장성"><a href="#확장성" class="headerlink" title="확장성"></a>확장성</h4><ul>
+<li><p><a href="https://perceptiontoolkit.dev/" target="_blank" rel="noopener">web perception toolkit</a></p>
+<ul>
+<li>Sensing : 인식</li>
+<li>Meaning : 인식한 것을 웹 페이지로 전송</li>
+<li>Rendering : 사용자에게 결과를 보여줌</li>
+</ul>
+</li>
+<li><p><a href="https://developers.google.com/web/updates/2018/12/web-share-target" target="_blank" rel="noopener">Web Share Target</a></p>
+<ul>
+<li>네이티브 앱에서는 가능하던 기능이 구현됨</li>
+<li>url을 사용하지 않고 공유가 가능해짐</li>
+</ul>
+</li>
+<li><p>duplex on the web</p>
+<ul>
+<li><p>구글 어시스턴트를 사용할 수 있다</p>
+<ul>
+<li>이미 알고 있는 정보를 구글 어시스턴트가 입력 폼에 자동으로 넣어주는 기능 등</li>
+</ul>
+<blockquote>
+<p>키노트 영상에서 25:00에서 확인 가능하다</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="안전성"><a href="#안전성" class="headerlink" title="안전성"></a>안전성</h4><ul>
+<li><p><code>https</code>를 통해 사용자 보호</p>
+</li>
+<li><p>프라이버시 제어 단을 유저가 더 쉽게 접근할 수 있도록 ui 개선</p>
+</li>
+<li><p>same site cookie</p>
+<ul>
+<li><p>쿠키를 생성한 도메인과 같은 출처일 때만 쿠키를 전송</p>
+</li>
+<li><p>헤더에 해당 속성을 추가</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: SameSite=Strict</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>만약 속성을 추가하지 않는다면, 기본 값은 <code>Lax</code></p>
+<ul>
+<li>비교적 안전한 cross-site 요청만 허용</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Fingerprinting protection</p>
+<ul>
+<li>불필요한 생체 인식을 최소화 시키도록 노력</li>
+</ul>
+</li>
+</ul>
+<h3 id="웹의-한계를-극복하기-위한-시도"><a href="#웹의-한계를-극복하기-위한-시도" class="headerlink" title="웹의 한계를 극복하기 위한 시도"></a>웹의 한계를 극복하기 위한 시도</h3><p><code>app gap</code> : 네이티브 앱에서는 가능하지만 웹에서는 불가능한 것들</p>
+<ul>
+<li>사용자의 파일 시스템에 접근, 전화번호에 접근 등<ul>
+<li>이런 한계들을 극복하기 위한 시도<ul>
+<li><a href="https://developers.google.com/web/updates/2018/12/badging-api" target="_blank" rel="noopener">Badging API</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/12/get-installed-related-apps" target="_blank" rel="noopener">Get Installed Related Apps API</a></li>
+<li><a href="https://developers.google.com/web/updates/2019/01/shape-detection" target="_blank" rel="noopener">Shape Detection API</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/12/wakelock" target="_blank" rel="noopener">Wake Lock API</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/11/writable-files" target="_blank" rel="noopener">Writable Files API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>웹은 인터넷이 불안정하거나 연결되지 않은 경우 아무 것도 할 수 없음 <ul>
+<li>pwa</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p><strong>오픈 소스의 장점</strong></p>
-<p>대부분의 개발이 10명 이상 참여하기 쉽지 않은 반면, 오픈 소스는 여러 사람이 함께 참여하고 고민하기 때문에 때문에 퀄리티가 높을 가능성이 높다.</p>
+<p>proj-fupu : 사용자에게 해를 끼치면서까지 기능을 구현하지 않는다</p>
 </blockquote>
-<h4 id="오픈-소스의-사용"><a href="#오픈-소스의-사용" class="headerlink" title="오픈 소스의 사용"></a>오픈 소스의 사용</h4><p>오픈 소스를 사용하는 방법은 다양하지만, 우리는 올바르게 사용하고 있는가?</p>
-<h5 id="우리가-오픈-소스를-사용하는-단계"><a href="#우리가-오픈-소스를-사용하는-단계" class="headerlink" title="우리가 오픈 소스를 사용하는 단계"></a>우리가 오픈 소스를 사용하는 단계</h5><ul>
-<li>라이센스 확인</li>
-<li>피쳐 확인</li>
-<li>지원 버전 확인</li>
-<li>사용 방법의 편리함 확인</li>
-<li>설치 편리함 확인</li>
+<h2 id="구글-검색과-자바스크립트-사이트"><a href="#구글-검색과-자바스크립트-사이트" class="headerlink" title="구글 검색과 자바스크립트 사이트"></a>구글 검색과 자바스크립트 사이트</h2><blockquote>
+<ul>
+<li><a href="https://drive.google.com/file/d/1cArGPApYvbrAVP01X7-Q1BVsRqHyKVDE/view" target="_blank" rel="noopener">발표 자료</a></li>
+<li><a href="https://medium.com/@euncho/google-검색은-어떻게-동작하는가-fbc0e421a97a" target="_blank" rel="noopener">연사자 분 관련 블로그 포스팅</a></li>
 </ul>
-<p>사용만 급급한 것이 아닌가, 에 대한 질문 도출</p>
-<h4 id="오픈-소스를-통한-공부"><a href="#오픈-소스를-통한-공부" class="headerlink" title="오픈 소스를 통한 공부"></a>오픈 소스를 통한 공부</h4><p>오픈 소스는 영감을 얻을 수 있고, 새로운 공부 과제를 발견하고, 새로운 패러다임과 구조에 대한 발견을 할 수 있다.</p>
-<h5 id="오픈-소스에-접근하는-방식"><a href="#오픈-소스에-접근하는-방식" class="headerlink" title="오픈 소스에 접근하는 방식"></a>오픈 소스에 접근하는 방식</h5><ul>
-<li>도큐먼트 읽기<ul>
-<li>도큐먼트에서는 해당 오픈 소스의 중요한 개념을 알 수 있다.</li>
-<li>제작자가 해당 개념을 착용한 이유와 장점을 알 수 있고, 이를 오픈 소스를 사용하는데 있어 중요한 자료가 된다.</li>
-</ul>
-</li>
-<li>소스 읽기<ul>
-<li>실질적으로 오픈 소스가 어떻게 설계 되었는지 확인한다.</li>
-<li>내부 구조와 원리를 파악한다.</li>
-<li>도큐먼트의 특정 개념들을 어떻게 구현했는지에 중점적으로 본다.</li>
-</ul>
-</li>
-<li>소스 내에서 이해하지 못하는 것을 스터디 / 커뮤니티로 해결하려 노력한다.</li>
+</blockquote>
+<h3 id="구글은-어떻게-사이트를-크롤링해가나"><a href="#구글은-어떻게-사이트를-크롤링해가나" class="headerlink" title="구글은 어떻게 사이트를 크롤링해가나"></a>구글은 어떻게 사이트를 크롤링해가나</h3><h4 id="googlebot"><a href="#googlebot" class="headerlink" title="googlebot"></a>googlebot</h4><p>구글에서 웹 페이지를 수집하기 위해 사용하는 크롤러. 전통적인 웹 사이트에서는 동작에 아무런 무리가 없었지만, 현대의 웹 사이트는 <code>body</code> 영역이 비어있는 <strong>js가 콘텐츠를 생성</strong>한다. <code>googlebot</code>은 js 실행을 하지 못하므로,</p>
+<h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>Headless Chrome을 더 잘 구동시키기 위한 Node API</p>
+<blockquote>
+<p><strong>Headless</strong></p>
+<p>: 브라우저 창을 실제로 운영체제의 ‘창’으로 띄우지 않고 대신 화면을 그려주는 작업(렌더링)을 가상으로 진행해주는 방법</p>
+</blockquote>
+<h4 id="현재-google의-검색은"><a href="#현재-google의-검색은" class="headerlink" title="현재 google의 검색은"></a>현재 google의 검색은</h4><p>Puppeteer를 이용해 페이지를 렌더하고 렌더된 결과물을 googlebot을 이용해 수집. <strong>즉, SPA가 SEO에 영향을 주지 않는다.</strong></p>
+<h3 id="구글-상위-검색에-노출되기"><a href="#구글-상위-검색에-노출되기" class="headerlink" title="구글 상위 검색에 노출되기"></a>구글 상위 검색에 노출되기</h3><h4 id="올바른-lt-title-gt-값-사용"><a href="#올바른-lt-title-gt-값-사용" class="headerlink" title="올바른 &lt;title&gt; 값 사용"></a>올바른 <code>&lt;title&gt;</code> 값 사용</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>콘텐츠 제목 - 사이트 제목<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="올바른-discription-사용"><a href="#올바른-discription-사용" class="headerlink" title="올바른 discription 사용"></a>올바른 <code>discription</code> 사용</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"discription"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="올바른-html-사용"><a href="#올바른-html-사용" class="headerlink" title="올바른 html 사용"></a>올바른 <code>html</code> 사용</h4><h5 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h5><p>구글봇은 기본적으로 <code>a link</code>를 따라 움직이기 때문에, 해당 페이지가 검색에 잘 걸려야 한다면 <code>a link</code> 를 적극 활용한다.</p>
+<h6 id="좋은-예"><a href="#좋은-예" class="headerlink" title="좋은 예"></a>좋은 예</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">“page”</span>&gt;</span>페이지 이동<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">“page”</span> <span class="attr">onClick</span>=<span class="string">“beforeMove()”</span>&gt;</span>페이지 이동<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="나쁜-예"><a href="#나쁜-예" class="headerlink" title="나쁜 예"></a>나쁜 예</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">“move(‘page’)”</span>&gt;</span>페이지 이동<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">“move(‘page’)”</span>&gt;</span>페이지 이동<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="제목"><a href="#제목" class="headerlink" title="제목"></a>제목</h5><p><code>h</code> 태그를 적극 활용하여 구글봇에게 어떤 항목이 중요한 것인지 인지시킨다.</p>
+<p><code>div</code> 등을 활용한 태그는 구글봇이 알 수 없다.</p>
+<h5 id="반응형-웹"><a href="#반응형-웹" class="headerlink" title="반응형 웹"></a>반응형 웹</h5><p>구글 봇은 반응형 웹을 지원하는 사이트를 우선적으로 노출시킨다.</p>
+<h5 id="Structured-Data"><a href="#Structured-Data" class="headerlink" title="Structured Data"></a>Structured Data</h5><p>해당 자료 항목은 <a href="https://schema.org/docs/gs.html#schemaorg" target="_blank" rel="noopener">여기</a>서 확인 가능</p>
+<p>현재 구글이 지원하는 항목은 <a href="https://developers.google.com/search/docs/data-types/article" target="_blank" rel="noopener">여기</a>서 확인 가능 </p>
+<h6 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"recipe"</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">"http://schema.org/Recipe"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"recipe-title"</span> <span class="attr">itemprop</span>=<span class="string">"name"</span>&gt;</span>Chicken<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">meta</span> <span class="attr">itemprop</span>=<span class="string">"cookTime"</span> <span class="attr">content</span>=<span class="string">"PT40M"</span>&gt;</span>40분정도 소요됩니다<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ol</span> <span class="attr">class</span>=<span class="string">"list"</span> <span class="attr">itemprop</span>=<span class="string">"recipeInstructions"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>근처 시장이나 마트를 방문합니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>생닭을 구매합니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>냉동실에 넣습니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>배달 앱을 실행합니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>교촌치킨을 들어갑니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>허니 콤보에 레드소스를 추가합니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>결제합니다<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>당신은 맛잘알<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="속도"><a href="#속도" class="headerlink" title="속도"></a>속도</h5><p>빠를 수록 더 상위에 노출된다.</p>
+<blockquote>
+<p><strong>Lighthouse</strong>을 활용하여 웹페이지를 검사해보는 것도 좋은 방법</p>
+<p>사이트가 구글봇을 기다리지 않고도 빨리 노출되길 바란다면, 구글의 <a href="https://search.google.com/search-console/welcome?utm_source=about-page" target="_blank" rel="noopener">search console</a>에 사이트를 등록하면 보다 빨리 된다.</p>
+</blockquote>
+<h3 id="구글-검색에-노출되지-않기"><a href="#구글-검색에-노출되지-않기" class="headerlink" title="구글 검색에 노출되지 않기"></a>구글 검색에 노출되지 않기</h3><h4 id="Robots-txt"><a href="#Robots-txt" class="headerlink" title="Robots.txt"></a><code>Robots.txt</code></h4><p>Googlebot의 웹 콘텐츠 접근 권한을 제어하는 파일인 <code>Robots.txt</code>를 활용하여야 한다.</p>
+<ul>
+<li>검색이 되면 안되는 도메인을 아예 분리하여 해당 도메인 자체를 검색 비활성화</li>
+<li>인증 활용</li>
 </ul>
 <blockquote>
-<p>연사자 분이 특정 오픈 소스를 예시로 들어 설명을 해주셨다.</p>
-<p>오픈 소스를 잘 사용하는 사람들 중에서는 오픈 소스의 구조와 특징을 파악해, 오픈 소스를 가져와 쓰는 게 아니라, 프로젝트에 필요한 부분을 직접 만드는 게 나은지 등을 판단해서 쓴다고도 했다.</p>
+<h1 id="SPA가-SEO-최적화와-무관하다면"><a href="#SPA가-SEO-최적화와-무관하다면" class="headerlink" title="SPA가 SEO 최적화와 무관하다면"></a>SPA가 SEO 최적화와 무관하다면</h1><p>구글 검색과 자바스크립트 사이트 세션을 듣고 궁금한 게 생겼다. <strong>SPA가 SEO 최적화와 무관하다면</strong> 도대체 SPA로 만들어진 사이트의 SEO를 돕는다는 <code>next.js</code>, <code>nuxt.js</code> 등은 왜 사용되는 것일까. 이 궁금증을 해결하기 위해 많은 문서를 뒤져봤지만, 대부분 SEO를 돕는다는 장점 외에는 달리 말이 없는 것 같아서 개인 SNS에 해당 궁금증을 업로드했다. 좋은 SNS 지인 분들이 공유를 해주셨고 며칠 지나 어떤 분께서 해답을 주셨다</p>
 </blockquote>
-<p><strong>오픈 소스는 무조건적인 찬양이나 비판을 지양해야 한다</strong>고 강조하면서 해당 발표가 종료되었다.</p>
-<h3 id="국제화-번역과-함께하는-오픈소스에-대한-경험-및-노하우"><a href="#국제화-번역과-함께하는-오픈소스에-대한-경험-및-노하우" class="headerlink" title="국제화/번역과 함께하는 오픈소스에 대한 경험 및 노하우"></a>국제화/번역과 함께하는 오픈소스에 대한 경험 및 노하우</h3><h4 id="번역-시작-계기"><a href="#번역-시작-계기" class="headerlink" title="번역 시작 계기"></a>번역 시작 계기</h4><p>연사자 분께서 우연한 기회에 <code>openstack</code>을 알게 되어 가입했는데, 커뮤니티 내에서 번역 관련 이슈들이 나오는 걸 보게 되었다. 이전에 누군가의 번역글을 통해 도움을 받은 적이 있었기에, 나도 번역을 할 수 있지 않을까라는 생각으로 번역을 시작하게 되었다.</p>
-<p>그런데 <code>openstack</code>이 국제화되며, 300 단어 이상을 번역한 사람에게 특정한 권한을 준다는 것을 알게 되었고, 국제 서밋의 티켓을 무료로 받을 수 있었다.</p>
-<blockquote>
-<p>그래서 트레블 서포트를 신청하셨었다고. 서포트 내용은 아래와 같았다.</p>
-<ul>
-<li>번역에 참여했더니 티켓이 공짜가 되었다</li>
-<li>행사는 일본에서 열리는데, 나는 한국에 있으니 비행기 값이 싸다. 타 대륙에 있는 사람보다 나를 후원해달라</li>
-<li>오픈 스택을 더 배우고 싶다</li>
-</ul>
-</blockquote>
-<p>서포트를 신청해 도움을 받았고, 서밋에서 사람들을 많이 만나 즐거웠지만 번역에 참여하는 사람들 모두 다 영어를 못한다는 것을 알게 되었다. 그런데 이야기가 된다는 점이 신기했다. 그 이후 여러 번역에 참여하게 되었다.</p>
-<h4 id="번역의-어려움-서로-다른-번역-환경"><a href="#번역의-어려움-서로-다른-번역-환경" class="headerlink" title="번역의 어려움, 서로 다른 번역 환경"></a>번역의 어려움, 서로 다른 번역 환경</h4><h5 id="도구"><a href="#도구" class="headerlink" title="도구"></a>도구</h5><blockquote>
-<p>일반적으로 상용 온라인 번역 도구들은 오픈 소스임을 인증하면 무료로 제공하기도 한다.</p>
-</blockquote>
-<ul>
-<li><code>GNU gettext</code> : 소프트웨어 국제화에 대한 체계를 잘 정리한 소프트웨어 패키지</li>
-<li><code>POEdit</code> : <code>PO</code>라는 형식을 가진 파일을 쉽게 PC에서 편집 후 저장 가능한 도구</li>
-<li><code>Transifex</code> : 온라인 번역 도구로, 협업을 위한 기능 제공. 상용 소프트웨어이나 오픈 소스를 번역하는데 있어서는 사용 가능</li>
-<li><code>Pootle</code> : 온라인 번역도구로, 해당 도구도 오픈 소스로 만들어져있음 (현재 업데이트가 되고 있지 않음)</li>
-<li><code>Zanata</code> : Java를 기반으로 하는 온라인 협업 오픈 소스 번역 도구 (작년 9월부터 업데이트가 되고 있지 않음)</li>
-<li><code>Weblate</code> : gethub와의 통합을 강조하는 web 기반 번역 도구로, 오픈소스 설치 버전</li>
-<li><code>Crowdin</code> </li>
-</ul>
-<h5 id="용어집"><a href="#용어집" class="headerlink" title="용어집"></a>용어집</h5><p>번역에 있어 용어는 굉장히 중요한데 많은 난제들이 있다.</p>
-<ul>
-<li>한글로 번역하면 이상할 때</li>
-<li>외래어 표기의 애매성</li>
-<li>번역 단어가 상황에 따라 달라질 때</li>
-<li>etc</li>
-</ul>
-<p>때문에 번역 용어집 제작은 굉장히 중요하다.</p>
-<h5 id="언어"><a href="#언어" class="headerlink" title="언어"></a>언어</h5><ul>
-<li><p>언어 코드에 관한고민</p>
-<ul>
-<li>ko / ko_KR / ko-kr / ko-KR</li>
+<h3 id="SSR-라이브러리의-필요성"><a href="#SSR-라이브러리의-필요성" class="headerlink" title="SSR 라이브러리의 필요성"></a>SSR 라이브러리의 필요성</h3><ul>
+<li>구글봇이 SPA를 자동으로 크롤링하기 시작한 게 얼마 안되었다.<ul>
+<li>우리가 대부분 알고 있는 SSR 라이브러리들은, 구글봇이 SPA 크롤링을 지원하기 전에 등장하였다.</li>
 </ul>
 </li>
-<li><p>복수형에 대한 고민</p>
-</li>
-</ul>
-<blockquote>
-<p>나 또한 현재 자바스크립트 튜토리얼을 좋은 기회로 소개 받아 일부 번역 작업에 참여한 경험이 있었다.</p>
-<blockquote>
-<p>30여줄 번역했는데 피드백만 20여개였던 게 함정(…)</p>
-<p>제일 많은 지적을 받은 건 용어와 복수형에 대한 것이었는데, 세션을 들으면서 내 과거의 경험도 오버랩되고 그랬다.</p>
-</blockquote>
-</blockquote>
-<h3 id="회사원에서-오픈-소스-개발자로-거듭나기"><a href="#회사원에서-오픈-소스-개발자로-거듭나기" class="headerlink" title="회사원에서 오픈 소스 개발자로 거듭나기"></a>회사원에서 오픈 소스 개발자로 거듭나기</h3><h4 id="세션-1"><a href="#세션-1" class="headerlink" title="세션 1"></a>세션 1</h4><p>평소 개발을 좋아하시던 분이었지만, 사측에서 개발을 할 경험이 많지 않았다. 하여 회사 업무와 밀접한 연관이 있는 오픈 소스를 골라 기여를 시작했다.</p>
-<ul>
-<li><p>처음 오픈 소스에 기여해보고 싶었는데, 사람들에게 조언을 구해보니 일단 해당 오픈 소스를 많이 사용해볼 것을 추천하더라</p>
-<ul>
-<li>그런데 사용해본 오픈 소스에 버그가 없었다</li>
-</ul>
-<blockquote>
-<p>연사자 분은 크롬(..)으로 시작하셨다고</p>
-</blockquote>
-</li>
-<li><p>해당 오픈 소스의 코드를 보기 시작했다</p>
-<ul>
-<li>코드가 너무 방대하여 다 보는 건 힘들었다</li>
-<li>그래서 특정 핫한 기술을 어떻게 구현했는지를 주로 봤는데</li>
-<li>우연한 기회로 불필요한 연산을 발견하게 되었고, 이를 삭제하는 게 첫 패치였다</li>
-</ul>
-</li>
-<li><p><code>FIXME</code>, <code>TODO</code>가 붙은 이슈들을 보기 시작</p>
-<ul>
-<li>하지만 해당 마크가 붙은 건 어려운 이슈들이 많았다</li>
-</ul>
-</li>
-<li><p>모든 issue를 다 보기 시작(최신순으로)</p>
-<ul>
-<li>쉬운 이슈를 발견하게 되면 고치는 식으로 시작</li>
-<li>이렇게 하는 건 비효율적이므로, <strong><code>goodfirstbug</code> 마크 중심의 이슈를 볼 것</strong>을 추천하셨다</li>
-</ul>
-</li>
-<li><p>상호운용성에 중점</p>
-<ul>
-<li>다른 서비스에는 있지만 해당 오픈 소스에는 없는 기능을 구현</li>
-<li>웹 표준 스펙을 읽으며 구현</li>
-</ul>
-</li>
-</ul>
-<p>이런 경험을 통해 남의 코드를 읽는 능력이 크게 향상되었다.</p>
-<h4 id="세션-2"><a href="#세션-2" class="headerlink" title="세션 2"></a>세션 2</h4><p>오픈 소스에 꾸준하게 기여하는 게 쉽지 않아서 방법을 고안했다.</p>
-<ul>
-<li>벌금 제도<ul>
-<li>특정 횟수 이상 패치를 하지 않으면 벌금을 물기</li>
-<li>횟수에 집중하다보니 깊이가 얕아진다는 단점이 발생했다.</li>
-</ul>
-</li>
-<li>컨퍼런스 발표로 깊게 익힐 수 있도록 노력했다.</li>
-</ul>
-<h3 id="당신도-할-수-있는-오픈-소스를-이용한-어플리케이션-만들기"><a href="#당신도-할-수-있는-오픈-소스를-이용한-어플리케이션-만들기" class="headerlink" title="당신도 할 수 있는 오픈 소스를 이용한 어플리케이션 만들기"></a>당신도 할 수 있는 오픈 소스를 이용한 어플리케이션 만들기</h3><ul>
-<li>오픈 소스를 활용해 테스트 케이스 작성</li>
-<li>오픈 소스를 활용해 성능 테스트<ul>
-<li>실제 서버와 같은 테스트 서버를 두고 테스트해보기</li>
-<li>APM<ul>
-<li>pinpoint<ul>
-<li>어플리케이션 구조를 볼 수 있고</li>
-<li>실시간 요청의 응답 속도를 볼 수 있음</li>
-<li>특정 요청에 대한 상세한 정보(call stack, metrics) 확인 가능</li>
+<li>다른 검색 포털 사이트의 크롤러들이 지원하지 않는 경우가 다수다.</li>
+<li>오픈그래프 진영이 SPA를 완벽히 지원하지 못하고 있다.<ul>
+<li>오픈그래프 사용을 위해서는 아래의 방법들 뿐이다<ul>
+<li>SSR 라이브러리</li>
+<li>프리렌더</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>stress test tool 사용<ul>
-<li>nGrinder</li>
-<li>jmeter</li>
-<li>ab</li>
+<li>구글이 SPA를 위한 비동기 스크립트를 기다린다고 해도, 완벽하지 않다.<ul>
+<li>SPA의 온전한 정보를 가져가고 있는지 알 수 없으며,</li>
+<li>크롤러가 어느 시점의 스냅샷을 완전히 로드했다고 판단하고 가져가는지 알 수 없다.<ul>
+<li>이 부분을 확인하기 위해서는 어느 시점의 스냅샷이 완전한지를 <code>fetch as google</code> 같은 도구로 알려줄 수 있다.</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>연사자 분께서 자바 관련해서 많이 설명해주셨고, 예시로 든 것 또한 자바에서 쓸 수 있는 오픈 소스였다. 안타깝게도 내가 자바를… 안본지 좀 오래 되어서… 그런 게 있구나, 하는 식으로 발표를 이해했다.</p>
-</blockquote>
-<h3 id="나는-어쩌다-오픈소스-프로젝트-멤버가-되었나"><a href="#나는-어쩌다-오픈소스-프로젝트-멤버가-되었나" class="headerlink" title="나는 어쩌다 오픈소스 프로젝트 멤버가 되었나"></a>나는 어쩌다 오픈소스 프로젝트 멤버가 되었나</h3><ul>
-<li>오픈 소스에 참여하기 전에 도큐먼트를 잘 읽어보고 (어떤 방식으로 기여가 이루어지는지) 기여에 진행해야 한다.<br><strong>프로젝트 별 규칙 및 방법론 준수</strong>가 핵심</li>
-<li><p>코드를 쉽게 짜려고 노력할 것</p>
-</li>
-<li><p>테스트의 중요성을 강조</p>
-</li>
-</ul>
-<h3 id="오픈-소스-스프린트-기획부터-실행까지"><a href="#오픈-소스-스프린트-기획부터-실행까지" class="headerlink" title="오픈 소스 스프린트 : 기획부터 실행까지"></a>오픈 소스 스프린트 : 기획부터 실행까지</h3><h4 id="스프린트"><a href="#스프린트" class="headerlink" title="스프린트"></a>스프린트</h4><p>라인에서 만든 오픈 소스에 기여할, 스프린트를 만들게 된 과정 발표</p>
-<h4 id="스프린트-멘토가-준비해야-할-것"><a href="#스프린트-멘토가-준비해야-할-것" class="headerlink" title="스프린트 멘토가 준비해야 할 것"></a>스프린트 멘토가 준비해야 할 것</h4><ul>
-<li><code>CONTRIBUTLING.md</code><ul>
-<li>Build requirements</li>
-<li>개발 환경 설정</li>
-<li>코딩 스타일 가이드</li>
-<li>Code of Conduct</li>
-<li>CLA</li>
-</ul>
-</li>
-<li>예전과 달라졌을 가능성도 있기 때문에 처음부터 한 번 해본다</li>
-<li><code>good-first-issue</code> 만들기<ul>
-<li>적당히 작게 쪼갤 것</li>
-<li>피상적인 이슈를 피할 것</li>
-<li>충분한 정보 제공<ul>
-<li>왜 해결해야 하나</li>
-<li>어디가 문제인가</li>
-<li>어떻게 해결해야 하나</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>멘티가 준비해야할 것들을 잘 공지할 것</li>
-</ul>
-<h4 id="멘티의-준비-요소"><a href="#멘티의-준비-요소" class="headerlink" title="멘티의 준비 요소"></a>멘티의 준비 요소</h4><ul>
-<li>배경 지식<ul>
-<li>언어</li>
-<li>유사 프로젝트 사용 경험 / 해당 프로젝트 사용 경험</li>
-</ul>
-</li>
-<li>md 파일 읽기</li>
-<li>오리지널 리포 클론</li>
-<li>빌드</li>
-<li><code>good-first-issue</code> 마크 확인</li>
-</ul>
-<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2><p>연사자 분들 대부분이 오픈 소스에 어떻게 기여하기 시작했는지, 어떻게 그 꾸준함을 유지했는지를 논하신 터라 후반부에 진행된 세션의 경우 앞 세션과 겹치는 내용이 많았다. 연사자 분들 대부분이 말씀 자체를 재밌게 하셔서 듣는데 지루하진 않았지만… 주최 측에서 세션 내용의 다양성에 대해 신경 써주셨으면 좋았을 것 같다.</p>
-<p>그리고 운영 측에서 시간 운용을 조금 더 효율적으로 하셨으면 좋았을 것 같다. 쉬는 시간은 단 한 번, 10분 남짓이었던 터라 후반에 집중하기 너무 힘들었다. 시간 배분을 널널하게 해서 쉬는 시간도 보다 길었으면 좋았을 것 같고(다과 줄이 얼마나 긴데 쉬는 시간 10분…) 세션이 이어지는 중간 중간에도 홍보라던가, 공지라던가 진짜… 귀에 휴식 시간이 없었다. 정보가 끊임없이 이어졌고 전달되는 정보를 다 얻지도 못해서(연사자 분들께 질문하고자 하는 내용을 따로 받는다고 하셨는데 어떻게 질문을 드리면 되는지 알 수가 없었고, 갑자기 질문 마감하겠다는 공지가 나왔다) 청취자 입장에서는 당황스럽고 그랬다.</p>
-<p>시간을 배분한다는 게 어렵다는 것, 이해하지만.. 그렇기 때문에 세션이 여러 개인 행사일 수록 여윳 시간을 좀 많이 넣는 게 좋다고 생각하는데, 해당 행사의 여윳 시간은 어느 정도였을까. 시간에 쫓기는 느낌도 많이 받았고, 발표 중간 중간 우겨넣다시피 공지되는 정보에서 듣기로는 “어떻게든 발표된 시간에 마치도록 하겠습니다”라고 하셨는데, 그 마치는 시간 조율을 세션 중간을 빨리 끝내도록 유도하는 방식이여서… 과연 효율적이었는가… 누구를 위한 시간 맞추기였는가… 좀 많이 의문이 들었다.</p>
-<p>여타 개발 행사와 매한가지로 인터넷 친구들과 실제 지인들을 우연치 않게 만난 자리여서, 행사 외적으로 피곤하긴 했지만 즐거웠다. <del>어제 해커톤 다녀와서… 이것도 후기 써야 하는데 언제 쓰냐</del></p>
 
       
     </div>
@@ -362,7 +334,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/106/">106</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/107/">107</a><a class="extend next" rel="next" href="/page/6/">Next</a>
   </nav>
 
 </section>
@@ -415,7 +387,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">90</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">91</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -456,6 +428,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/07/17/boostcouse-servlet/">Back-End</a></h6>
+              <span>7월 17, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -517,18 +501,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/06/20/woowahan/">우아한테크러닝 Typescript &amp; React 101</a></h6>
-              <span>6월 20, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -539,7 +511,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
