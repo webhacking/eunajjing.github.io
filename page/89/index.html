@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2018-11-30" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018-12-03" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/30/2018-11-30/">2018-11-30 수업 내용 정리</a>
+      <a class="article-title" href="/2018/12/03/2018-12-03/">2018-12-03 수업 내용 정리</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/30/2018-11-30/" class="article-date">
-	  <time datetime="2018-11-30T00:08:18.000Z" itemprop="datePublished">11월 30, 2018</time>
+	<a href="/2018/12/03/2018-12-03/" class="article-date">
+	  <time datetime="2018-12-03T00:08:18.000Z" itemprop="datePublished">12월 3, 2018</time>
 	</a>
 
       
@@ -131,127 +131,132 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-2.5" target="_blank" rel="noopener">과제</a></p>
+        <h3 id="지난주-static-블록과-instance-블록-이해가-안되어서-추가로-찾아보았다"><a href="#지난주-static-블록과-instance-블록-이해가-안되어서-추가로-찾아보았다" class="headerlink" title="지난주 static 블록과 instance 블록 이해가 안되어서 추가로 찾아보았다"></a>지난주 static 블록과 instance 블록 이해가 안되어서 추가로 찾아보았다</h3><blockquote>
+<p>참고한 사이트들 목록</p>
 <ul>
-<li>이건 좀 어려워서 복습 과제 할 예정(25)!</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">package com.eomcs.lms.handler;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import com.eomcs.lms.domain.Lesson;</span><br><span class="line"></span><br><span class="line">public class LessonList &#123;</span><br><span class="line">  </span><br><span class="line">  static final int LENGTH = 10;</span><br><span class="line">  private Lesson[] list;</span><br><span class="line">  private int size = 0;</span><br><span class="line"></span><br><span class="line">  public Lesson[] toArray() &#123;</span><br><span class="line">    return Arrays.copyOf(list, size);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  void add(Lesson lesson) &#123;</span><br><span class="line">    if (size &gt;= list.length) &#123;</span><br><span class="line">      int oldLength = list.length;</span><br><span class="line">      // int newCapacity = oldLength + (int)(oldLength + 0.5);</span><br><span class="line">      // 만약 배열의 크기만큼 데이터가 찼다면</span><br><span class="line">      // 새 배열을 만들어서 복제를 해야함</span><br><span class="line">      // 그래서 새 배열을 기존 배열의 1.5배로 늘려준다</span><br><span class="line">      // cpu는 부동 소수점 연산이 복잡함</span><br><span class="line">      // 그래서 이렇게 쓴다</span><br><span class="line">      int newCapacity = oldLength + oldLength &gt;&gt; 1;</span><br><span class="line">      // 소수점을 좌측으로 이동해 우측의 소수점을 버린다</span><br><span class="line">      // 비트 이동 연산자 사용</span><br><span class="line">      list = Arrays.copyOf(list, newCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    list[size++] = lesson;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public LessonList() &#123;</span><br><span class="line">    list = new Lesson[LENGTH];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public LessonList(int initialCapacity) &#123;</span><br><span class="line">    if (initialCapacity &gt; LENGTH) &#123;</span><br><span class="line">      list = new Lesson[initialCapacity];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      list = new Lesson[LENGTH];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.eomcs.lms.handler;</span><br><span class="line">import java.sql.Date;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import com.eomcs.lms.domain.Lesson;</span><br><span class="line"></span><br><span class="line">public class LessonHandler &#123;</span><br><span class="line"></span><br><span class="line">  Scanner keyboard;</span><br><span class="line">  LessonList list;</span><br><span class="line">  </span><br><span class="line">  public LessonHandler(Scanner keyboard) &#123;</span><br><span class="line">    this.keyboard = keyboard;</span><br><span class="line">    list = new LessonList();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public void listLesson() &#123;</span><br><span class="line">    </span><br><span class="line">    Lesson[] lessons = list.toArray();</span><br><span class="line">    </span><br><span class="line">    for (Lesson lesson : lessons) &#123;</span><br><span class="line">      System.out.printf(&quot;%3d, %-15s, %10s ~ %10s, %4d\n&quot;, </span><br><span class="line">          lesson.getNo(), lesson.getTitle(), </span><br><span class="line">          lesson.getStartDate(), lesson.getEndDate(),</span><br><span class="line">          lesson.getTotalHours());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-2.6" target="_blank" rel="noopener">다형적 변수 사용 과제</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.eomcs.lms.handler;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 배열은 어떻게 처리하지?</span></span><br><span class="line">  <span class="comment">// 다형적 변수 사용!</span></span><br><span class="line">  Object[] list;</span><br><span class="line">  <span class="comment">// 그러나 모든 자료형을 받을 수 있기 때문에-오토박싱(자동으로 객체로 포장)로 싸서-</span></span><br><span class="line">  <span class="comment">// 이를 막고자 핸들러 측에서 제네릭 사용</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    list  = <span class="keyword">new</span> Object[DEFAULT_CAPACITY];</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.eomcs.lms.handler;</span><br><span class="line"><span class="keyword">import</span> java.sql.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> com.eomcs.lms.domain.Board;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoardHandler</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  Scanner keyboard;</span><br><span class="line">  ArrayList&lt;Board&gt; list;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BoardHandler</span><span class="params">(Scanner keyboard)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.keyboard = keyboard;</span><br><span class="line">    <span class="keyword">this</span>.list = <span class="keyword">new</span> ArrayList(<span class="number">20</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listBoard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Object[] boards = list.toArray();</span><br><span class="line">    <span class="comment">// 여기서 강제 형변환을 할 수 없음</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (Object obj : boards) &#123;</span><br><span class="line">      Board board = (Board) obj;</span><br><span class="line">      <span class="comment">// 여기서는 가능함</span></span><br><span class="line">      <span class="comment">// 실제로 object 배열이기 때문에 board 배열로 바꾸는 건 안되는 것이고,</span></span><br><span class="line">      <span class="comment">// 배열에 들어있는 data는 원래 자료형이 board이기 때문에</span></span><br><span class="line">      <span class="comment">// 형 변환이 여기서는 가능한 것</span></span><br><span class="line">      System.out.printf(<span class="string">"%3d, %-20s, %s, %d\n"</span>, </span><br><span class="line">          board.getNo(), board.getContents(), </span><br><span class="line">          board.getCreatedDate(), board.getViewCount());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h2 id="오토박싱과-오토언박싱"><a href="#오토박싱과-오토언박싱" class="headerlink" title="오토박싱과 오토언박싱"></a>오토박싱과 오토언박싱</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">&gt; Integer obj = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">&gt; </span><br><span class="line">&gt; obj = <span class="number">200</span>; <span class="comment">// 이렇게도 되는데, 사실 오토박싱으로 new Integer(200); 된 것</span></span><br><span class="line">&gt; <span class="keyword">int</span> j = obj; <span class="comment">// 이렇게도 되는데, 사실 오토언박싱으로 obj.intValue(); 된 것</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>System.arraycopy의 이용</p>
-<ul>
-<li><p>배열을 복사할 때는 arraycopy(소스가 되는 배열, 소스 배열의 몇 번째 인덱스부터, 저장할 배열, 저장을 시작할 배열 인덱스, 배열 복사할 개수)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">배열.arraycopy(src, srcPos, dest, destPos, length);</span><br><span class="line"><span class="comment">// dest 배열 destPost 번부터 length 개를 복사해 src 배열 srcPost 번째부터 저장</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>만약 저장할 배열이 복사 받을 배열보다 크기가 작다면 카피를 하되, 자료형을 가져온다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a.,length &lt; size) &#123;</span><br><span class="line">    (WhatType[]) Arrays.copyOf(list, size, a.getClass());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-2.7" target="_blank" rel="noopener">못 따라감</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.eomcs.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// T : 어떤 타입</span></span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br><span class="line">  Object[] elementData;</span><br><span class="line">  <span class="comment">// 여기는 T로 쓸 수 없고, 최초이므로 Object로 배열 만들기</span></span><br><span class="line">  <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    elementData  = <span class="keyword">new</span> Object[DEFAULT_CAPACITY];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &gt; DEFAULT_CAPACITY) </span><br><span class="line">      elementData = <span class="keyword">new</span> Object[initialCapacity];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      elementData = <span class="keyword">new</span> Object[DEFAULT_CAPACITY];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>) <span class="comment">// 에러 체크하지 않는다</span></span><br><span class="line">  <span class="keyword">public</span> T[] toArray(T[] a) &#123;</span><br><span class="line">    <span class="keyword">if</span> (a.length &lt; size) &#123;</span><br><span class="line">    <span class="comment">// 만약 size가 a보다 크다면, 즉 배열의 방이 다 찼다면</span></span><br><span class="line">      <span class="keyword">return</span> (T[]) Arrays.copyOf(elementData, size, a.getClass());</span><br><span class="line">    &#125;</span><br><span class="line">    System.arraycopy(elementData, <span class="number">0</span>, a, <span class="number">0</span>, size);</span><br><span class="line">    <span class="keyword">if</span> (a.length &gt; size)</span><br><span class="line">    <span class="comment">// 보통 빈 배열일 경우 자동으로 null 값이지만</span></span><br><span class="line">    <span class="comment">// 배열을 재사용했을 경우를 대비해 데이터 뒤를 null로 만들어준 것</span></span><br><span class="line">    <span class="comment">// 배열의 끝을 모르기 때문에 null 처리</span></span><br><span class="line">      a[size] = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(T obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (size &gt;= elementData.length) &#123;</span><br><span class="line">      <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">      <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">      elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    elementData[size++] = obj;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.size;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.eomcs.lms.handler;</span><br><span class="line"><span class="keyword">import</span> java.sql.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> com.eomcs.lms.domain.Member;</span><br><span class="line"><span class="keyword">import</span> com.eomcs.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemberHandler</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  Scanner keyboard;</span><br><span class="line">  ArrayList&lt;Member&gt; list;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MemberHandler</span><span class="params">(Scanner keyboard)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.keyboard = keyboard;</span><br><span class="line">    <span class="keyword">this</span>.list = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">20</span>);</span><br><span class="line">    <span class="comment">// 위에서 정의를 했기 때문에 제네릭을 비운 것</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listMember</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Member[] members = list.toArray[list.size()];</span><br><span class="line">    <span class="comment">// 이거는 이렇게 할 수도 있음</span></span><br><span class="line">    <span class="comment">// Member[] members = list.toArray(new members[] &#123;&#125;);</span></span><br><span class="line">    <span class="comment">// 빈 배열을 보내도, 어차피 ArrayList에서 조건문을 걸었기 때문에 가능한 것</span></span><br><span class="line">    <span class="keyword">for</span> (Member member : members) &#123;</span><br><span class="line">      System.out.printf(<span class="string">"%3d, %-4s, %-20s, %-15s, %s\n"</span>, </span><br><span class="line">          member.getNo(), member.getName(), </span><br><span class="line">          member.getEmail(), member.getTel(), member.getRegisteredDate());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h2 id="Arrays-copyOf와-clone-의-차이"><a href="#Arrays-copyOf와-clone-의-차이" class="headerlink" title="Arrays.copyOf와 .clone()의 차이"></a>Arrays.copyOf와 .clone()의 차이</h2><ul>
-<li>Arrays.copyOf : 배열의 크기만큼 복제</li>
-<li>.clone() : 배열 안에 들어 있는 인스턴스만큼 복제</li>
+<li><a href="http://uoonleen.tistory.com/6" target="_blank" rel="noopener">참고한 사이트1</a></li>
+<li><a href="https://sarc.io/index.php/java/473-2016-05-31-15-48-27" target="_blank" rel="noopener">참고한 사이트2</a></li>
+<li><a href="http://futurists.tistory.com/43" target="_blank" rel="noopener">참고한 사이트3</a></li>
 </ul>
 </blockquote>
-</li>
+<ul>
+<li>스태틱 블록<ul>
+<li>클래스가 로딩된 후</li>
+<li>클래스 변수를 초기화 시키는 코드를 주로 둔다</li>
 </ul>
 </li>
-<li><p><a href="https://github.com/eomcs/eomcs-java-project/tree/master/eomcs-java-project-3.2" target="_blank" rel="noopener">뛰어넘음, 인터페이스가 필요한 이유</a></p>
-<ul>
-<li>인터페이스의 메서드는 모두 공개 상태여야 한다. (Default로 접근 제한을 걸었다)</li>
+<li>인스턴스 블록<ul>
+<li>인스턴스가 생성된 후 실행</li>
+<li>인스턴스 변수를 초기화 시키는 코드를 주로 둔다</li>
+<li>어떤 생성자가 호출되든 공통적으로 실행되어야 하는 코드가 있다면 작성한다</li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<h3 id="LinkedList와-ArrayList"><a href="#LinkedList와-ArrayList" class="headerlink" title="LinkedList와 ArrayList"></a>LinkedList와 ArrayList</h3><p><img src="http://www.nextree.co.kr/content/images/2016/09/jdchoi_20140225_arrayvslinkedlist11.png" alt="비교 이미지"></p>
+<p>일단 클래스를 읽어야 하므로, 클래스 로딩 - 스태틱 블록 실행 - 객체 생성(ex. int i) 완료 - 인스턴스 블록 실행</p>
+</blockquote>
 <ul>
-<li><p>LinkedList</p>
-<ul>
-<li><p>List 인터페이스를 구현한 AbstractList를 상속하지 않고 AbstractSequentialList를 상속</p>
-</li>
-<li><p>자료의 주소 값으로 서로 연결되어 있는 구조</p>
-</li>
-<li><p>inkedList는 몇 개의 참조자만 바꿈으로써 새로운 자료의 삽입이나 기존 자료의 삭제를 위치에 관계없이 빠른 시간안에 수행 가능</p>
-</li>
-<li><p>자료의 최대 개수에 영향을 받지 않음(무한 개수의 자료를 삽입 가능)<br><img src="http://www.nextree.co.kr/content/images/2016/09/jdchoi_20140225_linklist_insert-1.png" alt="삽입과정"></p>
-<p><img src="http://www.nextree.co.kr/content/images/2016/09/jdchoi_20140225_linkedlist_remove.png" alt="삭제과정"></p>
-</li>
-<li><p>순차접근만이 가능(무작위 접근 불가)</p>
-</li>
-<li><p>자료들을 저장 공간에 불연속적인 단위로 저장</p>
-</li>
-<li><p>메모리 이곳저곳에 산재해 저장되어 있는 노드들을 접근하는데 ArrayList보다는 긴 지연 시간이 소모</p>
-</li>
-<li><p>참조자를 위해 추가적인 메모리를 할당해야 함</p>
-</li>
+<li><strong>클래스가 로딩되다</strong><ul>
+<li>클래스 로더는 자바 바이트 코드를 읽어들여 클래스 객체를 생성하는 역할을 담당</li>
+<li>로더가 읽은 바이트 코드가 올바르다면, 메서드 에리어 영역으로 파일이 로딩된다</li>
+<li>JVM에 로딩된 클래스만이 객체로 사용이 가능하다</li>
 </ul>
 </li>
-<li><p>ArrayList</p>
+</ul>
+<blockquote>
+<p>3.7부터 건너 뛰었는데, 따로 공부를 해야할 것 같다.</p>
+<p>braw 업데이트해야한다</p>
+</blockquote>
+<h2 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h2><h3 id="MYSQL"><a href="#MYSQL" class="headerlink" title="MYSQL"></a>MYSQL</h3><h4 id="mysql-서버에-접속하기"><a href="#mysql-서버에-접속하기" class="headerlink" title="mysql 서버에 접속하기"></a>mysql 서버에 접속하기</h4><p>로컬 MySQL 서버에 접속</p>
+<blockquote>
+<p>mysql -u root -p<br>Enter password: 암호입력</p>
+</blockquote>
+<p>원격 MySQL 서버에 접속</p>
+<blockquote>
+<p>mysql -h 서버주소 -u root -p<br>Enter password: 암호입력</p>
+</blockquote>
+<h4 id="mysql-root-암호-변경"><a href="#mysql-root-암호-변경" class="headerlink" title="mysql root 암호 변경"></a>mysql root 암호 변경</h4><blockquote>
+<p>alter user ‘root‘@’localhost’ identified by ‘1111’;</p>
+</blockquote>
+<h4 id="MySQL-사용자-추가"><a href="#MySQL-사용자-추가" class="headerlink" title="MySQL 사용자 추가"></a>MySQL 사용자 추가</h4><blockquote>
+<p>CREATE USER ‘사용자아이디‘@’서버주소’ IDENTIFIED BY ‘암호’;</p>
+</blockquote>
+<p>로컬에서만 접속할 수 있는 사용자를 만들기:</p>
+<blockquote>
+<p>CREATE USER ‘study‘@’localhost’ IDENTIFIED BY ‘1111’;</p>
+<p>=&gt; 이 경우 stidu 사용자는 오직 로컬(서버를 실행하는 컴퓨터)에서만 접속 가능한다.<br>=&gt; 다른 컴퓨터에서 실행하는 MySQL 서버에 접속할 수 없다는 것을 의미한다.</p>
+</blockquote>
+<h4 id="원격에서만-접속할-수-있는-사용자를-만들기"><a href="#원격에서만-접속할-수-있는-사용자를-만들기" class="headerlink" title="원격에서만 접속할 수 있는 사용자를 만들기:"></a>원격에서만 접속할 수 있는 사용자를 만들기:</h4><blockquote>
+<p>CREATE USER ‘study‘@’%’ IDENTIFIED BY ‘1111’;</p>
+<p>=&gt; 이 경우 study 사용자는 원력에서만 접속 가능하다. (% = 원격)</p>
+</blockquote>
+<h4 id="MySQL-사용자-목록-조회"><a href="#MySQL-사용자-목록-조회" class="headerlink" title="MySQL 사용자 목록 조회"></a>MySQL 사용자 목록 조회</h4><blockquote>
+<p>select user from 데이터베이스명.테이블명;</p>
+<p>select user from mysql.user;</p>
+</blockquote>
+<h4 id="MySQL-데이터베이스-생성"><a href="#MySQL-데이터베이스-생성" class="headerlink" title="MySQL 데이터베이스 생성"></a>MySQL 데이터베이스 생성</h4><blockquote>
+<p>CREATE DATABASE 데이터베이스명<br>DEFAULT CHARACTER SET utf8<br>DEFAULT COLLATE utf8_general_ci;</p>
+</blockquote>
+<blockquote>
+<p>CREATE DATABASE studydb<br>DEFAULT CHARACTER SET utf8<br>DEFAULT COLLATE utf8_general_ci;</p>
+</blockquote>
+<h4 id="MySQL-사용자에게-데이터베이스-사용-권한-부여"><a href="#MySQL-사용자에게-데이터베이스-사용-권한-부여" class="headerlink" title="MySQL 사용자에게 데이터베이스 사용 권한 부여"></a>MySQL 사용자에게 데이터베이스 사용 권한 부여</h4><blockquote>
+<p>GRANT ALL ON 데이터베이스명.<em> TO ‘사용자아이디‘@’서버주소’;<br>GRANT ALL ON studydb.</em> TO ‘study‘@’localhost’;<br>GRANT ALL ON studydb.* TO ‘study‘@’%’;</p>
+</blockquote>
+<h4 id="데이터베이스-목록-조회"><a href="#데이터베이스-목록-조회" class="headerlink" title="데이터베이스 목록 조회"></a>데이터베이스 목록 조회</h4><blockquote>
+<p>show databases;</p>
+</blockquote>
+<h4 id="사용자-교체"><a href="#사용자-교체" class="headerlink" title="사용자 교체"></a>사용자 교체</h4><blockquote>
+<p>quit    (프로그램 종료 후)<br>mysql -u study -p   (다시 실행)</p>
+</blockquote>
+<h4 id="기본으로-사용할-데이터베이스-지정하기"><a href="#기본으로-사용할-데이터베이스-지정하기" class="headerlink" title="기본으로 사용할 데이터베이스 지정하기"></a>기본으로 사용할 데이터베이스 지정하기</h4><blockquote>
+<p>use 데이터베이스명<br>use studydb;</p>
+</blockquote>
+<h4 id="데이터베이스의-전체-테이블-목록-조회"><a href="#데이터베이스의-전체-테이블-목록-조회" class="headerlink" title="데이터베이스의 전체 테이블 목록 조회"></a>데이터베이스의 전체 테이블 목록 조회</h4><blockquote>
+<p>show tables;</p>
+</blockquote>
+<hr>
+<blockquote>
+<h2 id="흐름"><a href="#흐름" class="headerlink" title="흐름"></a>흐름</h2><ol>
+<li>웹 브라우저의 요청<ul>
+<li>서블릿 필터가 거른다</li>
+<li>디스패처 서블릿 호출<ul>
+<li>인터셉터 발동 가능</li>
+</ul>
+</li>
+<li>페이지 컨트롤러 호출</li>
+<li>jsp 호출</li>
+</ul>
+</li>
+<li>서비스 호출</li>
+<li>dao 동작</li>
+<li>db 도달</li>
+</ol>
 <ul>
-<li><p>List 인터페이스를 구현한 AbstractList를 상속</p>
+<li>스프링의 3대 필터<ul>
+<li>서블릿 필터</li>
+<li>인터셉터</li>
+<li>aop<ul>
+<li>자유로운 영혼, 메서드 호출 전후에 꼽는 필터</li>
+<li><strong>애플리케이션 전체에 걸쳐 사용되는 기능을 재사용</strong>하도록 지원</li>
+</ul>
 </li>
-<li><p>데이터들이 순서대로 쭉 늘어선 배열의 형식</p>
-</li>
-<li><p>O(N)만큼의 연산 속도가 걸리기 때문에 자료의 최대 개수에 영향을 받음</p>
-</li>
-<li><p>ArrayList는 크기가 한정되어 있음</p>
-<p><img src="http://www.nextree.co.kr/content/images/2016/09/jdchoi_20140225_arraylist_insert3.png" alt="삽입과정"></p>
-<p><img src="http://www.nextree.co.kr/content/images/2016/09/jdchoi_20140225_arraylist_remove1.png" alt="삭제과정"></p>
-</li>
-<li><p>무작위 접근 가능</p>
-</li>
-<li>자료들을 하나의 연속적인 묶음으로 묶어 자료를 저장</li>
 </ul>
 </li>
 </ul>
 </blockquote>
+<h2 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h2><ul>
+<li>포함 관계 : 회원과 학생 엔티티의 관계</li>
+<li><p>상호 배타 관계 : 학생과 교사 엔티티의 관계</p>
 </li>
-<li><p>스택과 큐</p>
-<ul>
-<li>스택<ul>
-<li>LIFO(Last In Frist Out)</li>
-<li>push, pop</li>
+<li><p>인덱스 칼럼의 지정<br>:  insert, update, delete 시 실행 속도는 느려지나 select 속도가 빨라짐</p>
+</li>
+<li>도메인 : 실무에 가면 엔티티가 많아지므로, 비슷한 종류의 칼럼들을 묶어 관리하기 위해 사용</li>
 </ul>
-</li>
-<li>큐<ul>
-<li>FIFO(Frist In Frist OUT) </li>
-<li>offer, poll</li>
-</ul>
-</li>
-<li>interface <strong>Cloneable</strong><ul>
-<li>clone을 쓰기 위해 상속 받는 것</li>
-<li>사실 clone은 object의 메서드이고, Cloneable에서 override 해야할, 실제로 구현할 메서드는 없으나, clone이 사용 된다는 표기 역할을 함</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>중첩 클래스의 이용(안드로이드가 대개 이런 문법을 이용한다)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.eomcs.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stack</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Cloneable는 clone을 쓰기 위함</span></span><br><span class="line">  <span class="comment">// clone은 object의 메서드이나 구현을 하기 위해서는 Cloneable을 상속 받아야 함</span></span><br><span class="line">  <span class="comment">// Cloneable에서 실제로 구현할 메서드는 없으나, clone이 된다는 표기 역할을 함</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> maxSize;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Stack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    maxSize = <span class="number">100</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Stack</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Stack&lt;E&gt; <span class="title">clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Stack&lt;E&gt; temp = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size(); i++) &#123;</span><br><span class="line">      temp.add(get(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (Stack&lt;E&gt;) temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 객체를 생성해서 반복문 돌려서 넣어준 것</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (size() == maxSize)</span><br><span class="line">      remove(<span class="number">0</span>);</span><br><span class="line">    add(value);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> remove(size() - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> IteratorImpl&lt;&gt;();</span><br><span class="line">    <span class="comment">// 중첩 클래스가 실행되기 전에 인스턴스 블록이 실행될 것이기 때문에</span></span><br><span class="line">    <span class="comment">// 게다가 이너 클래스는 외부 클래스에 접근이 가능하기 때문에</span></span><br><span class="line">    <span class="comment">// 굳이 객체 클론해서 보내지 않아도 됨</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 중첩 클래스의 사용</span></span><br><span class="line">  <span class="comment">// 어차피 stack에서만 쓸 것이기 때문에 이렇게 구현</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">IteratorImpl</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    Stack&lt;?&gt; stack;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 인스턴스 블록</span></span><br><span class="line">      <span class="comment">// 앞에 아무 것도 없는 것이 특징</span></span><br><span class="line">      <span class="comment">// 인스턴스 생성자 호출 전에 먼저 실행되는 블록</span></span><br><span class="line">      <span class="comment">// 클래스 안에서 &#123;&#125; 하면 인스턴스 블록</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment">// static 블록은 클래스가 로딩될 때 실행됨 </span></span><br><span class="line">      <span class="comment">// 이곳의 this는 이너 클래스의 객체 주소를 가리킨다.</span></span><br><span class="line">      <span class="comment">// 만약 외부 클래스의 객체 주소를 말하고자 한다면</span></span><br><span class="line">      <span class="comment">// 클래스명.this로 시작해야 한다.</span></span><br><span class="line">      <span class="keyword">this</span>.stack = Stack.<span class="keyword">this</span>.clone();</span><br><span class="line">      <span class="comment">// 이너 클래스는 외부 클래스의 멤버 변수들과 메서드에게 접근 가능</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> count &lt; Stack.<span class="keyword">this</span>.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      count++;</span><br><span class="line">      <span class="keyword">return</span> (T) <span class="keyword">this</span>.stack.pop();</span><br><span class="line">      <span class="comment">// 중첩 클래스 안이라서 강제 형변환 시킴</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>이너 익명 클래스의 활용</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> IteratorImpl&lt;&gt;() &#123;</span><br><span class="line">      <span class="comment">// 이너 익명 클래스로도 만들 수 있다.</span></span><br><span class="line">      <span class="comment">// 슈퍼 클래스의 기본 생성자가 호출되며</span></span><br><span class="line">      <span class="comment">// 위에서 구현한 메서드 정의가 그대로 들어온다.</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>커맨드 디자인 패턴</p>
-<ul>
-<li>메서드 하나만을 구현한 클래스들로 프로그램을 구현한 것</li>
-<li>새로운 기능을 추가할 때도 좋고, 유지보수가 보다 원활하다는 장점이 있다.</li>
-<li>메서드가 실제 구현된 클래스들은 특정 메서드가 정의된 인터페이스를 상속함</li>
-<li>이 메서드는 이름만 같을 뿐 클래스마다 각각 기능이 다르게 구현</li>
-<li>실행 클래스에서는 모든 클래스들의 객체를 생성한 뒤, hashMap()에 객체를 담는다.</li>
-<li>이 때 키를 기존에 command에 입력하던 문자열로 준다.</li>
-<li>그리고 조건문을 돌릴 때 eqauls를 사용하지 않고, 프롬프트에서 받은 문자열을 키로 이용해 interface 자료형으로 value를 받는다.</li>
-<li>이 value가 null인지 확인 후, 인터페이스에서 상속된 메서드를 호출하며 기능을 실행한다.</li>
-</ul>
-</li>
+<h2 id="gradle-사용법"><a href="#gradle-사용법" class="headerlink" title="gradle 사용법"></a>gradle 사용법</h2><ul>
+<li>maven에서 jar 파일을 gradle로 복사한 뒤</li>
+<li>build.gradle에 dependencies에 붙여넣고</li>
+<li>cmd에서 <code>gradle ecilpse</code></li>
 </ul>
 
       
@@ -277,7 +282,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/88/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/87/">87</a><a class="page-number" href="/page/88/">88</a><span class="page-number current">89</span><a class="page-number" href="/page/90/">90</a><a class="page-number" href="/page/91/">91</a><span class="space">&hellip;</span><a class="page-number" href="/page/108/">108</a><a class="extend next" rel="next" href="/page/90/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/88/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/87/">87</a><a class="page-number" href="/page/88/">88</a><span class="page-number current">89</span><a class="page-number" href="/page/90/">90</a><a class="page-number" href="/page/91/">91</a><span class="space">&hellip;</span><a class="page-number" href="/page/109/">109</a><a class="extend next" rel="next" href="/page/90/">Next</a>
   </nav>
 
 </section>
@@ -330,7 +335,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">92</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">93</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -378,6 +383,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/07/19/boostcouse-webui/">WEB UI 개발</a></h6>
+              <span>7월 19, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/07/18/boostcouse-javascript/">javascript</a></h6>
               <span>7월 18, 2019</span>
             </div>
@@ -402,7 +419,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-html/">Front-End</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a></h6>
               <span>7월 16, 2019</span>
             </div>
 
@@ -414,7 +431,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-html/">Front-End</a></h6>
               <span>7월 16, 2019</span>
             </div>
 
@@ -432,18 +449,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/02/gdg-io/">google I/O extended Seoul 후기</a></h6>
-              <span>7월 2, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -454,7 +459,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
