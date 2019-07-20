@@ -3,22 +3,41 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Page 1 | ERecord</title>
+  <title>JSP와 JSTL &amp; EL | ERecord</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="일상 및 개발 공부 기록용 블로그">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ERecord">
-<meta property="og:url" content="http://eunajjing.github.io/index.html">
+  <meta name="description" content="JSP와 JSTL &amp;amp; ELJSP 모든 JSP는 서블릿으로 바뀌어서 동작  지시자 지시자를 듣는 것은 JSP를 실행하는 WAS 지시자 안에 쓴 것들은 모두 서블릿의 service()에 들어와 변경이 된다 응답에 포함되는 건 Service() 뿐이며, 매번 호출되기 때문  단, &amp;lt;%! %&amp;gt; 선언식은 예외로 Service() 바깥에 코드들이 만">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP와 JSTL &amp; EL">
+<meta property="og:url" content="http://eunajjing.github.io/2019/07/20/boostcouse-jsp/index.html">
 <meta property="og:site_name" content="ERecord">
-<meta property="og:description" content="일상 및 개발 공부 기록용 블로그">
+<meta property="og:description" content="JSP와 JSTL &amp;amp; ELJSP 모든 JSP는 서블릿으로 바뀌어서 동작  지시자 지시자를 듣는 것은 JSP를 실행하는 WAS 지시자 안에 쓴 것들은 모두 서블릿의 service()에 들어와 변경이 된다 응답에 포함되는 건 Service() 뿐이며, 매번 호출되기 때문  단, &amp;lt;%! %&amp;gt; 선언식은 예외로 Service() 바깥에 코드들이 만">
 <meta property="og:locale" content="ko">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_74/1517275973733EL11k_PNG/2_3_4_jsp_.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_153/1517281495386qOuqH_PNG/2_6_1__.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_78/1517281954147RNccz_PNG/2_6_1__.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_68/1517282068498tAlQM_PNG/2_6_1____.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_27/1517286832617YwnDB_PNG/2_6_1_.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_17/1517287228502gEf9g_PNG/2_6_1_empty_%2C__.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_149/1517289583487Ac0YJ_PNG/2_6_2_jstl.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_273/1517290494334HrB7S_PNG/2_6_2_jstl___.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_226/1517290578353rKRbE_PNG/2_6_2_jstl_.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180226_240/1519633482313pWfP8_PNG/1.png">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180226_103/1519633640114VKW2d_PNG/2.png">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180226_83/1519633710402BlJ2W_PNG/3.png">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_4/1517292532220uxSVD_PNG/2_6_2__choose.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_218/1517292735244tmWgM_PNG/2_6_2__forEach.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_93/1517293018908uGgzT_PNG/2_6_2__import.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_170/1517293246119dFJ4F_PNG/2_6_2__redirect.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180130_55/1517293404340WP4J3_PNG/2_6_2__out.PNG">
+<meta property="og:updated_time" content="2019-07-20T14:12:02.568Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ERecord">
-<meta name="twitter:description" content="일상 및 개발 공부 기록용 블로그">
+<meta name="twitter:title" content="JSP와 JSTL &amp; EL">
+<meta name="twitter:description" content="JSP와 JSTL &amp;amp; ELJSP 모든 JSP는 서블릿으로 바뀌어서 동작  지시자 지시자를 듣는 것은 JSP를 실행하는 WAS 지시자 안에 쓴 것들은 모두 서블릿의 service()에 들어와 변경이 된다 응답에 포함되는 건 Service() 뿐이며, 매번 호출되기 때문  단, &amp;lt;%! %&amp;gt; 선언식은 예외로 Service() 바깥에 코드들이 만">
+<meta name="twitter:image" content="https://cphinf.pstatic.net/mooc/20180130_74/1517275973733EL11k_PNG/2_3_4_jsp_.PNG">
   
     <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
   
@@ -51,7 +70,7 @@
 </html>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -102,9 +121,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-boostcouse-jsp" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-boostcouse-jsp" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +129,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/20/boostcouse-jsp/">JSP와 JSTL &amp; EL</a>
+      JSP와 JSTL &amp; EL
     </h1>
   
 
@@ -342,200 +359,32 @@
     <hr class="entry-footer-hr">
   </div>
   
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/19/boostcouse-webui/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">WEB UI 개발</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 <!-- Table of Contents -->
 
-
-  
-
-
-  <nav id="page-nav">
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/110/">110</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-  </nav>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP와-JSTL-amp-EL"><span class="nav-number">1.</span> <span class="nav-text">JSP와 JSTL &amp; EL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP"><span class="nav-number">1.1.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#지시자"><span class="nav-number">1.1.1.</span> <span class="nav-text">지시자</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#지시자의-종류"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">지시자의 종류</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#라이프사이클"><span class="nav-number">1.1.2.</span> <span class="nav-text">라이프사이클</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JSP의-실행순서"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">JSP의 실행순서</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#내장-객체"><span class="nav-number">1.1.3.</span> <span class="nav-text">내장 객체</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#종류"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">종류</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL-Expression-Language"><span class="nav-number">1.2.</span> <span class="nav-text">EL(Expression Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#기능"><span class="nav-number">1.2.1.</span> <span class="nav-text">기능</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#기본-객체"><span class="nav-number">1.2.2.</span> <span class="nav-text">기본 객체</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#표현방법"><span class="nav-number">1.2.3.</span> <span class="nav-text">표현방법</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#객체-사용-예"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">객체 사용 예</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#객체-접근-규칙"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">객체 접근 규칙</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#데이터-타입"><span class="nav-number">1.2.4.</span> <span class="nav-text">데이터 타입</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#연산자"><span class="nav-number">1.2.5.</span> <span class="nav-text">연산자</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#우선순위"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">우선순위</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#수치"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">수치</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#비교"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">비교</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#논리"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">논리</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#empty-3항-연산자"><span class="nav-number">1.2.5.5.</span> <span class="nav-text">empty, 3항 연산자</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#비활성화"><span class="nav-number">1.2.6.</span> <span class="nav-text">비활성화</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSTL-JSP-Standard-Tag-Library"><span class="nav-number">1.3.</span> <span class="nav-text">JSTL(JSP Standard Tag Library)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#사용법"><span class="nav-number">1.3.1.</span> <span class="nav-text">사용법</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#코어"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">코어</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#변수-지원"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">변수 지원</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#흐름제어"><span class="nav-number">1.3.1.1.2.</span> <span class="nav-text">흐름제어</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#기타-태그"><span class="nav-number">1.3.1.1.3.</span> <span class="nav-text">기타 태그</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
 
 </section>
-          <aside id="sidebar">
-  
-    <div style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 72%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">94</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Contact Me</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/eunajjing" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/20/boostcouse-jsp/">JSP와 JSTL &amp; EL</a></h6>
-              <span>7월 20, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/19/boostcouse-webui/">WEB UI 개발</a></h6>
-              <span>7월 19, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/18/boostcouse-javascript/">javascript</a></h6>
-              <span>7월 18, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/17/boostcouse-servlet/">Back-End</a></h6>
-              <span>7월 17, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-html/">Front-End</a></h6>
-              <span>7월 16, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a></h6>
-              <span>7월 16, 2019</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
 

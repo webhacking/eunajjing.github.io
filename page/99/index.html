@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-trigger" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-websocket" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/01/trigger/">trigger</a>
+      <a class="article-title" href="/2018/11/08/websocket/">websocket</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/01/trigger/" class="article-date">
-	  <time datetime="2018-11-01T02:06:33.000Z" itemprop="datePublished">11월 1, 2018</time>
+	<a href="/2018/11/08/websocket/" class="article-date">
+	  <time datetime="2018-11-08T07:27:20.000Z" itemprop="datePublished">11월 8, 2018</time>
 	</a>
 
       
@@ -131,87 +131,46 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="트리거의-이용"><a href="#트리거의-이용" class="headerlink" title="트리거의 이용"></a>트리거의 이용</h1><hr>
-<h2 id="트리거"><a href="#트리거" class="headerlink" title="트리거"></a>트리거</h2><p>특정한 테이블에 INSERT, UPDATE, DELETE와 같은 DML문이 수행되었을 때, 데이터베이스에서 자동으로 동작하도록 작성된 프로그램</p>
-<h2 id="문법"><a href="#문법" class="headerlink" title="문법"></a>문법</h2><pre><code>create trigger 트리거명 [before OR after] [insert OR update OR delete] on DML_실행되는_테이블명 [for each row]
-begin
-    실행할_쿼리_작성
-end;
-</code></pre><ul>
-<li>before : DML 실행 전에 트리거 발동</li>
-<li>after : DML 실행 후에 트리거 발동</li>
+        <h1 id="websocket을-이용한-간단한-알림-구현"><a href="#websocket을-이용한-간단한-알림-구현" class="headerlink" title="websocket을 이용한 간단한 알림 구현"></a>websocket을 이용한 간단한 알림 구현</h1><hr>
+<h2 id="유용하게-참고했던-링크들"><a href="#유용하게-참고했던-링크들" class="headerlink" title="유용하게 참고했던 링크들"></a>유용하게 참고했던 링크들</h2><p><a href="https://www.youtube.com/watch?v=gQyRxPjssWg" target="_blank" rel="noopener">시니어코딩</a></p>
+<ul>
+<li>유튜브 강좌</li>
+<li>스프링 시큐리티를 사용하지 않아 http세션과 웹소켓을 잇는 작업이 존재</li>
+<li>연속된 강의라서 도중에 강의만 따라해서는 모르는 과정이 있음, 이 부족한 부분은 깃허브에 소스가 오픈되어 있어서 보면서 해야함</li>
+</ul>
+<p><a href="https://blog.naver.com/allspacea7/221360046480" target="_blank" rel="noopener">블로그 포스팅</a></p>
+<ul>
+<li>xml 단에서 설정해야할 부분이 빠져있음</li>
+<li>간단하게 몇 건의 send를 받았는지 표기하는 예제</li>
+<li>개인적으로 제일 많은 도움을 받았음</li>
+<li>그런데 왜인지 똑같은 소스인데 override가 안되더라ㅠㅠ 근데 이건 안되어도 일단 기능은 제대로 발동해서 놔둠</li>
+</ul>
+<p><a href="http://victorydntmd.tistory.com/253" target="_blank" rel="noopener">블로그 포스팅</a></p>
+<ul>
+<li>위의 블로그 포스팅에서 누락된 것을 보기 위해 참고했었음</li>
 </ul>
 <hr>
+<h2 id="이상한-곳에서-계속-헤메이던-웹소켓-구현"><a href="#이상한-곳에서-계속-헤메이던-웹소켓-구현" class="headerlink" title="이상한 곳에서 계속 헤메이던 웹소켓 구현"></a>이상한 곳에서 계속 헤메이던 웹소켓 구현</h2><ul>
+<li>다들 저 위의 링크들을 따라하다보면 나…름 구현은 가능할 듯</li>
+<li>근데 내가 힘들었던 건 많이 참고했다는 블로그 포스팅을 보고 1차로 페이지 이동 시 웹소켓 발동까지는 했는데</li>
+<li>갑자기 실시간으로 알림 받기로 변경하라는 피드백을 받아서 일부를 수정하면서 생긴 것.</li>
+<li>인강은 <strong>디비에 있는 데이터를 뿌리지 않고 웹소켓이 보낸 데이터를 클라이언트 단에 단순히 뿌려주는 식으로 구현됨</strong></li>
+<li>그런데 나는 디비에서 가져와야 하기 때문에 쵸큼 달랐고 걍 핸들러에서 db에 select를 하게끔 만들었다.</li>
+<li><p>나는 send된 파라미터가 여러 개일 때만 처리하려고 했는데 왜인지 <strong>파라미터 여러 개 send</strong>가 먹지 않았던 문제가 제일 힘들었다. 나중에 알고보니까 아래처럼 써서 그랬던 거 같다.</p>
+<pre><code>websocket.send(&quot;~~~&quot;, &quot;~~~&quot;, &quot;~~&quot;);
+</code></pre></li>
+</ul>
 <ul>
-<li>insert : 만약 이 테이블에 인서트되면 해당 트리거 발동</li>
-<li>update : 만약 이 테이블이 업데이트되면</li>
-<li>delete : 삭제되면</li>
+<li><p>이렇게 썼다면 되지 않았을까?<br>(어쩌다보니 이렇게 보낼 필요가 없어서 나는 시도는 안해봤다)</p>
+<pre><code>websocket.send(&quot;~~~~, ~~~~, ~~~&quot;);
+</code></pre></li>
+<li><p>그리구 인강에서 전역 변수로 빼서 사용하는 웹소켓, 나는 먹지 않아서 그냥 고치기 전? 전역 변수로 빼지 않고 사용하는 웹소켓으로 구현했다.</p>
+</li>
 </ul>
 <hr>
-<ul>
-<li>for each row : 한 레코드 당 한 번씩 발동</li>
+<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><ul>
+<li><a href="http://websocket.org/echo.html" target="_blank" rel="noopener">웹소켓 테스트 가능 사이트</a></li>
 </ul>
-<h2 id="레코드-구조체"><a href="#레코드-구조체" class="headerlink" title="레코드 구조체"></a>레코드 구조체</h2><p><img src="data:image/jpeg;base64,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NJmNjZrImvY4uafu4so3yFoLsgHBhBO//ce/R8sfJUPa45uFmX7OHA1ocG+w4SAfgbL3k0Q92TqyoI+Lac/DvgX1uipBurKkd33afcP+ihVRFM6sk42p5af0U6sk42p5af0UFNFM6sk42p5af0U6sk42p5af0UFNTj+1j+Sf7gWPVknG1PLT+isOpn4se2VOK2G9oN172tqbb0FZFM6sk42p5af0U6sk42p5af0UFNFM6sk42p5af0U6sk42p5af0UFNFM6sk42p5af0U6sk42p5af0UFNFM6sk42p5af0U6sk42p5af0UFNa2kgDFKCLjA7K175HuG9avVknG1PLT+inVknG1PLT+ipZsxZcrn26LeWarVF7dkkbE9wz7QZaN2LMEEG1+4+0FbGlIWSRyubESBTiP8AVG+LFcNDS2+Xw3Kx1ZJxtTy0/op1ZJxtTy0/orVvO+9/1Jx779E/SNSx8lKRE/DFNm7VPsBs8oy7O4EsHzIVyjqNYwPwuaCTYOBBsCQDY5i9r5+1afVknG1P5U/op1ZJxtTy0/oqCmimdWScbU8tP6KdWScbU8tP6KCmimdWScbU8tP6KdWScbU8tP6KCmimdWScbU8tP6KdWScbU8tP6KCmimdWScbU8tP6KdWScbU8tP6KCmimdWScbU8tP6K96Sjex13VM0gtbC8RW7s+xG03/HvQbiIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIP/9k=" alt="레코드구조체설명_출처:db가이드넷"></p>
-<blockquote>
-<p>나는 mariaDB를 사용해서 프로젝트 구현 중이기에</p>
-</blockquote>
-<ul>
-<li>new.칼럼명 : 입력된 레코드에서 해당 칼럼의 데이터</li>
-<li>old.칼럼명 : 기존에 있던 레코드에서 칼럼의 데이터</li>
-</ul>
-<p>(delete문에서는 new.칼럼명을, insert문에서는 old.칼럼명을 사용할 수 없다)</p>
-<h2 id="트리거에서-조건문-만들기"><a href="#트리거에서-조건문-만들기" class="headerlink" title="트리거에서 조건문 만들기"></a>트리거에서 조건문 만들기</h2><pre><code>create trigger blind after update ON report FOR EACH ROW
--- blind란 트리거를 생성한다. 이 트리거는 report 테이블에 레코드 하나가 들어간 이후에 실행된다.
-    begin
-    -- 트리거 정의 시작
-        if new.checkCode = &apos;PS02&apos; then
-        -- 만약 업데이트된 레코드의 checkCode 칼럼의 값이 &apos;PS02&apos;라면(if절 1번)
-            if new.noteOrCommCode = &apos;NC00&apos; then
-            -- 만약 업데이트된 레코드의 noteOrCommCode 칼럼의 값이 &apos;NC00&apos;라면 (if절 2번)
-                insert into notify(userEmail, notifyCode, notifyTarget, readCheck) values
-                    ((select userEmail from note where noteNum=new.noteNum), &apos;RN&apos;, new.noteNum, 1)
-                    -- 해당 SQL문을 실행한다.
-                    on DUPLICATE KEY update readCheck=1;
-                    -- 만약 이미 중복하는 레코드가 있다면 insert하지 않고 update하겠다.
-                    -- readCheck라는 칼럼의 데이터를 1로
-            else
-            -- 업데이트된 레코드의 noteOrCommCode 칼럼의 값이 &apos;NC00&apos;이 아니라면
-                insert into notify(userEmail, notifyCode, notifyTarget, readCheck) values
-                    ((select userEmail from notecomm where noteCommNum=new.noteNum), &apos;RC&apos;,
-                    (select noteNum from notecomm where noteCommNum=new.noteNum), 1)
-                    on DUPLICATE KEY update readCheck=1;
-            end if;
-            -- if절 2번 종료
-        end if;
-        -- if절 1번 종료
-    end;
-    -- 트리거 정의 종료
-</code></pre><blockquote>
-<p>on DUPLICATE KEY는 트리거의 문법이 아닌 일반 쿼리 문법</p>
-</blockquote>
-<h2 id="트리거로-루프-돌리기"><a href="#트리거로-루프-돌리기" class="headerlink" title="트리거로 루프 돌리기"></a>트리거로 루프 돌리기</h2><pre><code>create trigger QNAAdmin after insert on notify for each row
-     begin
-     DECLARE done INT DEFAULT FALSE;
-     declare tempoUserEmail varchar;
-     declare curUserEmail cursor for select userEmail from roles where roleCode=&apos;ROLE_ADMIN&apos;;
-     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-
-     if (select roleCode from roles where userEmail=new.userEmail) = &apos;ROLE_ADMIN&apos; then
-         open curUserEmail;
-              ins_loop: LOOP
-                  fetch curUserEmail into tempoUserEmail;
-                  if done then
-                      leave ins_loop;
-                  end if;
-                  insert into notify(userEmail, notifyCode, notifyTarget) values (tempoUserEmail, &apos;QNA&apos;, new.qnaNum);
-              end loop;
-         close curUserEmail;
-     end if;
-     end;
-</code></pre><p>관리자가 여러 명일 수 있어서, 쿼리의 결과가 다중일 때 트리거 안에서 루프를 돌게끔 쿼리문을 짜보았다.<br>그런데 위 쿼리는 실제로 프로젝트에 사용은 못했다.<br>roles가 예약어로 잡혀있는 것 같다고 강사님이 그러셨다.<br>문법 자체는 오류가 없어보인다고 그러셔서, 나중에 또 내가 이런 뻘짓하고 싶어할까봐 같이 기록.</p>
-<blockquote>
-<p>프로젝트에선 파라미터로 role이 관리자인 것들을 리스트 형태로 보낸다음, foreach로 돌렸다.</p>
-</blockquote>
 
       
     </div>
@@ -236,7 +195,7 @@ end;
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/98/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/97/">97</a><a class="page-number" href="/page/98/">98</a><span class="page-number current">99</span><a class="page-number" href="/page/100/">100</a><a class="page-number" href="/page/101/">101</a><span class="space">&hellip;</span><a class="page-number" href="/page/109/">109</a><a class="extend next" rel="next" href="/page/100/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/98/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/97/">97</a><a class="page-number" href="/page/98/">98</a><span class="page-number current">99</span><a class="page-number" href="/page/100/">100</a><a class="page-number" href="/page/101/">101</a><span class="space">&hellip;</span><a class="page-number" href="/page/110/">110</a><a class="extend next" rel="next" href="/page/100/">Next</a>
   </nav>
 
 </section>
@@ -289,7 +248,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">93</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">94</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -337,6 +296,18 @@ end;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/07/20/boostcouse-jsp/">JSP와 JSTL &amp; EL</a></h6>
+              <span>7월 20, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/07/19/boostcouse-webui/">WEB UI 개발</a></h6>
               <span>7월 19, 2019</span>
             </div>
@@ -373,18 +344,6 @@ end;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a></h6>
-              <span>7월 16, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-html/">Front-End</a></h6>
               <span>7월 16, 2019</span>
             </div>
@@ -397,8 +356,8 @@ end;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/07/05/tech-woman-session/">테크우먼 세션에 다녀왔다</a></h6>
-              <span>7월 5, 2019</span>
+              <h6 style="margin: 0;"><a href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a></h6>
+              <span>7월 16, 2019</span>
             </div>
 
           </li>
@@ -413,7 +372,7 @@ end;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
