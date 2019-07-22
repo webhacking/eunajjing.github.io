@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>DB 연결 웹 앱 - MYSQL | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="DB 연결 웹 앱 - MYSQLDB 데이터의 집합 (a Set of Data) 여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(share) 데이터의 집합 효율적으로 저장, 검색, 갱신할 수 있도록 데이터 집합들끼리 연관시키고 조직화  특성 실시간 접근성(Real-time Accessability)  사용자의 요구를 즉시 처리">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB 연결 웹 앱 - MYSQL">
+<meta property="og:url" content="http://eunajjing.github.io/2019/07/22/boostcouse-mysql/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="DB 연결 웹 앱 - MYSQLDB 데이터의 집합 (a Set of Data) 여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(share) 데이터의 집합 효율적으로 저장, 검색, 갱신할 수 있도록 데이터 집합들끼리 연관시키고 조직화  특성 실시간 접근성(Real-time Accessability)  사용자의 요구를 즉시 처리">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180131_276/1517366013781n0BtX_PNG/2_8_1_%28table%29_.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180131_89/1517386938999sf3SM_PNG/2_8_3_MySQL__-1.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180131_46/1517386952668I67cM_PNG/2_8_3_MySQL__-2.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180131_187/1517374752273Ba8n9_PNG/2_8_2_select__.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180227_23/1519695801630edbfc_PNG/3.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180227_7/1519696097137n1dmo_PNG/4.png">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180131_87/151738015308653Cmb_PNG/2_8_2_select_%28%29.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180227_237/15196955203980m2pE_PNG/2.PNG">
+<meta property="og:updated_time" content="2019-07-22T11:38:35.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DB 연결 웹 앱 - MYSQL">
+<meta name="twitter:description" content="DB 연결 웹 앱 - MYSQLDB 데이터의 집합 (a Set of Data) 여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(share) 데이터의 집합 효율적으로 저장, 검색, 갱신할 수 있도록 데이터 집합들끼리 연관시키고 조직화  특성 실시간 접근성(Real-time Accessability)  사용자의 요구를 즉시 처리">
+<meta name="twitter:image" content="https://cphinf.pstatic.net/mooc/20180131_276/1517366013781n0BtX_PNG/2_8_1_%28table%29_.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-boostcouse-mysql" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      DB 연결 웹 앱 - MYSQL
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/22/boostcouse-mysql/" class="article-date">
+	  <time datetime="2019-07-22T06:39:18.000Z" itemprop="datePublished">7월 22, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/">부스트코스</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DB-연결-웹-앱-MYSQL"><a href="#DB-연결-웹-앱-MYSQL" class="headerlink" title="DB 연결 웹 앱 - MYSQL"></a>DB 연결 웹 앱 - MYSQL</h1><h2 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h2><ul>
+<li>데이터의 집합 (<code>a Set of Data</code>)</li>
+<li>여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(<code>share</code>) 데이터의 집합</li>
+<li>효율적으로 저장, 검색, 갱신할 수 있도록 데이터 집합들끼리 연관시키고 조직화</li>
+</ul>
+<h3 id="특성"><a href="#특성" class="headerlink" title="특성"></a>특성</h3><ul>
+<li><p>실시간 접근성(<code>Real-time Accessability</code>)</p>
+<ul>
+<li>사용자의 요구를 즉시 처리</li>
+</ul>
+</li>
+<li><p>계속적인 변화(<code>Continuous Evolution</code>)</p>
+<ul>
+<li>정확한 값을 유지하려고 삽입·삭제·수정 작업 등을 이용해 데이터를 지속적으로 갱신</li>
+</ul>
+</li>
+<li><p>동시 공유성(<code>Concurrent Sharing</code>)</p>
+<ul>
+<li>사용자마다 서로 다른 목적으로 사용하므로 동시에 여러 사람이 동일한 데이터에 접근하고 이용</li>
+</ul>
+</li>
+<li><p>내용 참조(<code>Content Reference</code>)</p>
+<ul>
+<li>저장한 데이터 레코드의 위치나 주소가 아닌 사용자가 요구하는 데이터의 내용, 즉 데이터 값에 따라 참조</li>
+</ul>
+</li>
+</ul>
+<h2 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h2><ul>
+<li>데이터베이스를 관리하는 소프트웨어</li>
+<li>여러 응용 소프트웨어(프로그램) 또는 시스템이 동시에 데이터베이스에 접근하여 사용</li>
+<li>필수 3기능<ul>
+<li>정의기능<ul>
+<li>데이터 베이스의 논리적, 물리적 구조를 정의</li>
+</ul>
+</li>
+<li>조작기능<ul>
+<li>데이터를 검색, 삭제, 갱신, 삽입, 삭제하는 기능</li>
+</ul>
+</li>
+<li>제어기능<ul>
+<li>데이터베이스의 내용 정확성과 안전성을 유지하도록 제어하는 기능</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
+<li>데이터 중복이 최소화</li>
+<li>데이터의 일관성 및 무결성 유지 </li>
+<li>데이터 보안 보장</li>
+</ul>
+<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul>
+<li>운영비가 비싸다</li>
+<li>백업 및 복구에 대한 관리가 복잡</li>
+<li>부분적 데이터베이스 손실이 전체 시스템을 정지</li>
+</ul>
+<h2 id="SQL-Structured-Query-Language"><a href="#SQL-Structured-Query-Language" class="headerlink" title="SQL(Structured Query Language)"></a>SQL(<code>Structured Query Language</code>)</h2><ul>
+<li>SQL은 데이터를 보다 쉽게 검색하고 추가, 삭제, 수정 같은 조작을 할 수 있도록 고안된 컴퓨터 언어</li>
+<li>관계형 데이터베이스에서 데이터를 조작하고 쿼리하는 표준 수단</li>
+<li><p><code>DML</code> <code>(Data Manipulation Language</code>)</p>
+<ul>
+<li>데이터를 조작하기 위해 사용<br><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code> 등이 여기에 해당</li>
+</ul>
+</li>
+<li><p><code>DDL</code> (<code>Data Definition Language</code>)</p>
+<ul>
+<li>데이터베이스의 스키마를 정의하거나 조작하기 위해 사용</li>
+<li><code>CREATE</code>,<code>DROP</code>, <code>ALTER</code> 등이 여기에 해당</li>
+</ul>
+</li>
+<li><p><code>DCL</code> (<code>Data Control Language</code>)</p>
+<ul>
+<li>데이터를 제어하는 언어</li>
+<li>권한을 관리하고, 테이터의 보안, 무결성 등을 정의</li>
+<li><code>GRANT</code>, <code>REVOKE</code> 등이 여기에 해당</li>
+</ul>
+</li>
+</ul>
+<h3 id="DB-생성"><a href="#DB-생성" class="headerlink" title="DB 생성"></a>DB 생성</h3><ol>
+<li><p>관리자 계정으로 접속 <code>mysql –uroot  -p</code></p>
+</li>
+<li><p>DB 생성 <code>create database DB이름;</code></p>
+</li>
+</ol>
+<h3 id="사용자-생성-및-권한-할당"><a href="#사용자-생성-및-권한-할당" class="headerlink" title="사용자 생성 및 권한 할당"></a>사용자 생성 및 권한 할당</h3><ul>
+<li><code>Database</code>를 생성했다면, 해당 데이터베이스를 사용하는 계정을 생성해야 함</li>
+<li>해당 계정이 데이터베이스를 이용할 수 있는 권한을 부여해야 함<ul>
+<li>db이름 뒤의 <code>*</code> 는 모든 권한을 의미</li>
+<li><code>@’%’</code>는 어떤 클라이언트에서든 접근 가능하다는 의미</li>
+<li><code>@’localhost’</code>는 해당 컴퓨터에서만 접근 가능하다는 의미</li>
+<li><code>flush privileges</code>는 DBMS에게 적용을 하라는 의미</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on db이름.* to 계정이름@&apos;%&apos; identified by ＇암호’;</span><br><span class="line">grant all privileges on db이름.* to 계정이름@&apos;localhost&apos; identified by ＇암호’;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<h3 id="접속"><a href="#접속" class="headerlink" title="접속"></a>접속</h3><p><code>mysql –h호스트명 –uDB계정명 –p 데이터베이스이름</code></p>
+<h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ul>
+<li><code>SQL</code>은 <code>;</code>으로 끝난다</li>
+<li><p><code>SQL</code>은 쿼리(<code>Query</code>)라고 읽는다</p>
+<ul>
+<li>쿼리는 대소문자를 가리지 않는다</li>
+</ul>
+</li>
+<li><p><code>SELECT</code>는 어떤 내용을 조회할 때 사용하는 키워드</p>
+</li>
+<li><p>MySQL은 쿼리에 해당하는 결과의 전체 row를 출력하고 마지막에 전체 row 수와 쿼리실행에 걸린 시간을 표시</p>
+</li>
+<li>쿼리 작성 중 <code>₩c</code>를 사용하면 중간에 취소 가능</li>
+</ul>
+<h3 id="명령어"><a href="#명령어" class="headerlink" title="명령어"></a>명령어</h3><ul>
+<li><code>SHOW statement;</code><ul>
+<li><code>DBMS</code>에 존재하는 데이터베이스 확인</li>
+</ul>
+</li>
+<li><code>use mydb;</code><ul>
+<li>사용중인 데이터베이스 전환 <ul>
+<li>데이터베이스를 전환하려면, 이미 데이터베이스가 존재</li>
+<li>현재 접속 중인 계정이 해당 데이터베이스를 사용할 수 있는 권한이 있어야 함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="DDL-create-drop"><a href="#DDL-create-drop" class="headerlink" title="DDL(create, drop)"></a><code>DDL</code>(<code>create</code>, <code>drop</code>)</h3><h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p><img src="https://cphinf.pstatic.net/mooc/20180131_276/1517366013781n0BtX_PNG/2_8_1_%28table%29_.PNG" alt=""></p>
+<ul>
+<li><code>table</code><ul>
+<li><code>RDBMS</code>의 기본적 저장구조 한 개 이상의 <code>column</code>과 0개 이상의 <code>row</code>로 구성</li>
+</ul>
+</li>
+<li><code>Column</code><ul>
+<li>테이블 상에서의 단일 종류의 데이터</li>
+<li>특정 데이터 타입 및 크기를 지님</li>
+</ul>
+</li>
+<li><code>Row</code><ul>
+<li><code>Column</code>들의 값의 조합</li>
+<li>레코드</li>
+<li>기본키(<code>PK</code>)에 의해 구분<ul>
+<li>기본키는 중복을 허용하지 않으며 없어서는 안 된다</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Field</code><ul>
+<li><code>Row</code>와 <code>Column</code>의 교차점으로 <code>Field</code>는 데이터를 포함할 수 있고 없을 때는 NULL 값</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>Empty set</code> : DB에 아직 테이블이 생성되지 않았음</p>
+<p><code>desc 테이블명;</code> : 테이블의 구조 확인</p>
+</blockquote>
+<h4 id="데이터-타입"><a href="#데이터-타입" class="headerlink" title="데이터 타입"></a>데이터 타입</h4><p><img src="https://cphinf.pstatic.net/mooc/20180131_89/1517386938999sf3SM_PNG/2_8_3_MySQL__-1.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180131_46/1517386952668I67cM_PNG/2_8_3_MySQL__-2.PNG" alt=""></p>
+<blockquote>
+<p><code>AUTO_INCREMENT</code> : 자동으로 1씩 증가하는 번호</p>
+</blockquote>
+<h3 id="DML-select-insert-update-delete"><a href="#DML-select-insert-update-delete" class="headerlink" title="DML(select, insert, update, delete)"></a><code>DML</code>(<code>select</code>, <code>insert</code>, <code>update</code>, <code>delete</code>)</h3><p><img src="https://cphinf.pstatic.net/mooc/20180131_187/1517374752273Ba8n9_PNG/2_8_2_select__.PNG" alt=""></p>
+<blockquote>
+<p><strong>오라클의 <code>dual</code></strong> 테이블</p>
+<p>오라클에서는 반드시 테이블이 있어야 한다</p>
+<p>하지만 테이블에 없는 데이터를 임시로 꺼낼 수도 있기 때문에, 해당 테이블을 <strong>임시 테이블</strong>로 지정해 값을 출력할 수 있다</p>
+</blockquote>
+<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><p><img src="https://cphinf.pstatic.net/mooc/20180227_23/1519695801630edbfc_PNG/3.PNG" alt=""></p>
+<ul>
+<li><code>column in (blah, blah)</code></li>
+<li><code>column like &#39;%a_&#39;</code></li>
+</ul>
+<h4 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h4><h5 id="단일함수"><a href="#단일함수" class="headerlink" title="단일함수"></a>단일함수</h5><ul>
+<li><p><code>concat</code> : 문자열 결합 함수</p>
+<ul>
+<li><code>select concat(column, &#39;blah&#39;, column) from tablename</code></li>
+</ul>
+</li>
+<li><p><code>UCASE</code>, <code>UPPER</code> : 대문자로 변경</p>
+</li>
+<li><p><code>LCASE</code>, <code>LOWER</code> : 소문자로 변경</p>
+</li>
+<li><p><code>substring(&#39;blahblah&#39;, n, n)</code></p>
+<ul>
+<li>DB는 <code>0</code>이 아닌 <code>1</code>부터 시작</li>
+</ul>
+</li>
+<li><p><code>LPAD</code>, <code>RPAD</code> : 원하는 문자열로 채움</p>
+<ul>
+<li><code>LPAD(&#39;hi&#39;,5,&#39;?&#39;), RPAD(&#39;joe&#39;,7,&#39;*&#39;)</code><ul>
+<li><code>???hi</code>, <code>joe****</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>TRIM</code>, <code>LTRIM</code>, <code>RTRIM</code> : 공백 삭제</p>
+</li>
+<li><p><code>ABS(x)</code> : 절대값 구하기</p>
+</li>
+<li><p><code>MOD(n,m)</code> : 나머지 구하기</p>
+</li>
+<li><p><code>FLOOR(x)</code> : <code>x</code>보다 크지 않은 가장 큰 정수를 반환</p>
+</li>
+<li><p><code>CEILING(x)</code>: <code>x</code>보다 작지 않은 가장 작은 정수를 반환</p>
+</li>
+<li><p><code>ROUND(x)</code> : <code>x</code>에 가장 근접한 정수를 반환</p>
+</li>
+<li><p><code>POW(x,y)</code>, <code>POWER(x,y)</code> : <code>x</code>의 <code>y</code> 제곱 승을 반환</p>
+</li>
+<li><p><code>GREATEST(x,y,...)</code> : 가장 큰 값을 반환</p>
+</li>
+<li><p><code>LEAST(x,y,...)</code> : 가장 작은 값을 반환</p>
+</li>
+<li><p><code>CURDATE()</code>, <code>CURRENT_DATE</code> : 오늘 날짜를<code>YYYY-MM-DD</code>나 <code>YYYYMMDD</code> 형식으로 반환</p>
+</li>
+<li><p><code>CURTIME()</code>, <code>CURRENT_TIME</code> : 현재 시각을 <code>HH:MM:SS</code>나 <code>HHMMSS</code> 형식으로 반환</p>
+</li>
+<li><p><code>NOW()</code>, <code>SYSDATE()</code> , <code>CURRENT_TIMESTAMP</code> : 오늘 현시각을<code>YYYY-MM-DD HH:MM:SS</code>나 <code>YYYYMMDDHHMMSS</code> 형식으로 반환</p>
+</li>
+<li><p><code>DATE_FORMAT(date,format)</code> : 입력된 <code>date</code>를 <code>format 형식</code>으로 반환합니다.</p>
+</li>
+<li><p><code>PERIOD_DIFF(p1,p2)</code> : <code>YYMM</code>이나 <code>YYYYMM</code>으로 표기되는 <code>p1</code>과 <code>p2</code>의 차이 개월을 반환</p>
+</li>
+<li><p><code>cast</code> 형 변환 (<code>mysql</code> 4.2 버전부터 지원)</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180227_7/1519696097137n1dmo_PNG/4.png" alt=""></p>
+</li>
+</ul>
+<h5 id="그룹함수"><a href="#그룹함수" class="headerlink" title="그룹함수"></a>그룹함수</h5><p>여러 개의 값을 가지고 결과 값 하나만 출력</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180131_87/151738015308653Cmb_PNG/2_8_2_select_%28%29.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180227_237/15196955203980m2pE_PNG/2.PNG" alt=""></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/">부스트코스</a>, <a class="article-category-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/20/boostcouse-jsp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JSP와 JSTL &amp; EL</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DB-연결-웹-앱-MYSQL"><span class="nav-number">1.</span> <span class="nav-text">DB 연결 웹 앱 - MYSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DB"><span class="nav-number">1.1.</span> <span class="nav-text">DB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#특성"><span class="nav-number">1.1.1.</span> <span class="nav-text">특성</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS"><span class="nav-number">1.2.</span> <span class="nav-text">DBMS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#장점"><span class="nav-number">1.2.1.</span> <span class="nav-text">장점</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#단점"><span class="nav-number">1.2.2.</span> <span class="nav-text">단점</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Structured-Query-Language"><span class="nav-number">1.3.</span> <span class="nav-text">SQL(Structured Query Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DB-생성"><span class="nav-number">1.3.1.</span> <span class="nav-text">DB 생성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#사용자-생성-및-권한-할당"><span class="nav-number">1.3.2.</span> <span class="nav-text">사용자 생성 및 권한 할당</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#접속"><span class="nav-number">1.3.3.</span> <span class="nav-text">접속</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#특징"><span class="nav-number">1.3.4.</span> <span class="nav-text">특징</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#명령어"><span class="nav-number">1.3.5.</span> <span class="nav-text">명령어</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDL-create-drop"><span class="nav-number">1.3.6.</span> <span class="nav-text">DDL(create, drop)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#table"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#데이터-타입"><span class="nav-number">1.3.6.2.</span> <span class="nav-text">데이터 타입</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DML-select-insert-update-delete"><span class="nav-number">1.3.7.</span> <span class="nav-text">DML(select, insert, update, delete)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#where"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">where</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#함수"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">함수</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#단일함수"><span class="nav-number">1.3.7.2.1.</span> <span class="nav-text">단일함수</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#그룹함수"><span class="nav-number">1.3.7.2.2.</span> <span class="nav-text">그룹함수</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
