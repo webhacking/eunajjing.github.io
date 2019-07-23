@@ -18,7 +18,11 @@
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180723_93/1532327705849hiuxX_PNG/_.PNG">
 <meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180201_49/1517475141729UGWfv_PNG/2_11_1_JDBC_.PNG">
-<meta property="og:updated_time" content="2019-07-23T10:24:19.389Z">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180206_109/1517904573515UkVsl_PNG/2_11_2_webapi.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180206_273/1517904784161eGNFk_PNG/2_11_1_1.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180206_113/1517904803278oyxuH_PNG/2_11_1_2.PNG">
+<meta property="og:image" content="https://cphinf.pstatic.net/mooc/20180206_194/1517904834300fxqr9_PNG/2_11_1_3.PNG">
+<meta property="og:updated_time" content="2019-07-23T11:49:28.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="maven&#x2F;jdbc">
 <meta name="twitter:description" content="maven  편리한 의존성 라이브러리 관리를 돕는 도구 pom.xml이라는 파일이 생긴다   CoC(Convention over Configuration)  일종의 관습 프로그램의 소스파일은 어떤 위치 소스가 컴파일된 파일들은 어떤 위치 etc     12345678910111213141516171819&amp;lt;project xmlns=&quot;http://mave">
@@ -282,6 +286,100 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rs.close();</span><br><span class="line">stmt.close();</span><br><span class="line">con.close();</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h1 id="Rest-API"><a href="#Rest-API" class="headerlink" title="Rest API"></a>Rest API</h1><ul>
+<li><p>REpresentational State Transfer</p>
+</li>
+<li><p>REST 형식의 API</p>
+<ul>
+<li>핵심 컨텐츠 및 기능을 외부 사이트에서 활용할 수 있도록 제공되는 인터페이스</li>
+</ul>
+</li>
+<li>매시업(<code>Mashup</code>)<ul>
+<li>서비스 업체들이 다양한 <code>REST API</code>를 제공함으로써, 클라이언트는 이러한 <code>REST API</code>들을 조합한 어플리케이션을 만듦</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><p>Application Programming Interface</p>
+</li>
+<li><p>주로 <strong>파일 제어</strong>, <strong>창 제어</strong>, <strong>화상 처리</strong>, <strong>문자 제어</strong> 등을 위한 인터페이스를 제공</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="REST의-규칙"><a href="#REST의-규칙" class="headerlink" title="REST의 규칙"></a>REST의 규칙</h2><ul>
+<li><code>client-server</code></li>
+<li><code>stateless</code></li>
+<li><code>cache</code></li>
+<li><code>code-on-demand</code> (<code>optional</code>)</li>
+<li><code>layered system</code></li>
+<li><code>uniform interface</code></li>
+</ul>
+<p>HTTP 프로토콜을 사용한다면 <code>client-server</code>, <code>stateless</code>, <code>cache</code>, <code>lared system</code>, <code>code-on-demand</code> 등에 대해서는 모두 쉽게 구현 가능</p>
+<p><strong>문제는 <code>uniform interface</code></strong></p>
+<h3 id="uniform-interface"><a href="#uniform-interface" class="headerlink" title="uniform interface"></a><code>uniform interface</code></h3><ul>
+<li>리소스가 <code>URI</code>로 식별</li>
+<li>리소스를 생성,수정,추가하고자 할 때 <code>HTTP</code> 메시지에 표현을 해서 전송</li>
+<li><strong>메시지는 스스로 설명 (<code>Self-descriptive message</code>)</strong></li>
+<li><strong>애플리케이션의 상태는 <code>Hyperlink</code>를 이용해 전이(<code>HATEOAS</code>)</strong></li>
+</ul>
+<blockquote>
+<p>두 개가 가장 어렵다</p>
+</blockquote>
+<h2 id="Web-API-혹은-HTTP-API"><a href="#Web-API-혹은-HTTP-API" class="headerlink" title="Web API(혹은 HTTP API)"></a>Web API(혹은 HTTP API)</h2><p>REST의 <code>uniform interface</code>를 지원하는 것은 쉽지 않기 때문에, 많은 서비스가 <code>REST</code>에서 바라는 것을 모두 지원하지 않고 API를 만든다.</p>
+<p><strong>REST의 모든 것을 제공하지 않고 Web API 혹은 HTTP API라고 부르는 경우</strong>가 있다.</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180206_109/1517904573515UkVsl_PNG/2_11_2_webapi.PNG" alt=""></p>
+<ul>
+<li><code>URI</code>는 정보의 자원을 표현</li>
+<li>자원에 대한 행위는 <code>HTTP Method</code>(<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>)로 표현<ul>
+<li><code>GET</code> <code>/members</code><ul>
+<li>위의 표현은 맴버의 모든 정보를 달라는 요청</li>
+</ul>
+</li>
+<li><code>DELETE</code> <code>/members/1</code><ul>
+<li><code>HTTP Method</code> 중의 하나인 <code>DELETE</code>를 이용하여 삭제를 표현</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>슬래시 구분자(<code>/</code>)는 계층을 나타낼 때 사용<ul>
+<li>하이픈(<code>-</code>)은 URI가독성을 높일 때 사용</li>
+<li>언더바(<code>_</code>)는 사용하지 않는다</li>
+<li>URI경로는 소문자만 사용</li>
+<li><code>RFC 3986</code>(<code>URI</code> 문법 형식)은 <code>URI</code> 스키마와 호스트를 제외하고는 대소문자를 구별</li>
+<li>파일 확장자는 <code>URI</code>에 미포함</li>
+<li><code>Accept Header</code>를 사용</li>
+</ul>
+</li>
+</ul>
+<h3 id="상태-코드"><a href="#상태-코드" class="headerlink" title="상태 코드"></a>상태 코드</h3><p><img src="https://cphinf.pstatic.net/mooc/20180206_273/1517904784161eGNFk_PNG/2_11_1_1.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180206_113/1517904803278oyxuH_PNG/2_11_1_2.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180206_194/1517904834300fxqr9_PNG/2_11_1_3.PNG" alt=""></p>
+<h3 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h3><h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a><code>pom.xml</code></h4><ul>
+<li><code>jdbc</code> 라이브러리 추가</li>
+<li><code>json</code> 라이브러리 추가</li>
+<li>서블릿 <code>api</code> 라이브러리 추가</li>
+<li><code>jstl</code> 라이브러리 추가</li>
+</ul>
+<blockquote>
+<p>업데이트 프로젝트</p>
+</blockquote>
+<h4 id="Navigator-gt-settings-gt-org-eclipse-core-xml"><a href="#Navigator-gt-settings-gt-org-eclipse-core-xml" class="headerlink" title="Navigator &gt; .settings &gt; org.eclipse... core.xml"></a><code>Navigator</code> &gt; <code>.settings</code> &gt; <code>org.eclipse... core.xml</code></h4><p><code>version</code>을 3.1로 바꿔줄 것</p>
+<blockquote>
+<p>이클립스 재시작</p>
+</blockquote>
+<h4 id="web-xml-1"><a href="#web-xml-1" class="headerlink" title="web.xml"></a><code>web.xml</code></h4><ul>
+<li><code>&lt;failOnMissingWebXml&gt;</code>을 <code>false</code>로 바꿔준다<ul>
+<li>일반적으로 웹 어플리케이션 첫 시작 시 <code>web.xml</code>을 찾기 때문에, 이를 찾지 않을 것을 명기</li>
+</ul>
+</li>
+</ul>
+<h4 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a><code>servlet</code></h4><ul>
+<li><code>response.setContentType</code>에 <code>application/json</code>을 인자로 넣어준다</li>
+<li>해당 요청에 <code>json</code>으로 응답하겠다는 뜻</li>
+</ul>
+<h5 id="ObjectMapper"><a href="#ObjectMapper" class="headerlink" title="ObjectMapper"></a><code>ObjectMapper</code></h5><p><code>json</code> 문자열로 바꾸거나, <code>json</code> 문자열을 객체로 바꾸는 역할 수행</p>
+<h5 id="writeValueAsString"><a href="#writeValueAsString" class="headerlink" title="writeValueAsString"></a><code>writeValueAsString</code></h5><p>파라미터로 <code>list</code>를 넣으면 리스트가 <code>json</code>으로 바뀌어 리턴됨</p>
 
       
     </div>
@@ -316,7 +414,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven"><span class="nav-number">1.</span> <span class="nav-text">maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSTL라이브러리"><span class="nav-number">1.1.</span> <span class="nav-text">JSTL라이브러리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-xml"><span class="nav-number">1.2.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-org-eclipse-wst-common-project-facet-core-xml"><span class="nav-number">1.3.</span> <span class="nav-text">.settings/org.eclipse.wst.common.project.facet.core.xml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#웹-어플리케이션-초기화"><span class="nav-number">2.</span> <span class="nav-text">웹 어플리케이션 초기화</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC"><span class="nav-number">3.</span> <span class="nav-text">JDBC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#환경-구성"><span class="nav-number">3.1.</span> <span class="nav-text">환경 구성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC를-이용한-프로그래밍-방법"><span class="nav-number">3.2.</span> <span class="nav-text">JDBC를 이용한 프로그래밍 방법</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven"><span class="nav-number">1.</span> <span class="nav-text">maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSTL라이브러리"><span class="nav-number">1.1.</span> <span class="nav-text">JSTL라이브러리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-xml"><span class="nav-number">1.2.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-org-eclipse-wst-common-project-facet-core-xml"><span class="nav-number">1.3.</span> <span class="nav-text">.settings/org.eclipse.wst.common.project.facet.core.xml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#웹-어플리케이션-초기화"><span class="nav-number">2.</span> <span class="nav-text">웹 어플리케이션 초기화</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC"><span class="nav-number">3.</span> <span class="nav-text">JDBC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#환경-구성"><span class="nav-number">3.1.</span> <span class="nav-text">환경 구성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC를-이용한-프로그래밍-방법"><span class="nav-number">3.2.</span> <span class="nav-text">JDBC를 이용한 프로그래밍 방법</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rest-API"><span class="nav-number">4.</span> <span class="nav-text">Rest API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">4.1.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REST의-규칙"><span class="nav-number">4.2.</span> <span class="nav-text">REST의 규칙</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-interface"><span class="nav-number">4.2.1.</span> <span class="nav-text">uniform interface</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-API-혹은-HTTP-API"><span class="nav-number">4.3.</span> <span class="nav-text">Web API(혹은 HTTP API)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#상태-코드"><span class="nav-number">4.3.1.</span> <span class="nav-text">상태 코드</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#실습"><span class="nav-number">4.3.2.</span> <span class="nav-text">실습</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pom-xml"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Navigator-gt-settings-gt-org-eclipse-core-xml"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">Navigator &gt; .settings &gt; org.eclipse... core.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-xml-1"><span class="nav-number">4.3.2.3.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#servlet"><span class="nav-number">4.3.2.4.</span> <span class="nav-text">servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ObjectMapper"><span class="nav-number">4.3.2.4.1.</span> <span class="nav-text">ObjectMapper</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#writeValueAsString"><span class="nav-number">4.3.2.4.2.</span> <span class="nav-text">writeValueAsString</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
     
     </div>
   </aside>

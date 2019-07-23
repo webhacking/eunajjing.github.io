@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-css-flex" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-createRef" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/05/07/css-flex/">flex 게임</a>
+      <a class="article-title" href="/2019/05/07/createRef/">React.createRef()</a>
     </h1>
   
 
@@ -120,26 +120,37 @@
     
     <div class="article-meta">
       
-	<a href="/2019/05/07/css-flex/" class="article-date">
+	<a href="/2019/05/07/createRef/" class="article-date">
 	  <time datetime="2019-05-07T02:29:18.000Z" itemprop="datePublished">5월 7, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/CSS/">CSS</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="flexboxfroggy"><a href="#flexboxfroggy" class="headerlink" title="flexboxfroggy"></a>flexboxfroggy</h1><p>또 어디서 주웠는진 모르겠는데 <a href="http://flexboxfroggy.com/#ko" target="_blank" rel="noopener">이 게임</a>을 알게 되어 미루고 미루다가 여행 짐 싸면서 심심할 적마다 한 단계씩 플레이했다. 나름 재밌긴 한데 무슨 속성에 어떤 값이 있는지 좀 헷갈려서 한 번 정리하는 게 좋을 것 같다.</p>
-<p><img src="/images/flexboxfroggy.png" alt="인증샷"></p>
+        <h1 id="React-createRef"><a href="#React-createRef" class="headerlink" title="React.createRef()"></a><code>React.createRef()</code></h1><blockquote>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><p>DOM에 접근해 직접 다루어야 할 때 사용한다.</p>
+</li>
+<li><p>컴포넌트 내부에서만 작동하기 때문에 전역적이지 않다</p>
+</li>
+</ul>
+</blockquote>
+<p>기존의 <code>ref</code>생성 신텍스는</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref=&#123;(ref) =&gt; &#123;<span class="keyword">this</span>.refname = ref&#125;&#125; /&gt;</span><br><span class="line"><span class="comment">// 이제 이 input 요소를 제어할 때는</span></span><br><span class="line"><span class="comment">// this.refname.블라블라();</span></span><br><span class="line"><span class="comment">// 형식으로 제어한다.</span></span><br></pre></td></tr></table></figure>
+<p><strong>그런데</strong> <code>React.createRef()</code>을 사용할 경우</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReactTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	refname = React.createRef();</span><br><span class="line">	<span class="comment">// 위에서 선언해주고</span></span><br><span class="line">	</span><br><span class="line">	render() &#123;</span><br><span class="line">		&lt;input ref=&#123;<span class="keyword">this</span>.refname&#125;/&gt;</span><br><span class="line">		<span class="comment">// 이렇게 쓴다!</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	만약 포커싱 같은 것을 주고 싶으면</span><br><span class="line">	<span class="keyword">this</span>.refname.currnet.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>currnet가 핵심</strong></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/CSS/">CSS</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
 
       
       
