@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-boostcouse-webui" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-boostcouse-jsp" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/19/boostcouse-webui/">WEB UI 개발</a>
+      <a class="article-title" href="/2019/07/20/boostcouse-jsp/">JSP와 JSTL &amp; EL</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/07/19/boostcouse-webui/" class="article-date">
-	  <time datetime="2019-07-19T07:05:18.000Z" itemprop="datePublished">7월 19, 2019</time>
+	<a href="/2019/07/20/boostcouse-jsp/" class="article-date">
+	  <time datetime="2019-07-20T14:11:18.000Z" itemprop="datePublished">7월 20, 2019</time>
 	</a>
 
       
@@ -131,105 +131,203 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="WEB-UI-개발"><a href="#WEB-UI-개발" class="headerlink" title="WEB UI 개발"></a>WEB UI 개발</h1><h2 id="Window-객체"><a href="#Window-객체" class="headerlink" title="Window 객체"></a>Window 객체</h2><ul>
-<li>디폴트의 개념으로 생략이 가능</li>
+        <h1 id="JSP와-JSTL-amp-EL"><a href="#JSP와-JSTL-amp-EL" class="headerlink" title="JSP와 JSTL &amp; EL"></a>JSP와 JSTL &amp; EL</h1><h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><ul>
+<li>모든 <code>JSP</code>는 서블릿으로 바뀌어서 동작</li>
 </ul>
-<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a><code>setTimeout</code></h3><ul>
-<li>인자로 <code>callback</code> 함수를 받는다</li>
-<li>인자로 들어온 <code>callback</code> 함수는 비동기로 실행되기 때문에, <strong>동기적인 실행이 끝난 뒤 실행</strong></li>
+<h3 id="지시자"><a href="#지시자" class="headerlink" title="지시자"></a>지시자</h3><ul>
+<li>지시자를 듣는 것은 <code>JSP</code>를 실행하는 <code>WAS</code></li>
+<li>지시자 안에 쓴 것들은 모두 서블릿의 <code>service()</code>에 들어와 변경이 된다<ul>
+<li>응답에 포함되는 건 <code>Service()</code> 뿐이며, 매번 호출되기 때문 </li>
+<li>단, <strong><code>&lt;%! %&gt;</code> 선언식은 예외로 <code>Service()</code> 바깥에 코드들이 만들어진다</strong></li>
 </ul>
-<h2 id="DOM과-querySelector"><a href="#DOM과-querySelector" class="headerlink" title="DOM과 querySelector"></a><code>DOM</code>과 <code>querySelector</code></h2><h3 id="DOM-Document-Object-Model"><a href="#DOM-Document-Object-Model" class="headerlink" title="DOM(Document Object Model)"></a><code>DOM</code>(Document Object Model)</h3><p><img src="https://cphinf.pstatic.net/mooc/20180126_280/1516956194218XFPk5_PNG/2-2-2_Dom_tree.png" alt=""></p>
+</li>
+</ul>
+<h4 id="지시자의-종류"><a href="#지시자의-종류" class="headerlink" title="지시자의 종류"></a>지시자의 종류</h4><ul>
+<li><p><code>&lt;&amp;@ &amp;&gt;</code></p>
 <ul>
-<li>브라우저에서는 <code>HTML</code>을 <code>DOM</code>이라는 객체형태의 모델(<code>DOM Tree</code>)로 저장</li>
-<li><code>DOM Tree</code>를 탐색하기 위해 <code>JavaScript</code>로 탐색알고리즘을 구현하는 것은 비효율적<ul>
-<li>브라우저에서는 <code>DOM</code>이라는 개념을 통해 다양한 <code>DOM API</code> 제공</li>
+<li>페이지 지시자<ul>
+<li>서블릿에서 <code>response</code>  객체에 <code>contentType</code>, <code>charset</code>을 지정했던 것과 같다</li>
 </ul>
 </li>
 </ul>
-<h4 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById()"></a><code>getElementById()</code></h4><ul>
-<li>특정 <code>Element</code>가 반환되어 특정 정보들을 뽑아낼 수 있다<ul>
-<li><code>id</code></li>
-<li><code>className</code></li>
-<li><code>style</code></li>
-</ul>
 </li>
-<li>특정 <code>Element</code>가 반환되어 특정 정보들을 대입할 수 있다</li>
-</ul>
-<h4 id="Element-querySelector"><a href="#Element-querySelector" class="headerlink" title="Element.querySelector()"></a><code>Element.querySelector()</code></h4><ul>
-<li><code>CSS Selector</code> 문법을 활용해 <code>DOM</code>에 접근</li>
-<li>최초로 발견한 <code>node</code>만을 반환</li>
-</ul>
-<h5 id="Element-querySelectorAll"><a href="#Element-querySelectorAll" class="headerlink" title="Element.querySelectorAll()"></a><code>Element.querySelectorAll()</code></h5><ul>
-<li>배열 반환</li>
-</ul>
-<h2 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h2><h3 id="이벤트-등록"><a href="#이벤트-등록" class="headerlink" title="이벤트 등록"></a>이벤트 등록</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">"#id"</span>);</span><br><span class="line">element.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// e는 이벤트 객체</span></span><br><span class="line">	<span class="comment">// 이벤트 핸들러 / 이벤트 리스너 기술</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="이벤트-객체"><a href="#이벤트-객체" class="headerlink" title="이벤트 객체"></a>이벤트 객체</h3><ul>
-<li><p><code>브라우저</code>는 <code>이벤트 리스너</code>를 호출하면</p>
-</li>
-<li><p>사용자로부터 어떤 이벤트가 발생했는지에 대한 정보를 담은 <code>이벤트 객체</code>를 생성해서 <code>리스너 함수</code>에 전달</p>
-</li>
-</ul>
-<h4 id="event-target"><a href="#event-target" class="headerlink" title="event.target"></a><code>event.target</code></h4><ul>
-<li>이벤트가 발생한 <code>element</code>를 가리킴</li>
-<li><code>DOM Node</code>이므로,  매한가지로 특정 정보를 뽑아내거나 추가할 수 있다</li>
-</ul>
-<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
-<li>XMLHTTPRequest 통신</li>
-<li><strong>비동기 로직</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">const</span> oReq = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"> oReq.addEventListener(<span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.responseText);</span><br><span class="line">   <span class="comment">// this는 oReq</span></span><br><span class="line"> &#125;);    </span><br><span class="line"> oReq.open(<span class="string">"GET"</span>, <span class="string">"http://www.example.org/getData?data=data"</span>);<span class="comment">//parameter를 붙여서 보낼수있음</span></span><br><span class="line"> oReq.send();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="open"><a href="#open" class="headerlink" title="open()"></a><code>open()</code></h3><ul>
-<li>요청의 준비</li>
-</ul>
-<h3 id="send"><a href="#send" class="headerlink" title="send()"></a><code>send()</code></h3><ul>
-<li>서버로 발송</li>
-</ul>
-<h3 id="load"><a href="#load" class="headerlink" title="load()"></a><code>load()</code></h3><ul>
-<li>응답이 오면 발생하는 이벤트</li>
-<li>콜백 함수 실행<ul>
-<li>이 때의 <code>ajax</code>는 반환되어 콜스택에서 사라짐</li>
-</ul>
-</li>
-</ul>
-<h2 id="디버깅"><a href="#디버깅" class="headerlink" title="디버깅"></a>디버깅</h2><ul>
-<li><code>Pause</code> OR <code>Continue</code><ul>
-<li>평소에는 <code>Pause</code>, 브렉포인트가 잡힌 상태에선 <code>Continue</code></li>
-<li>다른 브레이크포인트가 잡힐 때까지 코드를 진행</li>
-</ul>
-</li>
-<li><code>Step over next function call</code> <ul>
-<li>스텝 오버는 코드 라인을 한 스탭 진행하는데 현재 실행 라인에 함수 실행 코드가 있다면 함수는 실행하는데 함수 안의 코드로는 진입하지 않는다</li>
-<li>즉 라인의 함수를 실행만 한다</li>
-</ul>
-</li>
-<li><code>Step into next function call</code><ul>
-<li>스텝 인투는 스텝 오버와 다르게 현재 실행 라인의 코드에 함수가 있다면 함수 안의 첫 번째 코드로 진입해 들어가 다시 하나씩 라인별로 코드를 실행</li>
-</ul>
-</li>
-<li><code>Step out of current function</code><ul>
-<li>스텝 인투로 들어온 함수를 끝까지 실행하고 밖으로 빠져나와 해당 함수를 실행한 함수로 돌아간다</li>
-</ul>
-</li>
-<li><code>Active</code> / <code>Deactive breakpoint</code> <ul>
-<li>브레이크포인트를 끄거나 켬</li>
-</ul>
-</li>
-<li><code>Pause on exception</code><ul>
-<li>예외가 발생하면 해당 위치에 브레이크포인트를 잡아준다</li>
-</ul>
-</li>
-</ul>
-<h3 id="디버깅하기"><a href="#디버깅하기" class="headerlink" title="디버깅하기"></a>디버깅하기</h3><ul>
-<li>코드 일정 부분에 브레이크 포인트를 잡는다</li>
-<li><p>웹 어플리케이션을 동작한다</p>
+<li><p><code>&lt;% %&gt;</code></p>
 <ul>
-<li>화면에 <code>Paused in debugger</code>가 출력된다</li>
-<li>개발자도구 우측에는 어떤 포인트에서 멈춰졌는지 표기된다</li>
+<li><code>Scriptlet</code></li>
+<li>자바 코드 입력<ul>
+<li>선언된 변수는 지역 변수</li>
 </ul>
 </li>
-<li><p>만약 특정 라인까지 실행을 원한다면 <code>script execution</code> 버튼 클릭</p>
+<li>서블릿으로 바뀔 적에 자바 코드로 변환된다<ul>
+<li>주석을 사용한다면 이 또한 서블릿으로 들어간다</li>
+</ul>
 </li>
 </ul>
+</li>
+<li><p><code>&lt;%= %&gt;</code></p>
+<ul>
+<li>표현식</li>
+<li>서블릿으로 바뀔 적에 <code>out.print()</code>으로 바뀐다</li>
+</ul>
+<blockquote>
+<p><strong><code>out.print()</code>와 <code>System.out.print()</code>의 차이</strong></p>
+<ul>
+<li><code>out.print()</code>는 <code>response</code>한테 출력하는 것</li>
+<li><code>System.out.print()</code> 는 콘솔에 출력하는 것</li>
+<li><strong>즉 출력하는 곳이 다름</strong></li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>&lt;%! %&gt;</code></p>
+<ul>
+<li>선언식</li>
+<li>보통 자바의 메서드나 전역변수 쓰고자 할 때 사용</li>
+</ul>
+</li>
+<li><p><code>&lt;%-- --%&gt;</code></p>
+<ul>
+<li>주석 </li>
+<li>서블릿으로 바뀌지 않으며 브라우저 상의 소스에서도 표시되지 않는다</li>
+<li>반면 <code>html</code> 주석은 서블릿으로 바뀌며, 브라우저 상에서도 표시</li>
+</ul>
+</li>
+</ul>
+<h3 id="라이프사이클"><a href="#라이프사이클" class="headerlink" title="라이프사이클"></a>라이프사이클</h3><h4 id="JSP의-실행순서"><a href="#JSP의-실행순서" class="headerlink" title="JSP의 실행순서"></a><code>JSP</code>의 실행순서</h4><ol>
+<li>브라우저가 웹서버에 <code>JSP</code>에 대한 <code>request</code> 정보를 전달</li>
+<li>브라우저가 요청한 <code>JSP</code>가 최초로 요청했을 경우만 <code>JSP</code>로 작성된 코드가 서블릿으로 코드로 변환(<code>java</code> 파일 생성)</li>
+<li>서블릿 코드를 컴파일해서 실행가능한 <code>bytecode</code>로 변환 (<code>class</code> 파일 생성)</li>
+<li>서블릿 클래스를 로딩하고 인스턴스를 생성</li>
+<li>서블릿이 실행되어 <code>request</code>을 처리하고 <code>response</code> 정보를 생성</li>
+</ol>
+<h3 id="내장-객체"><a href="#내장-객체" class="headerlink" title="내장 객체"></a>내장 객체</h3><ul>
+<li><code>_jspService()</code>에 삽입된 코드의 윗부분에 미리 선언된 객체들이 있는데, 해당 객체들은 jsp에서도 사용 가능</li>
+</ul>
+<h4 id="종류"><a href="#종류" class="headerlink" title="종류"></a>종류</h4><p><img src="https://cphinf.pstatic.net/mooc/20180130_74/1517275973733EL11k_PNG/2_3_4_jsp_.PNG" alt=""></p>
+<h2 id="EL-Expression-Language"><a href="#EL-Expression-Language" class="headerlink" title="EL(Expression Language)"></a>EL(Expression Language)</h2><p>값을 표현하는 데 사용되는 스크립트 언어로서 JSP의 기본 문법을 보완</p>
+<ul>
+<li><code>html</code>  태그 사이에서도 사용 가능</li>
+<li><code>JSTL</code> 사이에서도 사용 가능</li>
+</ul>
+<h3 id="기능"><a href="#기능" class="headerlink" title="기능"></a>기능</h3><ul>
+<li><code>JSP</code>의 스코프(<code>scope</code>)에 맞는 속성 사용</li>
+<li>집합 객체(ex.컬렉션)에 대한 접근 방법 제공</li>
+<li>수치 연산, 관계 연산, 논리 연산자 제공</li>
+<li>자바 클래스 메소드 호출 기능 제공</li>
+<li>표현언어만의 기본 객체 제공</li>
+</ul>
+<h3 id="기본-객체"><a href="#기본-객체" class="headerlink" title="기본 객체"></a>기본 객체</h3><p><img src="https://cphinf.pstatic.net/mooc/20180130_153/1517281495386qOuqH_PNG/2_6_1__.PNG" alt=""></p>
+<h3 id="표현방법"><a href="#표현방법" class="headerlink" title="표현방법"></a>표현방법</h3><p><img src="https://cphinf.pstatic.net/mooc/20180130_78/1517281954147RNccz_PNG/2_6_1__.PNG" alt=""></p>
+<h4 id="객체-사용-예"><a href="#객체-사용-예" class="headerlink" title="객체 사용 예"></a>객체 사용 예</h4><p><img src="https://cphinf.pstatic.net/mooc/20180130_68/1517282068498tAlQM_PNG/2_6_1____.PNG" alt=""></p>
+<h4 id="객체-접근-규칙"><a href="#객체-접근-규칙" class="headerlink" title="객체 접근 규칙"></a>객체 접근 규칙</h4><p><img src="https://cphinf.pstatic.net/mooc/20180130_27/1517286832617YwnDB_PNG/2_6_1_.PNG" alt=""></p>
+<ul>
+<li>표현 1이나 표현 2가 <code>null</code>이면 <code>null</code>을 반환</li>
+<li>표현1이 <code>Map</code>일 경우 표현2를 <code>key</code>로한 값을 반환</li>
+<li>표현1이 <code>List</code>나 <code>배열</code>이면 표현2가 정수일 경우 해당 정수 번째 <code>index</code>에 해당하는 값을 반환<ul>
+<li>만약 정수가 아닐 경우에는 오류</li>
+</ul>
+</li>
+<li>표현1이 객체일 경우는 표현2에 해당하는 <code>getter()</code>에 해당하는 메소드를 호출한 결과를 반환</li>
+</ul>
+<h3 id="데이터-타입"><a href="#데이터-타입" class="headerlink" title="데이터 타입"></a>데이터 타입</h3><ul>
+<li><code>boolean</code></li>
+<li><code>int</code></li>
+<li><code>double</code></li>
+<li><code>String</code><ul>
+<li>따옴표(<code>&#39;</code> 또는<code>&quot;</code> )로 둘러싼 문자열</li>
+<li>만약 작은 따옴표(<code>&#39;</code>)를 사용해서 표현할 경우 값에 포함된 작은 따옴표는 <code>\&#39;</code> 와 같이 <code>\</code> 기호와 함께 사용</li>
+</ul>
+</li>
+<li><code>\</code> 기호 자체는 <code>\\</code> 로 표시</li>
+<li><code>null</code></li>
+</ul>
+<h3 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h3><h4 id="우선순위"><a href="#우선순위" class="headerlink" title="우선순위"></a>우선순위</h4><ol>
+<li><code>[]</code> </li>
+<li><code>()</code></li>
+<li><code>-</code>, <code>not</code>, <code>!</code>, <code>empty</code></li>
+<li><code>*</code>,<code>/</code>, <code>div</code>, <code>%</code>, <code>mod</code></li>
+<li><code>+</code>, <code>-</code></li>
+<li><code>&lt;</code>,  <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>lt</code>, <code>gt</code>, <code>le</code>, <code>ge</code></li>
+<li><code>==</code>, <code>!=</code>, <code>eq</code>, <code>ne</code></li>
+<li><code>&amp;&amp;</code>, <code>and</code></li>
+<li><code>||</code>, <code>or</code></li>
+<li><code>? :</code></li>
+</ol>
+<h4 id="수치"><a href="#수치" class="headerlink" title="수치"></a>수치</h4><ul>
+<li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> or <code>div</code>, <code>%</code> or <code>mod</code></li>
+<li>객체와 수치 연산자를 사용할 경우 객체를 숫자 값으로 변환 후 연산자를 수행 <ul>
+<li><code>${&quot;10&quot;+1} → ${10+1}</code></li>
+</ul>
+</li>
+<li>숫자로 변환할 수 없는 객체와 수치 연산자를 함께 사용하면 에러</li>
+<li>수치 연산자에서 사용되는 객체가 null이면 0으로 처리<ul>
+<li><code>${null + 1} → ${0+1}</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="비교"><a href="#비교" class="headerlink" title="비교"></a>비교</h4><ul>
+<li><code>==</code> 또는 <code>eq</code></li>
+<li><code>!=</code> 또는 <code>ne</code></li>
+<li><code>&lt;</code> 또는 <code>lt</code></li>
+<li><code>&gt;</code> 또는 <code>gt</code></li>
+<li><code>&lt;=</code> 또는 <code>le</code></li>
+<li><code>&gt;=</code> 또는 <code>ge</code></li>
+<li>문자열 비교<ul>
+<li><code>${str == &#39;값&#39;}</code></li>
+<li><code>str.compareTo(&quot;값&quot;)</code></li>
+<li><code>== 0</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="논리"><a href="#논리" class="headerlink" title="논리"></a>논리</h4><ul>
+<li><code>&amp;&amp;</code> 또는 <code>and</code></li>
+<li><code>||</code> 또는 <code>or</code></li>
+<li><code>!</code> 또는 <code>not</code></li>
+</ul>
+<h4 id="empty-3항-연산자"><a href="#empty-3항-연산자" class="headerlink" title="empty, 3항 연산자"></a>empty, 3항 연산자</h4><p><img src="https://cphinf.pstatic.net/mooc/20180130_17/1517287228502gEf9g_PNG/2_6_1_empty_%2C__.PNG" alt=""></p>
+<h3 id="비활성화"><a href="#비활성화" class="headerlink" title="비활성화"></a>비활성화</h3><p>페이지 지시자에 <code>isELIgnored</code>를 <code>true</code>로 기재한다.</p>
+<p>서블릿 2.4 이상부터 기본 값은 <code>false</code>이다.</p>
+<p>2.3 이하 버전에서는 <code>EL</code> 자체가 무시된다</p>
+<p><code>&lt;%@ page isELIgnored = &quot;true&quot; %&gt;</code></p>
+<h2 id="JSTL-JSP-Standard-Tag-Library"><a href="#JSTL-JSP-Standard-Tag-Library" class="headerlink" title="JSTL(JSP Standard Tag Library)"></a>JSTL(JSP Standard Tag Library)</h2><p>SP 페이지에서 조건문 처리, 반복문 처리 등을 html tag형태로 작성할 수 있게 돕는다.</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180130_149/1517289583487Ac0YJ_PNG/2_6_2_jstl.PNG" alt=""></p>
+<h3 id="사용법"><a href="#사용법" class="headerlink" title="사용법"></a>사용법</h3><ul>
+<li><a href="http://tomcat.apache.org/download-taglibs.cgi" target="_blank" rel="noopener">다운로드 링크</a><ul>
+<li><code>impl.jar</code></li>
+<li><code>spec.jar</code></li>
+<li><code>jstlel.jar</code></li>
+</ul>
+</li>
+<li><code>WEB-INF/lib/</code> 폴더에 복사</li>
+<li><code>taglib</code> 지시자를 사용하여 <code>prefix</code> 지정<ul>
+<li><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cphinf.pstatic.net/mooc/20180130_273/1517290494334HrB7S_PNG/2_6_2_jstl___.PNG" alt=""></p>
+<h4 id="코어"><a href="#코어" class="headerlink" title="코어"></a>코어</h4><p><img src="https://cphinf.pstatic.net/mooc/20180130_226/1517290578353rKRbE_PNG/2_6_2_jstl_.PNG" alt=""></p>
+<h5 id="변수-지원"><a href="#변수-지원" class="headerlink" title="변수 지원"></a>변수 지원</h5><p><img src="https://cphinf.pstatic.net/mooc/20180226_240/1519633482313pWfP8_PNG/1.png" alt=""></p>
+<p><code>session.setAttribute(&quot;varName&quot;, &quot;someValue&quot;)</code></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180226_103/1519633640114VKW2d_PNG/2.png" alt=""></p>
+<h5 id="흐름제어"><a href="#흐름제어" class="headerlink" title="흐름제어"></a>흐름제어</h5><p><img src="https://cphinf.pstatic.net/mooc/20180226_83/1519633710402BlJ2W_PNG/3.png" alt=""></p>
+<ul>
+<li><code>test=&quot;조건&quot;</code><ul>
+<li>조건 부분에는 보통 <code>EL</code> 태그가 쓰인다</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cphinf.pstatic.net/mooc/20180130_4/1517292532220uxSVD_PNG/2_6_2__choose.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180130_218/1517292735244tmWgM_PNG/2_6_2__forEach.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180130_93/1517293018908uGgzT_PNG/2_6_2__import.PNG" alt=""></p>
+<ul>
+<li><code>praram</code>은 <code>url</code> 상에서 쿼리스트링으로 보낼 것들을 명시해주는데 사용. 옵션</li>
+<li>특정 페이지에 있는 모든 값을 읽어와 변수에 저장</li>
+</ul>
+<p><img src="https://cphinf.pstatic.net/mooc/20180130_170/1517293246119dFJ4F_PNG/2_6_2__redirect.PNG" alt=""></p>
+<h5 id="기타-태그"><a href="#기타-태그" class="headerlink" title="기타 태그"></a>기타 태그</h5><p><img src="https://cphinf.pstatic.net/mooc/20180130_55/1517293404340WP4J3_PNG/2_6_2__out.PNG" alt=""></p>
+<ul>
+<li><code>escapeXml</code>의 기본 값은 <code>true</code></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"fn"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/functions"</span>%&gt; </span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:set var=<span class="string">"t"</span> value=<span class="string">"&lt;script type='text/javascript'&gt;alert(1);&lt;/script&gt;"</span> /&gt;</span><br><span class="line">$&#123;t&#125;</span><br><span class="line">&lt;c:out value=<span class="string">"$&#123;t&#125;"</span> escapeXml=<span class="string">"true"</span> /&gt;</span><br><span class="line">&lt;!-- 이 경우 자바스크립트가 실행되지 않고, 자바스크립트가 문자열로 출력된다--&gt;</span><br><span class="line">&lt;c:out value=<span class="string">"$&#123;t&#125;"</span> escapeXml=<span class="string">"false"</span> /&gt;</span><br><span class="line">&lt;!-- 이 경우 자바스크립트가 실행되며, 자바스크립트가 문자열로 출력되지 않는다--&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -254,7 +352,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/113/">113</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/114/">114</a><a class="extend next" rel="next" href="/page/6/">Next</a>
   </nav>
 
 </section>
@@ -307,7 +405,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">97</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">97</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -348,6 +446,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/07/24/techyanolja/">Tech야, 놀자</a></h6>
+              <span>7월 24, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -409,18 +519,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/18/boostcouse-javascript/">javascript</a></h6>
-              <span>7월 18, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -431,7 +529,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

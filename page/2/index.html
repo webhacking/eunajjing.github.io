@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-boostcouse-bes" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-maven-jdbc-restful" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/22/boostcouse-bes/">redirect&amp;forward/Scope</a>
+      <a class="article-title" href="/2019/07/23/maven-jdbc-restful/">maven / jdbc / restfulAPI</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/07/22/boostcouse-bes/" class="article-date">
-	  <time datetime="2019-07-22T11:40:18.000Z" itemprop="datePublished">7월 22, 2019</time>
+	<a href="/2019/07/23/maven-jdbc-restful/" class="article-date">
+	  <time datetime="2019-07-23T10:24:18.000Z" itemprop="datePublished">7월 23, 2019</time>
 	</a>
 
       
@@ -131,115 +131,249 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="redirect-amp-forward"><a href="#redirect-amp-forward" class="headerlink" title="redirect &amp; forward"></a><code>redirect</code> &amp; <code>forward</code></h2><h3 id="redirect"><a href="#redirect" class="headerlink" title="redirect"></a><code>redirect</code></h3><p><img src="https://cphinf.pstatic.net/mooc/20180127_5/1517046342330PRbSX_PNG/2_4_1_redirect__.PNG" alt=""></p>
+        <h1 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h1><p><img src="https://cphinf.pstatic.net/mooc/20180723_93/1532327705849hiuxX_PNG/_.PNG" alt=""></p>
 <ul>
-<li><code>서버</code>가 <code>클라이언트</code>의 요청에 대해 <strong>특정 URL로 이동을 요청</strong>하는 것</li>
-<li><code>HTTP 프로토콜</code>로 정해진 규칙</li>
-<li>서버는 클라이언트에게 HTTP 상태코드 <code>302</code>로 응답<ul>
-<li>헤더 내 <code>Location</code> 값에 이동할 <code>URL</code> 을 추가</li>
-<li>클라이언트는 리다이렉션 응답을 받게 되면 헤더(<code>Location</code>)에 포함된 <code>URL</code>로 재요청<ul>
-<li><strong>클라이언트는 요청을 두 번 보내는 셈</strong><ul>
-<li><strong>이 때의 <code>request</code> 객체와 <code>response</code> 객체는 첫 요청과는 다른 객체</strong></li>
+<li>편리한 의존성 라이브러리 관리를 돕는 도구</li>
+<li><code>pom.xml</code>이라는 파일이 생긴다</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>이때 브라우저의 주소창은 새 <code>URL</code>로 바뀜</li>
-</ul>
-</li>
-<li><code>서블릿</code>이나 <code>JSP</code>는 리다이렉트하기 위해 <code>HttpServletResponse</code> 클래스의 <code>sendRedirect()</code> 메소드를 사용<ul>
-<li><code>sendRedirect()</code>의 인자로 리다이랙트할  <code>url</code> 을 넣는다</li>
-</ul>
-</li>
-</ul>
-<h3 id="forward"><a href="#forward" class="headerlink" title="forward"></a><code>forward</code></h3><p><img src="https://cphinf.pstatic.net/mooc/20180129_279/1517202070933x0x42_PNG/2_4_2_forward.png" alt=""></p>
+<blockquote>
+<p><strong>CoC(Convention over Configuration)</strong></p>
 <ul>
-<li><p><code>클라이언트</code>에서 <code>Servlet1</code>에게 요청을 보냄</p>
+<li>일종의 관습<ul>
+<li>프로그램의 소스파일은 어떤 위치</li>
+<li>소스가 컴파일된 파일들은 어떤 위치</li>
+<li>etc</li>
+</ul>
 </li>
-<li><p><code>Servlet1</code>은 요청을 처리한 후 결과를 <code>HttpServletRequest</code>에 저장</p>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>kr.or.connect<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>examples<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mysample<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>처리한 결과를 타 서블릿에서 사용하기 위해서는, 전달되는 객체에 저장해야 하기 때문</li>
-<li>최초 요청 받은 서블릿이 일정한 부분만 처리하여 타 서블릿에 넘겨준다</li>
+<li><code>&lt;project&gt;</code> : 최상위 루트 엘리먼트(<code>Root Element</code>)</li>
+<li><code>&lt;modelVersion&gt;</code> : <code>POM model</code> 버전</li>
+<li><code>&lt;groupId&gt;</code><ul>
+<li>프로젝트를 생성하는 조직의 고유 아이디를 결정</li>
+<li><em>일반적으로 도메인 이름을 거꾸로 적는다</em></li>
 </ul>
 </li>
-<li><p><code>HttpServletRequest</code>가 가지고 있는 <code>RequestDispatcher</code> 를 얻어낸다</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RequestDispatcher req_dispatcher = request.getRequestDispatcher(<span class="string">"/경로"</span>);</span><br></pre></td></tr></table></figure>
+<li><code>&lt;artifactId&gt;</code> <ul>
+<li>해당 프로젝트에 의하여 생성되는 <code>artifact</code>의 고유 아이디를 결정</li>
+<li><code>Maven</code>을 이용하여 <code>pom.xml</code>을 빌드할 경우 다음과 같은 규칙으로 <code>artifact</code>가 생성<ul>
+<li><strong><code>artifactid-version.packaging</code></strong></li>
+<li>위 예의 경우 빌드할 경우 <code>examples-1.0-SNAPSHOT.jar</code> 파일이 생성</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>packaging</code> <ul>
+<li>해당 프로젝트를 어떤 형태로 packaging 할 것인지 결정</li>
+<li><code>jar</code>, <code>war</code>, <code>ear</code> 등이 해당</li>
+</ul>
+</li>
+<li><code>version</code> <ul>
+<li>프로젝트의 현재 버전</li>
+<li>프로젝트가 개발 중일 때는 <code>SNAPSHOT</code>을 접미사로 사용</li>
+</ul>
+</li>
+<li><code>name</code> : 프로젝트의 이름</li>
+<li><code>url</code> : 프로젝트 사이트가 있다면 사이트 <code>URL</code>을 등록하는 것이 가능</li>
+</ul>
+<blockquote>
+<p>maven으로 프로젝트 생성 시 <code>WAS</code> 런타임 지정을 해줘야 함</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">&gt;    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">&gt;    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">&gt;    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">&gt;    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong><code>&lt;scope&gt;</code></strong></p>
 <ul>
-<li>포워드 경로는 반드시 <strong><code>/</code></strong>로 시작해야 한다</li>
-</ul>
-</li>
-<li><p><code>RequestDispatcher</code> 객체의 <code>forward()</code> 메서드에 <code>request</code>와 <code>response</code>를 인자로 넣어준다.</p>
+<li><p><code>compile</code></p>
 <ul>
-<li>즉, <code>request</code> 객체와 <code>response</code> 객체는 모든 서블릿에서 동일하다<ul>
-<li>클라이언트 단 <strong><code>url</code>이 바뀌지 않는다</strong></li>
+<li><p>컴파일 할 때 필요</p>
+</li>
+<li><p>테스트 및 런타임에도 클래스 패스에 포함</p>
+</li>
+<li>scope 을 설정하지 않는 경우 기본값</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><code>Servlet2</code>는 받은 <code>HttpServletRequest</code>와 <code>HttpServletResponse</code>를 이용하여 요청을 처리한 후 클라이언트에게 응답</p>
-</li>
-</ul>
-<h3 id="servlet-amp-jsp-연동"><a href="#servlet-amp-jsp-연동" class="headerlink" title="servlet &amp;jsp 연동"></a><code>servlet</code> &amp;<code>jsp</code> 연동</h3><p> <code>Servlet</code>에서 프로그램 로직이 수행되고, 결과를 <code>JSP</code>에게 포워딩하는 방법이 사용</p>
-<p><img src="https://cphinf.pstatic.net/mooc/20180129_201/1517203743283AcQbB_PNG/2_4_3_servlet_jsp.PNG" alt=""></p>
-<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a><code>Scope</code></h2><p><img src="https://cphinf.pstatic.net/mooc/20180129_297/1517205425406SvaC6_JPEG/2_5_1_scope_.jpg" alt=""></p>
-<h3 id="page-scope"><a href="#page-scope" class="headerlink" title="page scope"></a><code>page scope</code></h3><ul>
-<li><p>페이지 내에서 지역변수처럼 사용</p>
-</li>
-<li><p><code>PageContext</code> 추상 클래스를 사용</p>
-</li>
-<li><code>JSP</code>페이지에서 <code>pageContext</code>라는 내장 객체로 사용 가능</li>
-<li><code>forward</code>가 될 경우 해당 <code>Page scope</code>에 지정된 변수는 사용 불가<ul>
-<li>새로운 <code>PageContext</code>가 생성</li>
-</ul>
-</li>
-<li><code>jsp</code>에서 <code>pageScope</code>에 값을 저장한 후 해당 값을 EL표기법 등에서 사용할 때 사용</li>
-</ul>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% pageContext.setAttribute(<span class="string">"blah"</span>, a);</span><br><span class="line">pageContext.getAttribute(<span class="string">"blah"</span>); %&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="request-scope"><a href="#request-scope" class="headerlink" title="request scope"></a><code>request scope</code></h3><ul>
-<li><code>http 요청</code>을 <code>WAS</code>가 받아서 웹 브라우저에게 응답할 때까지 변수값을 유지하고자 할 경우 사용<ul>
-<li><code>request</code>, <code>response</code> 객체는 <code>WAS</code>가 만든다</li>
-</ul>
-</li>
-<li>서블릿에서는 <code>HttpServletRequest</code> 객체를 사용</li>
-<li><code>JSP</code>에서는 <code>request</code> 내장 변수를 사용<ul>
-<li>값을 저장할 때는 <code>request</code> 객체의 <code>setAttribute()</code>메소드를 사용</li>
-<li>값을 읽어 들일 때는 <code>request</code> 객체의 <code>getAttribute()</code> 메소드를 사용</li>
-</ul>
-</li>
-</ul>
-<h3 id="session-scope"><a href="#session-scope" class="headerlink" title="session scope"></a><code>session scope</code></h3><ul>
-<li>클라이언트 별로 변수를 관리하고자 할 경우 사용</li>
-<li>웹 브라우저간의 탭 간에는 세션 정보가 공유되기 때문에, 각각의 탭에서는 같은 세션정보를 사용할 수 있음<ul>
-<li><em>장바구니처럼 사용자별로 유지가 되어야 할 정보가 있을 때 사용</em></li>
-</ul>
-</li>
-<li><code>HttpSession</code> 인터페이스를 구현한 객체를 사용</li>
-<li><code>JSP</code>에서는 <code>session</code> 내장 변수를 사용</li>
-<li><p><code>서블릿</code>에서는 <code>HttpServletRequest</code>의 <code>getSession()</code>메소드를 이용하여 <code>session</code> 객체를 얻는다</p>
+<li><p><code>runtime</code> </p>
 <ul>
-<li>값을 저장할 때는 <code>session</code> 객체의 <code>setAttribute()</code> 메소드를 사용</li>
-<li>값을 읽어 들일 때는 <code>session</code> 객체의 <code>getAttribute()</code> 메소드를 사용</li>
+<li>런타임에 필요<ul>
+<li><em>JDBC 드라이버 등이 예</em></li>
 </ul>
 </li>
-<li><p>세션 객체는 없어지지 않는다</p>
+<li>컴파일 시에는 필요하지 않지만, 실행 시에 필요한 경우</li>
+</ul>
+</li>
+<li><p><code>provided</code></p>
 <ul>
-<li>적당한 시간을 지정하여 자동 소멸 시키거나</li>
-<li>브라우저를 닫을 시 사라지게 만든다</li>
+<li>컴파일 시에 필요하지만, 실제 런타임 때에는 컨테이너 같은 것에서 제공되는 모듈</li>
+<li><em><code>servlet</code>, <code>jsp</code>, <code>api</code> 등이 이에 해당</em></li>
+<li>배포 시 제외</li>
+</ul>
+</li>
+<li><p><code>test</code> </p>
+<ul>
+<li>테스트 코드를 컴파일 할 때 필요</li>
+<li>테스트 시 클래스 패스에 포함</li>
+<li>배포 시 제외</li>
 </ul>
 </li>
 </ul>
-<h3 id="application-scope"><a href="#application-scope" class="headerlink" title="application scope"></a><code>application scope</code></h3><ul>
-<li><strong>웹 어플리케이션이 시작되고 종료될 때까지 변수를 사용</strong>할 수 있음</li>
-<li>웹 어플리케이션 하나당 하나의 <code>application</code> 객체가 사용됨</li>
-<li>모든 클라이언트가 공통으로 사용해야 할 값들이 있을 때 사용</li>
-<li><code>ServletContext</code> 인터페이스를 구현한 객체 사용<ul>
-<li><code>jsp</code>에서는 <code>application</code> 내장 객체를 이용</li>
-<li><code>서블릿</code>의 경우는 <code>getServletContext()</code> 메소드를 이용하여 <code>application</code> 객체를 이용</li>
+</blockquote>
+<h2 id="JSTL라이브러리"><a href="#JSTL라이브러리" class="headerlink" title="JSTL라이브러리"></a>JSTL라이브러리</h2><p>기본적으로 설정되어있지 않기 때문에 의존성 기재가 필요하다</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a><code>web.xml</code></h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/webapp_3_1.xsd"</span> <span class="attr">version</span>=<span class="string">"3.1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="settings-org-eclipse-wst-common-project-facet-core-xml"><a href="#settings-org-eclipse-wst-common-project-facet-core-xml" class="headerlink" title=".settings/org.eclipse.wst.common.project.facet.core.xml"></a><code>.settings/org.eclipse.wst.common.project.facet.core.xml</code></h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">faceted-project</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">fixed</span> <span class="attr">facet</span>=<span class="string">"wst.jsdt.web"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">installed</span> <span class="attr">facet</span>=<span class="string">"jst.web"</span> <span class="attr">version</span>=<span class="string">"3.1"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">installed</span> <span class="attr">facet</span>=<span class="string">"wst.jsdt.web"</span> <span class="attr">version</span>=<span class="string">"1.0"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">installed</span> <span class="attr">facet</span>=<span class="string">"java"</span> <span class="attr">version</span>=<span class="string">"1.8"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">faceted-project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="웹-어플리케이션-초기화"><a href="#웹-어플리케이션-초기화" class="headerlink" title="웹 어플리케이션 초기화"></a>웹 어플리케이션 초기화</h1><ol>
+<li>기존 <code>WAS</code>을 종료</li>
+<li>프로젝트를 우측 버튼으로 선택하고, Maven 메뉴 아래의 <code>update project</code>를 선택</li>
+<li><code>Servers view</code>에서 기존 <code>Tomcat Runtime</code>을 삭제</li>
+<li><code>Project</code> 메뉴의 <code>Clean</code> 선택</li>
+<li>프로젝트 익스플로러에서 <code>Server</code> 삭제</li>
+</ol>
+</blockquote>
+<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><ul>
+<li><code>Java Database Connectivity</code></li>
+<li>자바를 이용한 데이터베이스 접속과 <code>SQL</code> 문장의 실행, 그리고 실행 결과로 얻어진 데이터의 핸들링을 제공하는 방법과 절차에 관한 규약</li>
+<li>자바 프로그램 내에서 <code>SQL</code>문을 실행하기 위한 자바 <code>API</code></li>
+<li><code>SQL</code>과 프로그래밍 언어의 통합 접근 중 한 형태</li>
+<li><code>JAVA</code>는 표준 인터페이스인 <code>JDBC API</code>를 제공</li>
+<li>데이터베이스 벤더, 또는 기타 써드파티에서는 <code>JDBC</code>인터페이스를 구현한 드라이버(<code>driver</code>)를 제공</li>
+</ul>
+<h2 id="환경-구성"><a href="#환경-구성" class="headerlink" title="환경 구성"></a>환경 구성</h2><ul>
+<li><p>JDK 설치</p>
+</li>
+<li><p>JDBC 드라이버 설치</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>   </span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>   </span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.45<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="JDBC를-이용한-프로그래밍-방법"><a href="#JDBC를-이용한-프로그래밍-방법" class="headerlink" title="JDBC를 이용한 프로그래밍 방법"></a>JDBC를 이용한 프로그래밍 방법</h2><p><img src="https://cphinf.pstatic.net/mooc/20180201_49/1517475141729UGWfv_PNG/2_11_1_JDBC_.PNG" alt=""></p>
+<ol>
+<li><p><code>import java.sql.*;</code></p>
+</li>
+<li><p>드라이버 로드</p>
+<ul>
+<li><code>Class.forName( &quot;com.mysql.jdbc.Driver&quot; );</code></li>
 </ul>
 </li>
-<li>값을 저장할 때는 <code>application</code>객체의 <code>setAttribute()</code>메소드를 사용</li>
-<li>값을 읽어 들일 때는 <code>application</code>객체의 <code>getAttribute()</code> 메소드를 사용</li>
+<li><p><code>Connection</code> 객체를 생성</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String dburl  = <span class="string">"jdbc:mysql://localhost/dbName"</span>;</span><br><span class="line"></span><br><span class="line">Connection con =  DriverManager.getConnection ( dburl, ID, PWD );</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>예제</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">&gt; 	String url = <span class="string">"jdbc:oracle:thin:@117.16.46.111:1521:xe"</span>;</span><br><span class="line">&gt; 	String user = <span class="string">"smu"</span>;</span><br><span class="line">&gt; 	String password = <span class="string">"smu"</span>;</span><br><span class="line">&gt; 	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">&gt; 	Class.forName(<span class="string">"oracle.jdbc.driver.OracleDriver"</span>);</span><br><span class="line">&gt; 	conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">&gt; 	<span class="keyword">return</span> conn;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><code>Statement</code> 객체를 생성 및 질의 수행</p>
+<ol>
+<li><p>객체 생성</p>
+<p><code>Statement stmt = con.createStatement();</code></p>
+</li>
+<li><p>질의 수행</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ResultSet rs = stmt.executeQuery(<span class="string">"select no from user"</span> );</span><br><span class="line"></span><br><span class="line">stmt.execute(“query”);             <span class="comment">//any SQL</span></span><br><span class="line">stmt.executeQuery(“query”);     <span class="comment">//SELECT</span></span><br><span class="line">stmt.executeUpdate(“query”);   <span class="comment">//INSERT, UPDATE, DELETE</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><code>SQL</code>문에 결과물이 있다면 <code>ResultSet</code>객체를 생성</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ResultSet rs =  stmt.executeQuery( <span class="string">"select no from user"</span> );</span><br><span class="line"><span class="keyword">while</span> ( rs.next() )</span><br><span class="line">      System.out.println( rs.getInt( <span class="string">"no"</span>) );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>모든 객체를 닫기</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rs.close();</span><br><span class="line">stmt.close();</span><br><span class="line">con.close();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Rest-API"><a href="#Rest-API" class="headerlink" title="Rest API"></a>Rest API</h1><ul>
+<li><p>REpresentational State Transfer</p>
+</li>
+<li><p>REST 형식의 API</p>
+<ul>
+<li>핵심 컨텐츠 및 기능을 외부 사이트에서 활용할 수 있도록 제공되는 인터페이스</li>
 </ul>
+</li>
+<li>매시업(<code>Mashup</code>)<ul>
+<li>서비스 업체들이 다양한 <code>REST API</code>를 제공함으로써, 클라이언트는 이러한 <code>REST API</code>들을 조합한 어플리케이션을 만듦</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><p>Application Programming Interface</p>
+</li>
+<li><p>주로 <strong>파일 제어</strong>, <strong>창 제어</strong>, <strong>화상 처리</strong>, <strong>문자 제어</strong> 등을 위한 인터페이스를 제공</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="REST의-규칙"><a href="#REST의-규칙" class="headerlink" title="REST의 규칙"></a>REST의 규칙</h2><ul>
+<li><code>client-server</code></li>
+<li><code>stateless</code></li>
+<li><code>cache</code></li>
+<li><code>code-on-demand</code> (<code>optional</code>)</li>
+<li><code>layered system</code></li>
+<li><code>uniform interface</code></li>
+</ul>
+<p>HTTP 프로토콜을 사용한다면 <code>client-server</code>, <code>stateless</code>, <code>cache</code>, <code>lared system</code>, <code>code-on-demand</code> 등에 대해서는 모두 쉽게 구현 가능</p>
+<p><strong>문제는 <code>uniform interface</code></strong></p>
+<h3 id="uniform-interface"><a href="#uniform-interface" class="headerlink" title="uniform interface"></a><code>uniform interface</code></h3><ul>
+<li>리소스가 <code>URI</code>로 식별</li>
+<li>리소스를 생성,수정,추가하고자 할 때 <code>HTTP</code> 메시지에 표현을 해서 전송</li>
+<li><strong>메시지는 스스로 설명 (<code>Self-descriptive message</code>)</strong></li>
+<li><strong>애플리케이션의 상태는 <code>Hyperlink</code>를 이용해 전이(<code>HATEOAS</code>)</strong></li>
+</ul>
+<blockquote>
+<p>두 개가 가장 어렵다</p>
+</blockquote>
+<h2 id="Web-API-혹은-HTTP-API"><a href="#Web-API-혹은-HTTP-API" class="headerlink" title="Web API(혹은 HTTP API)"></a>Web API(혹은 HTTP API)</h2><p>REST의 <code>uniform interface</code>를 지원하는 것은 쉽지 않기 때문에, 많은 서비스가 <code>REST</code>에서 바라는 것을 모두 지원하지 않고 API를 만든다.</p>
+<p><strong>REST의 모든 것을 제공하지 않고 Web API 혹은 HTTP API라고 부르는 경우</strong>가 있다.</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180206_109/1517904573515UkVsl_PNG/2_11_2_webapi.PNG" alt=""></p>
+<ul>
+<li><code>URI</code>는 정보의 자원을 표현</li>
+<li>자원에 대한 행위는 <code>HTTP Method</code>(<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>)로 표현<ul>
+<li><code>GET</code> <code>/members</code><ul>
+<li>위의 표현은 맴버의 모든 정보를 달라는 요청</li>
+</ul>
+</li>
+<li><code>DELETE</code> <code>/members/1</code><ul>
+<li><code>HTTP Method</code> 중의 하나인 <code>DELETE</code>를 이용하여 삭제를 표현</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>슬래시 구분자(<code>/</code>)는 계층을 나타낼 때 사용<ul>
+<li>하이픈(<code>-</code>)은 URI가독성을 높일 때 사용</li>
+<li>언더바(<code>_</code>)는 사용하지 않는다</li>
+<li>URI경로는 소문자만 사용</li>
+<li><code>RFC 3986</code>(<code>URI</code> 문법 형식)은 <code>URI</code> 스키마와 호스트를 제외하고는 대소문자를 구별</li>
+<li>파일 확장자는 <code>URI</code>에 미포함</li>
+<li><code>Accept Header</code>를 사용</li>
+</ul>
+</li>
+</ul>
+<h3 id="상태-코드"><a href="#상태-코드" class="headerlink" title="상태 코드"></a>상태 코드</h3><p><img src="https://cphinf.pstatic.net/mooc/20180206_273/1517904784161eGNFk_PNG/2_11_1_1.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180206_113/1517904803278oyxuH_PNG/2_11_1_2.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180206_194/1517904834300fxqr9_PNG/2_11_1_3.PNG" alt=""></p>
+<h3 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h3><h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a><code>pom.xml</code></h4><ul>
+<li><code>jdbc</code> 라이브러리 추가</li>
+<li><code>json</code> 라이브러리 추가</li>
+<li>서블릿 <code>api</code> 라이브러리 추가</li>
+<li><code>jstl</code> 라이브러리 추가</li>
+</ul>
+<blockquote>
+<p>업데이트 프로젝트</p>
+</blockquote>
+<h4 id="Navigator-gt-settings-gt-org-eclipse-core-xml"><a href="#Navigator-gt-settings-gt-org-eclipse-core-xml" class="headerlink" title="Navigator &gt; .settings &gt; org.eclipse... core.xml"></a><code>Navigator</code> &gt; <code>.settings</code> &gt; <code>org.eclipse... core.xml</code></h4><p><code>version</code>을 3.1로 바꿔줄 것</p>
+<blockquote>
+<p>이클립스 재시작</p>
+</blockquote>
+<h4 id="web-xml-1"><a href="#web-xml-1" class="headerlink" title="web.xml"></a><code>web.xml</code></h4><ul>
+<li><code>&lt;failOnMissingWebXml&gt;</code>을 <code>false</code>로 바꿔준다<ul>
+<li>일반적으로 웹 어플리케이션 첫 시작 시 <code>web.xml</code>을 찾기 때문에, 이를 찾지 않을 것을 명기</li>
+</ul>
+</li>
+</ul>
+<h4 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a><code>servlet</code></h4><ul>
+<li><code>response.setContentType</code>에 <code>application/json</code>을 인자로 넣어준다</li>
+<li>해당 요청에 <code>json</code>으로 응답하겠다는 뜻</li>
+</ul>
+<h5 id="ObjectMapper"><a href="#ObjectMapper" class="headerlink" title="ObjectMapper"></a><code>ObjectMapper</code></h5><p><code>json</code> 문자열로 바꾸거나, <code>json</code> 문자열을 객체로 바꾸는 역할 수행</p>
+<h5 id="writeValueAsString"><a href="#writeValueAsString" class="headerlink" title="writeValueAsString"></a><code>writeValueAsString</code></h5><p>파라미터로 <code>list</code>를 넣으면 리스트가 <code>json</code>으로 바뀌어 리턴됨</p>
 
       
     </div>
@@ -264,7 +398,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/113/">113</a><a class="extend next" rel="next" href="/page/3/">Next</a>
+    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/114/">114</a><a class="extend next" rel="next" href="/page/3/">Next</a>
   </nav>
 
 </section>
@@ -317,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">97</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">97</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -358,6 +492,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/07/24/techyanolja/">Tech야, 놀자</a></h6>
+              <span>7월 24, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -419,18 +565,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/18/boostcouse-javascript/">javascript</a></h6>
-              <span>7월 18, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -441,7 +575,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
