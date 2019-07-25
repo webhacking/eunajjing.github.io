@@ -284,6 +284,13 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> div = <span class="built_in">document</span>.querySelecotr(<span class="string">"div"</span>)</span><br><span class="line"></span><br><span class="line">div.insertAdjacentHTML(<span class="string">"afterbegin"</span>, <span class="string">"&lt;p&gt;blahblah&lt;/p&gt;"</span>)</span><br><span class="line"><span class="comment">// div 태그 바로 다음에 p 태그를 넣는다</span></span><br><span class="line"></span><br><span class="line">div.insertAdjacentHTML(<span class="string">"beforebegin"</span>, <span class="string">"&lt;p&gt;blahblah&lt;/p&gt;"</span>)</span><br><span class="line"><span class="comment">// div 태그 위에 p 태그를 붙인다</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="영상에서-다루지-않은-것"><a href="#영상에서-다루지-않은-것" class="headerlink" title="영상에서 다루지 않은 것"></a>영상에서 다루지 않은 것</h2><ul>
+<li><code>tag:nth-of-type(n)</code> : 특정 태그의 <code>n</code> 번째 자식 요소를 찾는다</li>
+<li><code>tag:nth-child(n)</code> : <code>dom</code> 요소 중에서 <code>n</code> 번째 자식 요소를 찾되, <strong>해당 태그가 제대로 명기되어야 해당 노드의 객체</strong>를 가져온다<ul>
+<li>만약 해당 태그가 제대로 명기되지 않았다면 <code>undefined</code>가 뜬다</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
