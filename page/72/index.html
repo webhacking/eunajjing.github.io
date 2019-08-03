@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-29-serialize-사용-시-controller-어노테이션" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-react01" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/">serialize 사용 시 controller 어노테이션</a>
+      <a class="article-title" href="/2019/02/11/react01/">리액트 인 액션 PART1</a>
     </h1>
   
 
@@ -120,27 +120,159 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-serialize-사용-시-controller-어노테이션/" class="article-date">
-	  <time datetime="2019-01-29T08:37:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/02/11/react01/" class="article-date">
+	  <time datetime="2019-02-11T07:06:18.000Z" itemprop="datePublished">2월 11, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="그래서-직렬화해서-어떻게-받나요…"><a href="#그래서-직렬화해서-어떻게-받나요…" class="headerlink" title="그래서 직렬화해서 어떻게 받나요…"></a>그래서 직렬화해서 어떻게 받나요…</h2><p><code>serialize()</code>에 대해서는 수업을 받은 적이 있고, 그 수업 내용은 블로그에도 있다. 그런데 아무리 고민해도 controller에서 어떻게 받아야 하는지 잘 모르겠더라. 그래서 포풍 검색을 했지만 잘 나오지 않았고… 계속 삽질하다 알아낸 것 기록</p>
-<p><strong>@ModelAttribute</strong></p>
-<p>어노테이션 기입 후 자료형을 vo에 맞춰서 받아준다!</p>
+        <blockquote>
+<p>이 포스트는 <a href="https://book.naver.com/bookdb/book_detail.nhn?bid=14457098" target="_blank" rel="noopener">리액트 인 액션</a>이라는 책을 보며 혼자 공부한 기록을 남기는데 의미를 두고 있습니다.</p>
+<p>책의 요약도 있긴 하지만 대체로 저 개인이 중요하다고 생각하는 포인트들과 이해한 영역에 대해 이야기합니다.</p>
+<p>포스트는 언제든 삭제가 될 가능성이 있습니다….</p>
+</blockquote>
+<h2 id="React의-가상-DOM"><a href="#React의-가상-DOM" class="headerlink" title="React의 가상 DOM"></a>React의 가상 DOM</h2><h3 id="일단-DOM이란-뭘까"><a href="#일단-DOM이란-뭘까" class="headerlink" title="일단 DOM이란 뭘까"></a>일단 DOM이란 뭘까</h3><ul>
+<li><p>Java Script program이 다양한 종류의 문서(HTML, XML 등)을 다루기 위한 프로그래밍 인터페이스</p>
+</li>
+<li><p>XML 문서의 계층 구조를 반영한 트리 구조</p>
+<p><img src="https://t1.daumcdn.net/cfile/tistory/223856335971C6E023" alt=""></p>
+</li>
+</ul>
+<h3 id="왜-가상-DOM이-필요한가"><a href="#왜-가상-DOM이-필요한가" class="headerlink" title="왜 가상 DOM이 필요한가"></a>왜 가상 DOM이 필요한가</h3><ul>
+<li>웹 페이지의 요소를 갱신하거나 조회할 때 사용하는 메서드나 속성<br><em>이를테면 getElementById, innerHTML 등</em>은 호스트 환경(<em>ex. 브라우저</em>)가 제공하고, Java Script는 이들을 이용해 DOM 조작</li>
+<li>대형 애플리케이션의 경우 요소 갱신이 복잡해짐</li>
+</ul>
+<h3 id="가상-DOM의-동작-방법"><a href="#가상-DOM의-동작-방법" class="headerlink" title="가상 DOM의 동작 방법"></a>가상 DOM의 동작 방법</h3><ul>
+<li><p>리액트가 메모리에 가상 DOM을 생성하고 관리</p>
+</li>
+<li><p>리액트 DOM과 같은 랜더러는 가상 DOM 변경 사항을 브라우저 DOM에 반영</p>
+<blockquote>
+<p><strong>랜더러</strong> : 코드의 결과를 브라우저에 렌더링하는 기능을 제공하는 라이브러리</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="React의-가상-DOM-1"><a href="#React의-가상-DOM-1" class="headerlink" title="React의 가상 DOM"></a>React의 가상 DOM</h3><ul>
+<li>브라우저에 존재하는 문서 객체 모델(DOM)을 흉내 내거나 반영하는 데이터 구조 또는 데이터 구조의 모음</li>
+<li>가상 DOM은 애플리케이션 코드와 실제 브라우저 DOM 사이에 위치하는 중간 계층의 역할을 담당</li>
+</ul>
+<h2 id="React의-컴포넌트"><a href="#React의-컴포넌트" class="headerlink" title="React의 컴포넌트"></a>React의 컴포넌트</h2><h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ul>
+<li>캡슐화</li>
+<li>재사용 및 재구성 가능</li>
+<li>반드시 한 번은 재사용할 컴포넌트를 만들어야 한다 (<em>뭔 소리죠</em>)</li>
+</ul>
+<h3 id="그러니까-간단히-설명하면"><a href="#그러니까-간단히-설명하면" class="headerlink" title="그러니까 간단히 설명하면"></a>그러니까 간단히 설명하면</h3><ul>
+<li>기능을 단위 별로 캡슐화하는 리액트의 기본 단위</li>
+<li>Java Script 함수 또는 클래스로, 속성들을 입력으로 받아들임</li>
+<li>내부적으로 각자의 상태를 관리</li>
+<li>특정 형식의 컴포넌트의 대해 생명주기 메서드 제공</li>
+</ul>
+<blockquote>
+<h2 id="웹-API-Application-Programming-Interface"><a href="#웹-API-Application-Programming-Interface" class="headerlink" title="웹 API(Application Programming Interface)"></a>웹 API(Application Programming Interface)</h2><ul>
+<li><p>소프트웨어를 개발하기 위한 루틴과 프로토콜의 집합</p>
+</li>
+<li><p>프로그램이나 플랫폼과 상호작용을 하기 위해 정해진 것을 외부에 노출하는 방법</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="예제를-보자"><a href="#예제를-보자" class="headerlink" title="예제를 보자"></a>예제를 보자</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// index.js</span><br><span class="line">const node = document.getElementById(&quot;root&quot;);</span><br></pre></td></tr></table></figure>
+<p>요소에 대한 참조를 해당 변수에 저장한다.</p>
+<p>이제부터 개발할 리액트 앱은 이 DOM 내에 렌더링된다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id-</span>"<span class="attr">root</span>"&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>여기까지가 리액트 라이브러리 다운로드, root라는 id를 지닌 DOM 요소를 찾는 것</p>
+<p>여기서 컴포넌트를 생성하려면  <code>ReactDOM.render</code> 메서드 실행</p>
+<p>신텍스는 아래와 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">	ReactElement element,</span><br><span class="line">    DOMElement container,</span><br><span class="line">    [function calllback]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><code>ReactDOM</code> 은 <code>ReactElement</code> 타입의 요소와 DOM 요소를 필요로 한다.</p>
+<blockquote>
+<h3 id="ReactElement-요소"><a href="#ReactElement-요소" class="headerlink" title="ReactElement 요소"></a>ReactElement 요소</h3><ul>
+<li>경량</li>
+<li>상태 없음</li>
+<li>내부 상태 변경 불가</li>
+</ul>
+<h3 id="ReactComponentElement"><a href="#ReactComponentElement" class="headerlink" title="ReactComponentElement"></a>ReactComponentElement</h3><ul>
+<li>React 컴포넌트를 표현하는 함수나 클래스에 대한 참조를 의미</li>
+</ul>
+<h3 id="ReactDOMElement"><a href="#ReactDOMElement" class="headerlink" title="ReactDOMElement"></a>ReactDOMElement</h3><ul>
+<li>DOM 요소를 가상으로 표현한 객체</li>
+</ul>
+</blockquote>
+<h3 id="React-createElement"><a href="#React-createElement" class="headerlink" title="React.createElement"></a><code>React.createElement</code></h3><p><code>ReactElement</code> 를 생성할 때 쓰는 메서드</p>
+<p>신텍스</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">    String / ReactClass type,</span><br><span class="line">    // html 요소의 태그 이름을 문자열로 전달하거나 리액트 클래스 전달</span><br><span class="line">    // 즉 리액트가 생성할 타입 지정</span><br><span class="line">    &#123;props:value, ...&#125;,</span><br><span class="line">    // html 요소에 지정될 특성(attributes) 지정하거나</span><br><span class="line">    // 컴포넌트 클래스 인스턴스에 사용할 속성 지정</span><br><span class="line">	[Children], ...</span><br><span class="line">    // 여기에 또 다른 자식 컴포넌트를 넣을 수 있다.</span><br><span class="line">    // 컴포넌트는 중첩된다.</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="React의-상태"><a href="#React의-상태" class="headerlink" title="React의 상태"></a>React의 상태</h3><p>상태 : 어느 특정한 시점의 어떤 것에 대한 정보</p>
+<ul>
+<li><code>this.state</code> : 변경 가능(mutable) 상태와</li>
+<li><code>this.props</code> : 변경 불가능한(immutable) 상태</li>
+</ul>
+<p>로 나뉜다.</p>
+<ul>
+<li>리액트에서 쓰이는 <code>컴포넌트</code> 는 <code>React.Component</code> 클래스를 확장한 자바스크립트 클래스로 정의하며 가변(state)/불변(props) 상태를 모두 관리할 수 있다.</li>
+<li>반면 함수를 이용해 생성한 컴포넌트(immutable)는 불변 상태(props)만을 관리할 수 있다.</li>
+</ul>
+<h4 id="상태가-있는-stateful-컴포넌트"><a href="#상태가-있는-stateful-컴포넌트" class="headerlink" title="상태가 있는(stateful) 컴포넌트"></a>상태가 있는(stateful) 컴포넌트</h4><h5 id="React-Class"><a href="#React-Class" class="headerlink" title="React Class"></a>React Class</h5><p>생성방법</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ReactClassName extends Component &#123;</span><br><span class="line">    // React.Component 추상 클래스를 상속하는 자바스크립트 클래스 선언</span><br><span class="line">    render() &#123;&#125;</span><br><span class="line">    // 리액트 요소를 리턴하는 render 메서드 정의</span><br><span class="line">    // ver 16부터는 배열을 이용해 여러 개의 리액트 요소 리턴도 가능</span><br><span class="line">    // 해당 메서드는 내부 데이터(컴포넌트에 저장된 상태)와</span><br><span class="line">    // 컴포넌트 메서드</span><br><span class="line">    // React.Component 추상 클래스 기반 클래스로부터 상속된 추가 메서드에도 접근 가능</span><br><span class="line">    </span><br><span class="line">    // React는 이런 컴포넌트에 대한 보조 인스턴스를 생성하기 때문에 저장된 상태는 컴포넌트 전체가 활용 가능</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>클래스를 이용해 컴포넌트를 생성하면 <code>props</code> 객체에 접근 가능</p>
+<blockquote>
+<h2 id="props-객체"><a href="#props-객체" class="headerlink" title="props  객체"></a><code>props</code>  객체</h2><ul>
+<li>컴포넌트에 전달할 수 있는 데이터</li>
+<li>컴포넌트 생성 시점에 지정도 가능</li>
+<li>컴포넌트 내부에서 수정해서는 안된다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a><code>this</code></h2><p>Java Script의 키워드로 컴포넌트의 인스턴스를 가리킨다.</p>
+</blockquote>
+<h6 id="기본-상태의-설정"><a href="#기본-상태의-설정" class="headerlink" title="기본 상태의 설정"></a>기본 상태의 설정</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class CreateComment extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      content: &quot;&quot;,</span><br><span class="line">      user: &quot;&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">      // 생성자 안에서 super 함수를 호출해 클래스 인스턴스 state 속성에 기본 상태 객체를 대입</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return React.createElement(</span><br><span class="line">      &quot;form&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        className: &quot;createComment&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      React.createElement(&quot;input&quot;, &#123;</span><br><span class="line">        type: &quot;text&quot;,</span><br><span class="line">        placeholder: &quot;Your name&quot;,</span><br><span class="line">        value: this.state.user</span><br><span class="line">          // 이렇게 상태에 접근</span><br><span class="line">      &#125;)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>this.state</code>의 속성은 직접 덮어쓸 수 없다</strong></p>
+<p><strong><code>this.setState</code></strong> 메서드를 호출해야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setState(function(preState, props) -&gt; nextState,</span><br><span class="line">    callback</span><br><span class="line">) -&gt; void</span><br></pre></td></tr></table></figure>
+<p>갱신 함수를 매개변수로 전달받아 다시 지원 인스턴스를 갱신한 후, 새로운 값을 DOM에 적용한다는 특징이 있다.</p>
+<p>리액트가 상태를 일괄적으로 변경하기에, <code>setState</code> 메서드를 호출한다고 해서 그 결과가 곧바로 적용되지 않는다.</p>
+<p>리액트는 사용자 입력에 대한 응답으로 갱신이 이루어진다.</p>
+<h5 id="React의-이벤트"><a href="#React의-이벤트" class="headerlink" title="React의 이벤트"></a>React의 이벤트</h5><p>가상 DOM을 구현하는 것의 일부로 모의(synthetic) 이벤트 시스템을 구현한다.</p>
+<p>브라우저에서 이벤트가 발생하면, 리액트 애플리케이션 이벤트로 변환한다.</p>
+<p>자바스크립트가 이벤트를 처리하는 방법대로, 브라우저에서 발생하는 이벤트에 반응할 이벤트 핸들러를 설정하면 된다.</p>
+<p><strong>리액트의 이벤트핸들러는 리액트 요소나 컴포넌트 자체에 설정된다.</strong></p>
+<p>때문에 이렇게 설정된 이벤트가 전달하는 데이터를 이용해 컴포넌트 상태를 갱신할 수도 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line">class Post extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return React.createElement(</span><br><span class="line">      &quot;div&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        className: &quot;post&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      React.createElement(</span><br><span class="line">        &quot;h2&quot;,</span><br><span class="line">        &#123;</span><br><span class="line">          className: &quot;postAuthor&quot;,</span><br><span class="line">          id: this.props.id</span><br><span class="line">        &#125;,</span><br><span class="line">        this.props.user,</span><br><span class="line">        React.createElement(</span><br><span class="line">          &quot;span&quot;,</span><br><span class="line">          &#123;</span><br><span class="line">            className: &quot;postBody&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          this.props.content</span><br><span class="line">        ),</span><br><span class="line">        this.props.children</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Comment extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return React.createElement(</span><br><span class="line">      &quot;div&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        className: &quot;comment&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      React.createElement(</span><br><span class="line">        &quot;h2&quot;,</span><br><span class="line">        &#123;</span><br><span class="line">          className: &quot;commentAuthor&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        this.props.user,</span><br><span class="line">        React.createElement(</span><br><span class="line">          &quot;span&quot;,</span><br><span class="line">          &#123;</span><br><span class="line">            className: &quot;commentContent&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          this.props.content</span><br><span class="line">        )</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CreateComment extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      content: &quot;&quot;,</span><br><span class="line">      user: &quot;&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">    this.handleUserChange = this.handleUserChange.bind(this);</span><br><span class="line">    this.handleTextChange = this.handleTextChange.bind(this);</span><br><span class="line">    this.handleSubmit = this.handleSubmit.bind(this);</span><br><span class="line">      // 클래스로 생성한 컴포넌트는 메서드를 자동으로 바인딩하지 않는다.</span><br><span class="line">      // 때문에 생성자 내에서 이 메서드들을 직접 바인딩해줘야 한다.</span><br><span class="line">      // 이전 버전의 리액트의 경우 메서드가 자동 바인딩되었으나, 자바스크립트 클래스로 변환되며 직접 해줘야 함</span><br><span class="line">  &#125;</span><br><span class="line">  handleUserChange(event) &#123;</span><br><span class="line">    const val = event.target.value;</span><br><span class="line">      // val에는 input에 사용자가 입력한 텍스트가 들어온다.</span><br><span class="line">    this.setState(() =&gt; (&#123;</span><br><span class="line">      user: val</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line">  handleTextChange(event) &#123;</span><br><span class="line">    const val = event.target.value;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      content: val</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  handleSubmit(event) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    this.props.onCommentSubmit(&#123;</span><br><span class="line">      user: this.state.user.trim(),</span><br><span class="line">      content: this.state.content.trim()</span><br><span class="line">    &#125;);</span><br><span class="line">    this.setState(() =&gt; (&#123;</span><br><span class="line">      user: &quot;&quot;,</span><br><span class="line">      content: &quot;&quot;</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return React.createElement(</span><br><span class="line">      &quot;form&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        className: &quot;createComment&quot;,</span><br><span class="line">        onSubmit: this.handleSubmit</span><br><span class="line">      &#125;,</span><br><span class="line">      React.createElement(&quot;input&quot;, &#123;</span><br><span class="line">        type: &quot;text&quot;,</span><br><span class="line">        placeholder: &quot;Your name&quot;,</span><br><span class="line">        value: this.state.user,</span><br><span class="line">        onChange: this.handleUserChange</span><br><span class="line">      &#125;),</span><br><span class="line">      React.createElement(&quot;input&quot;, &#123;</span><br><span class="line">        type: &quot;text&quot;,</span><br><span class="line">        placeholder: &quot;Thoughts?&quot;,</span><br><span class="line">        value: this.state.content,</span><br><span class="line">        onChange: this.handleTextChange</span><br><span class="line">      &#125;),</span><br><span class="line">      React.createElement(&quot;input&quot;, &#123;</span><br><span class="line">        type: &quot;submit&quot;,</span><br><span class="line">        value: &quot;Post&quot;</span><br><span class="line">      &#125;)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CommentBox extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      comments: this.props.comments</span><br><span class="line">      // 부모에게 comments를 보낸다</span><br><span class="line">    &#125;;</span><br><span class="line">    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);</span><br><span class="line">  &#125;</span><br><span class="line">  handleCommentSubmit(comment) &#123;</span><br><span class="line">    // 제일 큰 특징은 복사본을 생성해서 대입한다는 것</span><br><span class="line">    const comments = this.state.comments;</span><br><span class="line">    comment.id = Date.now();</span><br><span class="line">    const newComments = comments.concat([comment]);</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      comments: newComments</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return React.createElement(</span><br><span class="line">      &quot;div&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        className: &quot;commentBox&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      React.createElement(Post, &#123;</span><br><span class="line">        id: this.props.post.id,</span><br><span class="line">        content: this.props.post.content,</span><br><span class="line">        user: this.props.post.user</span><br><span class="line">      &#125;),</span><br><span class="line">      this.state.comments.map(function(comment) &#123;</span><br><span class="line">        return React.createElement(Comment, &#123;</span><br><span class="line">          key: comment.id,</span><br><span class="line">          id: comment.id,</span><br><span class="line">          content: comment.content,</span><br><span class="line">          user: comment.user</span><br><span class="line">        &#125;);</span><br><span class="line">        // map 메서드를 이용해 각 댓글에 대응하는 리액트 요소를 생성해 리턴한다.</span><br><span class="line">      &#125;),</span><br><span class="line">      React.createElement(CreateComment, &#123;</span><br><span class="line">        onCommentSubmit: this.handleCommentSubmit</span><br><span class="line">        // CreateComment에게 handleCommentSubmit 메서드 전달</span><br><span class="line">      &#125;)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  React.createElement(CommentBox, &#123;</span><br><span class="line">    comments: data.comments,</span><br><span class="line">    post: data.post</span><br><span class="line">  &#125;),</span><br><span class="line">  node</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a><code>PropTypes</code></h3><ul>
+<li>속성의 유효성 검사를 할 수 있는 것</li>
+<li><code>prop-types</code> 패키지 설치 후 사용이 가능</li>
+<li><code>React.Component</code> 클래스에 <code>popTypes</code> 속성 추가 필요</li>
+<li>책 내에서는 propTypes의 커스터마이징까지는 다루고 있지 않아 <a href="https://medium.com/@sangboaklee/react-proptypes-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0-7a0615da236" target="_blank" rel="noopener">외부 레퍼런스</a> 참조</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; render &#125; from &quot;react-dom&quot;;</span><br><span class="line">// React와 React-dom 라이브러리를 가져온다.</span><br><span class="line">import PropTypes from &quot;prop-types&quot;;</span><br><span class="line">// PropTypes 패키지 설치</span><br><span class="line"></span><br><span class="line">const node = document.getElementById(&quot;root&quot;);</span><br><span class="line"></span><br><span class="line">class Post extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return React.createElement(</span><br><span class="line">      ...</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Post.propTypes = &#123;</span><br><span class="line">    // Post라는 리액트 클래스의 props에 대한 유효성 검사</span><br><span class="line">  user: PropTypes.string.isRequired,</span><br><span class="line">    // user라는 props에는 String 자료형만 들어갈 수 있다.</span><br><span class="line">  id: PropTypes.number.isRequired</span><br><span class="line">    // id라는 props에는 number 자료형만 들어갈 수 있다.</span><br><span class="line">&#125;;</span><br><span class="line">// 이런 형태는 너무 기본적인 기능이기에 잘 사용되지 않는다고 함!</span><br><span class="line"></span><br><span class="line">render(App, node);</span><br></pre></td></tr></table></figure>
+<p>이렇게도 쓸 수 있다고 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Post.propTypes = &#123;</span><br><span class="line">  config: PropTypes.shape(&#123;</span><br><span class="line">    series: PropTypes.array.isRequired,</span><br><span class="line">    xAxis: PropTypes.shape(&#123;</span><br><span class="line">      categories: PropTypes.array,</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;).isRequired,</span><br><span class="line">  chartType: PropTypes.arrayOf(PropTypes.string).isRequired,</span><br><span class="line">  currentChartType: PropTypes.oneOf([&apos;view&apos;, &apos;conversion&apos;]),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><em>그런데 아직 외부 레퍼런스의 모든 내용을 이해한 건 아니라서…. 점차 공부하면서 덧붙여볼 예정</em></p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>반드시 <strong>바벨</strong>과 같은 JSX 전처리기 프로그램이 필요하다.</p>
+<blockquote>
+<p>전처리기 프로그램 : JSX 코드를 자바스크립트 코드로 바꾸는 것</p>
+</blockquote>
+<h3 id="특징-1"><a href="#특징-1" class="headerlink" title="특징"></a>특징</h3><ul>
+<li><p>특성 표현식</p>
+<p><code>&lt;User a = &quot;this.props.b&quot;/&gt;</code>가 아니라, <strong><code>&lt;User a = {this.props.b}/&gt;</code></strong></p>
+</li>
+<li><p>불리언 특성</p>
+<p><code>&lt;Planactive/&gt;</code>, <code>&lt;Input checked/&gt;</code> 의 경우 리액트에서 true 값이다. 만약 false를 주고 싶다면</p>
+<p><code>attribute={false}</code> 같은 특성 표현식이 필요하다.</p>
+</li>
+<li><p>중첩 표현식</p>
+<p>요소 내 표현식의 값을 추가할 때도 <code>&lt;p&gt;{this.props.content}&lt;/p&gt;</code>로 써주어야 한다.</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
 
       
       
@@ -158,7 +290,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/71/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/70/">70</a><a class="page-number" href="/page/71/">71</a><span class="page-number current">72</span><a class="page-number" href="/page/73/">73</a><a class="page-number" href="/page/74/">74</a><span class="space">&hellip;</span><a class="page-number" href="/page/115/">115</a><a class="extend next" rel="next" href="/page/73/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/71/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/70/">70</a><a class="page-number" href="/page/71/">71</a><span class="page-number current">72</span><a class="page-number" href="/page/73/">73</a><a class="page-number" href="/page/74/">74</a><span class="space">&hellip;</span><a class="page-number" href="/page/117/">117</a><a class="extend next" rel="next" href="/page/73/">Next</a>
   </nav>
 
 </section>
@@ -211,7 +343,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">99</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">11</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -252,6 +384,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/08/04/lazylab01/">첫 모각작 후기</a></h6>
+              <span>8월 4, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -313,18 +457,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/20/boostcouse-jsp/">JSP와 JSTL &amp; EL</a></h6>
-              <span>7월 20, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -335,7 +467,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

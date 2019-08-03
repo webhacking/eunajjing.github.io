@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-boostcouse-mysql" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-boostcouse-bes" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/22/boostcouse-mysql/">DB 연결 웹 앱 - MYSQL</a>
+      <a class="article-title" href="/2019/07/22/boostcouse-bes/">redirect&amp;forward/Scope</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/07/22/boostcouse-mysql/" class="article-date">
-	  <time datetime="2019-07-22T06:39:18.000Z" itemprop="datePublished">7월 22, 2019</time>
+	<a href="/2019/07/22/boostcouse-bes/" class="article-date">
+	  <time datetime="2019-07-22T11:40:18.000Z" itemprop="datePublished">7월 22, 2019</time>
 	</a>
 
       
@@ -131,232 +131,115 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="DB-연결-웹-앱-MYSQL"><a href="#DB-연결-웹-앱-MYSQL" class="headerlink" title="DB 연결 웹 앱 - MYSQL"></a>DB 연결 웹 앱 - MYSQL</h1><h2 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h2><ul>
-<li>데이터의 집합 (<code>a Set of Data</code>)</li>
-<li>여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(<code>share</code>) 데이터의 집합</li>
-<li>효율적으로 저장, 검색, 갱신할 수 있도록 데이터 집합들끼리 연관시키고 조직화</li>
-</ul>
-<h3 id="특성"><a href="#특성" class="headerlink" title="특성"></a>특성</h3><ul>
-<li><p>실시간 접근성(<code>Real-time Accessability</code>)</p>
+        <h2 id="redirect-amp-forward"><a href="#redirect-amp-forward" class="headerlink" title="redirect &amp; forward"></a><code>redirect</code> &amp; <code>forward</code></h2><h3 id="redirect"><a href="#redirect" class="headerlink" title="redirect"></a><code>redirect</code></h3><p><img src="https://cphinf.pstatic.net/mooc/20180127_5/1517046342330PRbSX_PNG/2_4_1_redirect__.PNG" alt=""></p>
 <ul>
-<li>사용자의 요구를 즉시 처리</li>
+<li><code>서버</code>가 <code>클라이언트</code>의 요청에 대해 <strong>특정 URL로 이동을 요청</strong>하는 것</li>
+<li><code>HTTP 프로토콜</code>로 정해진 규칙</li>
+<li>서버는 클라이언트에게 HTTP 상태코드 <code>302</code>로 응답<ul>
+<li>헤더 내 <code>Location</code> 값에 이동할 <code>URL</code> 을 추가</li>
+<li>클라이언트는 리다이렉션 응답을 받게 되면 헤더(<code>Location</code>)에 포함된 <code>URL</code>로 재요청<ul>
+<li><strong>클라이언트는 요청을 두 번 보내는 셈</strong><ul>
+<li><strong>이 때의 <code>request</code> 객체와 <code>response</code> 객체는 첫 요청과는 다른 객체</strong></li>
 </ul>
 </li>
-<li><p>계속적인 변화(<code>Continuous Evolution</code>)</p>
+</ul>
+</li>
+<li>이때 브라우저의 주소창은 새 <code>URL</code>로 바뀜</li>
+</ul>
+</li>
+<li><code>서블릿</code>이나 <code>JSP</code>는 리다이렉트하기 위해 <code>HttpServletResponse</code> 클래스의 <code>sendRedirect()</code> 메소드를 사용<ul>
+<li><code>sendRedirect()</code>의 인자로 리다이랙트할  <code>url</code> 을 넣는다</li>
+</ul>
+</li>
+</ul>
+<h3 id="forward"><a href="#forward" class="headerlink" title="forward"></a><code>forward</code></h3><p><img src="https://cphinf.pstatic.net/mooc/20180129_279/1517202070933x0x42_PNG/2_4_2_forward.png" alt=""></p>
 <ul>
-<li>정확한 값을 유지하려고 삽입·삭제·수정 작업 등을 이용해 데이터를 지속적으로 갱신</li>
-</ul>
+<li><p><code>클라이언트</code>에서 <code>Servlet1</code>에게 요청을 보냄</p>
 </li>
-<li><p>동시 공유성(<code>Concurrent Sharing</code>)</p>
+<li><p><code>Servlet1</code>은 요청을 처리한 후 결과를 <code>HttpServletRequest</code>에 저장</p>
 <ul>
-<li>사용자마다 서로 다른 목적으로 사용하므로 동시에 여러 사람이 동일한 데이터에 접근하고 이용</li>
+<li>처리한 결과를 타 서블릿에서 사용하기 위해서는, 전달되는 객체에 저장해야 하기 때문</li>
+<li>최초 요청 받은 서블릿이 일정한 부분만 처리하여 타 서블릿에 넘겨준다</li>
 </ul>
 </li>
-<li><p>내용 참조(<code>Content Reference</code>)</p>
+<li><p><code>HttpServletRequest</code>가 가지고 있는 <code>RequestDispatcher</code> 를 얻어낸다</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RequestDispatcher req_dispatcher = request.getRequestDispatcher(<span class="string">"/경로"</span>);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>저장한 데이터 레코드의 위치나 주소가 아닌 사용자가 요구하는 데이터의 내용, 즉 데이터 값에 따라 참조</li>
+<li>포워드 경로는 반드시 <strong><code>/</code></strong>로 시작해야 한다</li>
 </ul>
 </li>
-</ul>
-<h2 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h2><ul>
-<li>데이터베이스를 관리하는 소프트웨어</li>
-<li>여러 응용 소프트웨어(프로그램) 또는 시스템이 동시에 데이터베이스에 접근하여 사용</li>
-<li>필수 3기능<ul>
-<li>정의기능<ul>
-<li>데이터 베이스의 논리적, 물리적 구조를 정의</li>
-</ul>
-</li>
-<li>조작기능<ul>
-<li>데이터를 검색, 삭제, 갱신, 삽입, 삭제하는 기능</li>
-</ul>
-</li>
-<li>제어기능<ul>
-<li>데이터베이스의 내용 정확성과 안전성을 유지하도록 제어하는 기능</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
-<li>데이터 중복이 최소화</li>
-<li>데이터의 일관성 및 무결성 유지 </li>
-<li>데이터 보안 보장</li>
-</ul>
-<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul>
-<li>운영비가 비싸다</li>
-<li>백업 및 복구에 대한 관리가 복잡</li>
-<li>부분적 데이터베이스 손실이 전체 시스템을 정지</li>
-</ul>
-<h2 id="SQL-Structured-Query-Language"><a href="#SQL-Structured-Query-Language" class="headerlink" title="SQL(Structured Query Language)"></a>SQL(<code>Structured Query Language</code>)</h2><ul>
-<li>SQL은 데이터를 보다 쉽게 검색하고 추가, 삭제, 수정 같은 조작을 할 수 있도록 고안된 컴퓨터 언어</li>
-<li>관계형 데이터베이스에서 데이터를 조작하고 쿼리하는 표준 수단</li>
-<li><p><code>DML</code> <code>(Data Manipulation Language</code>)</p>
+<li><p><code>RequestDispatcher</code> 객체의 <code>forward()</code> 메서드에 <code>request</code>와 <code>response</code>를 인자로 넣어준다.</p>
 <ul>
-<li>데이터를 조작하기 위해 사용<br><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code> 등이 여기에 해당</li>
+<li>즉, <code>request</code> 객체와 <code>response</code> 객체는 모든 서블릿에서 동일하다<ul>
+<li>클라이언트 단 <strong><code>url</code>이 바뀌지 않는다</strong></li>
 </ul>
 </li>
-<li><p><code>DDL</code> (<code>Data Definition Language</code>)</p>
+</ul>
+</li>
+<li><p><code>Servlet2</code>는 받은 <code>HttpServletRequest</code>와 <code>HttpServletResponse</code>를 이용하여 요청을 처리한 후 클라이언트에게 응답</p>
+</li>
+</ul>
+<h3 id="servlet-amp-jsp-연동"><a href="#servlet-amp-jsp-연동" class="headerlink" title="servlet &amp;jsp 연동"></a><code>servlet</code> &amp;<code>jsp</code> 연동</h3><p> <code>Servlet</code>에서 프로그램 로직이 수행되고, 결과를 <code>JSP</code>에게 포워딩하는 방법이 사용</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180129_201/1517203743283AcQbB_PNG/2_4_3_servlet_jsp.PNG" alt=""></p>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a><code>Scope</code></h2><p><img src="https://cphinf.pstatic.net/mooc/20180129_297/1517205425406SvaC6_JPEG/2_5_1_scope_.jpg" alt=""></p>
+<h3 id="page-scope"><a href="#page-scope" class="headerlink" title="page scope"></a><code>page scope</code></h3><ul>
+<li><p>페이지 내에서 지역변수처럼 사용</p>
+</li>
+<li><p><code>PageContext</code> 추상 클래스를 사용</p>
+</li>
+<li><code>JSP</code>페이지에서 <code>pageContext</code>라는 내장 객체로 사용 가능</li>
+<li><code>forward</code>가 될 경우 해당 <code>Page scope</code>에 지정된 변수는 사용 불가<ul>
+<li>새로운 <code>PageContext</code>가 생성</li>
+</ul>
+</li>
+<li><code>jsp</code>에서 <code>pageScope</code>에 값을 저장한 후 해당 값을 EL표기법 등에서 사용할 때 사용</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% pageContext.setAttribute(<span class="string">"blah"</span>, a);</span><br><span class="line">pageContext.getAttribute(<span class="string">"blah"</span>); %&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="request-scope"><a href="#request-scope" class="headerlink" title="request scope"></a><code>request scope</code></h3><ul>
+<li><code>http 요청</code>을 <code>WAS</code>가 받아서 웹 브라우저에게 응답할 때까지 변수값을 유지하고자 할 경우 사용<ul>
+<li><code>request</code>, <code>response</code> 객체는 <code>WAS</code>가 만든다</li>
+</ul>
+</li>
+<li>서블릿에서는 <code>HttpServletRequest</code> 객체를 사용</li>
+<li><code>JSP</code>에서는 <code>request</code> 내장 변수를 사용<ul>
+<li>값을 저장할 때는 <code>request</code> 객체의 <code>setAttribute()</code>메소드를 사용</li>
+<li>값을 읽어 들일 때는 <code>request</code> 객체의 <code>getAttribute()</code> 메소드를 사용</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-scope"><a href="#session-scope" class="headerlink" title="session scope"></a><code>session scope</code></h3><ul>
+<li>클라이언트 별로 변수를 관리하고자 할 경우 사용</li>
+<li>웹 브라우저간의 탭 간에는 세션 정보가 공유되기 때문에, 각각의 탭에서는 같은 세션정보를 사용할 수 있음<ul>
+<li><em>장바구니처럼 사용자별로 유지가 되어야 할 정보가 있을 때 사용</em></li>
+</ul>
+</li>
+<li><code>HttpSession</code> 인터페이스를 구현한 객체를 사용</li>
+<li><code>JSP</code>에서는 <code>session</code> 내장 변수를 사용</li>
+<li><p><code>서블릿</code>에서는 <code>HttpServletRequest</code>의 <code>getSession()</code>메소드를 이용하여 <code>session</code> 객체를 얻는다</p>
 <ul>
-<li>데이터베이스의 스키마를 정의하거나 조작하기 위해 사용</li>
-<li><code>CREATE</code>,<code>DROP</code>, <code>ALTER</code> 등이 여기에 해당</li>
+<li>값을 저장할 때는 <code>session</code> 객체의 <code>setAttribute()</code> 메소드를 사용</li>
+<li>값을 읽어 들일 때는 <code>session</code> 객체의 <code>getAttribute()</code> 메소드를 사용</li>
 </ul>
 </li>
-<li><p><code>DCL</code> (<code>Data Control Language</code>)</p>
+<li><p>세션 객체는 없어지지 않는다</p>
 <ul>
-<li>데이터를 제어하는 언어</li>
-<li>권한을 관리하고, 테이터의 보안, 무결성 등을 정의</li>
-<li><code>GRANT</code>, <code>REVOKE</code> 등이 여기에 해당</li>
+<li>적당한 시간을 지정하여 자동 소멸 시키거나</li>
+<li>브라우저를 닫을 시 사라지게 만든다</li>
 </ul>
 </li>
 </ul>
-<h3 id="DB-생성"><a href="#DB-생성" class="headerlink" title="DB 생성"></a>DB 생성</h3><ol>
-<li><p>관리자 계정으로 접속 <code>mysql –uroot  -p</code></p>
-</li>
-<li><p>DB 생성 <code>create database DB이름;</code></p>
-</li>
-</ol>
-<h3 id="사용자-생성-및-권한-할당"><a href="#사용자-생성-및-권한-할당" class="headerlink" title="사용자 생성 및 권한 할당"></a>사용자 생성 및 권한 할당</h3><ul>
-<li><code>Database</code>를 생성했다면, 해당 데이터베이스를 사용하는 계정을 생성해야 함</li>
-<li>해당 계정이 데이터베이스를 이용할 수 있는 권한을 부여해야 함<ul>
-<li>db이름 뒤의 <code>*</code> 는 모든 권한을 의미</li>
-<li><code>@’%’</code>는 어떤 클라이언트에서든 접근 가능하다는 의미</li>
-<li><code>@’localhost’</code>는 해당 컴퓨터에서만 접근 가능하다는 의미</li>
-<li><code>flush privileges</code>는 DBMS에게 적용을 하라는 의미</li>
+<h3 id="application-scope"><a href="#application-scope" class="headerlink" title="application scope"></a><code>application scope</code></h3><ul>
+<li><strong>웹 어플리케이션이 시작되고 종료될 때까지 변수를 사용</strong>할 수 있음</li>
+<li>웹 어플리케이션 하나당 하나의 <code>application</code> 객체가 사용됨</li>
+<li>모든 클라이언트가 공통으로 사용해야 할 값들이 있을 때 사용</li>
+<li><code>ServletContext</code> 인터페이스를 구현한 객체 사용<ul>
+<li><code>jsp</code>에서는 <code>application</code> 내장 객체를 이용</li>
+<li><code>서블릿</code>의 경우는 <code>getServletContext()</code> 메소드를 이용하여 <code>application</code> 객체를 이용</li>
 </ul>
 </li>
+<li>값을 저장할 때는 <code>application</code>객체의 <code>setAttribute()</code>메소드를 사용</li>
+<li>값을 읽어 들일 때는 <code>application</code>객체의 <code>getAttribute()</code> 메소드를 사용</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on db이름.* to 계정이름@&apos;%&apos; identified by ＇암호’;</span><br><span class="line">grant all privileges on db이름.* to 계정이름@&apos;localhost&apos; identified by ＇암호’;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<h3 id="접속"><a href="#접속" class="headerlink" title="접속"></a>접속</h3><p><code>mysql –h호스트명 –uDB계정명 –p 데이터베이스이름</code></p>
-<h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ul>
-<li><code>SQL</code>은 <code>;</code>으로 끝난다</li>
-<li><p><code>SQL</code>은 쿼리(<code>Query</code>)라고 읽는다</p>
-<ul>
-<li>쿼리는 대소문자를 가리지 않는다</li>
-</ul>
-</li>
-<li><p><code>SELECT</code>는 어떤 내용을 조회할 때 사용하는 키워드</p>
-</li>
-<li><p>MySQL은 쿼리에 해당하는 결과의 전체 row를 출력하고 마지막에 전체 row 수와 쿼리실행에 걸린 시간을 표시</p>
-</li>
-<li>쿼리 작성 중 <code>₩c</code>를 사용하면 중간에 취소 가능</li>
-</ul>
-<h3 id="명령어"><a href="#명령어" class="headerlink" title="명령어"></a>명령어</h3><ul>
-<li><code>SHOW statement;</code><ul>
-<li><code>DBMS</code>에 존재하는 데이터베이스 확인</li>
-</ul>
-</li>
-<li><code>use mydb;</code><ul>
-<li>사용중인 데이터베이스 전환 <ul>
-<li>데이터베이스를 전환하려면, 이미 데이터베이스가 존재</li>
-<li>현재 접속 중인 계정이 해당 데이터베이스를 사용할 수 있는 권한이 있어야 함</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="DDL-create-drop"><a href="#DDL-create-drop" class="headerlink" title="DDL(create, drop)"></a><code>DDL</code>(<code>create</code>, <code>drop</code>)</h3><h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p><img src="https://cphinf.pstatic.net/mooc/20180131_276/1517366013781n0BtX_PNG/2_8_1_%28table%29_.PNG" alt=""></p>
-<ul>
-<li><code>table</code><ul>
-<li><code>RDBMS</code>의 기본적 저장구조 한 개 이상의 <code>column</code>과 0개 이상의 <code>row</code>로 구성</li>
-</ul>
-</li>
-<li><code>Column</code><ul>
-<li>테이블 상에서의 단일 종류의 데이터</li>
-<li>특정 데이터 타입 및 크기를 지님</li>
-</ul>
-</li>
-<li><code>Row</code><ul>
-<li><code>Column</code>들의 값의 조합</li>
-<li>레코드</li>
-<li>기본키(<code>PK</code>)에 의해 구분<ul>
-<li>기본키는 중복을 허용하지 않으며 없어서는 안 된다</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>Field</code><ul>
-<li><code>Row</code>와 <code>Column</code>의 교차점으로 <code>Field</code>는 데이터를 포함할 수 있고 없을 때는 NULL 값</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p><code>Empty set</code> : DB에 아직 테이블이 생성되지 않았음</p>
-<p><code>desc 테이블명;</code> : 테이블의 구조 확인</p>
-</blockquote>
-<h4 id="데이터-타입"><a href="#데이터-타입" class="headerlink" title="데이터 타입"></a>데이터 타입</h4><p><img src="https://cphinf.pstatic.net/mooc/20180131_89/1517386938999sf3SM_PNG/2_8_3_MySQL__-1.PNG" alt=""></p>
-<p><img src="https://cphinf.pstatic.net/mooc/20180131_46/1517386952668I67cM_PNG/2_8_3_MySQL__-2.PNG" alt=""></p>
-<blockquote>
-<p><code>AUTO_INCREMENT</code> : 자동으로 1씩 증가하는 번호</p>
-</blockquote>
-<h3 id="DML-select-insert-update-delete"><a href="#DML-select-insert-update-delete" class="headerlink" title="DML(select, insert, update, delete)"></a><code>DML</code>(<code>select</code>, <code>insert</code>, <code>update</code>, <code>delete</code>)</h3><p><img src="https://cphinf.pstatic.net/mooc/20180131_187/1517374752273Ba8n9_PNG/2_8_2_select__.PNG" alt=""></p>
-<blockquote>
-<p><strong>오라클의 <code>dual</code></strong> 테이블</p>
-<p>오라클에서는 반드시 테이블이 있어야 한다</p>
-<p>하지만 테이블에 없는 데이터를 임시로 꺼낼 수도 있기 때문에, 해당 테이블을 <strong>임시 테이블</strong>로 지정해 값을 출력할 수 있다</p>
-</blockquote>
-<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><p><img src="https://cphinf.pstatic.net/mooc/20180227_23/1519695801630edbfc_PNG/3.PNG" alt=""></p>
-<ul>
-<li><code>column in (blah, blah)</code></li>
-<li><code>column like &#39;%a_&#39;</code></li>
-</ul>
-<h4 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h4><h5 id="단일함수"><a href="#단일함수" class="headerlink" title="단일함수"></a>단일함수</h5><ul>
-<li><p><code>concat</code> : 문자열 결합 함수</p>
-<ul>
-<li><code>select concat(column, &#39;blah&#39;, column) from tablename</code></li>
-</ul>
-</li>
-<li><p><code>UCASE</code>, <code>UPPER</code> : 대문자로 변경</p>
-</li>
-<li><p><code>LCASE</code>, <code>LOWER</code> : 소문자로 변경</p>
-</li>
-<li><p><code>substring(&#39;blahblah&#39;, n, n)</code></p>
-<ul>
-<li>DB는 <code>0</code>이 아닌 <code>1</code>부터 시작</li>
-</ul>
-</li>
-<li><p><code>LPAD</code>, <code>RPAD</code> : 원하는 문자열로 채움</p>
-<ul>
-<li><code>LPAD(&#39;hi&#39;,5,&#39;?&#39;), RPAD(&#39;joe&#39;,7,&#39;*&#39;)</code><ul>
-<li><code>???hi</code>, <code>joe****</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>TRIM</code>, <code>LTRIM</code>, <code>RTRIM</code> : 공백 삭제</p>
-</li>
-<li><p><code>ABS(x)</code> : 절대값 구하기</p>
-</li>
-<li><p><code>MOD(n,m)</code> : 나머지 구하기</p>
-</li>
-<li><p><code>FLOOR(x)</code> : <code>x</code>보다 크지 않은 가장 큰 정수를 반환</p>
-</li>
-<li><p><code>CEILING(x)</code>: <code>x</code>보다 작지 않은 가장 작은 정수를 반환</p>
-</li>
-<li><p><code>ROUND(x)</code> : <code>x</code>에 가장 근접한 정수를 반환</p>
-</li>
-<li><p><code>POW(x,y)</code>, <code>POWER(x,y)</code> : <code>x</code>의 <code>y</code> 제곱 승을 반환</p>
-</li>
-<li><p><code>GREATEST(x,y,...)</code> : 가장 큰 값을 반환</p>
-</li>
-<li><p><code>LEAST(x,y,...)</code> : 가장 작은 값을 반환</p>
-</li>
-<li><p><code>CURDATE()</code>, <code>CURRENT_DATE</code> : 오늘 날짜를<code>YYYY-MM-DD</code>나 <code>YYYYMMDD</code> 형식으로 반환</p>
-</li>
-<li><p><code>CURTIME()</code>, <code>CURRENT_TIME</code> : 현재 시각을 <code>HH:MM:SS</code>나 <code>HHMMSS</code> 형식으로 반환</p>
-</li>
-<li><p><code>NOW()</code>, <code>SYSDATE()</code> , <code>CURRENT_TIMESTAMP</code> : 오늘 현시각을<code>YYYY-MM-DD HH:MM:SS</code>나 <code>YYYYMMDDHHMMSS</code> 형식으로 반환</p>
-</li>
-<li><p><code>DATE_FORMAT(date,format)</code> : 입력된 <code>date</code>를 <code>format 형식</code>으로 반환합니다.</p>
-</li>
-<li><p><code>PERIOD_DIFF(p1,p2)</code> : <code>YYMM</code>이나 <code>YYYYMM</code>으로 표기되는 <code>p1</code>과 <code>p2</code>의 차이 개월을 반환</p>
-</li>
-<li><p><code>cast</code> 형 변환 (<code>mysql</code> 4.2 버전부터 지원)</p>
-<p><img src="https://cphinf.pstatic.net/mooc/20180227_7/1519696097137n1dmo_PNG/4.png" alt=""></p>
-</li>
-</ul>
-<h5 id="그룹함수"><a href="#그룹함수" class="headerlink" title="그룹함수"></a>그룹함수</h5><p>여러 개의 값을 가지고 결과 값 하나만 출력</p>
-<p><img src="https://cphinf.pstatic.net/mooc/20180131_87/151738015308653Cmb_PNG/2_8_2_select_%28%29.PNG" alt=""></p>
-<p><img src="https://cphinf.pstatic.net/mooc/20180227_237/15196955203980m2pE_PNG/2.PNG" alt=""></p>
 
       
     </div>
@@ -381,7 +264,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/115/">115</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/117/">117</a><a class="extend next" rel="next" href="/page/6/">Next</a>
   </nav>
 
 </section>
@@ -434,7 +317,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">99</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">11</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -475,6 +358,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/08/04/lazylab01/">첫 모각작 후기</a></h6>
+              <span>8월 4, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -536,18 +431,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/20/boostcouse-jsp/">JSP와 JSTL &amp; EL</a></h6>
-              <span>7월 20, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -558,7 +441,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
