@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-boostcouse-webdev" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-boostcouse-html" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/16/boostcouse-webdev/">Web개발의 이해 - FE/BE</a>
+      <a class="article-title" href="/2019/07/16/boostcouse-html/">Front-End</a>
     </h1>
   
 
@@ -120,7 +120,7 @@
     
     <div class="article-meta">
       
-	<a href="/2019/07/16/boostcouse-webdev/" class="article-date">
+	<a href="/2019/07/16/boostcouse-html/" class="article-date">
 	  <time datetime="2019-07-16T06:39:18.000Z" itemprop="datePublished">7월 16, 2019</time>
 	</a>
 
@@ -131,387 +131,182 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Web개발의-이해-FE-BE"><a href="#Web개발의-이해-FE-BE" class="headerlink" title="Web개발의 이해 - FE/BE"></a>Web개발의 이해 - FE/BE</h1><h2 id="HTTP-프로토콜"><a href="#HTTP-프로토콜" class="headerlink" title="HTTP 프로토콜"></a>HTTP 프로토콜</h2><h3 id="인터넷-네트워크-통신-의-이해"><a href="#인터넷-네트워크-통신-의-이해" class="headerlink" title="인터넷 (네트워크 통신)의 이해"></a>인터넷 (네트워크 통신)의 이해</h3><ul>
-<li><code>internet != WWW(World Wide Web)</code><ul>
-<li><code>WWW</code>가 인터넷의 전부는 아니다<ul>
-<li>컴퓨터 하나에 여러 개의 서버 동작 가능<ul>
-<li>각각의 서버는 포트로 구분되어 동작<ul>
-<li><code>web</code> : 80</li>
-<li><code>email</code> : 25</li>
-<li><code>FTP</code> : 21</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>internet</code><ul>
-<li><code>TCP/IP</code> 기반의 네트워크가 전세계적으로 확대되어 하나로 연결된, <strong>네트워크들의 결합체</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="HTTP-Hypertext-Transfer-Protocol"><a href="#HTTP-Hypertext-Transfer-Protocol" class="headerlink" title="HTTP(Hypertext Transfer Protocol)"></a>HTTP(Hypertext Transfer Protocol)</h3><ul>
-<li>웹 브라우저(클라이언트)와 웹 서버 간 서로 통신하기 위한 규약</li>
-<li><p>어떤 종류의 데이터라도 전송할 수 있도록 설계</p>
-</li>
-<li><p><code>HTTP/2</code>까지 버전이 등장한 상태</p>
-</li>
-</ul>
-<h4 id="장단점"><a href="#장단점" class="headerlink" title="장단점"></a>장단점</h4><h5 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h5><ul>
-<li>불특정 다수를 대상으로 하는 서비스에 적합</li>
-<li>클라이언트와 서버가 계속 연결된 형태가 아니기 때문에 클라이언트와 서버 간의 최대 연결 수보다 훨씬 많은 요청과 응답을 처리 가능</li>
-</ul>
-<h5 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h5><ul>
-<li><strong>무상태 프로토콜</strong><ul>
-<li>응답 후 연결을 끊어버리기 때문에, 클라이언트의 이전 상황을 알 수가 없다</li>
-<li>정보를 유지하기 위해 <code>Cookie</code> 등이 등장</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://cphinf.pstatic.net/mooc/20180119_25/1516354290022wUY3x_PNG/http_-_.PNG" alt=""></p>
-<h4 id="연결-순서"><a href="#연결-순서" class="headerlink" title="연결 순서"></a>연결 순서</h4><ul>
-<li>클라이언트가 서버에게 요청(request)</li>
-<li>서버는 클라이언트에게 응답(response)</li>
-</ul>
-<h5 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h5><p>클라이언트와 웹 서버가 연결</p>
-<h5 id="request"><a href="#request" class="headerlink" title="request"></a>request</h5><h6 id="요청-헤더"><a href="#요청-헤더" class="headerlink" title="요청 헤더"></a>요청 헤더</h6><ul>
-<li>요청 메서드<ul>
-<li><code>GET</code> : 정보를 요청하기 위해서 사용한다. (SELECT)</li>
-<li><code>POST</code> : 정보를 밀어넣기 위해서 사용한다. (INSERT)</li>
-<li><code>PUT</code> : 정보를 업데이트하기 위해서 사용한다. (UPDATE)</li>
-<li><code>DELETE</code> : 정보를 삭제하기 위해서 사용한다. (DELETE)</li>
-<li><code>HEAD</code> : (HTTP)헤더 정보만 요청한다. 해당 자원이 존재하는지 혹은 서버에 문제가 없는지를 확인하기 위해서 사용한다.</li>
-<li><code>OPTIONS</code> : 웹서버가 지원하는 메서드의 종류를 요청한다.</li>
-<li><code>TRACE</code> : 클라이언트의 요청을 그대로 반환한다. 예컨데 echo 서비스로 서버 상태를 확인하기 위한 목적으로 주로 사용한다.</li>
-</ul>
-</li>
-<li>요청 url</li>
-<li>http 프로토콜의 버전<ul>
-<li>웹 브라우저가 사용하는 프로토콜의 버전 명시</li>
-</ul>
-</li>
-</ul>
-<h6 id="요청-바디"><a href="#요청-바디" class="headerlink" title="요청 바디"></a>요청 바디</h6><ul>
-<li>요청 메서드가 <code>POST</code>나 <code>PUT</code>을 사용할 때 들어온다</li>
-</ul>
-<h5 id="response"><a href="#response" class="headerlink" title="response"></a>response</h5><h6 id="응답-헤더"><a href="#응답-헤더" class="headerlink" title="응답 헤더"></a>응답 헤더</h6><ul>
-<li>응답 http 프로토콜의 버전</li>
-<li>응답 코드</li>
-<li>응답 메시지</li>
-<li>응답 날짜</li>
-<li>웹 서버 이름</li>
-<li>웹 서버 버전</li>
-<li>콘텐츠 타입</li>
-<li>캐시 제어 방식</li>
-<li>콘텐츠 길이</li>
-<li>etc..</li>
-</ul>
-<h6 id="응답-바디"><a href="#응답-바디" class="headerlink" title="응답 바디"></a>응답 바디</h6><ul>
-<li>실제 응답 데이터 송출</li>
-</ul>
-<h3 id="URL-Uniform-Resource-Locator"><a href="#URL-Uniform-Resource-Locator" class="headerlink" title="URL (Uniform Resource Locator)"></a>URL (Uniform Resource Locator)</h3><ul>
-<li><p>특정 웹 서버의 특정 파일에 접근하기 위한 경로 혹은 주소</p>
-</li>
-<li><p><code>접근프로토콜</code>://<code>IP 주소 or 도메인, 포트 주소</code>/<code>파일 경로</code>/<code>파일명</code> 형식으로 이루어져있다</p>
+        <h1 id="Front-End"><a href="#Front-End" class="headerlink" title="Front-End"></a>Front-End</h1><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="Tags"><a href="#Tags" class="headerlink" title="Tags"></a>Tags</h3><p><code>HTML</code> 태그는 굉장히 많은 것들이 있고, 그것들은 모두 다 각각의 쓰임에 대해 <strong>정확한 의미를 지니고 있다(semantic)</strong></p>
 <ul>
-<li>물리적 서버를 찾기 위해서는 반드시 <strong><code>IP</code>, <code>도메인 주소</code>가 필요</strong>하다</li>
-<li>물리적 서버를 찾았다면 그 안의 소프트웨어 서버를 찾기 위해서 <strong>포트 값</strong>이 필요하다</li>
+<li>필요한 태그를 찾아서 적절한 의미에 맞는 태그를 사용하는 것이 중요</li>
+<li>SEO에 영향을 준다</li>
 </ul>
-</li>
-</ul>
-<h2 id="browser의-동작"><a href="#browser의-동작" class="headerlink" title="browser의 동작"></a>browser의 동작</h2><blockquote>
-<p><strong>크로미움</strong></p>
-<p><code>V8</code> + <code>Blink</code>을 포함한 구글 브라우저 오픈소스 어플리케이션</p>
-</blockquote>
-<blockquote>
-<p>해당 단원은 이전에 내가 공부한 내용이 더 자세한 것 같아서, 그 부분으로 마저 정리</p>
-</blockquote>
-<h3 id="브라우저"><a href="#브라우저" class="headerlink" title="브라우저"></a>브라우저</h3><ul>
-<li><p><code>WWW</code>에서 정보를 검색, 표현하고 탐색하기 위한 소프트웨어</p>
+<h4 id="Layout-Tags"><a href="#Layout-Tags" class="headerlink" title="Layout Tags"></a>Layout Tags</h4><p><img src="https://cphinf.pstatic.net/mooc/20171231_41/15146999078486r8Pv_JPEG/5086.HTML5PageLayout_2.jpg" alt=""></p>
 <ul>
-<li>사용짜 인터페이스<ul>
-<li>주소 입력창</li>
-<li>이전/다음 버튼</li>
-<li>북마크 메뉴 등</li>
-<li>요청한 페이지를 보여주는 창을 제외한 나머지 모든 부분</li>
-</ul>
-</li>
-<li>네트워크 모듈<ul>
-<li>서버와 HTTP로 정보를 주고 받는 용도</li>
-</ul>
-</li>
-<li>Parser<ul>
-<li>서버에서 받은 문서를 해석하고 실행해 화면에 렌더</li>
-</ul>
-</li>
-<li>자바스크립트 해석기<ul>
-<li>자바스크립트 코드를 해석하고 실행</li>
-</ul>
-</li>
-<li>UI<ul>
-<li>기본적인 장치를 그림</li>
-<li>플랫폼에서 명시하지 않은 일반적인 인터페이스로 OS 사용자 인터페이스 체계를 사용</li>
-</ul>
-</li>
-<li><strong>브라우저 엔진</strong><ul>
-<li>사용자 인터페이스와 렌더링 엔진 사이의 동작을 제어</li>
-<li>소스코드를 실행해 화면에 보여주는 역할</li>
-</ul>
-</li>
-<li>렌더링 엔진<ul>
-<li>화면에 위치를 잡고 색을 칠하는 역할</li>
-<li>요청한 콘텐츠를 표시</li>
+<li><code>header</code>, <code>footer</code>는 사실 <code>div</code> 태그와 같은 일을 하는데, <strong>의미가 다르다</strong></li>
+<li>몇몇의 태그들은 <code>html5</code>를 지원하지 않는 브라우저의 경우 제대로 동작하지 않을 가능성이 있다<ul>
+<li>몇몇 라이브러리들이 변환을 해주는 작업을 수행한다</li>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p><strong>렌더링이란</strong></p>
-<p>화면에 어떻게 보여줘야 할 지를 결정하는 것</p>
-</blockquote>
+<h3 id="class와-id"><a href="#class와-id" class="headerlink" title="class와 id"></a><code>class</code>와 <code>id</code></h3><h4 id="id"><a href="#id" class="headerlink" title="id"></a><code>id</code></h4><ul>
+<li>고유한 속성으로 한 HTML 문서에 <strong>하나만</strong> 사용 가능</li>
+</ul>
+<h4 id="class"><a href="#class" class="headerlink" title="class"></a><code>class</code></h4><ul>
+<li>하나의 HTML 문서 안에 <strong>중복해서 사용 가능</strong></li>
+<li>하나의 태그에 여러 개의 다른 class 이름을 공백을 기준으로 나열 가능</li>
+</ul>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="CSS의-구성"><a href="#CSS의-구성" class="headerlink" title="CSS의 구성"></a>CSS의 구성</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span> &#123;</span><br><span class="line">	<span class="attribute">property </span>: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CSS-적용-방법"><a href="#CSS-적용-방법" class="headerlink" title="CSS 적용 방법"></a>CSS 적용 방법</h3><h4 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tag</span> <span class="attr">style</span>=<span class="string">"property1:value1; property2:value2;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>자료 저장소<ul>
-<li>자료를 저장하는 계층</li>
-<li>쿠키를 저장하는 것과 같이 모든 종류의 자원을 하드 디스크에 저장할 필요</li>
-<li>HTML5 명세에는 브라우저가 지원하는 웹 데이터 베이스가 정의</li>
+<li><code>html</code> 태그 안에 적용</li>
+<li>다른 <code>css</code> 파일에 적용한 것보다 가장 먼저 적용됨</li>
 </ul>
-</li>
-</ul>
-<p><img src="https://camo.githubusercontent.com/a2b331da9c38da9fdc563460c2e3c134b7c9a483/68747470733a2f2f64322e6e617665722e636f6d2f636f6e74656e742f696d616765732f323031352f30362f68656c6c6f776f726c642d35393336312d312e706e67" alt=""></p>
-</li>
-</ul>
-<p><img src="https://cphinf.pstatic.net/mooc/20171231_32/1514692895834EoHUo_PNG/webkitflow.png" alt=""></p>
-<h3 id="렌더링-엔진-처리-과정"><a href="#렌더링-엔진-처리-과정" class="headerlink" title="렌더링 엔진 처리 과정"></a>렌더링 엔진 처리 과정</h3><p><img src="https://camo.githubusercontent.com/d4733533433f942a3cb87a9e3f0a9f16888b989a/68747470733a2f2f706f73742d7068696e662e707374617469632e6e65742f4d6a41784e7a41334d444a664d5445792f4d4441784e446b344f5449314d6a55344f5459332e4f52366253666f4b57456c5f543467513152446a4b5a3764696d676c6a4c56694b39515250653975515251672e33464f6f4664434a51474f4246454572483145585574484b6e55665467302d6b6b6d6e546f4e332d4c4873672e504e472f696d6167655f333438303637303139313439383932343834343237392e706e673f747970653d7731323030" alt=""></p>
-<ol>
-<li><p>서버에서 응답으로 받은 HTML 데이터를 파싱한다.</p>
-</li>
-<li><p>HTML을 파싱한 결과로 DOM Tree를 만든다(빌드한다). (<strong>“무엇을”</strong> 그릴지 결정한다.)</p>
+<h4 id="internal"><a href="#internal" class="headerlink" title="internal"></a>internal</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">      selector &#123;</span></span><br><span class="line"><span class="undefined">        property : value;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>바이트 → 문자 → 토큰 → 노드 → 객체 모델</p>
-<p><img src="https://camo.githubusercontent.com/ec79ab5d9d5e587a146929d5d4bad288088feb69/68747470733a2f2f646576656c6f706572732e676f6f676c652e636f6d2f7765622f66756e64616d656e74616c732f706572666f726d616e63652f637269746963616c2d72656e646572696e672d706174682f696d616765732f66756c6c2d70726f636573732e706e673f686c3d6b6f" alt=""></p>
+<li><code>&lt;style&gt;</code> 태그로 지정</li>
+<li>장점<ul>
+<li>별도의 <code>css</code> 파일을 관리하지 않아도 된다</li>
+<li>서버에 <code>css</code> 파일 request를 보내지 않아도 된다</li>
+</ul>
+</li>
+<li>단점<ul>
+<li>유지보수가 어렵다</li>
+</ul>
+</li>
+</ul>
+<h4 id="external"><a href="#external" class="headerlink" title="external"></a>external</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style.css"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>변환<ul>
-<li>브라우저가 HTML의 원시 바이트를 디스크나 네트워크에서 읽어와서, 해당 파일에 대해 지정된 인코딩(예: UTF-8)에 따라 개별 문자로 변환한다</li>
+<li>외부파일(<code>.css</code>)로 만드는 것</li>
+<li>아주 짧은 코드가 아니라면 이 방법이 최선</li>
 </ul>
-</li>
-<li>토큰화<ul>
-<li>브라우저가 문자열을 W3C HTML5 표준에 지정된 고유 토큰으로 변환</li>
+<h3 id="상속과-우선순위"><a href="#상속과-우선순위" class="headerlink" title="상속과 우선순위"></a>상속과 우선순위</h3><ul>
+<li>일반적으로 상위에서 적용한 스타일은 자손에게도 반영</li>
 </ul>
-</li>
-<li>렉싱<ul>
-<li>방출된 토큰은 해당 속성 및 규칙을 정의하는 객체로 변환</li>
-</ul>
-</li>
-<li>DOM 생성<ul>
-<li>생성된 객체는 트리 데이터 구조 내에 연결</li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector1</span> <span class="selector-tag">selector2</span> &#123;</span><br><span class="line">	<span class="attribute">property </span>: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code></code>(띄어쓰기)는 자손 관계를 의미<ul>
+<li><code>selector1</code>의 하위 요소인 <code>selector2</code>의 모든 하위 요소에 스타일 지정</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector1</span> &gt; <span class="selector-tag">selector2</span> &#123;</span><br><span class="line">	<span class="attribute">property </span>: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&gt;</code>는 자식 관계를 의미<ul>
+<li><code>selector1</code>의 바로 직계 하위 요소인 <code>selector2</code>에 스타일 지정</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">prent-selector</span> &gt; <span class="selector-tag">selector</span><span class="selector-pseudo">:nth-child(n)</span> &#123;</span><br><span class="line">	<span class="attribute">property </span>: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>nth-child(n)</code><ul>
+<li><code>prent-selector</code>의 하위 직계 요소의 <code>n</code>번째 자식에게만 스타일 지정</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span><span class="selector-class">.class</span> &#123;</span><br><span class="line">	<span class="attribute">property </span>: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>혼합<ul>
+<li><code>selector.class</code><ul>
+<li>특정 셀렉터 중 특정 클래스에만 스타일 지정</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>파싱하는 중 CSS 파일 링크를 만나면 CSS 파일을 요청해서 받아온다.</p>
+</ul>
+<h4 id="box-model"><a href="#box-model" class="headerlink" title="box-model"></a>box-model</h4><ul>
+<li>크기, 배치 관련 속성은 <strong>상속이 되지 않는다</strong><br>(<em><code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code>,<code>border</code></em>)</li>
+<li><code>block Element</code>의 경우 <code>box-moel</code> 속성이 사용된다</li>
+</ul>
+<h5 id="엘리먼트의-크기"><a href="#엘리먼트의-크기" class="headerlink" title="엘리먼트의 크기"></a>엘리먼트의 크기</h5><ul>
+<li><p>기본적으로 부모의 크기만큼 가진다</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span> &#123;</span><br><span class="line">	<span class="attribute">box-sizing</span>:content-box;</span><br><span class="line">  <span class="comment">/* 이 경우 padding 속성에 따라 크기가 커질 수 있다 */</span></span><br><span class="line">  <span class="attribute">box-sizing</span>:border-box;</span><br><span class="line">  <span class="comment">/* 이 경우 테두리가 박스 사이즈임을 명기했기 때문에 padding 속성을 바꾼다고 해도 크기가 변경되지 않는다 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>CSS 파일을 읽어서 CSSOM(CSS Object Model)을 만든다(빌드한다). (<strong>“어떻게”</strong> 그릴지 결정한다.)</p>
-</li>
-<li><p>DOM Tree와 CSSOM이 모두 만들어지면 이 둘을 사용해 Render Tree를 만든다. (<strong>“화면에 그려질 것만”</strong> 결정)</p>
-</li>
-<li><p>Render Tree에 있는 각각의 노드들이 화면의 어디에 어떻게 위치할지 계산하는 Layout과정을 거쳐서 (<strong>“Box-Model”</strong> 생성)</p>
-</li>
-<li><p>화면에 실제 픽셀을 Paint한다.</p>
+</ul>
+<h4 id="일반적인-CSS"><a href="#일반적인-CSS" class="headerlink" title="일반적인 CSS"></a>일반적인 CSS</h4><ol>
+<li><code>liline</code></li>
+<li>나중에 선언된 속성<ul>
+<li><code>internal</code>과 <code>external</code>은 우선 순위가 동등</li>
+</ul>
 </li>
 </ol>
-<blockquote>
-<p>렌더링 엔진은 좀 더 나은 사용자 경험을 위해 가능하면 빠르게 내용을 표시하는데 모든 HTML을 파싱할 때까지 기다리지 않고 배치와 그리기 과정을 시작한다. 네트워크로부터 나머지 내용이 전송되기를 기다리는 동시에 받은 내용의 일부를 먼저 화면에 표시한다.</p>
-</blockquote>
-<blockquote>
-<p>출처</p>
-<ul>
-<li><a href="https://d2.naver.com/helloworld/59361" target="_blank" rel="noopener">브라우저는 어떻게 동작하는가</a></li>
-<li><a href="https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/FrontEnd#브라우저의-동작-원리" target="_blank" rel="noopener">브라우저의 동작 원리</a></li>
-<li><a href="https://m.post.naver.com/viewer/postView.nhn?volumeNo=8431285&amp;memberNo=34176766" target="_blank" rel="noopener">브라우저는 웹페이지를 어떻게 그리나요?</a></li>
+<h4 id="cascading-우선순위"><a href="#cascading-우선순위" class="headerlink" title="cascading 우선순위"></a>cascading 우선순위</h4><ul>
+<li><strong>구체적</strong>인 것이 먼저 반영</li>
+<li>같은 선택자라면 <strong>나중에 선언된 것이 반영</strong></li>
 </ul>
-</blockquote>
-<h2 id="browser에서의-웹-개발"><a href="#browser에서의-웹-개발" class="headerlink" title="browser에서의 웹 개발"></a>browser에서의 웹 개발</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a><code>HTML</code></h3><p>브라우저는 한 라인씩 해석한다</p>
-<h4 id="lt-DOCTYPE-gt"><a href="#lt-DOCTYPE-gt" class="headerlink" title="&lt;DOCTYPE&gt;"></a><code>&lt;DOCTYPE&gt;</code></h4><ul>
-<li><p>해당 문서의 타입 정의</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSS-기본-Style-변경"><a href="#CSS-기본-Style-변경" class="headerlink" title="CSS 기본 Style 변경"></a>CSS 기본 Style 변경</h3><h4 id="font"><a href="#font" class="headerlink" title="font"></a>font</h4><ul>
+<li><code>color</code></li>
+<li><p><code>font-size</code></p>
 </li>
-</ul>
-<ul>
-<li><p><code>html</code>의 시작을 알린다</p>
-<ul>
-<li>브라우저가 <code>doctype</code>을 읽고 해석을 한다</li>
-</ul>
+<li><p><code>background</code></p>
 </li>
-</ul>
-<h4 id="lt-head-gt"><a href="#lt-head-gt" class="headerlink" title="&lt;head&gt;"></a><code>&lt;head&gt;</code></h4><ul>
-<li><code>html</code> 문서에 대한 추가적인 설명을 담는다</li>
-<li>해당 태그 안 자손 요소들은 가시적인 것을 정의하지 않는다</li>
-</ul>
-<h5 id="lt-meta-gt"><a href="#lt-meta-gt" class="headerlink" title="&lt;meta&gt;"></a><code>&lt;meta&gt;</code></h5><p>이 문서가 브라우저에게 어떤 것인지 알려주는 태그</p>
-<h5 id="lt-title-gt"><a href="#lt-title-gt" class="headerlink" title="&lt;title&gt;"></a><code>&lt;title&gt;</code></h5><h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a><code>javascript</code></h3><ul>
-<li><p><code>html</code>이 끝나는 부분에 넣어주는 게 일반적</p>
-<ul>
-<li>위쪽에 넣어주는 경우 브라우저가 <code>html</code>을 해석하는 동안 <code>javascript</code> 코드를 다운로드하고 해석하느라 <code>html</code> 해석이 느려질 여지가 있기 때문</li>
-</ul>
-</li>
-<li><p><code>javascirpt</code> 파일이 있을 경우, 서버에서 요청을 보내 받아오고, 해당 파일을 바로 해석을 한다.</p>
-<ul>
-<li>해석 결과 즉시 실행되야 할 코드가 있다면 먼저 실행된다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="웹-서버"><a href="#웹-서버" class="headerlink" title="웹 서버"></a>웹 서버</h2><ul>
-<li>소프트웨어를 보통 지칭</li>
-<li>웹 서버 소프트웨어가 동작하는 컴퓨터</li>
-<li><strong>클라이언트가 요청하는 <code>html</code> 문서나 각종 리소스 전달</strong>이 가장 중요한 목표</li>
-<li>요청되는 리소스는 정적 데이터이거나<ul>
-<li><code>html</code></li>
-<li><code>css</code></li>
-<li><code>javascript</code></li>
-</ul>
-</li>
-<li>동적 데이터일 수도 있다<ul>
-<li>웹 서버에 의해 실행되는 프로그램을 통해 만들어진 결과물</li>
-</ul>
-</li>
+<li><code>font-family</code></li>
 </ul>
 <blockquote>
-<p><strong>웹 크롤러</strong></p>
-<p>검색 사이트에서 다른 웹사이트의 정보를 읽어갈 때 사용하는 소프트웨어</p>
-</blockquote>
-<h3 id="종류"><a href="#종류" class="headerlink" title="종류"></a>종류</h3><ul>
-<li><code>Apache</code><ul>
-<li>Apache Software Foundation에서 개발한 웹서버</li>
-<li>오픈소스 소프트웨어</li>
-<li>거의 대부분 운영체제에서 설치 및 사용이 가능</li>
-</ul>
-</li>
-<li><code>Nginx</code><ul>
-<li>차세대 웹서버</li>
-<li>더 적은 자원으로 더 빠르게 데이터를 서비스하는 것을 목적으로 만들어진 서버</li>
-<li>오픈소스 소프트웨어</li>
-</ul>
-</li>
-<li><code>Microsoft IIS</code></li>
-</ul>
-<h3 id="웹-브라우저와-웹-서버"><a href="#웹-브라우저와-웹-서버" class="headerlink" title="웹 브라우저와 웹 서버"></a>웹 브라우저와 웹 서버</h3><ul>
-<li>브라우저는 웹 서버로부터 전송 받은 <code>html</code> 를 읽어들인 후 해석</li>
-<li>렌더하는데 필요한 <code>img</code>, <code>css</code>, <code>javascript</code> 리소스는 <code>url</code>을 추출</li>
-<li>웹 서버에게 해당 <code>url</code>의 리소스 요청<ul>
-<li>해당 작업은 각 파일마다가 아니라, 동시에 발생</li>
-</ul>
-</li>
-<li>웹 서버는 모든 요청을 받아들인 후 그 결과를 브라우저에 전송</li>
-<li>웹 브라우저는 해석한 <code>html</code> 문서와 여러 개의 리소스를 종합해 결과를 화면에 렌더</li>
-</ul>
-<h2 id="WAS"><a href="#WAS" class="headerlink" title="WAS"></a>WAS</h2><h3 id="미들웨어"><a href="#미들웨어" class="headerlink" title="미들웨어"></a>미들웨어</h3><ul>
-<li><p>클라이언트 쪽에 비즈니스 로직이 많을 경우</p>
-</li>
-<li><p>클라이언트 관리에 비용이 많이 발생하는 문제</p>
+<h3 id="em-단위"><a href="#em-단위" class="headerlink" title="em 단위"></a><code>em</code> 단위</h3><p>설정된 값 대비 상대적인 크기를 배수로 지정하는 것</p>
 <blockquote>
-<p><code>DBMS</code> 는 보통 서버 형태로 서비스를 제공하기 때문에, 이전에는 <code>DBMS</code>에 직접 접속해 동작하는 클라이언트 프로그램이 많았음</p>
+<p>만약 <code>16px</code>이 기본 값이라면, <code>2em</code>은 <code>32px</code>이다.</p>
 </blockquote>
 <ul>
-<li>클라이언트 프로그램의 크기가 커짐</li>
-<li>로직이 변경되면 매번 새로 배포</li>
-<li>클라이언트 단에 로직이 포함되어있어 보안이 나쁨</li>
+<li><strong><code>font-size</code>는 상속이 된다</strong><ul>
+<li>즉 부모 노드에 상속된 <code>font-size</code>가 무엇이냐에 따라 자식 요소의 <code>em</code> 기준 값이 바뀐다</li>
 </ul>
-</li>
-<li><p>클라이언트와 DBMS 사이에서 <strong>비즈니스 로직을 동작하게 하는 서버</strong>의 필요성 대두</p>
-<h3 id="WAS는-일종의-미들웨어인데"><a href="#WAS는-일종의-미들웨어인데" class="headerlink" title="WAS는 일종의 미들웨어인데"></a>WAS는 일종의 미들웨어인데</h3></li>
-<li><p>최초의 웹 등장 시</p>
-<ul>
-<li>정적 데이터만 보여주면 되었던 웹 브라우저</li>
-</ul>
-<blockquote>
-<p><strong>CGI</strong></p>
-<ul>
-<li><p>웹 서버에 프로그래밍 기능이 들어가는 방식</p>
-</li>
-<li><p>단순한 프로그래밍의 경우 요구사항 충족 가능</p>
-</li>
-<li><p>하지만 웹 복잡도 증가로 인해 사용이 어려워짐</p>
 </li>
 </ul>
 </blockquote>
-</li>
-<li><p>사용자의 요구사항 증가</p>
-<ul>
-<li>웹 브라우저 단에서 동적 기능 요구<ul>
-<li><code>DBMS</code>와 연관된 로직 필요</li>
+<h2 id="CSS-layout"><a href="#CSS-layout" class="headerlink" title="CSS layout"></a>CSS layout</h2><h3 id="렌더링-과정"><a href="#렌더링-과정" class="headerlink" title="렌더링 과정"></a>렌더링 과정</h3><ul>
+<li>엘리먼트를 화면에 배치하는 것</li>
+<li>위에서 아래로, 순서대로 블록을 이루며 배치되는 것이 기본</li>
+</ul>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a><code>display</code></h3><ul>
+<li>어떤 영역들을 가진 기본 속성<ul>
+<li>위에서 아래로 떨어지는 속성<ul>
+<li><code>block</code></li>
+<li><code>inline-block</code><ul>
+<li><code>div</code></li>
+<li><code>p</code></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><code>WAS</code> 등장 이후</p>
-<ul>
-<li>클라이언트는 입력과 출력만 담당</li>
-<li><p><code>DBMS</code>는 데이터 조작 업무만을 주로 수행</p>
-</li>
-<li><p>클라이언트 단 요청이 데이터 조작 업무라면, <code>DBMS</code>에게 요청</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="장점-1"><a href="#장점-1" class="headerlink" title="장점"></a>장점</h4><ul>
-<li>클라이언트의 복잡한 로직 감소<ul>
-<li>크기가 매우 작아짐</li>
-</ul>
-</li>
-<li>로직 변경 시 모든 클라이언트 재배포 필요 없음</li>
-</ul>
-<h4 id="기능"><a href="#기능" class="headerlink" title="기능"></a>기능</h4><ul>
-<li><p>프로그램 실행 환경과 <code>DBMS</code> 접속 기능 제공</p>
-</li>
-<li><p>여러 개의 트랜잭션 관리</p>
-<blockquote>
-<p><strong>트랜잭션</strong></p>
-<p>논리적인 작업 단위</p>
-</blockquote>
-</li>
-<li><p>비지니스 로직 수행</p>
-</li>
-</ul>
-<h3 id="웹-서버와-다른-점"><a href="#웹-서버와-다른-점" class="headerlink" title="웹 서버와 다른 점"></a>웹 서버와 다른 점</h3><ul>
-<li><p><code>WAS</code>는 보통 자체적인 웹 서버 기능을 내장</p>
-<blockquote>
-<p><strong>웹 서버의 역할</strong></p>
-<p>정적 콘텐츠를 웹 브라우저에게 전송하는 역할</p>
-<p><strong>WAS의 역할</strong></p>
-<p>프로그램의 동적인 결과를 웹 브라우저에게 전송하는 역할</p>
-</blockquote>
-</li>
-<li><p>어플리케이션 규모가 클 수록, 웹 서버와 <code>WAS</code>를 분리하는 게 일반적</p>
-<ul>
-<li>사실 웹 서버 없이 <code>WAS</code>만 있어도 정적 콘텐츠, 동적 콘텐츠 모두 제공 가능</li>
-<li>그러나<ul>
-<li>웹 서버는 <code>WAS</code> 보다 상대적으로 간단한 구조<ul>
-<li>대용량 웹 어플리케이션의 경우 트래픽이 많으면 서버가 여러 대일 확률이 높다<ul>
-<li>만약 <code>WAS</code> 자체의 오작동으로 재시작을 해야한다면</li>
-<li>웹 서버가 문제가 있는 <code>WAS</code>를 이용하지 못하도록 한 뒤</li>
-<li><code>WAS</code> 를 복구</li>
-<li>사용자의 입장에서는 문제 발생 여부를 알 수 없음<ul>
-<li><strong>무중단 운영</strong> 가능</li>
+<li>왼쪽에서 오른쪽으로 흐르는 속성<ul>
+<li><code>inline</code><ul>
+<li><code>span</code></li>
+<li><code>a</code></li>
+<li><code>strong</code></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>자원 이용의 효율성, 장애 극복, 배포 및 유지보수의 편의성 때문</li>
+</ul>
+<h3 id="position"><a href="#position" class="headerlink" title="position"></a><code>position</code></h3><ul>
+<li>특별한 값을 가지면서 배치가 되는 속성<ul>
+<li><code>static</code><ul>
+<li>순서대로 배치</li>
+</ul>
+</li>
+<li><code>absolute</code><ul>
+<li><strong>상위 엘리먼트들 중에 <code>static</code> 속성을 가지지 않은 엘리먼트를 기준</strong>으로 위치</li>
+<li>만약 상위의 모든 엘리먼트가 <code>static</code> 속성을 가지고 있다면, <code>body</code> 태그를 기준</li>
+</ul>
+</li>
+<li><code>relative</code><ul>
+<li><strong>원래 자신이 위치해야 할 곳을 기준</strong>으로 상대적인 곳에 위치</li>
+</ul>
+</li>
+<li><code>fixed</code><ul>
+<li><code>viewport</code> 를 기준으로 하여 위치</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="그래서-보통"><a href="#그래서-보통" class="headerlink" title="그래서 보통"></a>그래서 보통</h3><p><img src="https://t1.daumcdn.net/cfile/tistory/1415D8274A669970AA" alt=""></p>
-<p>웹 서버가 앞단에 위치하고, 뒤에 <code>WAS</code> 가 위치하는 경우가 잦다</p>
-<ul>
-<li>정적인 데이터는 앞의 웹 서버 담당</li>
-<li>동적인 데이터는 뒷단의 <code>WAS</code> 담당</li>
+<h3 id="float"><a href="#float" class="headerlink" title="float"></a><code>float</code></h3><ul>
+<li>기본적인 순서에서 벗어나 엘리먼트를 공중에 띄우는 속성</li>
+</ul>
+<h4 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a><code>overflow</code></h4><ul>
+<li><p><code>float</code> 속성을 지니고 있는 자식 요소를 인식하게 함</p>
+</li>
+<li><p>즉, <strong>부모 엘리먼트에 사용</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span> &#123;</span><br><span class="line">	<span class="attribute">overflow</span>:auto;</span><br><span class="line">  <span class="comment">/* value로 hidden을 줘도 된다*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -590,7 +385,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">99</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">11</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -631,6 +426,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/08/17/allnight_coding/">밤샘 모각코 후기</a></h6>
+              <span>8월 17, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -692,18 +499,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/22/boostcouse-mysql/">DB 연결 웹 앱 - MYSQL</a></h6>
-              <span>7월 22, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -714,7 +509,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
