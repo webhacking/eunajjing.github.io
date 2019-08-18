@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-minRander" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-19-05-26" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/05/27/minRander/">렌더링의 최소화</a>
+      <a class="article-title" href="/2019/05/26/19-05-26/">확장프로그램들</a>
     </h1>
   
 
@@ -120,28 +120,39 @@
     
     <div class="article-meta">
       
-	<a href="/2019/05/27/minRander/" class="article-date">
-	  <time datetime="2019-05-26T15:13:18.000Z" itemprop="datePublished">5월 27, 2019</time>
+	<a href="/2019/05/26/19-05-26/" class="article-date">
+	  <time datetime="2019-05-26T14:39:18.000Z" itemprop="datePublished">5월 26, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="렌더링의-최소화"><a href="#렌더링의-최소화" class="headerlink" title="렌더링의 최소화"></a>렌더링의 최소화</h1><h2 id="shouldComponentUpdate의-이용"><a href="#shouldComponentUpdate의-이용" class="headerlink" title="shouldComponentUpdate의 이용"></a><code>shouldComponentUpdate</code>의 이용</h2><p>라이프 메서드 중에서 <code>shouldComponentUpdate</code>의 인자 값, <code>nextProps</code>와 <code>nextState</code>를 사용하여 렌더링 여부를 결정한다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    <span class="comment">// 바뀐 프롭스로 nextProps가 들어오니까</span></span><br><span class="line">    <span class="keyword">return</span> nextProps.todo !== <span class="keyword">this</span>.props.todo;</span><br><span class="line">  	<span class="comment">// 해당 컴포넌트가 바뀐 프롭스와 일치하는지를 검사</span></span><br><span class="line">  	<span class="comment">// 만약 일치한다면 false를(일치하므로 또 렌더링할 필요 없음),</span></span><br><span class="line">  	<span class="comment">// 일치하지 않는다면 true를 반환하는 로직</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="react-virtualized의-이용"><a href="#react-virtualized의-이용" class="headerlink" title="react-virtualized의 이용"></a><code>react-virtualized</code>의 이용</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> TodoItem <span class="keyword">from</span> <span class="string">"./TodoItem"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; List &#125; <span class="keyword">from</span> <span class="string">"react-virtualized"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  renderRow = <span class="function">(<span class="params">&#123; index, key, style, parent &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; todos, onToggle, onRemove &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">    <span class="keyword">const</span> todo = todos[index];</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;TodoItem</span><br><span class="line">        id=&#123;todo.id&#125;</span><br><span class="line">        checked=&#123;todo.checked&#125;</span><br><span class="line">        text=&#123;todo.text&#125;</span><br><span class="line">        todo=&#123;todo&#125;</span><br><span class="line">        onToggle=&#123;onToggle&#125;</span><br><span class="line">        onRemove=&#123;onRemove&#125;</span><br><span class="line">        key=&#123;key&#125;</span><br><span class="line">        style=&#123;style&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; todos &#125; = <span class="keyword">this</span>.props;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"TodoList"</span>&gt;</span><br><span class="line">        &lt;List</span><br><span class="line">          width=&#123;<span class="number">600</span>&#125;</span><br><span class="line">          height=&#123;<span class="number">364</span>&#125;</span><br><span class="line">          rowCount=&#123;todos.length&#125;</span><br><span class="line">          rowHeight=&#123;<span class="number">62</span>&#125;</span><br><span class="line">          rowRenderer=&#123;<span class="keyword">this</span>.renderRow&#125;</span><br><span class="line">          list=&#123;todos&#125;</span><br><span class="line">          style=&#123;&#123; <span class="attr">outline</span>: <span class="string">"none"</span> &#125;&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>이 경우 보여지는 영역에만 있는 <code>TodoItem</code>만 렌더링되고, 보여지지 않는 것들은 스크롤 이벤트가 발생해서 브라우저에 해당 <code>Item</code>이 등장했을 때 렌더링이 된다. 자세한 내용은 <a href="https://github.com/bvaughn/react-virtualized" target="_blank" rel="noopener">공식 문서</a> 참조</p>
+        <h1 id="vscode의-다양한-확장-프로그램-사용하기"><a href="#vscode의-다양한-확장-프로그램-사용하기" class="headerlink" title="vscode의 다양한 확장 프로그램 사용하기"></a>vscode의 다양한 확장 프로그램 사용하기</h1><h2 id="Korean-Language-Pack-for-Visual-Studio-Code"><a href="#Korean-Language-Pack-for-Visual-Studio-Code" class="headerlink" title="Korean Language Pack for Visual Studio Code"></a>Korean Language Pack for Visual Studio Code</h2><p>vscode를 한국어로 변환해주는 확장 프로그램</p>
+<p>맥북 기준으로 <code>command+shift+P</code>를 누르면 명령 팔레트를 불러올 수 있는데, <code>config</code>를 검색해 사용 가능한 명령 목록을 필터링한다.  <code>표시 언어 구성</code> 명령을 선택 후 <code>ko</code>로 선택</p>
+<h2 id="Debugger-for-Chrome"><a href="#Debugger-for-Chrome" class="headerlink" title="Debugger for Chrome"></a>Debugger for Chrome</h2><p>디버깅 시작을 누르고, <code>Chrome</code> 선택</p>
+<p><code>메뉴바</code> - <code>디버그</code> - <code>구성 열기</code> - <code>launch.json</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="string">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line"> <span class="string">"configurations"</span>: [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="string">"name"</span>: <span class="string">"Chrome"</span>,</span><br><span class="line">     <span class="string">"type"</span>: <span class="string">"chrome"</span>,</span><br><span class="line">     <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">     <span class="string">"url"</span>: <span class="string">"http://localhost:3000"</span>,</span><br><span class="line">     <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceRoot&#125;/src"</span></span><br><span class="line">   &#125;</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이후 원하는 라인에 브레이크포인트를 걸어 원래 하던 방식으로 디버깅을 진행하면 된다.</p>
+<h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><p>자바스크립트 문법 검사를 실행해주며, 에러 발생 코드는 아니어도 설정에 따라 에러처럼 보이도록 표기할 수 있다.</p>
+<p>만약 vscode가 아닌 다른 에디터기에서 사용할 경우, <code>.eslintrc</code> 확장자를 가진 파일로 설정해주면 동작한다.</p>
+<h2 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h2><p>자동으로 코드를 정리해주는 확장 프로그램. 설정 파일에서 <code>Format On Save</code> 부분에 체크를 할 경우, 저장 때마다 정해진 코드 스타일로 바꾸어 저장한다.</p>
+<p>만약 vscode가 아닌 다른 에디터기에서 사용할 경우, <code>.prettierrc</code> 확장자를 가진 파일로 설정해주면 동작한다.</p>
+<blockquote>
+<p><a href="https://velog.io/@velopert/eslint-and-prettier-in-react" target="_blank" rel="noopener">같이 보면 좋을 포스트</a></p>
+</blockquote>
+<h1 id="리액트-관련-크롬-확장-프로그램"><a href="#리액트-관련-크롬-확장-프로그램" class="headerlink" title="리액트 관련 크롬 확장 프로그램"></a>리액트 관련 크롬 확장 프로그램</h1><h2 id="react-dev-tools"><a href="#react-dev-tools" class="headerlink" title="react dev tools"></a>react dev tools</h2><p><code>hightlight updates</code> 라는 기능으로 어떤 상태에 변화가 생기고, 어떤 요소가 해당 변화에 영향을 받는지를 알 수 있다.</p>
+<h2 id="Redux-DevTools"><a href="#Redux-DevTools" class="headerlink" title="Redux DevTools"></a>Redux DevTools</h2><p>리덕스 상태 및 자식 요소들에게 내려주는 props들 확인 가능</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
 
       
       
@@ -159,7 +170,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/31/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/117/">117</a><a class="extend next" rel="next" href="/page/33/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/31/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/116/">116</a><a class="extend next" rel="next" href="/page/33/">Next</a>
   </nav>
 
 </section>
@@ -212,7 +223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -253,18 +264,6 @@
     </ul>
     <div class="widget">
       <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/17/allnight_coding/">밤샘 모각코 후기</a></h6>
-              <span>8월 17, 2019</span>
-            </div>
-
-          </li>
         
           <li class="clearfix">
 
@@ -326,6 +325,18 @@
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/07/22/boostcouse-mysql/">DB 연결 웹 앱 - MYSQL</a></h6>
+              <span>7월 22, 2019</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -336,7 +347,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
