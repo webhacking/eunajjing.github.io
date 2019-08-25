@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2018-12-06" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018-12-07" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/06/2018-12-06/">2018-12-06 수업 내용 정리</a>
+      <a class="article-title" href="/2018/12/07/2018-12-07/">2018-12-07 수업 내용 정리</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/12/06/2018-12-06/" class="article-date">
-	  <time datetime="2018-12-06T00:45:18.000Z" itemprop="datePublished">12월 6, 2018</time>
+	<a href="/2018/12/07/2018-12-07/" class="article-date">
+	  <time datetime="2018-12-07T00:07:18.000Z" itemprop="datePublished">12월 7, 2018</time>
 	</a>
 
       
@@ -131,110 +131,134 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="MVC-모델"><a href="#MVC-모델" class="headerlink" title="MVC 모델"></a>MVC 모델</h2><h3 id="MVC-모델1"><a href="#MVC-모델1" class="headerlink" title="MVC 모델1"></a>MVC 모델1</h3><ul>
-<li>JSP가 요청을 받는 Controller의 역할을 하면서 동시에 View의 역할도 하는 것</li>
+        <h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><ul>
+<li>클래스와 클래스 사이의 관계</li>
 </ul>
-<h3 id="MVC-모델2"><a href="#MVC-모델2" class="headerlink" title="MVC 모델2"></a>MVC 모델2</h3><ul>
-<li>Servlet이 Controller의 역할</li>
-<li><p>JSP가 View의 역할</p>
+<p><img src="http://cfs6.tistory.com/image/10/tistory/2008/03/15/01/09/47daa338e8e50" alt=""></p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--6-----------.png" alt=""></p>
+<h3 id="상속"><a href="#상속" class="headerlink" title="상속"></a>상속</h3><p>상속 받은 B는 상속한 A를 확장한다.</p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--7-Generalization1.png" alt=""></p>
+<h3 id="의존-관계"><a href="#의존-관계" class="headerlink" title="의존 관계"></a>의존 관계</h3><p>특정 메서드에서만 일시적으로 사용되는 관계</p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--9-Dependency.png" alt=""></p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--10-Dependency2.png" alt="img"></p>
+<h3 id="연관-관계-직접-연관"><a href="#연관-관계-직접-연관" class="headerlink" title="연관 관계, 직접 연관"></a>연관 관계, 직접 연관</h3><p>나는 친구와 연관되어 있다.</p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--11-Assocication.png" alt=""></p>
+<h3 id="집합-연관"><a href="#집합-연관" class="headerlink" title="집합 연관"></a>집합 연관</h3><p>컴퓨터는 마우스를 포함한다.</p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--16-Aggregation.png" alt=""></p>
+<h3 id="합성-연관"><a href="#합성-연관" class="headerlink" title="합성 연관"></a>합성 연관</h3><p>컴퓨터는 메인보드를 포함한다. <em>(집합 연관보다 더 강하게 종속)</em></p>
+<p>컴퓨터가 버려지면 메인보드도 같이 버려진다.</p>
+<p><img src="http://www.nextree.co.kr/content/images/2016/09/--19-Composition1.png" alt="img"></p>
+<h2 id="Mybatis의-ResultMap-다루기-포함-관계에-있는-객체를-vo에서-함께-이용하는-방법"><a href="#Mybatis의-ResultMap-다루기-포함-관계에-있는-객체를-vo에서-함께-이용하는-방법" class="headerlink" title="Mybatis의 ResultMap 다루기 - 포함 관계에 있는 객체를 vo에서 함께 이용하는 방법"></a>Mybatis의 ResultMap 다루기 - 포함 관계에 있는 객체를 vo에서 함께 이용하는 방법</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vo에 포함 관계에 있는 객체 자료형의 필드를 만든다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> 객체 필드명</span><br><span class="line"></span><br><span class="line"><span class="comment">// 마찬가지로 getter, setter 메서드를 만들어준다</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--xml resultMap을 만들 때, 만약에 있다면 실행하라는 뜻--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"vo에 만들어둔 프로퍼티명"</span> <span class="attr">javaType</span>=<span class="string">"클래스 경로"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"쿼리문의 칼럼명"</span> <span class="attr">property</span>=<span class="string">"vo에 만들어둔 프로퍼티 vo의 프로퍼티명"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 항상 pk를 포함해야 한다, 만약 pk를 쓰지 않는다고 하더라도!</span></span><br><span class="line"><span class="comment">		pk는 resultMap에서 쓰듯 id로 써야 한다.</span></span><br><span class="line"><span class="comment">    	또한 pk 지정은 association 안 뿐만 아니라 resultMap 안에서 지정할 때도 써야 한다 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">colum</span>=<span class="string">"쿼리문의 칼럼명"</span> <span class="attr">property</span>=<span class="string">"vo에 만들어둔 프로퍼티 vo의 프로퍼티명"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- jsp --&gt;</span><br><span class="line">$&#123;board.vo자료형의 프로퍼티명.칼럼명&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mybatis에-구현체-자동-생성하기"><a href="#mybatis에-구현체-자동-생성하기" class="headerlink" title="mybatis에 구현체 자동 생성하기"></a>mybatis에 구현체 자동 생성하기</h2><p><code>AppConfig.java</code> (xml에서 설정할 것들을 대체해 설정했던 class) <code>@MapperScan</code> 어노테이션을 설정해두기</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:/com/....properties"</span>)</span><br><span class="line"><span class="comment">// mybatis의 dao 인터페이스 구현체를 자동 생성하는 도우미를 추가</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"dao 인터페이스가 들어있는 패키지 경로"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 자동 생성된 dao 구현체는 sql를 찾을 때 인터페이스의 전체 이름으로 찾는다</span></span><br><span class="line"><span class="comment">// 즉 dao 인터페이스가 들어있는 패키지 경로/dao명</span></span><br><span class="line"><span class="comment">// 따라서 sql 매퍼 파일의 네임스페이스 이름은 인터페이스의 전체 이름과 같아야 한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 인터페이스의 메서드 파라미터, 리턴 타입은 sql 매퍼의 파라미터 타입과 리턴 타입이 같아야 한다.</span></span><br><span class="line"><span class="comment">// 인터페이스의 메서드 이름과 매퍼 id는 같아야 한다.</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br><span class="line">    ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="dispatcherServlet"><a href="#dispatcherServlet" class="headerlink" title="dispatcherServlet"></a>dispatcherServlet</h2><ul>
+<li><p>프론트 컨트롤러</p>
 </li>
-<li><p>Service도 Model의 역할을 한다, DAO만 Model이 아님</p>
-<ul>
-<li>업무 로직</li>
-<li>트랜젝션 관리</li>
-</ul>
+<li><p>요청을 받으면 jsp 인크루드, 포워딩을 맡거나 페이지 컨트롤러로 요청을 보낸다. 응답이 돌아오면 응답을 전달함</p>
 </li>
+<li>페이지 컨트롤러 : 특정 페이지에 대해서만 제어하는 것</li>
+<li>디스패처와 jsp는 톰캣이 관리한다</li>
+<li>그러나 페이지 컨트롤러와 dao는 ioc Container 관리</li>
 </ul>
+<h3 id="dispatcherServlet-직접-만들기"><a href="#dispatcherServlet-직접-만들기" class="headerlink" title="dispatcherServlet 직접 만들기"></a>dispatcherServlet 직접 만들기</h3><h4 id="dispatcherServlet-1"><a href="#dispatcherServlet-1" class="headerlink" title="dispatcherServlet"></a>dispatcherServlet</h4><ul>
+<li><p><code>webServlet(&quot;/app/*&quot;)</code> 어노테이션 살려두고</p>
+</li>
+<li><p>클라이언트가 요청한 명령 추출</p>
+<p><code>request.getServletPath()</code> 메서드를 호출하면 <code>/app</code>이 오고,</p>
+<p><code>request.getPathInfo()</code>메서드를 호출하면 <code>/app</code>다음의<code>/**</code>이 오므로 <code>getPathInfo()</code>를 이용한다.</p>
+</li>
+<li><p>ioc Container를 얻어 <code>iocContainer.getBean(request.getPathInfo())</code> 실행</p>
+</li>
+<li><p>즉 ico Container에서 요청을 처리할 객체를 <code>getPathInfo()</code>를 이용해 찾으면 해당 페이지를 담당하는 컨트롤러 객체가 넘어온다.</p>
+<p>이 때 호출의 일관성을 위해 페이지 컨트롤러들의 인터페이스를 정의하고, 개별적인 페이지 컨트롤러가 이를 상속 받도록 조치한다.</p>
+<p><code>iocContainer.getBean(request.getPathInfo())</code>에서 돌아오는 리턴 값도 페이지 컨트롤러들의 인터페이스로 한다.</p>
+<p>인터페이스에 공통으로 정의할 메서드, 예제에서는 <code>execute()</code>메서드였는데 이 메서드는 파라미터로 <code>httpServletRequest</code>와 <code>httpServletResponse</code>를 가지게끔 한다.</p>
 <blockquote>
-<h2 id="component"><a href="#component" class="headerlink" title="component"></a>component</h2><ul>
-<li>부품, 역할적인 의미가 강조될 때 사용되는 용어</li>
-<li>object, instance, bean…</li>
-</ul>
-</blockquote>
-<h2 id="JSP-실행-방식"><a href="#JSP-실행-방식" class="headerlink" title="JSP 실행 방식"></a>JSP 실행 방식</h2><ul>
-<li>JSP를 실행하고 싶다는 요청이 들어오면</li>
-<li>JSP 엔진이 JSP를 JAVA 소스로 만든다</li>
-<li>이것은 httpServlet을 상속 받은 서블릿 소스가 된다 </li>
-<li>이것은 <code>.class</code>파일이 되어 실행되는 것</li>
-<li>JSP는 서블릿 클래스를 만드는 재료로 사용되는 것</li>
-<li>때문에 JSP는 template이라고 불리기도 한다</li>
-<li>즉 <strong>JSP는 직접 실행되는 것이 아님</strong></li>
-<li>직접 print.out할 필요가 없어서 사용하는 것</li>
-</ul>
-<h3 id="JSP-안의-lt-gt"><a href="#JSP-안의-lt-gt" class="headerlink" title="JSP 안의 &lt;% %&gt;"></a>JSP 안의 &lt;% %&gt;</h3><ul>
-<li><p>Domain-Specific language = DSL</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>위에 선언하는 이유</p>
-</li>
-<li><p>그런데 JAVA만 사용이 가능<br>(향후 다른 언어도 가능하게 하려고 만들었다)</p>
-</li>
-</ul>
-<h2 id="스코프"><a href="#스코프" class="headerlink" title="스코프"></a>스코프</h2><ol>
-<li>서버가 시작되며 <strong>웹 어플리케이션</strong> 실행<ul>
-<li>하나의 서버에는 여러 개의 웹 어플리케이션이 실행될 수 있다</li>
-<li>정확히 말하면 웹 어플리케이션이 시작하면</li>
-</ul>
-</li>
-<li><strong>ServletContext</strong> 보관함이 생성<ul>
-<li>이것은 웹 앱을 종료할 때까지 보관함은 유지된다.</li>
-<li>이 보관함에는 <strong>IOC Container</strong>가 대표적으로 있다.</li>
-</ul>
-</li>
-<li><strong>클라이언트가 최초로 서버에 접속하는 순간</strong>에 <strong>HttpSession</strong> 객체가 생성되며 Session을 무효화할 때 보관함이 사라진다.</li>
-<li>유저 단에서 요청이 들어오면 <strong>ServletRequest</strong> 보관함이 생기고, 응답할 때까지 보관함은 유지된다.</li>
-<li><strong>JSP</strong>는 자신만의 <strong>PageContext</strong> 스코프를 가진다 JSP가 실행되는 동안에만 유지되는 보관소이다. 때문에 응답이 완료되지 않더라도, 다른 JSP로 실행이 옮겨가는 순간 사라진다.</li>
-</ol>
-<ul>
-<li><p><code>sendRedirect</code>로 이동시킬 때는 상대 경로로 지정해도 된다. 브라우저의 입장에서 경로를 인식하기 때문</p>
-</li>
-<li><p>서버에서 <code>include</code>, <code>forward</code>시키는 경우에는 루트부터 시켜줘야 한다</p>
-</li>
-</ul>
-<blockquote>
-<h2 id="Expression-Language-EL-태그"><a href="#Expression-Language-EL-태그" class="headerlink" title="Expression Language(EL 태그)"></a>Expression Language(EL 태그)</h2><ul>
-<li>표현언어</li>
-<li>${}</li>
-<li>Expression : 결과를 리턴하는 것</li>
-<li>때문에 태그 안에는 결과를 리턴하는 값이 와야 함</li>
-<li>Statment의 일부 (if, else의 {} 등)</li>
-</ul>
-<h2 id="OGNL"><a href="#OGNL" class="headerlink" title="OGNL"></a>OGNL</h2><ul>
-<li>오브젝트 그래프 네비게이션 언어</li>
-<li>EL 태그 안에서 쓸 수 있다</li>
-<li>객체 안의 객체를 가리킬 때 쓰는 표기법</li>
-</ul>
+<p><code>String execute(httpServeltRequest request, HttpServletResponse response)</code></p>
 </blockquote>
 <blockquote>
-<p>html meta tag 중에 실행 후 reloading을 지원하는 태그가 있다</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;meta http-equiv=<span class="string">"Refresh"</span> content=<span class="string">"1;url=list"</span>&gt;</span><br><span class="line">&gt; <span class="comment">// 1초 후에 어디로 리로딩하겠다</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>​    </p>
 </blockquote>
-<h2 id="component-1"><a href="#component-1" class="headerlink" title="component"></a>component</h2><ul>
-<li>button에 타입이 지정이 안되면 기본 submit 버튼</li>
-</ul>
-<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><ul>
-<li>필터 역할을 할 클래스는 <code>Filter</code> 인터페이스를 상속 받아야 함</li>
-<li><code>dofilter</code>메서드를 구현<ul>
-<li><code>init()</code></li>
-<li><code>detory()</code></li>
-</ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">인터페이스 &#123;</span><br><span class="line">    <span class="keyword">default</span> 리턴타입 메서드() &#123;</span><br><span class="line">        정의</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>원래 인터페이스는 메서드를 구현할 수 없으나,  인터페이스에 기본적으로 적용이 되는 메서드을 추가 시키기 위해 사용</p>
+<h4 id="page-Controller"><a href="#page-Controller" class="headerlink" title="page Controller"></a>page Controller</h4><ul>
+<li><p><code>@Component(&quot;경로&quot;)</code> 어노테이션을 기입해준다.</p>
 </li>
-<li><p><code>init</code>와 <code>detory</code>가 대표적인 default 메서드</p>
+<li><p>생성자에서 사용할 객체를 주입 받는 식으로 전역 변수를 선언한다. 보통 이 전역 변수는 dao가 많다.</p>
+<p>(생성자에서 파라미터로 받는 객체는 마찬가지로 스프링 ioc container에 있으므로 따로 지정하지 않아도 자동으로 들어간다)</p>
+</li>
+<li><p>dao의 메서드를 호출해 db 도달 처리를 하고, db에서 받은 것들을 set한 후, utf-8로 맞추는 등의 설정을 한다.</p>
+</li>
+<li><p>도달해야하는 jsp 경로를 리턴한다.</p>
+</li>
+<li><p>만약 리턴하지 않으면 요청했던 url로 넘어간다.</p>
+<blockquote>
+<p><code>return &quot;redirect:경로&quot;</code>or <code>return &quot;경로&quot;</code></p>
+</blockquote>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">필터 인터페이스를 상속 받은 필터 클래스 &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	doFilter(ServletRequest request, ServletResponse response, FilterChain chain) &#123;</span><br><span class="line">		chain.doFilter(request, response);</span><br><span class="line">		<span class="comment">// 이 필터 다음에 또 다른 필터가 있다면 그 필터 실행</span></span><br><span class="line">		<span class="comment">// 없다면 원래 목적지인 servlet 실행</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>필터에 <code>sertCharacterEncoding</code>같은 공통으로 들어가는 메서드를 추가하면 편하다</li>
+<h4 id="다시-dispatcherServlet"><a href="#다시-dispatcherServlet" class="headerlink" title="다시 dispatcherServlet"></a>다시 dispatcherServlet</h4><ul>
+<li>페이지 컨트롤러의 메서드, 예제의 <code>execute()</code>메서드를 호출한다.</li>
+<li>리턴받은 url을 include하던가 forward한다.</li>
+<li>페이지 컨트롤러가 <code>redirect</code>로 보냈을 가능성을 대비해 dispatcher 단에서는 <code>startWith()</code>를 이용해서 어떤 url인지 확인하고, redirect로 왔다면 <code>replace()</code> 메서드를 이용해 redirect 제거 후 <code>response.sendRedirect(&quot;경로&quot;)</code>로 보낸다. 만약 <code>redirect</code>가 아니라면 include하던가 forward한다. </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@webFilter</span>(<span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>어노테이션 기입이 필요하다.</li>
+<h2 id="Spring-WebMVC-프레임워크-도입"><a href="#Spring-WebMVC-프레임워크-도입" class="headerlink" title="Spring WebMVC 프레임워크 도입"></a>Spring WebMVC 프레임워크 도입</h2><ul>
+<li><p><code>spring-webmvc</code> 의존 설정</p>
+</li>
+<li><p><code>springframework</code> 의존 설정을 지워도 된다. 어차피 <code>spring-webmvc</code>의 의존 라이브러리이기 때문에 <code>spring-webmvc</code>를 가져올 때 같이 가져오기 때문</p>
+</li>
+<li><p>웹 어플리케이션이 시작될 때 <code>SpringContextContainerInitializer</code>를 부르고, 이것이 <code>WebApplicationInitializer</code> 구현체를 부른다.</p>
+</li>
+<li><p><code>WebApplicationInitializer</code> 구현체는 웹 어플리케이션이 시작될 때 호출되어 시작된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartup</span><span class="params">(ServletContext servletContext)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    <span class="comment">// 만약 web.xml에서 java 파일로 설정한 것들이 기재되어 있다면 java 파일은 실행되지 않는다.</span></span><br><span class="line">    <span class="comment">// 만약 스프링 설정 파일을 java 파일로도 한다면,</span></span><br><span class="line">    <span class="comment">// @Configuration이란 어노테이션을 붙여줘야 IOC Container가 인지한다.</span></span><br><span class="line">    <span class="comment">// 또한 어노테이션을 읽기 위해서는 xml에서 태그를 붙여줘야 한다.</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 프론트 컨트롤러가 사용할 Spring IOC Container 준비</span></span><br><span class="line">    AnnotationConfigWebApplicationContext ac</span><br><span class="line">    = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">    ac.register(AppConfig.class);</span><br><span class="line">    ac.refresh();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 프론트 컨트롤러를 서블릿 컨테이너에 등록한다.</span></span><br><span class="line">    <span class="comment">// 프론트 컨트롤러를 생성할 때 이 객체가 사용할 Spring IOC Container를 알려준다</span></span><br><span class="line">    DispatcherServlet servlet = <span class="keyword">new</span> DispatcherServlet();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 서블릿 컨테이너에 위에서 만든 프론트 컨트롤러 서블릿을 등록한다.</span></span><br><span class="line">    ServletRegistration.Dynamic registration</span><br><span class="line">    = servlet.addServlet(<span class="string">"app"</span>, servlet);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 등록한 서블릿에 정보를 설정한다.</span></span><br><span class="line">    <span class="comment">// 웹 어플리케이션이 시작될 때 프론트 컨트롤러를 생성하라고 지정한다</span></span><br><span class="line">    <span class="comment">// 프론트 컨트롤러의 url을 지정한다</span></span><br><span class="line">    registration.setLoadOnStartup(<span class="number">1</span>);</span><br><span class="line">    registration.addMapping(<span class="string">"/app/*"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>상속해 반드시 구현해야하는 이 메서드가 실행된다.</p>
+</li>
+<li><p>기존의 <code>dispatcherServlet</code>을 제거하고 <code>Spring IOC Container</code>에서 제공하는 <code>dispatcherServlet</code>을 사용할 것</p>
+</li>
+<li><p>기존의 <code>contextloaderlistener</code>들도 제거</p>
+<p>어차피 <code>Spring IOC Container</code>에서 다루기 때문</p>
+</li>
+<li><p>페이지 컨트롤러들의 인터페이스를 삭제한다. 디스패처가 페이지 컨트롤러를 실행할 때는 다른 규칙에 따라 실행하기 때문. 기존에 사용자가 만든 규칙은 필요치 않다.</p>
+</li>
+<li><p>페이지 컨트롤러의 어노테이션 <code>@Component(&quot;경로&quot;)</code>를 <code>@Controller</code>로 바꾼다.</p>
+</li>
+<li><p>페이지 컨트롤러의 메서드에 <code>@RequestMapping(&quot;경로&quot;)</code> 어노테이션을 붙여준다.</p>
+<p>컴포턴트 옆의 경로를 붙여준다. 메서드 이름 또한 사용자가 정의 가능</p>
+</li>
 </ul>
+<h3 id="CharacterEncodingFilter-사용"><a href="#CharacterEncodingFilter-사용" class="headerlink" title="CharacterEncodingFilter 사용"></a>CharacterEncodingFilter 사용</h3><ul>
+<li><p><code>WEB-INF/web.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>app<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/app/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>app<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--  </span></span><br><span class="line"><span class="comment">        &lt;init-param&gt;</span></span><br><span class="line"><span class="comment">            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span></span><br><span class="line"><span class="comment">            &lt;param-value&gt;/WEB-INF/spring/app-servlet.xml&lt;/param-value&gt;</span></span><br><span class="line"><span class="comment">        &lt;/init-param&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">filter-class</span>&gt;</span></span><br><span class="line">        org.springframework.web.filter.CharacterEncodingFilter</span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 기재하게되면 더이상 java 단에서 encoding을 지정하지 않아도 된다 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/app/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>app-servlet.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/mvc/spring-mvc.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.eomcs.lms"</span>/&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- Spring WebMVC 관련 애노테이션을 처리해주는 도우미 객체를 </span></span><br><span class="line"><span class="comment">       추가한다. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mvc:annotation-driven</span> <span class="attr">enable-matrix-variables</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"viewResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span> <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsp/"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>원래 어노테이션을 이용한 필터도 사용 가능한데, 구현해야하는 메서드가 많아서 <code>.xml</code>로 처리</p>
+</li>
+<li><p><code>dispatcherServlet</code>만 초기화하는 추상 클래스  <code>AbstractDispatcherServletInitializer</code>를 상속 받아 추상 메서드 `getServletFilter()를 재정의</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> Filter[] getServletFilters() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Filter[] &#123;<span class="keyword">new</span> CharacherEncodingFilter(<span class="string">"utf-8"</span>);&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 왜인지 에러나고 잘 안되어서 수업 중 실행 여부 확인 못함</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="JSP-파일-감추기"><a href="#JSP-파일-감추기" class="headerlink" title="JSP 파일 감추기"></a>JSP 파일 감추기</h3><ul>
+<li><p>클라이언트로부터 jsp 파일을 감춘다</p>
+</li>
+<li><p>외부에서 jsp를 직접 접근하지 못하게 <code>WEB-INF/jsp</code>폴더로 옮긴다.</p>
+<p><code>appConfig.java</code>에서 Spring WebMVC에 기본으로 설정되어 있는 <code>ViewResolver</code>를 <code>InternalResourceViewResolver</code>로 교체</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ViewResolver <span class="title">viewResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// viewResolver 인터페이스의 구현체 객체 생성 메서드</span></span><br><span class="line">    </span><br><span class="line">    InternalResourceViewResolver vs</span><br><span class="line">        = <span class="keyword">new</span> InternalResourceViewResolver();</span><br><span class="line">    vs.setPrefix(<span class="string">"/WEB-INF/jsp/"</span>);</span><br><span class="line">    <span class="comment">// 리턴되는 url에 앞에 자동으로 이것을 붙인다.</span></span><br><span class="line">    vs.setSuffix(<span class="string">".jsp"</span>);</span><br><span class="line">    <span class="comment">// 뒤에 이것을 붙여라</span></span><br><span class="line">    vs.setViewClass(JstlView.class);</span><br><span class="line">    <span class="comment">// viewClass는 jstlview이다.</span></span><br><span class="line">    <span class="keyword">return</span> vs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>페이지 컨트롤러의 <code>return</code> 값을 바꾼다.</li>
+</ul>
+<h3 id="스프링-자동화"><a href="#스프링-자동화" class="headerlink" title="스프링 자동화"></a>스프링 자동화</h3><ul>
+<li>request, responese를 굳이 파라미터로 가져오지 않고, 원하는 값은 파라미터로 가져와 처리한다.</li>
+<li><code>httpSession</code>도  가져올 수 있다.</li>
+<li>request.set으로 객체를 담지 않고, <code>Model</code>에 담는다.</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/eomjinyoung/java106" target="_blank" rel="noopener">다시 공부해야 할 것 같아…</a></p>
+</blockquote>
 
       
     </div>
@@ -259,7 +283,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/91/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/90/">90</a><a class="page-number" href="/page/91/">91</a><span class="page-number current">92</span><a class="page-number" href="/page/93/">93</a><a class="page-number" href="/page/94/">94</a><span class="space">&hellip;</span><a class="page-number" href="/page/116/">116</a><a class="extend next" rel="next" href="/page/93/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/91/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/90/">90</a><a class="page-number" href="/page/91/">91</a><span class="page-number current">92</span><a class="page-number" href="/page/93/">93</a><a class="page-number" href="/page/94/">94</a><span class="space">&hellip;</span><a class="page-number" href="/page/117/">117</a><a class="extend next" rel="next" href="/page/93/">Next</a>
   </nav>
 
 </section>
@@ -312,7 +336,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -353,6 +377,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/08/24/lazycon/">lazycon에 다녀왔다</a></h6>
+              <span>8월 24, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -414,18 +450,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/22/boostcouse-mysql/">DB 연결 웹 앱 - MYSQL</a></h6>
-              <span>7월 22, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -436,7 +460,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

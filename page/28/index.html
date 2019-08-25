@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-immer" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-router" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/05/31/immer/">immer</a>
+      <a class="article-title" href="/2019/06/04/router/">우아한테크러닝 Typescript &amp; React 101 05 router</a>
     </h1>
   
 
@@ -120,33 +120,102 @@
     
     <div class="article-meta">
       
-	<a href="/2019/05/31/immer/" class="article-date">
-	  <time datetime="2019-05-31T03:31:18.000Z" itemprop="datePublished">5월 31, 2019</time>
+	<a href="/2019/06/04/router/" class="article-date">
+	  <time datetime="2019-06-04T03:17:18.000Z" itemprop="datePublished">6월 4, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="immer"><a href="#immer" class="headerlink" title="immer"></a>immer</h1><ul>
-<li>자바스크립트의 객체 불변성을 유지하기 위해 사용하는 모듈 중 하나</li>
-<li>같은 기능을 하는 모듈,  <code>Immutable</code>가 유명하다.</li>
+        <h1 id="SPA의-라우팅"><a href="#SPA의-라우팅" class="headerlink" title="SPA의 라우팅"></a>SPA의 라우팅</h1><p>spa에서 라우팅 하는 방법은 매번 바뀌는데, 수업에서는 크게 두 가지가 소개되었다.</p>
+<h2 id="hash-mark-사용"><a href="#hash-mark-사용" class="headerlink" title="#(hash mark) 사용"></a>#(hash mark) 사용</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#blahblah"</span>&gt;</span>blahblah로 이동<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>#</code>은 기본적으로 클라이언트 스팩이므로 서버에 요청이 가지 않는다. 즉, 페이지 갱신이 되지 않는다. 웹 페이지 내부의 이동이기 때문이다. javascript 단에서는 <code>hashChange</code> 이벤트를 사용해서 hash가 변경됨을 감지하고, 필요한 비동기 처리를 수행한다. </p>
+<h2 id="pushState-PJAX-이용"><a href="#pushState-PJAX-이용" class="headerlink" title="pushState(PJAX) 이용"></a>pushState(PJAX) 이용</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/blahblah"</span>&gt;</span>blahblah로 이동<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>웹서버로 해당 url이 전달되긴 하나, 서버는 단 하나의 엔트리 포인트만 클라이언트로 전달한다. 클라이언트 단에서는 path를 사용하여 비동기 처리를 수행한다. 리액트 단에서 사용할 라우팅의 방법이다.</p>
+<blockquote>
+<p>추가 출처 : <a href="https://poiemaweb.com/js-spa" target="_blank" rel="noopener">SPA&amp;ROUTING</a></p>
+</blockquote>
+<h1 id="그래서-해봅시다"><a href="#그래서-해봅시다" class="headerlink" title="그래서, 해봅시다"></a>그래서, 해봅시다</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter, Route, Switch &#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; DefaultLayout &#125; <span class="keyword">from</span> <span class="string">"../containers"</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> Pages <span class="keyword">from</span> <span class="string">"../pages"</span>;</span><br><span class="line"></span><br><span class="line">interface IProps &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Router: React.FC&lt;IProps&gt; = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">      &#123;<span class="comment">/* 루트를 감싸 하위 요소가 전부 라우팅할 수 있도록 한다. */</span>&#125;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">        &lt;DefaultLayout&gt;</span><br><span class="line">          &lt;Switch&gt;</span><br><span class="line">            &lt;Route exact path=<span class="string">"/"</span> component=&#123;Pages.Dashboard&#125; /&gt;</span><br><span class="line">            &lt;PrivateRoute exact path=<span class="string">"/orders"</span> page=&#123;Pages.Order&#125; /&gt;</span><br><span class="line">            &lt;Route component=&#123;Pages.PageNotFound&#125; /&gt;</span><br><span class="line">          &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>DefaultLayout&gt;</span><br><span class="line">      &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>BrowserRouter&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Router;</span><br></pre></td></tr></table></figure>
+<p><strong>프로바이더 바로 밑에 <code>BrowserRouter</code>가 들어간다</strong>고 생각하면 된다.</p>
+<ul>
+<li><code>exact</code> : <code>exact={true}</code> 와 같은 것, 경로가 완벽히 일치했을 때 해당 컴포넌트가 보이도록 한다. 만약 해당 처리를 해주지 않을 경우, <code>path</code> 속성에 기입한 값을 포함하는 url이면 전부 렌더링한다.</li>
+<li><code>component</code>: 렌더링할 컴포넌트</li>
 </ul>
-<h2 id="사용해보자"><a href="#사용해보자" class="headerlink" title="사용해보자"></a>사용해보자</h2><p>일단, 패키지를 깔아준다. <code>yarn add immer</code></p>
-<p>그리고 사용할 곳에 임포트 한다. <code>import produce from immer</code></p>
-<h3 id="produce"><a href="#produce" class="headerlink" title="produce"></a>produce</h3><p>상태와 같은 객체를 인자로 받으며, 인자로 들어오는 객체는 불변성 관리를 하지 않아도 된다. 통상 인자로 들어오는 객체를 <code>draft</code>라 표기한다.</p>
-<p>리액트에서 쓴다면 이렇게 쓸 수 있다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(</span><br><span class="line">  produce(<span class="function"><span class="params">draft</span> =&gt;</span> &#123;</span><br><span class="line">    draft.input = e.target.value;</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(</span><br><span class="line">  produce(<span class="function"><span class="params">draft</span> =&gt;</span> &#123;</span><br><span class="line">    draft.todos.push(&#123;</span><br><span class="line">      id: ++<span class="keyword">this</span>.id,</span><br><span class="line">      text: <span class="keyword">this</span>.state.input,</span><br><span class="line">      done: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">    draft.input = <span class="string">""</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="왜-이중-Switch-문이-필요한가"><a href="#왜-이중-Switch-문이-필요한가" class="headerlink" title="왜 이중 Switch 문이 필요한가"></a>왜 이중 <code>Switch</code> 문이 필요한가</h2><h3 id="Switch의-역할"><a href="#Switch의-역할" class="headerlink" title="Switch의 역할"></a><code>Switch</code>의 역할</h3><ul>
+<li>라우팅<ul>
+<li>원래 리액트 라우터는 모든 요소를 다 렌더하는 성격이 있다.</li>
+<li>만약 <code>Switch</code> 로 감싸지 않았다면, 404 페이지까지 모두 렌더한다.</li>
+<li><code>Switch</code> 안의 요소는 하나라도 매칭이 될 경우 하위 컴포넌트 렌더를 캔슬한다.</li>
+</ul>
+</li>
+<li>하위 요소에게 라우팅 경로 관련 정보를 주입<ul>
+<li>해당 주입은 자식 요소에게만 전달될 뿐, 자손 요소까지 닿지 않는다.</li>
+<li>즉, 이중 <code>Switch</code>가 쓰이지 않으면 <code>DefaultLayout</code> 의 입장에서는 라우팅 정보를 받을 수 없다는 문제 발생</li>
+</ul>
+</li>
+</ul>
+<h2 id="PrivateRoute"><a href="#PrivateRoute" class="headerlink" title="PrivateRoute"></a><code>PrivateRoute</code></h2><p>직접 만든 컴포넌트로, 들어오는 인자의 타입이 <code>IProps &amp; IStateToProps &amp; RouteProps</code>, 즉 세 개를 합친 형태이다.</p>
+<h3 id="타입"><a href="#타입" class="headerlink" title="타입"></a>타입</h3><h4 id="IProps"><a href="#IProps" class="headerlink" title="IProps"></a><code>IProps</code></h4><h5 id="실제-렌더링할-컴포넌트의-타입"><a href="#실제-렌더링할-컴포넌트의-타입" class="headerlink" title="실제 렌더링할 컴포넌트의 타입"></a>실제 렌더링할 컴포넌트의 타입</h5><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> RoutePageComponent =</span><br><span class="line">  | React.ComponentType&lt;RouteComponentProps&lt;<span class="built_in">any</span>&gt;&gt;</span><br><span class="line">  | React.ComponentType&lt;<span class="built_in">any</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p>실제 렌더링할 컴포넌트를 받는데 사용할 타입을 명명하는데,</p>
+<ul>
+<li>라우터의 속성으로 컴포넌트가 들어오거나</li>
+<li>리액트의 컴포넌트가 들어오거나</li>
+</ul>
+<p>이므로 <code>OR</code> 연산자를 이용하여 타입을 정의한다. 만약 들어오는 컴포넌트가 리액트 컴포넌트라면 JSX 문법으로 받아올 수 있다. <code>&lt;Page/&gt;</code></p>
+<blockquote>
+<p>그런데 어차피 라우터 컴포넌트에 대한 속성은 <code>RouteProps</code> 가 가져오기도 하므로 <code>React.ComponentType&lt;RouteComponentProps&lt;any&gt;&gt;</code> 을 없애도 정상적으로 동작하더라…</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IProps &#123;</span><br><span class="line">  page: RoutePageComponent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>해당 타입을 이용해 <code>IProps</code> 인터페이스를 만든다.</p>
+<h4 id="IStateToProps"><a href="#IStateToProps" class="headerlink" title="IStateToProps"></a><code>IStateToProps</code></h4><p>store에 들어갈 <code>IAuthentication</code> 상태와 타입이 같다. 해당 상태는 토큰을 가지고 있는데, 이 상태 값은 토큰이 있는지 여부를 검사한다.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IStateToProps &#123;</span><br><span class="line">  authentication: IAuthentication;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// IAuthentication</span></span><br><span class="line"><span class="comment">// export interface IAuthentication &#123;</span></span><br><span class="line"><span class="comment">//  token: string | null;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="RouteProps"><a href="#RouteProps" class="headerlink" title="RouteProps"></a><code>RouteProps</code></h4><p>라우터의 <code>component</code> 속성을 통해 들어온 컴포넌트</p>
+<h3 id="그래서-예제"><a href="#그래서-예제" class="headerlink" title="그래서 예제"></a>그래서 예제</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; IStoreState, IAuthentication &#125; <span class="keyword">from</span> <span class="string">"../store"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Route, Redirect, RouteProps, RouteComponentProps &#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">"react-redux"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 타입 정의 생략</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> PrivateRouter: React.FC&lt;IProps &amp; IStateToProps &amp; RouteProps&gt; = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> Page: RoutePageComponent = props.page;</span><br><span class="line">  <span class="keyword">const</span> &#123; authentication &#125; = props;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Route</span><br><span class="line">      &#123;...props&#125;</span><br><span class="line">      render=&#123;props =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (authentication) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Page</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span>;</span></span><br><span class="line"><span class="xml">          // 여기에 page라는 속성으로 전달한 컴포넌트가 들어와 렌더됨</span></span><br><span class="line"><span class="xml">        &#125; else &#123;</span></span><br><span class="line"><span class="xml">          return (</span></span><br><span class="line">            &lt;Redirect</span><br><span class="line">              to=&#123;&#123;</span><br><span class="line">                pathname: "/login",</span><br><span class="line">                state: &#123; from: props.location &#125;</span><br><span class="line">              &#125;&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const mapStateToProps = (</span><br><span class="line">  state: IStoreState,</span><br><span class="line">  ownProps: IProps</span><br><span class="line">): IProps &amp; IStateToProps =&gt; (&#123;</span><br><span class="line">  ...state,</span><br><span class="line">  ...ownProps</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default connect(mapStateToProps)(PrivateRouter);</span><br></pre></td></tr></table></figure>
+<h4 id="리액트에서-컴포넌트를-주입하는-방법"><a href="#리액트에서-컴포넌트를-주입하는-방법" class="headerlink" title="리액트에서 컴포넌트를 주입하는 방법"></a>리액트에서 컴포넌트를 주입하는 방법</h4><ul>
+<li><code>component</code> 속성에 컴포넌트를 넣는다</li>
+<li><code>children</code> 을 이용한다</li>
+<li><code>render</code>를 함수로 구현한 뒤, 부모 컴포넌트에서 받은 <code>props</code> 와 매칭한 것만을 렌더한다.<ul>
+<li>위의 예제에서 사용한 방법</li>
+<li>props를 펼치기 쉽다는 장점이 있다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="lt-Redirect-gt-의-요소"><a href="#lt-Redirect-gt-의-요소" class="headerlink" title="&lt;Redirect&gt; 의 요소"></a><code>&lt;Redirect&gt;</code> 의 요소</h4><ul>
+<li><code>to</code> : 어디로 향할 것인지, 해당 값은 객체로 들어가야 한다.<ul>
+<li><code>pathname</code> : url</li>
+<li><code>state</code> : pushState에 주입할 객체<ul>
+<li><code>from</code> : 원래 어디로 향하고자 했는지, 만약 로그인이 성공하면 어디로 갈 것인지</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>왜 이런 방식을 쓰는가</strong></p>
+<p>리액트 라우터는 pushState의 큐에 있는 값으로 동작하기 때문에, 클라이언트의 location 객체에 직접 값을 넣으면 꼬일 가능성이 있다. redirect 컴포넌트를 리턴하게 되면 리액트 라우터가 해당 컴포넌트의 속성으로 담긴 정보를 보고 자동으로 처리한다.</p>
+</blockquote>
+<h2 id="mapStateToProps-의-인자들"><a href="#mapStateToProps-의-인자들" class="headerlink" title="mapStateToProps 의 인자들"></a><code>mapStateToProps</code> 의 인자<strong>들</strong></h2><p>일반적으로 <code>state</code> 만 받는데, <code>mapStateToProps</code>에서 받을 수 있는 인자는 두 개다.</p>
+<ul>
+<li><p>state</p>
+</li>
+<li><p>컨테이너 속성으로 기술된 것</p>
+<p>(ex : exact, path=”/orders”)</p>
+</li>
+</ul>
+<p>넘어오는 컴포넌트가 컨테이너 속성을 지닌 것이라면 분명 속성이 있고 해당 값이 있을 것, <code>props.children</code> 에게 값을 전달하기 위해 가져온다. (<em>물론 위의 예제에서는 쓰이지 않는다</em>)</p>
+<h2 id="멀티-레이아웃의-구현"><a href="#멀티-레이아웃의-구현" class="headerlink" title="멀티 레이아웃의 구현"></a>멀티 레이아웃의 구현</h2><p>멀티 레이아웃을 구현하는 방법은 여러 개이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import 구문 생략</span></span><br><span class="line"></span><br><span class="line">interface IProps &#123;</span><br><span class="line">  children?: React.ReactNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Router: React.FC&lt;IProps&gt; = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">      &lt;NotificationContainer /&gt;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">        &lt;Route exact path=<span class="string">"/login"</span>&gt;</span><br><span class="line">          &lt;FullSizeLayout&gt;</span><br><span class="line">            &lt;Pages.Login /&gt;</span><br><span class="line">          &lt;<span class="regexp">/FullSizeLayout&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Route&gt;</span><br><span class="line">        &#123;<span class="comment">/* 일반 라우터 */</span>&#125;</span><br><span class="line">        &lt;DefaultLayout&gt;</span><br><span class="line">          &#123;<span class="comment">/* url이 로그인이 아니라면 */</span>&#125;</span><br><span class="line">          &lt;Switch&gt;</span><br><span class="line">            &#123;<span class="comment">/* 다 프라이빗 라우터 */</span>&#125;</span><br><span class="line">            &lt;PrivateRoute exact path=<span class="string">"/"</span> page=&#123;Pages.Dashboard&#125; /&gt;</span><br><span class="line">            &lt;PrivateRoute exact path=<span class="string">"/orders"</span> page=&#123;Pages.Order&#125; /&gt;</span><br><span class="line">            &lt;Route component=&#123;Pages.PageNotFound&#125; /&gt;</span><br><span class="line">          &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>DefaultLayout&gt;</span><br><span class="line">      &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>BrowserRouter&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Router;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a>
 
       
       
@@ -164,7 +233,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/27/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/116/">116</a><a class="extend next" rel="next" href="/page/29/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/27/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/117/">117</a><a class="extend next" rel="next" href="/page/29/">Next</a>
   </nav>
 
 </section>
@@ -217,7 +286,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -258,6 +327,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/08/24/lazycon/">lazycon에 다녀왔다</a></h6>
+              <span>8월 24, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -319,18 +400,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/22/boostcouse-mysql/">DB 연결 웹 앱 - MYSQL</a></h6>
-              <span>7월 22, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -341,7 +410,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
