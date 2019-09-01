@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-javascript01" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-pureComponent" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/05/16/javascript01/">우아한형제들 javascript 01</a>
+      <a class="article-title" href="/2019/05/18/pureComponent/">PureComponent</a>
     </h1>
   
 
@@ -120,54 +120,47 @@
     
     <div class="article-meta">
       
-	<a href="/2019/05/16/javascript01/" class="article-date">
-	  <time datetime="2019-05-16T05:08:18.000Z" itemprop="datePublished">5월 16, 2019</time>
+	<a href="/2019/05/18/pureComponent/" class="article-date">
+	  <time datetime="2019-05-18T06:30:18.000Z" itemprop="datePublished">5월 18, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="javascript-식별자-이름-작성-규칙"><a href="#javascript-식별자-이름-작성-규칙" class="headerlink" title="javascript 식별자 이름 작성 규칙"></a>javascript 식별자 이름 작성 규칙</h1><ul>
-<li><p>시작은 숫자를 제외한 유니코드 문자셋으로 시작된다</p>
-</li>
-<li><p>공백은 포함될 수 없다</p>
-</li>
-<li><p>기호로 사용되는 특수문자를 포함할 수 없다</p>
-<p>(언더스코어<code>__</code>나 달러<code>$</code>는 특수문자가 아니다)</p>
-</li>
-<li><p>대소문자를 구분한다</p>
-<p>(html과 css는 대소문자를 구분하지 않는다)</p>
-</li>
-<li><p>1글자 이상이어야 한다</p>
-</li>
+        <h1 id="PureComponent"><a href="#PureComponent" class="headerlink" title="PureComponent"></a>PureComponent</h1><p>리액트에는 컴포넌트를 만드는 방법이 크게 3가지이다.</p>
+<ul>
+<li>일반 컴포넌트</li>
+<li>퓨어 컴포넌트</li>
+<li>함수형 컴포넌트</li>
 </ul>
-<h1 id="javascript-value의-종류"><a href="#javascript-value의-종류" class="headerlink" title="javascript value의 종류"></a>javascript value의 종류</h1><ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>undefined</li>
-<li><p>null</p>
-</li>
-<li><p>object</p>
-</li>
-<li><p>nan</p>
-<p>: 숫자가 아닌(not a number)</p>
-</li>
-<li><p>symbol</p>
-<p>: unique한 프로퍼티를 만들고자 할 때 사용</p>
-</li>
-</ul>
+<p>이 중 일반 컴포넌트와 퓨어 컴포넌트에 대해 알아보고자 한다.</p>
+<h2 id="큰-차이는-shouldComponentUpdate"><a href="#큰-차이는-shouldComponentUpdate" class="headerlink" title="큰 차이는, shouldComponentUpdate()"></a>큰 차이는, <code>shouldComponentUpdate()</code></h2><p>퓨어 컴포넌트는 <code>shouldComponentUpdate()</code>가 이미 구현되어 있으며, <code>state</code>, <code>props</code>를 얕은 비교를 하여 변경된 것이 있을 때 컴포넌트를 리렌더링한다.</p>
+<blockquote>
+<h3 id="얕은-복사-깊은-복사"><a href="#얕은-복사-깊은-복사" class="headerlink" title="얕은 복사, 깊은 복사"></a>얕은 복사, 깊은 복사</h3><h4 id="얕은-복사"><a href="#얕은-복사" class="headerlink" title="얕은 복사"></a>얕은 복사</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">&gt; <span class="keyword">const</span> b = a;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="깊은-복사"><a href="#깊은-복사" class="headerlink" title="깊은 복사"></a>깊은 복사</h4><p>자바스크립트는 기본 자료형(<code>number</code>, <code>String</code>, <code>boolean</code>)은 값을 복사할 때 완전히 복사한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">&gt; <span class="keyword">const</span> b = a;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>이 경우 <code>a</code>와 <code>b</code>는 독립적이다.</p>
+<p><strong>그럼 객체의 경우에는</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">&gt; <span class="keyword">const</span> b = &#123;...a&#125;;</span><br><span class="line">&gt; <span class="comment">// 객체 for문을 돌려서 하나하나 때려박던가 assign()을 이용하던가</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>때문에 만약 <code>state</code>나 <code>props</code>가 복잡한 구조를 가지고 있다면 얕은 비교로는 리렌더링 여부를 결정할 수 없기 때문에 제어가 힘들다.</p>
+<p>아, 퓨어 컴포넌트 안에서도 <code>shouldComponentUpdate()</code>를 기재해서 사용할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; PureComponent &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">	(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
 
       
       
@@ -185,7 +178,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/43/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/118/">118</a><a class="extend next" rel="next" href="/page/45/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/43/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/119/">119</a><a class="extend next" rel="next" href="/page/45/">Next</a>
   </nav>
 
 </section>
@@ -238,7 +231,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -279,6 +272,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/08/28/heyjoyce/">개발자카 크면 무엇이 되나요?</a></h6>
+              <span>8월 28, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -340,18 +345,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/07/23/maven-jdbc-restful/">maven / jdbc / restfulAPI</a></h6>
-              <span>7월 23, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -362,7 +355,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
