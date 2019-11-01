@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>함수형 사고, 양도하라 | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="함수형 사고">
+  
+  
+  
+  
+  <meta name="description" content="함수형 사고, 양도하라 해당 게시글은 Functional Thinking 함수형 사고 를 읽고 공부한 내용을 정리한 것입니다. 저작권 문제가 발생할 시 해당 글은 삭제됩니다 :&amp;lt;   이전 글은 함수형 사고, 전환에서 보실 수 있습니다.   사용하는 추상화 단계보다 한 단계 아래를 이해해야 한다  클로저 그 내부에서 참조되는 모든 인수에 대한 묵시적 바">
+<meta name="keywords" content="함수형 사고">
+<meta property="og:type" content="article">
+<meta property="og:title" content="함수형 사고, 양도하라">
+<meta property="og:url" content="http://eunajjing.github.io/2019/09/06/functional-thinking03/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="함수형 사고, 양도하라 해당 게시글은 Functional Thinking 함수형 사고 를 읽고 공부한 내용을 정리한 것입니다. 저작권 문제가 발생할 시 해당 글은 삭제됩니다 :&amp;lt;   이전 글은 함수형 사고, 전환에서 보실 수 있습니다.   사용하는 추상화 단계보다 한 단계 아래를 이해해야 한다  클로저 그 내부에서 참조되는 모든 인수에 대한 묵시적 바">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-09-06T06:39:55.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="함수형 사고, 양도하라">
+<meta name="twitter:description" content="함수형 사고, 양도하라 해당 게시글은 Functional Thinking 함수형 사고 를 읽고 공부한 내용을 정리한 것입니다. 저작권 문제가 발생할 시 해당 글은 삭제됩니다 :&amp;lt;   이전 글은 함수형 사고, 전환에서 보실 수 있습니다.   사용하는 추상화 단계보다 한 단계 아래를 이해해야 한다  클로저 그 내부에서 참조되는 모든 인수에 대한 묵시적 바">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-functional-thinking03" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      함수형 사고, 양도하라
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/09/06/functional-thinking03/" class="article-date">
+	  <time datetime="2019-09-06T04:29:18.000Z" itemprop="datePublished">9월 6, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/책/">책</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="함수형-사고-양도하라"><a href="#함수형-사고-양도하라" class="headerlink" title="함수형 사고, 양도하라"></a>함수형 사고, 양도하라</h1><blockquote>
+<p>해당 게시글은 <a href="">Functional Thinking 함수형 사고</a> 를 읽고 공부한 내용을 정리한 것입니다.</p>
+<p>저작권 문제가 발생할 시 해당 글은 삭제됩니다 :&lt;</p>
+</blockquote>
+<blockquote>
+<p>이전 글은 <a href="https://eunajjing.github.io/2019/08/28/functional-thinking02/">함수형 사고, 전환</a>에서 보실 수 있습니다.</p>
+</blockquote>
+<ul>
+<li><strong>사용하는 추상화 단계보다 한 단계 아래를 이해해야 한다</strong></li>
+</ul>
+<h2 id="클로저"><a href="#클로저" class="headerlink" title="클로저"></a>클로저</h2><ul>
+<li>그 내부에서 참조되는 모든 인수에 대한 묵시적 바인딩을 지닌 함수</li>
+<li>자신이 참조하는 모든 문맥을 포함한다<ul>
+<li>내부에서 정의되었지만 코드 블록이 인수에 바인딩되어 있다</li>
+<li>상수와 같이 변하지 않는 값을 바인딩하는 것이 보편적</li>
+<li>코드 블록이 존재하는 동안 이 인수 값은 유지</li>
+</ul>
+</li>
+<li>클로저 인스턴스는 생성될 때 스코프 내에 있던 모든 것을 캡슐화하여 유지<ul>
+<li>런타임에 내부 상태 관리를 맡김<ul>
+<li>*<em>언어로 하여금 상태를 관리하게 한다</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>클로저 블록에 코드를 바인딩하면 그 블록의 실행을 나중으로 연기할 수 있다</li>
+</ul>
+<blockquote>
+<p><strong>명령형 언어와 뭐가 다른가?</strong></p>
+<ul>
+<li>명령형 언어는 <strong>상태</strong>로 프로그래밍 모델을 만드는 반면</li>
+<li>클로저는 코드와 문맥을 캡슐화해 <strong>행위의 모델</strong>을 만들게 한다</li>
+</ul>
+</blockquote>
+<h2 id="커링과-부분-적용"><a href="#커링과-부분-적용" class="headerlink" title="커링과 부분 적용"></a>커링과 부분 적용</h2><h3 id="커링"><a href="#커링" class="headerlink" title="커링"></a>커링</h3><ul>
+<li>다인수 함수를 일인수 함수들의 체인으로 바꿔주는 것</li>
+<li>변형의 과정이지 변형된 함수 실행을 지칭하진 않음</li>
+<li>함수 호출자가 몇 개의 인수를 고정할지 결정해, <strong>적은 수의 인수를 지닌 함수를 유도</strong>한다</li>
+<li><strong>체인의 다음 함수 리턴</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 예시</span></span><br><span class="line">process(x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 완전 커링된 버전</span></span><br><span class="line">process(x)(y)(z)</span><br><span class="line"></span><br><span class="line">process(x)</span><br><span class="line"><span class="comment">// 실행하면 x를 인자로 가진 함수가 다른 함수를 리턴</span></span><br><span class="line"><span class="comment">// 리턴된 함수에 인자로 y를 넘기는 식</span></span><br></pre></td></tr></table></figure>
+<h3 id="부분적용"><a href="#부분적용" class="headerlink" title="부분적용"></a>부분적용</h3><ul>
+<li>다인수 함수를 생략된 인수의 값을 미리 정해서 더 적은 수의 인수를 받는 하나의 함수로 변형하는 함수</li>
+<li>몇몇 인수에 값을 적용하되, <strong>적용되지 않은 나머지 인수만 받는 함수 리턴</strong></li>
+<li><strong>인수가 적은 함수를 만들어준다</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 예시</span></span><br><span class="line">process(x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 실행</span></span><br><span class="line">process(x, y)</span><br></pre></td></tr></table></figure>
+<h3 id="예시들"><a href="#예시들" class="headerlink" title="예시들"></a>예시들</h3><h4 id="함수-팩토리"><a href="#함수-팩토리" class="headerlink" title="함수 팩토리"></a>함수 팩토리</h4><p>함수가 객체를 반환하는 경우</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createJelly</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: <span class="string">'jelly'</span>,</span><br><span class="line">    colour: <span class="string">'red'</span></span><br><span class="line">    scoops: <span class="number">3</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>출처 : <a href="https://ui.toast.com/weekly-pick/ko_20160905/" target="_blank" rel="noopener">자바스크립트에서 팩토리 함수란 무엇인가</a></p>
+</blockquote>
+<h4 id="템플릿-메서드-패턴"><a href="#템플릿-메서드-패턴" class="headerlink" title="템플릿 메서드 패턴"></a>템플릿 메서드 패턴</h4><ul>
+<li>객체를 생성하는 작업도 복잡하고 어렵거나 특정한 절차를 따라야 할 경우 이를 대행하는 함수를 두는 설계 방식</li>
+<li>객체를 생성하되 직접 객체 생성자를 호출해서 객체를 생성하는 것이 아니라 대행함수를 통해 간접적으로 객체를 생성하는 방식</li>
+<li>이 때 객체 생성을 대행해주는 함수가 함수 팩토리</li>
+</ul>
+<blockquote>
+<p>출처 : <a href="https://cinrueom.tistory.com/34" target="_blank" rel="noopener">Factory Method(팩토리 메서드) 패턴 with C++</a></p>
+</blockquote>
+<h4 id="묵시적-값"><a href="#묵시적-값" class="headerlink" title="묵시적 값"></a>묵시적 값</h4><h3 id="재귀"><a href="#재귀" class="headerlink" title="재귀"></a>재귀</h3><ul>
+<li><p><strong>누가 상태를 관리하는가</strong>가 중요 질문</p>
+<ul>
+<li>명령형 버전에서는 개발자</li>
+<li>함수형에서는 언어가</li>
+</ul>
+<blockquote>
+<p><strong>재귀는 상태 관리를 런타임에 양도한다</strong></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="꼬리-호출-최적화"><a href="#꼬리-호출-최적화" class="headerlink" title="꼬리 호출 최적화"></a>꼬리 호출 최적화</h4><p>재귀에 최적화되지 않은 언어는 스택 오버플로를 유발하게 된다. 개발자가 런타임이 이 문제를 처리하는데 도움을 줄 수 있는 방법 중 하나가 <code>꼬리 호출 최적화</code>이다.</p>
+<p>재귀 호출이 함수에서 마지막 단계이면 <strong>스택을 증가시키지 않고 스택에 놓인 결과를 교체</strong>할 수 있다.</p>
+<blockquote>
+<p>다음 글은 <a href="https://eunajjing.github.io/2019/08/28/functional-thinking04/">함수형 사고, 열심히보다는 현명하게</a>에서 보실 수 있습니다.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/책/">책</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/함수형-사고/">함수형 사고</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/06/ibmdevday2019/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IBM developer day에 다녀왔다
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/05/functional-thinking02/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">함수형 사고, 전환</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#함수형-사고-양도하라"><span class="nav-number">1.</span> <span class="nav-text">함수형 사고, 양도하라</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#클로저"><span class="nav-number">1.1.</span> <span class="nav-text">클로저</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#커링과-부분-적용"><span class="nav-number">1.2.</span> <span class="nav-text">커링과 부분 적용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#커링"><span class="nav-number">1.2.1.</span> <span class="nav-text">커링</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#부분적용"><span class="nav-number">1.2.2.</span> <span class="nav-text">부분적용</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#예시들"><span class="nav-number">1.2.3.</span> <span class="nav-text">예시들</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#함수-팩토리"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">함수 팩토리</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#템플릿-메서드-패턴"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">템플릿 메서드 패턴</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#묵시적-값"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">묵시적 값</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#재귀"><span class="nav-number">1.2.4.</span> <span class="nav-text">재귀</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#꼬리-호출-최적화"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">꼬리 호출 최적화</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
