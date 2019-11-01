@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-2019-01-29-트리거-내-루프-제어" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-01-29-maria-DB-if-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/29/2019-01-29-트리거-내-루프-제어/">트리거 내 루프 제어</a>
+      <a class="article-title" href="/2019/01/29/2019-01-29-maria-DB-if-SQL/">maria DB if SQL</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/29/2019-01-29-트리거-내-루프-제어/" class="article-date">
-	  <time datetime="2019-01-29T08:37:18.000Z" itemprop="datePublished">1월 29, 2019</time>
+	<a href="/2019/01/29/2019-01-29-maria-DB-if-SQL/" class="article-date">
+	  <time datetime="2019-01-29T08:55:18.000Z" itemprop="datePublished">1월 29, 2019</time>
 	</a>
 
       
@@ -131,17 +131,20 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="트리거-내-루프"><a href="#트리거-내-루프" class="headerlink" title="트리거 내 루프"></a>트리거 내 루프</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> suggestionAlarm <span class="keyword">after</span> <span class="keyword">update</span> <span class="keyword">on</span> suggestion </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">DECLARE</span> done <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="literal">FALSE</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> CONTINUE <span class="keyword">HANDLER</span> <span class="keyword">FOR</span> <span class="keyword">NOT</span> <span class="keyword">FOUND</span> <span class="keyword">SET</span> done = <span class="literal">TRUE</span>;</span><br><span class="line"><span class="keyword">declare</span> _id <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> likelist <span class="keyword">where</span> bno=new.bno;</span><br><span class="line"><span class="keyword">declare</span> tempid <span class="built_in">VARCHAR</span>(<span class="number">40</span>);</span><br><span class="line">if new.statusCode = 'S02' then</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-1'</span>, new.bno, new.id);  </span><br><span class="line">  open _id;</span><br><span class="line">    ins_loop: LOOP</span><br><span class="line">      fetch _id into tempid;</span><br><span class="line">      if done then leave ins_loop;</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">      <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">      <span class="keyword">values</span>(<span class="string">'A03'</span>, new.bno, tempid);</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br><span class="line">  close _id;  </span><br><span class="line">else</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-2'</span>, new.bno, new.id);</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-<p>사실 루프문은 처음 트리거 생성 때 트러블슈팅으로 넣어놨던 것이라 고생은 별로 안했는데, 하다보니 알게 된 것들을 기록</p>
-<ol>
-<li><p>커서 핸들러가 정확한 위치에 정의되지 않으면 에러가 발생<br>에러 내용은 다음과 같다.<br><code>Variable or condition declaration after cursor or handler declaration</code></p>
-</li>
-<li><p>루프문 제어의 경우 다양한 방식이 있는데, 나는 커서를 이용했기 때문에 위의 sql를 치는 것이 좋은 것 같다<br>만약 커서를 사용하지 않았더라면</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> suggestionAlarm <span class="keyword">after</span> <span class="keyword">update</span> <span class="keyword">on</span> suggestion </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">declare</span> _id <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> likelist <span class="keyword">where</span> bno=new.bno;</span><br><span class="line"><span class="keyword">declare</span> tempid <span class="built_in">VARCHAR</span>(<span class="number">40</span>);</span><br><span class="line"><span class="keyword">declare</span> x <span class="built_in">int</span> ;</span><br><span class="line">if new.statusCode = 'S02' then</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-1'</span>, new.bno, new.id);  </span><br><span class="line">  if((<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> likelist <span class="keyword">where</span> bno=new.bno) &gt; <span class="number">0</span>) <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">set</span> x = <span class="number">1</span>; </span><br><span class="line">    open _id;</span><br><span class="line">      while x &lt; (select count(*) from likelist where bno=new.bno) do    </span><br><span class="line">        fetch _id into tempid;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">        <span class="keyword">values</span>(<span class="string">'A03'</span>, new.bno, tempid);</span><br><span class="line">        <span class="keyword">set</span> x = x+<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">while</span>;</span><br><span class="line">    close _id;</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">else</span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> alarm(alarmcode, bno, isFrom)</span><br><span class="line">  <span class="keyword">values</span>(<span class="string">'A02-2'</span>, new.bno, new.id);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-<p>이렇게 해도 됐겠지만…</p>
-<p>위 소스를 그대로 치면 1과 같은 에러가 난다. 커서 핸들러가 없다고.</p>
-</li>
-</ol>
+        <h2 id="maria-DB-IF문"><a href="#maria-DB-IF문" class="headerlink" title="maria DB IF문"></a>maria DB IF문</h2><p>mysql의 문법처럼, maria DB 또한 if문을 쓸 수 있다.</p>
+<p>그런데 내가 궁금한 건 select절에도 if문을 쓸 수 있느냐 여부였다.</p>
+<p>즉 이렇게!</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> .... </span><br><span class="line"><span class="keyword">if</span> (칼럼명 = <span class="string">'~'</span>, 참일 때 실행, 거짓일 때 실행) <span class="string">"별칭"</span></span><br></pre></td></tr></table></figure>
+<p>백문이 불여일실행이라고,</p>
+<p>해당 쿼리를 실행해보았다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> r.rno, r.isFrom, r.targetTypeCode, r.targetCode,</span><br><span class="line">		r.reasonCode, r.rContent, r.processCode,</span><br><span class="line">		<span class="keyword">if</span> (r.targetTypeCode=<span class="string">'BOARD'</span>,</span><br><span class="line">		(<span class="keyword">select</span> <span class="keyword">mid</span> <span class="keyword">from</span> board <span class="keyword">where</span> bno=r.targetCode),</span><br><span class="line">		(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> <span class="keyword">comment</span> <span class="keyword">where</span> cno=r.targetCode)) <span class="string">"isTo"</span>,</span><br><span class="line">		b.title <span class="keyword">from</span> report r <span class="keyword">join</span> board b <span class="keyword">on</span> r.targetCode=b.bno;</span><br></pre></td></tr></table></figure>
+<p>처음에는 괄호를 안 써서 에러가 났다.</p>
+<p>문법 자체가 잘못된 건지 모르겠어서 강사 님께 문의를 드렸는데, 논리에 맞지 않는다고 하셨다.</p>
+<p>그런데 웃긴 게 내가 어쩌다가 실행한 sql이 되는 걸 확인을 했고</p>
+<p>(문제는 그 저장된 sql이 워크밴치가 응답없음이 뜨면서 날아가서…)</p>
+<p>계속 미련을 못 버리다가 괄호를 잘 치니까 되었다!!!!</p>
+<p>근데 위의 쿼리는 내가 원하는 값을 가져오질 못했다ㅠㅠㅠㅠ 원하는 값을 가져오려면 프로시저를 써야 했다.</p>
+<p>하여튼 문법적으로는 되는 쿼리다!</p>
 
       
     </div>
@@ -166,7 +169,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/78/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/77/">77</a><a class="page-number" href="/page/78/">78</a><span class="page-number current">79</span><a class="page-number" href="/page/80/">80</a><a class="page-number" href="/page/81/">81</a><span class="space">&hellip;</span><a class="page-number" href="/page/121/">121</a><a class="extend next" rel="next" href="/page/80/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/78/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/77/">77</a><a class="page-number" href="/page/78/">78</a><span class="page-number current">79</span><a class="page-number" href="/page/80/">80</a><a class="page-number" href="/page/81/">81</a><span class="space">&hellip;</span><a class="page-number" href="/page/123/">123</a><a class="extend next" rel="next" href="/page/80/">Next</a>
   </nav>
 
 </section>
@@ -219,7 +222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -260,6 +263,30 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/09/08/frontend-meetup/">FRONT END MEETUP</a></h6>
+              <span>9월 8, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/09/06/naver-show-room/">쇼룸, 쇼핑 개발자를 부탁해</a></h6>
+              <span>9월 6, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -309,30 +336,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/24/lazycon/">lazycon에 다녀왔다</a></h6>
-              <span>8월 24, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/04/lazylab01/">첫 모각작 후기</a></h6>
-              <span>8월 4, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -343,7 +346,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

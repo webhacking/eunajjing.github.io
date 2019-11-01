@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-react-router" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-brackets" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/11/react-router/">리액트 라우터 복습</a>
+      <a class="article-title" href="/2019/06/14/brackets/">javascript 중괄호와 소괄호의 늪</a>
     </h1>
   
 
@@ -120,57 +120,28 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/11/react-router/" class="article-date">
-	  <time datetime="2019-06-11T05:59:18.000Z" itemprop="datePublished">6월 11, 2019</time>
+	<a href="/2019/06/14/brackets/" class="article-date">
+	  <time datetime="2019-06-14T08:23:18.000Z" itemprop="datePublished">6월 14, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="라우터-내-파라미터의-사용"><a href="#라우터-내-파라미터의-사용" class="headerlink" title="라우터 내 파라미터의 사용"></a>라우터 내 파라미터의 사용</h1><h2 id="라우터-컴포넌트의-props"><a href="#라우터-컴포넌트의-props" class="headerlink" title="라우터 컴포넌트의 props"></a>라우터 컴포넌트의 <code>props</code></h2><ul>
-<li><p><code>history</code></p>
-<ul>
-<li><code>push</code> : 리다이렉트</li>
-<li><code>replace</code></li>
-<li><code>goBack</code> : 뒤로가기</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> History = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> goBack = history.goBack;</span><br><span class="line">  <span class="keyword">const</span> push = history.push(<span class="string">"/"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line"></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;goBack&#125;&gt;뒤로가기&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;push&#125;&gt;홈으로 이동&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default History;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">"qs"</span>;</span><br><span class="line"><span class="comment">// 쿼리스트링 사용을 위해 패키지 설치</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> About = <span class="function">(<span class="params">&#123; location: &#123; search &#125; &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> query = qs.parse(search.substr(<span class="number">1</span>));</span><br><span class="line">  <span class="comment">// 객체형태로 쿼리를 파싱</span></span><br><span class="line">  <span class="comment">// ?detail=true를 detail : true 로</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> detail = query.detail === <span class="string">"true"</span>;</span><br><span class="line">  <span class="comment">// 쿼리의 값이 원하는 값인지 확인하는 작업 필요</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;소개&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;p&gt;About 컴포넌트입니다&lt;/</span>p&gt;</span><br><span class="line">      &#123;detail &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>추가적인 정보<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#125;</span><br><span class="line">  		&#123;*<span class="regexp">/detail이라는 쿼리가 들어와 해당 값이 true일 때만 컴포넌트가 보임/</span>*&#125;  </span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default About;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>match</code></p>
-<ul>
-<li><p><code>prams</code>에 대한 정보를 가지고 있음</p>
-<p>(blahblah/:username)</p>
-</li>
-</ul>
-</li>
-<li><p><code>location</code></p>
-<ul>
-<li>현재 경로에 대한 정보를 지님</li>
-<li>URL 쿼리를 가지고 있음</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Route, Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">'./About'</span>;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'./Home'</span>;</span><br><span class="line"><span class="keyword">import</span> Profile <span class="keyword">from</span> <span class="string">'./Profile'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;Link to=<span class="string">"/"</span>&gt;홈&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;Link to=<span class="string">"/about"</span>&gt;소개&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>li&gt;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">      &lt;hr /</span>&gt;</span><br><span class="line">      &lt;Route path=<span class="string">"/"</span> exact=&#123;<span class="literal">true</span>&#125; component=&#123;Home&#125; /&gt;</span><br><span class="line">      &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125; /&gt;</span><br><span class="line">      &lt;Route path=<span class="string">"/profiles/:username"</span> component=&#123;Profile&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
-<p><code>username</code>라는 쿼리를 받을 것. 즉 <code>localhost:3000/profiles/blahblah</code>라는 형태로 요청이 들어온다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Link, Route, NavLink &#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br><span class="line"><span class="keyword">import</span> Profile <span class="keyword">from</span> <span class="string">"./Profile"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profiles = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h3&gt;유저 목록 : <span class="xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;NavLink to=<span class="string">"/profiles/1111"</span> activeStyle=&#123;&#123; <span class="attr">color</span>: <span class="string">"black"</span> &#125;&#125;&gt;</span><br><span class="line">            <span class="number">11111</span></span><br><span class="line">          &lt;<span class="regexp">/NavLink&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;NavLink to=<span class="string">"/profiles/2222"</span>&gt;<span class="number">2222</span>&lt;<span class="regexp">/NavLink&gt;</span></span><br><span class="line"><span class="regexp">          &#123;/</span>* link와 navlink의 차이, navlink는 activeStyle, activeClassname 있음 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>li&gt;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">      &lt;Route</span></span><br><span class="line"><span class="regexp">        exact</span></span><br><span class="line"><span class="regexp">        path="/</span>profiles<span class="string">"</span></span><br><span class="line"><span class="string">        render=&#123;() =&gt; &lt;div&gt;유저를 선택해주세요&lt;/div&gt;&#125;</span></span><br><span class="line"><span class="string">      /&gt;</span></span><br><span class="line"><span class="string">      &lt;Route path="</span>/profiles/:username<span class="string">" component=&#123;Profile&#125; /&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default Profiles;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> profileData = &#123;</span><br><span class="line">  <span class="string">"1"</span>: &#123;</span><br><span class="line">    name: <span class="string">"1111"</span>,</span><br><span class="line">    description: <span class="string">"11111111111"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"2"</span>: &#123;</span><br><span class="line">    name: <span class="string">"2222"</span>,</span><br><span class="line">    description: <span class="string">"222222222222"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">(<span class="params">&#123;match:&#123;params:&#123;username&#125;&#125;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> profile = profileData[username];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (!profile) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>user not exist!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h3&gt;</span><br><span class="line">        &#123;username&#125; - &#123;profile.name&#125;</span><br><span class="line">      &lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;p&gt;&#123;profile.description&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Profile;</span></span><br></pre></td></tr></table></figure>
-<h2 id="라우터-컴포넌트-외에서-라우터의-props를-쓸-때"><a href="#라우터-컴포넌트-외에서-라우터의-props를-쓸-때" class="headerlink" title="라우터 컴포넌트 외에서 라우터의 props를 쓸 때"></a>라우터 컴포넌트 외에서 라우터의 <code>props</code>를 쓸 때</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">const</span> WithRouterSample = <span class="function">(<span class="params">&#123; location, match, history &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h4&gt;location&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">      &lt;textarea value=&#123;JSON.stringify(location, null, 2)&#125; /</span>&gt;</span><br><span class="line">      &lt;h4&gt;match&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">      &lt;textarea value=&#123;JSON.stringify(match, null, 2)&#125; /</span>&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; history.push(<span class="string">'/'</span>)&#125;&gt;홈으로&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withRouter(WithRouterSample);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>JSON.stringify()</code></p>
-<p>인자로 들어간 값이나 객체를 JSON 문자열로 반환</p>
-</blockquote>
+        <h1 id="중괄호와-소괄호의-늪"><a href="#중괄호와-소괄호의-늪" class="headerlink" title="중괄호와 소괄호의 늪"></a>중괄호와 소괄호의 늪</h1><p>계속 반복되는 실수가 나와서, 또 미래의 내가 헤멜 가능성이 농후해서 적는다. 객체 리턴할 적에 하던 대로 중괄호로 시작하면 에러 난다. 즉</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> blahblah = <span class="function">(<span class="params">a = &#123;&#125;</span>) =&gt;</span> &#123;&#123;</span><br><span class="line">  ...a,</span><br><span class="line">  blahblah : <span class="string">""</span></span><br><span class="line">&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p>위의 코드는 에러가 나기에, 아래처럼 써줘야 한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> blahblah = <span class="function">(<span class="params">a = &#123;&#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">  ...a,</span><br><span class="line">  blahblah : <span class="string">""</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/React/">React</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/javascript/">javascript</a>
 
       
       
@@ -188,7 +159,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/24/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/121/">121</a><a class="extend next" rel="next" href="/page/26/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/24/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/123/">123</a><a class="extend next" rel="next" href="/page/26/">Next</a>
   </nav>
 
 </section>
@@ -241,7 +212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -282,6 +253,30 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/09/08/frontend-meetup/">FRONT END MEETUP</a></h6>
+              <span>9월 8, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/09/06/naver-show-room/">쇼룸, 쇼핑 개발자를 부탁해</a></h6>
+              <span>9월 6, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -331,30 +326,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/24/lazycon/">lazycon에 다녀왔다</a></h6>
-              <span>8월 24, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/04/lazylab01/">첫 모각작 후기</a></h6>
-              <span>8월 4, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -365,7 +336,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

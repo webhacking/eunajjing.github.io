@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-boostcouse-webui" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-boostcouse-mysql" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/19/boostcouse-webui/">WEB UI 개발</a>
+      <a class="article-title" href="/2019/07/22/boostcouse-mysql/">DB 연결 웹 앱 - MYSQL</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/07/19/boostcouse-webui/" class="article-date">
-	  <time datetime="2019-07-19T07:05:18.000Z" itemprop="datePublished">7월 19, 2019</time>
+	<a href="/2019/07/22/boostcouse-mysql/" class="article-date">
+	  <time datetime="2019-07-22T06:39:18.000Z" itemprop="datePublished">7월 22, 2019</time>
 	</a>
 
       
@@ -131,105 +131,232 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="WEB-UI-개발"><a href="#WEB-UI-개발" class="headerlink" title="WEB UI 개발"></a>WEB UI 개발</h1><h2 id="Window-객체"><a href="#Window-객체" class="headerlink" title="Window 객체"></a>Window 객체</h2><ul>
-<li>디폴트의 개념으로 생략이 가능</li>
+        <h1 id="DB-연결-웹-앱-MYSQL"><a href="#DB-연결-웹-앱-MYSQL" class="headerlink" title="DB 연결 웹 앱 - MYSQL"></a>DB 연결 웹 앱 - MYSQL</h1><h2 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h2><ul>
+<li>데이터의 집합 (<code>a Set of Data</code>)</li>
+<li>여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(<code>share</code>) 데이터의 집합</li>
+<li>효율적으로 저장, 검색, 갱신할 수 있도록 데이터 집합들끼리 연관시키고 조직화</li>
 </ul>
-<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a><code>setTimeout</code></h3><ul>
-<li>인자로 <code>callback</code> 함수를 받는다</li>
-<li>인자로 들어온 <code>callback</code> 함수는 비동기로 실행되기 때문에, <strong>동기적인 실행이 끝난 뒤 실행</strong></li>
-</ul>
-<h2 id="DOM과-querySelector"><a href="#DOM과-querySelector" class="headerlink" title="DOM과 querySelector"></a><code>DOM</code>과 <code>querySelector</code></h2><h3 id="DOM-Document-Object-Model"><a href="#DOM-Document-Object-Model" class="headerlink" title="DOM(Document Object Model)"></a><code>DOM</code>(Document Object Model)</h3><p><img src="https://cphinf.pstatic.net/mooc/20180126_280/1516956194218XFPk5_PNG/2-2-2_Dom_tree.png" alt=""></p>
+<h3 id="특성"><a href="#특성" class="headerlink" title="특성"></a>특성</h3><ul>
+<li><p>실시간 접근성(<code>Real-time Accessability</code>)</p>
 <ul>
-<li>브라우저에서는 <code>HTML</code>을 <code>DOM</code>이라는 객체형태의 모델(<code>DOM Tree</code>)로 저장</li>
-<li><code>DOM Tree</code>를 탐색하기 위해 <code>JavaScript</code>로 탐색알고리즘을 구현하는 것은 비효율적<ul>
-<li>브라우저에서는 <code>DOM</code>이라는 개념을 통해 다양한 <code>DOM API</code> 제공</li>
+<li>사용자의 요구를 즉시 처리</li>
 </ul>
 </li>
-</ul>
-<h4 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById()"></a><code>getElementById()</code></h4><ul>
-<li>특정 <code>Element</code>가 반환되어 특정 정보들을 뽑아낼 수 있다<ul>
-<li><code>id</code></li>
-<li><code>className</code></li>
-<li><code>style</code></li>
-</ul>
-</li>
-<li>특정 <code>Element</code>가 반환되어 특정 정보들을 대입할 수 있다</li>
-</ul>
-<h4 id="Element-querySelector"><a href="#Element-querySelector" class="headerlink" title="Element.querySelector()"></a><code>Element.querySelector()</code></h4><ul>
-<li><code>CSS Selector</code> 문법을 활용해 <code>DOM</code>에 접근</li>
-<li>최초로 발견한 <code>node</code>만을 반환</li>
-</ul>
-<h5 id="Element-querySelectorAll"><a href="#Element-querySelectorAll" class="headerlink" title="Element.querySelectorAll()"></a><code>Element.querySelectorAll()</code></h5><ul>
-<li>배열 반환</li>
-</ul>
-<h2 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h2><h3 id="이벤트-등록"><a href="#이벤트-등록" class="headerlink" title="이벤트 등록"></a>이벤트 등록</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">"#id"</span>);</span><br><span class="line">element.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// e는 이벤트 객체</span></span><br><span class="line">	<span class="comment">// 이벤트 핸들러 / 이벤트 리스너 기술</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="이벤트-객체"><a href="#이벤트-객체" class="headerlink" title="이벤트 객체"></a>이벤트 객체</h3><ul>
-<li><p><code>브라우저</code>는 <code>이벤트 리스너</code>를 호출하면</p>
-</li>
-<li><p>사용자로부터 어떤 이벤트가 발생했는지에 대한 정보를 담은 <code>이벤트 객체</code>를 생성해서 <code>리스너 함수</code>에 전달</p>
-</li>
-</ul>
-<h4 id="event-target"><a href="#event-target" class="headerlink" title="event.target"></a><code>event.target</code></h4><ul>
-<li>이벤트가 발생한 <code>element</code>를 가리킴</li>
-<li><code>DOM Node</code>이므로,  매한가지로 특정 정보를 뽑아내거나 추가할 수 있다</li>
-</ul>
-<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
-<li>XMLHTTPRequest 통신</li>
-<li><strong>비동기 로직</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">const</span> oReq = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"> oReq.addEventListener(<span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.responseText);</span><br><span class="line">   <span class="comment">// this는 oReq</span></span><br><span class="line"> &#125;);    </span><br><span class="line"> oReq.open(<span class="string">"GET"</span>, <span class="string">"http://www.example.org/getData?data=data"</span>);<span class="comment">//parameter를 붙여서 보낼수있음</span></span><br><span class="line"> oReq.send();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="open"><a href="#open" class="headerlink" title="open()"></a><code>open()</code></h3><ul>
-<li>요청의 준비</li>
-</ul>
-<h3 id="send"><a href="#send" class="headerlink" title="send()"></a><code>send()</code></h3><ul>
-<li>서버로 발송</li>
-</ul>
-<h3 id="load"><a href="#load" class="headerlink" title="load()"></a><code>load()</code></h3><ul>
-<li>응답이 오면 발생하는 이벤트</li>
-<li>콜백 함수 실행<ul>
-<li>이 때의 <code>ajax</code>는 반환되어 콜스택에서 사라짐</li>
-</ul>
-</li>
-</ul>
-<h2 id="디버깅"><a href="#디버깅" class="headerlink" title="디버깅"></a>디버깅</h2><ul>
-<li><code>Pause</code> OR <code>Continue</code><ul>
-<li>평소에는 <code>Pause</code>, 브렉포인트가 잡힌 상태에선 <code>Continue</code></li>
-<li>다른 브레이크포인트가 잡힐 때까지 코드를 진행</li>
-</ul>
-</li>
-<li><code>Step over next function call</code> <ul>
-<li>스텝 오버는 코드 라인을 한 스탭 진행하는데 현재 실행 라인에 함수 실행 코드가 있다면 함수는 실행하는데 함수 안의 코드로는 진입하지 않는다</li>
-<li>즉 라인의 함수를 실행만 한다</li>
-</ul>
-</li>
-<li><code>Step into next function call</code><ul>
-<li>스텝 인투는 스텝 오버와 다르게 현재 실행 라인의 코드에 함수가 있다면 함수 안의 첫 번째 코드로 진입해 들어가 다시 하나씩 라인별로 코드를 실행</li>
-</ul>
-</li>
-<li><code>Step out of current function</code><ul>
-<li>스텝 인투로 들어온 함수를 끝까지 실행하고 밖으로 빠져나와 해당 함수를 실행한 함수로 돌아간다</li>
-</ul>
-</li>
-<li><code>Active</code> / <code>Deactive breakpoint</code> <ul>
-<li>브레이크포인트를 끄거나 켬</li>
-</ul>
-</li>
-<li><code>Pause on exception</code><ul>
-<li>예외가 발생하면 해당 위치에 브레이크포인트를 잡아준다</li>
-</ul>
-</li>
-</ul>
-<h3 id="디버깅하기"><a href="#디버깅하기" class="headerlink" title="디버깅하기"></a>디버깅하기</h3><ul>
-<li>코드 일정 부분에 브레이크 포인트를 잡는다</li>
-<li><p>웹 어플리케이션을 동작한다</p>
+<li><p>계속적인 변화(<code>Continuous Evolution</code>)</p>
 <ul>
-<li>화면에 <code>Paused in debugger</code>가 출력된다</li>
-<li>개발자도구 우측에는 어떤 포인트에서 멈춰졌는지 표기된다</li>
+<li>정확한 값을 유지하려고 삽입·삭제·수정 작업 등을 이용해 데이터를 지속적으로 갱신</li>
 </ul>
 </li>
-<li><p>만약 특정 라인까지 실행을 원한다면 <code>script execution</code> 버튼 클릭</p>
+<li><p>동시 공유성(<code>Concurrent Sharing</code>)</p>
+<ul>
+<li>사용자마다 서로 다른 목적으로 사용하므로 동시에 여러 사람이 동일한 데이터에 접근하고 이용</li>
+</ul>
+</li>
+<li><p>내용 참조(<code>Content Reference</code>)</p>
+<ul>
+<li>저장한 데이터 레코드의 위치나 주소가 아닌 사용자가 요구하는 데이터의 내용, 즉 데이터 값에 따라 참조</li>
+</ul>
 </li>
 </ul>
+<h2 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h2><ul>
+<li>데이터베이스를 관리하는 소프트웨어</li>
+<li>여러 응용 소프트웨어(프로그램) 또는 시스템이 동시에 데이터베이스에 접근하여 사용</li>
+<li>필수 3기능<ul>
+<li>정의기능<ul>
+<li>데이터 베이스의 논리적, 물리적 구조를 정의</li>
+</ul>
+</li>
+<li>조작기능<ul>
+<li>데이터를 검색, 삭제, 갱신, 삽입, 삭제하는 기능</li>
+</ul>
+</li>
+<li>제어기능<ul>
+<li>데이터베이스의 내용 정확성과 안전성을 유지하도록 제어하는 기능</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
+<li>데이터 중복이 최소화</li>
+<li>데이터의 일관성 및 무결성 유지 </li>
+<li>데이터 보안 보장</li>
+</ul>
+<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul>
+<li>운영비가 비싸다</li>
+<li>백업 및 복구에 대한 관리가 복잡</li>
+<li>부분적 데이터베이스 손실이 전체 시스템을 정지</li>
+</ul>
+<h2 id="SQL-Structured-Query-Language"><a href="#SQL-Structured-Query-Language" class="headerlink" title="SQL(Structured Query Language)"></a>SQL(<code>Structured Query Language</code>)</h2><ul>
+<li>SQL은 데이터를 보다 쉽게 검색하고 추가, 삭제, 수정 같은 조작을 할 수 있도록 고안된 컴퓨터 언어</li>
+<li>관계형 데이터베이스에서 데이터를 조작하고 쿼리하는 표준 수단</li>
+<li><p><code>DML</code> <code>(Data Manipulation Language</code>)</p>
+<ul>
+<li>데이터를 조작하기 위해 사용<br><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code> 등이 여기에 해당</li>
+</ul>
+</li>
+<li><p><code>DDL</code> (<code>Data Definition Language</code>)</p>
+<ul>
+<li>데이터베이스의 스키마를 정의하거나 조작하기 위해 사용</li>
+<li><code>CREATE</code>,<code>DROP</code>, <code>ALTER</code> 등이 여기에 해당</li>
+</ul>
+</li>
+<li><p><code>DCL</code> (<code>Data Control Language</code>)</p>
+<ul>
+<li>데이터를 제어하는 언어</li>
+<li>권한을 관리하고, 테이터의 보안, 무결성 등을 정의</li>
+<li><code>GRANT</code>, <code>REVOKE</code> 등이 여기에 해당</li>
+</ul>
+</li>
+</ul>
+<h3 id="DB-생성"><a href="#DB-생성" class="headerlink" title="DB 생성"></a>DB 생성</h3><ol>
+<li><p>관리자 계정으로 접속 <code>mysql –uroot  -p</code></p>
+</li>
+<li><p>DB 생성 <code>create database DB이름;</code></p>
+</li>
+</ol>
+<h3 id="사용자-생성-및-권한-할당"><a href="#사용자-생성-및-권한-할당" class="headerlink" title="사용자 생성 및 권한 할당"></a>사용자 생성 및 권한 할당</h3><ul>
+<li><code>Database</code>를 생성했다면, 해당 데이터베이스를 사용하는 계정을 생성해야 함</li>
+<li>해당 계정이 데이터베이스를 이용할 수 있는 권한을 부여해야 함<ul>
+<li>db이름 뒤의 <code>*</code> 는 모든 권한을 의미</li>
+<li><code>@’%’</code>는 어떤 클라이언트에서든 접근 가능하다는 의미</li>
+<li><code>@’localhost’</code>는 해당 컴퓨터에서만 접근 가능하다는 의미</li>
+<li><code>flush privileges</code>는 DBMS에게 적용을 하라는 의미</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on db이름.* to 계정이름@&apos;%&apos; identified by ＇암호’;</span><br><span class="line">grant all privileges on db이름.* to 계정이름@&apos;localhost&apos; identified by ＇암호’;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<h3 id="접속"><a href="#접속" class="headerlink" title="접속"></a>접속</h3><p><code>mysql –h호스트명 –uDB계정명 –p 데이터베이스이름</code></p>
+<h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ul>
+<li><code>SQL</code>은 <code>;</code>으로 끝난다</li>
+<li><p><code>SQL</code>은 쿼리(<code>Query</code>)라고 읽는다</p>
+<ul>
+<li>쿼리는 대소문자를 가리지 않는다</li>
+</ul>
+</li>
+<li><p><code>SELECT</code>는 어떤 내용을 조회할 때 사용하는 키워드</p>
+</li>
+<li><p>MySQL은 쿼리에 해당하는 결과의 전체 row를 출력하고 마지막에 전체 row 수와 쿼리실행에 걸린 시간을 표시</p>
+</li>
+<li>쿼리 작성 중 <code>₩c</code>를 사용하면 중간에 취소 가능</li>
+</ul>
+<h3 id="명령어"><a href="#명령어" class="headerlink" title="명령어"></a>명령어</h3><ul>
+<li><code>SHOW statement;</code><ul>
+<li><code>DBMS</code>에 존재하는 데이터베이스 확인</li>
+</ul>
+</li>
+<li><code>use mydb;</code><ul>
+<li>사용중인 데이터베이스 전환 <ul>
+<li>데이터베이스를 전환하려면, 이미 데이터베이스가 존재</li>
+<li>현재 접속 중인 계정이 해당 데이터베이스를 사용할 수 있는 권한이 있어야 함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="DDL-create-drop"><a href="#DDL-create-drop" class="headerlink" title="DDL(create, drop)"></a><code>DDL</code>(<code>create</code>, <code>drop</code>)</h3><h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p><img src="https://cphinf.pstatic.net/mooc/20180131_276/1517366013781n0BtX_PNG/2_8_1_%28table%29_.PNG" alt=""></p>
+<ul>
+<li><code>table</code><ul>
+<li><code>RDBMS</code>의 기본적 저장구조 한 개 이상의 <code>column</code>과 0개 이상의 <code>row</code>로 구성</li>
+</ul>
+</li>
+<li><code>Column</code><ul>
+<li>테이블 상에서의 단일 종류의 데이터</li>
+<li>특정 데이터 타입 및 크기를 지님</li>
+</ul>
+</li>
+<li><code>Row</code><ul>
+<li><code>Column</code>들의 값의 조합</li>
+<li>레코드</li>
+<li>기본키(<code>PK</code>)에 의해 구분<ul>
+<li>기본키는 중복을 허용하지 않으며 없어서는 안 된다</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Field</code><ul>
+<li><code>Row</code>와 <code>Column</code>의 교차점으로 <code>Field</code>는 데이터를 포함할 수 있고 없을 때는 NULL 값</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>Empty set</code> : DB에 아직 테이블이 생성되지 않았음</p>
+<p><code>desc 테이블명;</code> : 테이블의 구조 확인</p>
+</blockquote>
+<h4 id="데이터-타입"><a href="#데이터-타입" class="headerlink" title="데이터 타입"></a>데이터 타입</h4><p><img src="https://cphinf.pstatic.net/mooc/20180131_89/1517386938999sf3SM_PNG/2_8_3_MySQL__-1.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180131_46/1517386952668I67cM_PNG/2_8_3_MySQL__-2.PNG" alt=""></p>
+<blockquote>
+<p><code>AUTO_INCREMENT</code> : 자동으로 1씩 증가하는 번호</p>
+</blockquote>
+<h3 id="DML-select-insert-update-delete"><a href="#DML-select-insert-update-delete" class="headerlink" title="DML(select, insert, update, delete)"></a><code>DML</code>(<code>select</code>, <code>insert</code>, <code>update</code>, <code>delete</code>)</h3><p><img src="https://cphinf.pstatic.net/mooc/20180131_187/1517374752273Ba8n9_PNG/2_8_2_select__.PNG" alt=""></p>
+<blockquote>
+<p><strong>오라클의 <code>dual</code></strong> 테이블</p>
+<p>오라클에서는 반드시 테이블이 있어야 한다</p>
+<p>하지만 테이블에 없는 데이터를 임시로 꺼낼 수도 있기 때문에, 해당 테이블을 <strong>임시 테이블</strong>로 지정해 값을 출력할 수 있다</p>
+</blockquote>
+<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><p><img src="https://cphinf.pstatic.net/mooc/20180227_23/1519695801630edbfc_PNG/3.PNG" alt=""></p>
+<ul>
+<li><code>column in (blah, blah)</code></li>
+<li><code>column like &#39;%a_&#39;</code></li>
+</ul>
+<h4 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h4><h5 id="단일함수"><a href="#단일함수" class="headerlink" title="단일함수"></a>단일함수</h5><ul>
+<li><p><code>concat</code> : 문자열 결합 함수</p>
+<ul>
+<li><code>select concat(column, &#39;blah&#39;, column) from tablename</code></li>
+</ul>
+</li>
+<li><p><code>UCASE</code>, <code>UPPER</code> : 대문자로 변경</p>
+</li>
+<li><p><code>LCASE</code>, <code>LOWER</code> : 소문자로 변경</p>
+</li>
+<li><p><code>substring(&#39;blahblah&#39;, n, n)</code></p>
+<ul>
+<li>DB는 <code>0</code>이 아닌 <code>1</code>부터 시작</li>
+</ul>
+</li>
+<li><p><code>LPAD</code>, <code>RPAD</code> : 원하는 문자열로 채움</p>
+<ul>
+<li><code>LPAD(&#39;hi&#39;,5,&#39;?&#39;), RPAD(&#39;joe&#39;,7,&#39;*&#39;)</code><ul>
+<li><code>???hi</code>, <code>joe****</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>TRIM</code>, <code>LTRIM</code>, <code>RTRIM</code> : 공백 삭제</p>
+</li>
+<li><p><code>ABS(x)</code> : 절대값 구하기</p>
+</li>
+<li><p><code>MOD(n,m)</code> : 나머지 구하기</p>
+</li>
+<li><p><code>FLOOR(x)</code> : <code>x</code>보다 크지 않은 가장 큰 정수를 반환</p>
+</li>
+<li><p><code>CEILING(x)</code>: <code>x</code>보다 작지 않은 가장 작은 정수를 반환</p>
+</li>
+<li><p><code>ROUND(x)</code> : <code>x</code>에 가장 근접한 정수를 반환</p>
+</li>
+<li><p><code>POW(x,y)</code>, <code>POWER(x,y)</code> : <code>x</code>의 <code>y</code> 제곱 승을 반환</p>
+</li>
+<li><p><code>GREATEST(x,y,...)</code> : 가장 큰 값을 반환</p>
+</li>
+<li><p><code>LEAST(x,y,...)</code> : 가장 작은 값을 반환</p>
+</li>
+<li><p><code>CURDATE()</code>, <code>CURRENT_DATE</code> : 오늘 날짜를<code>YYYY-MM-DD</code>나 <code>YYYYMMDD</code> 형식으로 반환</p>
+</li>
+<li><p><code>CURTIME()</code>, <code>CURRENT_TIME</code> : 현재 시각을 <code>HH:MM:SS</code>나 <code>HHMMSS</code> 형식으로 반환</p>
+</li>
+<li><p><code>NOW()</code>, <code>SYSDATE()</code> , <code>CURRENT_TIMESTAMP</code> : 오늘 현시각을<code>YYYY-MM-DD HH:MM:SS</code>나 <code>YYYYMMDDHHMMSS</code> 형식으로 반환</p>
+</li>
+<li><p><code>DATE_FORMAT(date,format)</code> : 입력된 <code>date</code>를 <code>format 형식</code>으로 반환합니다.</p>
+</li>
+<li><p><code>PERIOD_DIFF(p1,p2)</code> : <code>YYMM</code>이나 <code>YYYYMM</code>으로 표기되는 <code>p1</code>과 <code>p2</code>의 차이 개월을 반환</p>
+</li>
+<li><p><code>cast</code> 형 변환 (<code>mysql</code> 4.2 버전부터 지원)</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180227_7/1519696097137n1dmo_PNG/4.png" alt=""></p>
+</li>
+</ul>
+<h5 id="그룹함수"><a href="#그룹함수" class="headerlink" title="그룹함수"></a>그룹함수</h5><p>여러 개의 값을 가지고 결과 값 하나만 출력</p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180131_87/151738015308653Cmb_PNG/2_8_2_select_%28%29.PNG" alt=""></p>
+<p><img src="https://cphinf.pstatic.net/mooc/20180227_237/15196955203980m2pE_PNG/2.PNG" alt=""></p>
 
       
     </div>
@@ -254,7 +381,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/12/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/121/">121</a><a class="extend next" rel="next" href="/page/14/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/12/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/123/">123</a><a class="extend next" rel="next" href="/page/14/">Next</a>
   </nav>
 
 </section>
@@ -307,7 +434,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -348,6 +475,30 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/09/08/frontend-meetup/">FRONT END MEETUP</a></h6>
+              <span>9월 8, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/09/06/naver-show-room/">쇼룸, 쇼핑 개발자를 부탁해</a></h6>
+              <span>9월 6, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -397,30 +548,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/24/lazycon/">lazycon에 다녀왔다</a></h6>
-              <span>8월 24, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/08/04/lazylab01/">첫 모각작 후기</a></h6>
-              <span>8월 4, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -431,7 +558,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
