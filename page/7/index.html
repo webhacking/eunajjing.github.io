@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-heyjoyce" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-functional-thinking02" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/08/28/heyjoyce/">개발자가 크면 무엇이 되나요?</a>
+      <a class="article-title" href="/2019/09/05/functional-thinking02/">함수형 사고, 전환</a>
     </h1>
   
 
@@ -120,232 +120,77 @@
     
     <div class="article-meta">
       
-	<a href="/2019/08/28/heyjoyce/" class="article-date">
-	  <time datetime="2019-08-28T12:29:18.000Z" itemprop="datePublished">8월 28, 2019</time>
+	<a href="/2019/09/05/functional-thinking02/" class="article-date">
+	  <time datetime="2019-09-05T14:11:18.000Z" itemprop="datePublished">9월 5, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/일상/">일상</a>
+    <a class="article-category-link" href="/categories/책/">책</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="개발자가-크면-무엇이-되나요"><a href="#개발자가-크면-무엇이-되나요" class="headerlink" title="개발자가 크면 무엇이 되나요?"></a><a href="https://heyjoyce.com/product/work-party-201908/" target="_blank" rel="noopener">개발자가 크면 무엇이 되나요?</a></h1><h2 id="가게-된-계기"><a href="#가게-된-계기" class="headerlink" title="가게 된 계기"></a>가게 된 계기</h2><p>처음에는 갈 생각이 별로 없었는데, 몇몇 남성 지인 분이 여성 시니어 개발자를 만날 기회가 몇이나 있겠냐며, 내용 또한 궁금하다고 하여 갔다. 좋은 정보를 얻게 되면 나눌 생각도 있었고. 마침 근처에 볼일도 있고 하여, 일을 끝내고 큰 기대 없이 갔다.</p>
-<h2 id="발표-내용-요약"><a href="#발표-내용-요약" class="headerlink" title="발표 내용 요약"></a>발표 내용 요약</h2><h3 id="나만의-프레임워크"><a href="#나만의-프레임워크" class="headerlink" title="나만의 프레임워크"></a>나만의 프레임워크</h3><ul>
-<li>연사 : 장미영 님 (한화시스템 / ICT 아키텍트팀 차장)<ul>
-<li>본인 스스로 <strong>회사형 개발자</strong>라고 소개<del>ㅋㅋㅋㅋ</del></li>
+        <h1 id="함수형-사고-전환"><a href="#함수형-사고-전환" class="headerlink" title="함수형 사고, 전환"></a>함수형 사고, 전환</h1><blockquote>
+<p>해당 게시글은 <a href="">Functional Thinking 함수형 사고</a> 를 읽고 공부한 내용을 정리한 것 입니다.</p>
+<p>저작권 문제가 발생할 시 해당 글은 삭제됩니다 :&lt;</p>
+</blockquote>
+<blockquote>
+<p>이전 글은 <a href="https://eunajjing.github.io/2019/08/28/functional-thinking01/">함수형 사고, 왜?</a>에서 보실 수 있습니다.</p>
+</blockquote>
+<p>일반적으로 개발자들은 이미 다른 언어에 대해 알고 있는 지식들을 적용해 새 언어를 배운다. 하지만 새 패러다임을 익히기는 어렵다. 이미 친숙한 문제에 대해 다른 해답을 떠올릴 능력을 배워야 하기 때문이다.</p>
+<h2 id="일반적인-예제"><a href="#일반적인-예제" class="headerlink" title="일반적인 예제"></a>일반적인 예제</h2><h3 id="명령형-프로그래밍"><a href="#명령형-프로그래밍" class="headerlink" title="명령형 프로그래밍"></a>명령형 프로그래밍</h3><ul>
+<li>상태를 변형하는 일련의 명령들로 구성된 프로그래밍 방식<ul>
+<li>전형적인 <code>for</code> 루프</li>
 </ul>
 </li>
+<li>루프 내에서 연산하기를 권장</li>
 </ul>
-<h4 id="어떻게-지내셨나요"><a href="#어떻게-지내셨나요" class="headerlink" title="어떻게 지내셨나요?"></a>어떻게 지내셨나요?</h4><ul>
-<li>SI 업체<ul>
-<li>금융, 교육, 행정, 법인 등 다양한 도메인 지식</li>
+<h3 id="함수형-프로그래밍"><a href="#함수형-프로그래밍" class="headerlink" title="함수형 프로그래밍"></a>함수형 프로그래밍</h3><ul>
+<li>프로그램을 수학 공식을 모델링하는 표현과 변형으로 기술하며, <strong>가변 상태를 지양</strong></li>
+<li><strong>함수형 사고로의 전환은, 세부적인 구현에 뛰어들지 않고 고수준 추상 개념을 적용할지를 배우는 것</strong></li>
 </ul>
-</li>
-<li>커뮤니티 활동<ul>
-<li>아키텍트 팀이기 때문에 프레임워크에 대해 강의를 할 기회가 많았다</li>
-<li>그러나 스터디를 할 기회가 많지 않다는 아쉬움<ul>
-<li>해당 목마름은 커뮤니티를 통해 해소</li>
-<li>많은 사람들을 만나며 풍부한 지식들을 쌓을 수 있었다<ul>
-<li><code>evangelist</code><ul>
-<li>여성 개발자 커뮤니티</li>
-<li>강의식 스터디 진행 중</li>
+<h4 id="고수준-추상-사고의-장점"><a href="#고수준-추상-사고의-장점" class="headerlink" title="고수준 추상 사고의 장점"></a>고수준 추상 사고의 장점</h4><ul>
+<li>문제의 공통점을 고려해 다른 방식으로 분류하길 권장</li>
+<li>런타임이 최적화를 잘할 수 있도록 해준다<ul>
+<li>결과가 변하지 않는 한, 작업 순서를 바꾸면 더 능률적이 된다</li>
 </ul>
 </li>
+<li>개발자가 높은 추상 수준에서 코딩 작업을 하고, 저수준의 세부적인 최적화는 런타임이 담당</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="세상에는-필요로-하는-시스템이-많습니다"><a href="#세상에는-필요로-하는-시스템이-많습니다" class="headerlink" title="세상에는 필요로 하는 시스템이 많습니다"></a>세상에는 필요로 하는 시스템이 많습니다</h4><ul>
-<li><p>프레임워크</p>
+<blockquote>
 <ul>
-<li><p>좋은 시스템을 만들기 위해서는 필요</p>
-<ul>
-<li>프레임워크를 선택하거나, 직접 개발해야 한다</li>
-</ul>
+<li><p><strong>절차보다는 결과에 집중한다</strong>가 핵심</p>
 </li>
-<li><p>내가 개발하고자 하는 이 시스템을 어떻게 바라볼 것인가</p>
-<ul>
-<li><p>나만의 프레임워크를 정하기</p>
-<ul>
-<li>방향을 정하고<ul>
-<li>너무 많은 프레임워크와 배울 것들이 있기 때문에 나만의 기준이 필요</li>
-</ul>
+<li><p><strong>고수준의 추상화는 마찰을 없앤다</strong>는 점을 기억하기</p>
 </li>
-<li>좋아하는지 확인</li>
-<li>중간 중간 점검</li>
-</ul>
-</li>
-<li><p>모든 프레임워크를 다 공부할 수는 없기 때문에 하나를 정해서 내 것을 만들자</p>
+<li><p>끼어드는 문법적인 장애 때문에 <strong>추상적 개념이 사고 과정과 마찰을 빚게 하지 말 것</strong></p>
 </li>
 </ul>
-</li>
+</blockquote>
+<h2 id="공통된-빌딩블록"><a href="#공통된-빌딩블록" class="headerlink" title="공통된 빌딩블록"></a>공통된 빌딩블록</h2><ul>
+<li><code>filter</code> : 주어진 조건에 맞는 컬렉션의 부분 집합을 구할 때 사용<ul>
+<li><code>boolean</code> 조건 명시 등</li>
 </ul>
 </li>
-<li><p>일단 <strong>시작</strong>하기</p>
-<ul>
-<li>개발의 시작은 구글링</li>
-<li>어떤 것이든 선택해서 환경을 세팅</li>
-<li><code>hello world!</code> 찍어보기</li>
+<li><code>map</code> : 컬렉션을 그 자리에서 변형할 때 사용<ul>
+<li><code>function</code>과 <code>collection</code>을 받아 해당 <code>function</code>을 <code>collection</code>의 각 요소에 적용한 후 리턴</li>
 </ul>
 </li>
-<li><p>요즘 소프트웨어 아키텍트는 개발자가 가지고 있어야 하는 역량 중 하나</p>
-<ul>
-<li>현재 우리의 시스템에서는 어떻게 요소들이 관계를 맺고 있는지 살펴보기</li>
-<li>매 프로젝트마다 포커싱 되는 기준점이 다르기에, 완벽한 소프트웨어 아키텍트라는 건 없다<ul>
-<li>매 프로젝트마다 잘 맞는 아키텍처를 찾기</li>
+<li><code>flodLeft / reduce</code> : 컬렉션의 요소를 하나씩 다른 함수로 처리할 때 사용</li>
 </ul>
-</li>
-<li>커뮤니케이션 능력 또한 중요</li>
-</ul>
-</li>
-</ul>
-<h3 id="엔지니어-원시림에서-살아남기"><a href="#엔지니어-원시림에서-살아남기" class="headerlink" title="엔지니어, 원시림에서 살아남기"></a>엔지니어, 원시림에서 살아남기</h3><ul>
-<li>연사 : 이보경 님 (Naver D2SF 스타트업 기술 심사역)</li>
-</ul>
-<h4 id="장애물"><a href="#장애물" class="headerlink" title="장애물"></a>장애물</h4><h5 id="누구의-문제인가"><a href="#누구의-문제인가" class="headerlink" title="누구의 문제인가"></a>누구의 문제인가</h5><ul>
-<li>감정적 문제라면 타인의 문제인지, 자신의 문제인지 가릴 것</li>
-<li>환경적 문제라면 여러 각도로 문제를 바라보기</li>
-<li>정 안되면 도망치기</li>
-</ul>
-<h5 id="나의-링이-사각인지-확인해보기"><a href="#나의-링이-사각인지-확인해보기" class="headerlink" title="나의 링이 사각인지 확인해보기"></a>나의 링이 사각인지 확인해보기</h5><ul>
-<li>특정인과 나의 업무 환경이 다르진 않은지</li>
-<li>업적은 제대로 평가되고 있는지</li>
-<li>나한테만 두고 보는 눈이 많은지</li>
-</ul>
-<h5 id="번아웃-극복"><a href="#번아웃-극복" class="headerlink" title="번아웃 극복"></a>번아웃 극복</h5><ul>
-<li>스스로 자책하지 말 것</li>
-<li>환경 탓을 할 것</li>
-<li>의욕이 생길 때까지 기다리기</li>
-<li>에너지를 보충하며 휴식하기</li>
-</ul>
-<h5 id="없는-답을-찾으려-하지-말기"><a href="#없는-답을-찾으려-하지-말기" class="headerlink" title="없는 답을 찾으려 하지 말기"></a>없는 답을 찾으려 하지 말기</h5><ul>
-<li><strong>이 구역의 미친 자는 나다</strong>의 자세<ul>
-<li>내가 좋은 사람이여도, 타인이 잘못하면 어쩔 수 없다</li>
-<li>코끼리 같은 존재가 필요</li>
-</ul>
-</li>
-</ul>
-<h4 id="장애물을-베는-낫"><a href="#장애물을-베는-낫" class="headerlink" title="장애물을 베는 낫"></a>장애물을 베는 낫</h4><ul>
-<li>사람<ul>
-<li>열을 챙기면 내 사람 하나가 남는다</li>
-<li>나쁜 사람 한 명의 데미지는 좋은 사람 10명으로 케어된다<ul>
-<li>좋은 사람을 주변에 많이 두려 노력</li>
-</ul>
-</li>
-<li>좋은 상사와 친해지기</li>
-</ul>
-</li>
-<li>돈</li>
-<li>공부<ul>
-<li>호기심과 변화를 따라갈 것</li>
-<li>영어</li>
-<li>운동</li>
-</ul>
-</li>
-</ul>
-<h3 id="토크-세션"><a href="#토크-세션" class="headerlink" title="토크 세션"></a>토크 세션</h3><ul>
-<li>연사 : 장선형 님 (신한은행 정보개발부 부부장)<ul>
-<li>24년차 직장인, 슬하에 연년생 자녀</li>
-<li>CRM 시스템 운영팀장</li>
-<li>문과 출신<ul>
-<li>우연한 기회에 학교에 진학해 개발을 배움</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>연사 : 강소리 님 (1인 기업, <code>hada.io</code> 개발자)<ul>
-<li>13년차 개발자</li>
-<li>컴퓨터 공학 전공</li>
-<li>삼성 SDS (임베디드 SW 개발)</li>
-<li>다음 커뮤니테이션 (결제 시스템)</li>
-<li>KT&amp;G 기술전략팀</li>
-<li>레진코믹스 초기 백엔드 멤버</li>
-</ul>
-</li>
-</ul>
-<h4 id="이직"><a href="#이직" class="headerlink" title="이직"></a>이직</h4><h5 id="소리-님-이직을-왜이리-많이-하셨나요"><a href="#소리-님-이직을-왜이리-많이-하셨나요" class="headerlink" title="[소리 님] 이직을 왜이리 많이 하셨나요?"></a>[소리 님] 이직을 왜이리 많이 하셨나요?</h5><ul>
-<li>조직이 싫어지거나 재밌는 곳의 제안을 받았을 때 이직을 생각</li>
-<li>어떤 회사로 갈 것인가<ul>
-<li>성장 가능성</li>
-<li>좋은 사람들</li>
-</ul>
-</li>
-</ul>
-<h5 id="선형-님-이직을-왜-안하셨나요"><a href="#선형-님-이직을-왜-안하셨나요" class="headerlink" title="[선형 님] 이직을 왜 안하셨나요?"></a>[선형 님] 이직을 왜 안하셨나요?</h5><ul>
-<li>성향 상 변화가 없는 조직이 적합<ul>
-<li>가정이 있고</li>
-<li>새로운 신기술에 대한 목마름이 없는 편<ul>
-<li>다른 부분들에 대한 목마름은 커뮤니티에서 채움</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>사내 여러 프로젝트들을 진행하다보니 다른 곳에 시선을 둘 겨를이 없었다</li>
-<li>사내에서 제일 오래된 개발자가 되어버려서, 누군가의 롤모델이 되어버리기도 했다</li>
-</ul>
-<h4 id="커리어의-위기가-있었나요"><a href="#커리어의-위기가-있었나요" class="headerlink" title="커리어의 위기가 있었나요?"></a>커리어의 위기가 있었나요?</h4><h5 id="소리-님-늘-위기였는데"><a href="#소리-님-늘-위기였는데" class="headerlink" title="[소리 님] 늘 위기였는데"></a>[소리 님] 늘 위기였는데</h5><ul>
-<li>초기 스타트업 세팅이 가장 힘들었다<ul>
-<li>시간 압박</li>
-<li>내가 아닌 다른 개발자라면 더 잘하지 않을까라는 자책</li>
-<li>그런데 돌이켜보면 그 때가 재밌었다</li>
-</ul>
-</li>
-</ul>
-<h5 id="선형-님-위기는-없었는데"><a href="#선형-님-위기는-없었는데" class="headerlink" title="[선형 님] 위기는 없었는데"></a>[선형 님] 위기는 없었는데</h5><ul>
-<li>성차별이 심했지만 회사가 합병되며 해소</li>
-</ul>
-<h4 id="업계-내-남성이-많은데-어떤가요"><a href="#업계-내-남성이-많은데-어떤가요" class="headerlink" title="업계 내 남성이 많은데 어떤가요?"></a>업계 내 남성이 많은데 어떤가요?</h4><h5 id="소리-님-다행히-젠더감수성이-높은-회사들을-갔던-터라"><a href="#소리-님-다행히-젠더감수성이-높은-회사들을-갔던-터라" class="headerlink" title="[소리 님] 다행히 젠더감수성이 높은 회사들을 갔던 터라"></a>[소리 님] 다행히 젠더감수성이 높은 회사들을 갔던 터라</h5><ul>
-<li>조금만 잘하면 주목 받지만 잘했음에도 과소평가 받기도 했다<ul>
-<li>수요 많은 분야에 뽑히면 <strong>여성이라서 뽑혔다</strong>는 뒷말이 돈다</li>
-</ul>
-</li>
-</ul>
-<h5 id="선형-님-현재-성비가-50-50인-부서인데"><a href="#선형-님-현재-성비가-50-50인-부서인데" class="headerlink" title="[선형 님] 현재 성비가 50:50인 부서인데"></a>[선형 님] 현재 성비가 <code>50:50</code>인 부서인데</h5><ul>
-<li>전통적으로 여성이 많은 부서</li>
-<li>하지만 회사 전반적으로 상명하복 문화라 적응이 힘들었었다<ul>
-<li>남성은 군대 탓에 이런 문화에 적응을 빨리 하는 편이고, 단기적 성과를 잘 내는 것 같다</li>
-<li>반면 목표를 달성하면 차후를 생각하지 않는 편인 듯하다</li>
-</ul>
-</li>
-<li>남성이 조직생활을 편하게 하는 것 같긴 하다<ul>
-<li>인맥을 잘 쌓는 등<ul>
-<li>이런 부분을 닮으려 노력</li>
-</ul>
-</li>
-<li>술 문화, 담배 타임에서 의사결정이 되기도 한다<ul>
-<li>이런 부분은 개인의 노력으로 당장 어떻게 할 수 없지만 지금 들어오는 세대들은 다르기에 이전과 분위기가 좀 다르다</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="선형-님-리더쉽-위기"><a href="#선형-님-리더쉽-위기" class="headerlink" title="[선형 님] 리더쉽 위기"></a>[선형 님] 리더쉽 위기</h4><ul>
-<li>연차가 많은 남성보다 높은 직급으로 업무를 해야할 때, 이들을 이끄는 게 힘들었다<ul>
-<li>여성 리더에게 지시 받는 걸 불편해하며, 저항한다</li>
-<li>포지션 파워도 먹히지 않는다</li>
-<li>앞에서는 유하게, 뒤에서는 강력한 방법을 사용<ul>
-<li>앞에서는 칭찬을</li>
-<li>뒤에서는 인맥을 활용</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2><p><code>엔지니어, 원시림에서 살아남기</code> 세션이 가장 인상적이었다. 기대가 없었던 탓일까. 감동적인 시간이었다. 내가 이전에 이 세션을 들었다면 좀 덜 고통 받았을 것 같다는 생각도 많이 했고. 나에게도 이런 연단이 주어진다면, 다른 이들을 위해 용기를 내어 서고 싶다는 생각도 했다. 나는 무슨 이야기를 할 수 있을까. <strong>베이비 주니어의 좌충우돌 개발 원시림 적응기?</strong> ㅋㅋㅋ</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/일상/">일상</a>
+    <a class="article-category-link" href="/categories/책/">책</a>
 
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/함수형-사고/">함수형 사고</a></li></ul>
+
       
     </footer>
     <hr class="entry-footer-hr">
@@ -361,7 +206,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/125/">125</a><a class="extend next" rel="next" href="/page/8/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/6/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/126/">126</a><a class="extend next" rel="next" href="/page/8/">Next</a>
   </nav>
 
 </section>
@@ -414,7 +259,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -455,6 +300,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/11/24/nhn2019/">NHN FORWARD</a></h6>
+              <span>11월 24, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -516,18 +373,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/09/05/functional-thinking02/">함수형 사고, 전환</a></h6>
-              <span>9월 5, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -538,7 +383,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
