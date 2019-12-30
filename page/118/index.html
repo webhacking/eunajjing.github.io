@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-mongoDB-01" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-notification-API를-이용한-웹-알림-구현" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/15/mongoDB-01/">mongoDB_01</a>
+      <a class="article-title" href="/2018/10/16/notification-API를-이용한-웹-알림-구현/">notification API를 이용한 웹 알림 구현</a>
     </h1>
   
 
@@ -120,153 +120,53 @@
     
     <div class="article-meta">
       
-	<a href="/2018/10/15/mongoDB-01/" class="article-date">
-	  <time datetime="2018-10-15T02:09:06.000Z" itemprop="datePublished">10월 15, 2018</time>
+	<a href="/2018/10/16/notification-API를-이용한-웹-알림-구현/" class="article-date">
+	  <time datetime="2018-10-16T03:43:02.000Z" itemprop="datePublished">10월 16, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/몽고DB/">몽고DB</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MogoDB-NoSQL-기초01"><a href="#MogoDB-NoSQL-기초01" class="headerlink" title="MogoDB(NoSQL) 기초01"></a>MogoDB(NoSQL) 기초01</h1><p><a href="http://cyber.dbguide.net/lecture.php?action=view&amp;no=108" target="_blank" rel="noopener">공부한 강의</a></p>
-<blockquote>
-<p>근데 강의가 오래 전 것 같고, 아예 nosql을 처음 접하는 나로는 조금 어려운 부분이 있어서(group, map-reduce 등) 이번 것만 듣고 다른 강의 찾아 들어볼 생각</p>
-</blockquote>
-<hr>
-<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><p>관계형 DB로 처리하기에는 약간 부족한 부분들을 매꿔줄 수 있는 DB.</p>
-<ul>
-<li>KEY VALUE 형</li>
-<li>문서형 (MongoDB)</li>
-<li>컬럼 제한형</li>
-<li>그래프 기반형</li>
-</ul>
-<h2 id="몽고-DB-데이터-구성"><a href="#몽고-DB-데이터-구성" class="headerlink" title="몽고 DB 데이터 구성"></a>몽고 DB 데이터 구성</h2><ul>
-<li>데이터 베이스 : 컬렉션들의 집합</li>
-<li>컬렉션 : 테이블과 유사</li>
-<li>BSON : 스키마에 맞춰 저장하는 유형</li>
-</ul>
-<h4 id="BSON"><a href="#BSON" class="headerlink" title="BSON"></a>BSON</h4><p>: JSON의 바이너리 형태라는 뜻</p>
-<h2 id="몽고-DB-특징"><a href="#몽고-DB-특징" class="headerlink" title="몽고 DB 특징"></a>몽고 DB 특징</h2><ul>
-<li>조인을 지원하지 않는다(대부분의 NOSQL이 그러함)</li>
-<li>스키마가 존재하지 않는다</li>
-<li>create DB 구문이 존재하지 않는다(하지만 drop절은 있다)</li>
-</ul>
-<h2 id="몽고-DB-첫걸음"><a href="#몽고-DB-첫걸음" class="headerlink" title="몽고 DB 첫걸음"></a>몽고 DB 첫걸음</h2><p>몽고디비가 제공하는 자바스크립트 쉘 인터페이스로 몽고디비에 접속을 하게 되면</p>
-<blockquote>
-<p>use 데이터베이스명</p>
-</blockquote>
-<p>구문을 사용하면 데이터베이스가 자동으로 생성된다.<br>but <strong>파일이 자동으로 생성은 안된다.</strong> (컬렉션을 생성해야함)</p>
-<blockquote>
-<p>db.stats();</p>
-</blockquote>
-<p>해당 DB 설정 상황 확인</p>
-<blockquote>
-<p>db.createCollection(“컬렉션명”);</p>
-</blockquote>
-<p>컬렉션 생성 명령어</p>
-<blockquote>
-<p>db.help</p>
-</blockquote>
-<p>어떠한 명령어가 있는지 확인하는 명령</p>
-<blockquote>
-<p>db.getCollectionNames();</p>
-</blockquote>
-<p>실제로 컬렉션이 만들어져있는지를 확인하는 메서드</p>
-<h2 id="몽고-DB의-파일들"><a href="#몽고-DB의-파일들" class="headerlink" title="몽고 DB의 파일들"></a>몽고 DB의 파일들</h2><ul>
-<li>mongod.lock : 실제 서버를 실행시키는 프로세스 id 저장</li>
-<li>.ns : 몽고디비는 컬렉션, 인덱스를 생성하게 되면 각각에 네임스페이스 필드를 만들게 되어 있음. 해당 값들을 저장하는 파일</li>
-<li>0 또는 1 : 실제 데이터를 저장하는 파일들 (파일의 크기 0은 64메가, 1은 128메가가 초기 할당된 상태로, 이후 메모리 증가가 필요한 경우 숫자 크기가 늘어난다, 메모리는 2기가가 될 때까지 2배씩 늘어난다.)</li>
-</ul>
-<h2 id="몽고-DB의-컬렉션-종류"><a href="#몽고-DB의-컬렉션-종류" class="headerlink" title="몽고 DB의 컬렉션 종류"></a>몽고 DB의 컬렉션 종류</h2><p><strong>일반적인 용도의 컬렉션</strong></p>
-<p><strong>캡드 컬렉션</strong></p>
-<ul>
-<li>고정된 크기 이상 증가하지 않음</li>
-<li>만약 크기 이상 데이터가 들어갈 경우 가장 오래된 도큐먼트를 덮음</li>
-<li>개별 도큐먼트 삭제가 불가능함</li>
-<li>기본적으로 몽고 디비에서 자신의 데이터를 관리하기 위한 시스템 컬렉션들이 두 개 생성되어 있음 (system.index, system.namespaces)</li>
-<li>복제를 위한 컬렉션</li>
-</ul>
-<h2 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h2><blockquote>
-<p>db.컬렉션명.insert({“컬럼1”:”value1”, “컬럼2”:”value2”})</p>
-</blockquote>
-<blockquote>
-<p>db.컬렉션명.find({“컬럼1”:”value1”}) – find할 조건, select와 비슷</p>
-</blockquote>
-<blockquote>
-<p>{“_id” : ObjectId(“명시적으로 쓰지 않았다면 몽고 디비가 임의로 붙였을 id 값, 이 id는 내부적으로 관리를 위해 생성”), “컬럼1” : “value1”, “컬럼2” : “value2”} – find 결과</p>
-</blockquote>
-<h2 id="update"><a href="#update" class="headerlink" title="update"></a>update</h2><blockquote>
-<p>db.컬렉션명.update({“기존 컬럼명”:”기존 value”}, {“치환할 컬럼명”:”치환할 value”}})</p>
-</blockquote>
-<blockquote>
-<p>db.컬렉션명.update({“기존 컬럼명”:”기존 value”}, {$set{“덮어씌울 컬럼명”:”덮어씌울 value”}})</p>
-</blockquote>
-<p>첫번째 매개변수는 update 대상이 될 것을 찾는 조건이되며 두번째 매개변수는 치환할 데이터 매개변수.<br>관계형 DB와 다르게 몽고 디비는 만들어진 도큐멘트를 치환하는 방식으로 update가 이루어진다.<br>치환의 경우 오버헤드가 발생할 수도 있기 때문에 <strong>$set</strong>이라는 명령어를 사용하여 문서를 치환하지 않고 원하는 부분만 바꿀 수 있다.</p>
-<h2 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h2><blockquote>
-<p>db.컬렉션명.remove({“삭제할 컬럼명”:”삭제할 value”})</p>
-</blockquote>
-<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><ul>
-<li>검색 조건이 참일 때 커서가 반환</li>
-</ul>
-<blockquote>
-<p>db.컬렉션명.find();</p>
-</blockquote>
-<blockquote>
-<p>{“_id” : ObjectId(“-“), “칼럼1” : value1}</p>
-</blockquote>
-<blockquote>
-<p>{“_id” : ObjectId(“-“), “칼럼2” : value2}</p>
-</blockquote>
-<blockquote>
-<p>{“_id” : ObjectId(“-“), “칼럼3” : value3}</p>
-</blockquote>
-<h3 id="findOne-find-limit-1"><a href="#findOne-find-limit-1" class="headerlink" title="findOne (= find.limit(1);)"></a>findOne (= find.limit(1);)</h3><ul>
-<li>검색 조건에 해당하는 문서가 여러 개라도 하나만 반환</li>
-</ul>
-<blockquote>
-<p>{“_id” : ObjectId(“-“), “칼럼1” : value1}</p>
-</blockquote>
-<h2 id="정규표현식-대표적인-지시자"><a href="#정규표현식-대표적인-지시자" class="headerlink" title="정규표현식(대표적인 지시자)"></a>정규표현식(대표적인 지시자)</h2><h4 id="범위-지시자"><a href="#범위-지시자" class="headerlink" title="범위 지시자"></a>범위 지시자</h4><ul>
-<li>$gt</li>
-<li>$gte</li>
-<li>$lt</li>
-<li>$lte<h4 id="집합-지시자"><a href="#집합-지시자" class="headerlink" title="집합 지시자"></a>집합 지시자</h4></li>
-<li>$in</li>
-<li>$all</li>
-<li>$nin<h4 id="부울-지시자"><a href="#부울-지시자" class="headerlink" title="부울 지시자"></a>부울 지시자</h4></li>
-<li>$ne</li>
-<li>$not</li>
-<li>$or</li>
-<li>$exists<h4 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h4></li>
-<li>$mod</li>
-<li>$type</li>
-<li>$where</li>
-</ul>
-<h2 id="group"><a href="#group" class="headerlink" title="group"></a>group</h2><p>개발자가 원하는 함수를 만들어 쓸 수 있으나 결과가 16메가가 넘으면 처리가 되지 않음</p>
-<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map-reduce"></a>map-reduce</h2><p>개발자가 원하는 함수를 만들어 쓸 수 있음</p>
-<ul>
-<li>map : 그룹화, 리듀스 계산을 위한 데이터 전달</li>
-<li>reduce : 실제 연산</li>
-</ul>
-<h2 id="인덱스"><a href="#인덱스" class="headerlink" title="인덱스"></a>인덱스</h2><ul>
-<li>system.namespaces : 색인의 이름 정보 데이터 저장되어있음</li>
-<li>system.indexs : 색인의 상세 정보 데이터 저장되어있음</li>
-<li>ensureIndex : 색인 생성</li>
-<li>dropIndex : 색인 삭제</li>
-</ul>
-<blockquote>
-<p>db.컬렉션명.ensureIndex({“칼럼”:1}) // 1은 임의로 준 값<br>db.system.indexs.find() // 상세 정보 데이터들이 출력됨</p>
-</blockquote>
+        <h1 id="notification-API를-이용한-웹-알림-구현"><a href="#notification-API를-이용한-웹-알림-구현" class="headerlink" title="notification API를 이용한 웹 알림 구현"></a>notification API를 이용한 웹 알림 구현</h1><pre><code>&lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+  &lt;head&gt;
+   &lt;meta charset=&quot;UTF-8&quot;&gt;
+   &lt;title&gt;Insert title here&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+   &lt;button onclick=&quot;notify()&quot;&gt;알림 띄우기&lt;/button&gt;
+   &lt;script type=&quot;text/javascript&quot;&gt;
+     window.onload = function() {
+    if(window.Notification) {
+        Notification.requestPermission();
+    } // 온 로드되면 공지 기능을 허용한다.
+     function notify() {
+        var notification = new Notification(&apos;공지 타이틀&apos;, {
+            icon: &apos;https://camo.githubusercontent.com/7710b43d0476b6f6d4b4b2865e35c108f69991f3/68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67&apos;,
+            body: &apos;github 블로그로 이동&apos;
+        });
+
+        notification.onclick = function() {
+            window.open(&apos;http://eunajjing.github.io&apos;);
+        };
+        // 알림 메시지 클릭하면 해당 페이지 새 창이 뜬다.
+      }
+   &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>원래 커뮤니티 사이트에서 내가 쓴 게시물에 댓글 달면 댓글 달렸다고 알리는 기능? 구현하고 싶어서 검색하다 발견한 소스. 간단하게 잘라서 구현해봤다.</p>
+<p>내가 원한 건 이게 아닌데…</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>, <a class="article-category-link" href="/categories/개발공부/몽고DB/">몽고DB</a>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
 
       
       
@@ -284,7 +184,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/117/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/116/">116</a><a class="page-number" href="/page/117/">117</a><span class="page-number current">118</span><a class="page-number" href="/page/119/">119</a><a class="page-number" href="/page/120/">120</a><span class="space">&hellip;</span><a class="page-number" href="/page/126/">126</a><a class="extend next" rel="next" href="/page/119/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/117/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/116/">116</a><a class="page-number" href="/page/117/">117</a><span class="page-number current">118</span><a class="page-number" href="/page/119/">119</a><a class="page-number" href="/page/120/">120</a><span class="space">&hellip;</span><a class="page-number" href="/page/127/">127</a><a class="extend next" rel="next" href="/page/119/">Next</a>
   </nav>
 
 </section>
@@ -337,7 +237,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">98</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -378,6 +278,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/12/30/functional-thinking05/">함수형 사고, 진화하라</a></h6>
+              <span>12월 30, 2019</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -439,18 +351,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/09/06/functional-thinking03/">함수형 사고, 양도하라</a></h6>
-              <span>9월 6, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -461,7 +361,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
