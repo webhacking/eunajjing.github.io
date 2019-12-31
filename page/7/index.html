@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-functional-thinking04" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-naver-show-room" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/06/functional-thinking04/">함수형 사고, 열심히보다는 현명하게</a>
+      <a class="article-title" href="/2019/09/06/naver-show-room/">쇼룸, 쇼핑 개발자를 부탁해</a>
     </h1>
   
 
@@ -120,81 +120,184 @@
     
     <div class="article-meta">
       
-	<a href="/2019/09/06/functional-thinking04/" class="article-date">
-	  <time datetime="2019-09-06T06:37:18.000Z" itemprop="datePublished">9월 6, 2019</time>
+	<a href="/2019/09/06/naver-show-room/" class="article-date">
+	  <time datetime="2019-09-06T09:29:18.000Z" itemprop="datePublished">9월 6, 2019</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/책/">책</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
  
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="함수형-사고-열심히보다는-현명하게"><a href="#함수형-사고-열심히보다는-현명하게" class="headerlink" title="함수형 사고, 열심히보다는 현명하게"></a>함수형 사고, 열심히보다는 현명하게</h1><blockquote>
-<p>해당 게시글은 <a href="">Functional Thinking 함수형 사고</a> 를 읽고 공부한 내용을 정리한 것입니다.</p>
-<p>저작권 문제가 발생할 시 해당 글은 삭제됩니다 :&lt;</p>
-</blockquote>
-<blockquote>
-<p>이전 글은 <a href="https://eunajjing.github.io/2019/08/28/functional-thinking03/">함수형 사고, 양도하라</a>에서 보실 수 있습니다.</p>
-</blockquote>
-<h2 id="메모이제이션"><a href="#메모이제이션" class="headerlink" title="메모이제이션"></a>메모이제이션</h2><ul>
-<li>연속해서 사용되는 연산 값을 함수 레벨에서 캐시하는 것을 지칭</li>
-<li>주어진 매개변수를 키 값으로 하는 캐시에 저장<ul>
-<li>이후 같은 매개변수가 호출되면, 연산을 수행하지 않고 캐시의 값 리턴</li>
+        <h1 id="쇼룸-쇼핑-개발자를-부탁해"><a href="#쇼룸-쇼핑-개발자를-부탁해" class="headerlink" title="쇼룸, 쇼핑 개발자를 부탁해"></a><a href="https://festa.io/my/tickets/event/440" target="_blank" rel="noopener">쇼룸, 쇼핑 개발자를 부탁해</a></h1><h2 id="계기"><a href="#계기" class="headerlink" title="계기"></a>계기</h2><h2 id="세션-요약"><a href="#세션-요약" class="headerlink" title="세션 요약"></a>세션 요약</h2><h3 id="쇼핑검색-Java-JSP에서-Node-js-React-전환기"><a href="#쇼핑검색-Java-JSP에서-Node-js-React-전환기" class="headerlink" title="쇼핑검색 Java/JSP에서 Node.js/React 전환기"></a>쇼핑검색 Java/JSP에서 Node.js/React 전환기</h3><ul>
+<li>김득중 님 발표</li>
 </ul>
-</li>
-<li>시간이 많이 걸리는 연산을 반복적으로 사용해야만 할 때 유용하다</li>
+<h4 id="하는-일"><a href="#하는-일" class="headerlink" title="하는 일"></a>하는 일</h4><ul>
+<li>통합검색 및 쇼핑판 컨텐츠 노출</li>
+<li>사내 타 서비스 제공</li>
+<li>외부 제공</li>
 </ul>
-<h3 id="캐싱"><a href="#캐싱" class="headerlink" title="캐싱"></a>캐싱</h3><ul>
-<li>함수가 순수해야 한다<ul>
-<li>부수효과가 없고</li>
-<li>가변 클래스 필드를 참고하지 않고</li>
-<li>리턴 값 외에는 아무 값도 쓰지 않아야 하고</li>
-<li>주어진 매개변수에만 의존하는 것</li>
+<h4 id="왜-바꿨나요"><a href="#왜-바꿨나요" class="headerlink" title="왜 바꿨나요?"></a>왜 바꿨나요?</h4><ul>
+<li><code>jsp</code>가 요구사항 반영이 어려웠다<ul>
+<li>더이상의 <code>DOM</code> 조작은 싫었다</li>
+<li>타 팀의 영향으로 시작</li>
 </ul>
 </li>
 </ul>
-<h4 id="내부-캐싱"><a href="#내부-캐싱" class="headerlink" title="내부 캐싱"></a>내부 캐싱</h4><p>비효율적</p>
-<h4 id="외부-캐싱"><a href="#외부-캐싱" class="headerlink" title="외부 캐싱"></a>외부 캐싱</h4><p>내부 캐싱과 비교해 성능이 향상되나, 코드의 복잡도가 증가하며 유지보수성이 떨어진다</p>
-<blockquote>
-<p>그래서 등장한 메모이제이션</p>
-<p><strong>메모이제이션은 메타함수를 적용한 것</strong></p>
+<h4 id="그래서"><a href="#그래서" class="headerlink" title="그래서"></a>그래서</h4><h5 id="공부"><a href="#공부" class="headerlink" title="공부"></a>공부</h5><ul>
+<li>es6 배우기</li>
+<li>react 배우기</li>
+<li>typescript 배우기<ul>
+<li>데이터 다루기가 편리</li>
+</ul>
+</li>
+</ul>
+<h5 id="다른-사이트-참고"><a href="#다른-사이트-참고" class="headerlink" title="다른 사이트 참고"></a>다른 사이트 참고</h5><ul>
+<li>사용 시나리오 작성<ul>
+<li>클라이언트 / 서버사이드 / 공통 로직은 어디에 위치해야 하는가?</li>
+</ul>
+</li>
+<li>컴포넌트 분리</li>
+<li><code>redux</code> <code>store</code> 설계</li>
+</ul>
+<h5 id="개발"><a href="#개발" class="headerlink" title="개발"></a>개발</h5><ul>
+<li><p>성능 문제 발생</p>
 <ul>
-<li>리턴 값에 적용하는 게 아니라, 함수에 무언가를 적용<ul>
-<li>특정 함수를 메모제이션한 뒤, 새로운 변수에 할당하는 식</li>
+<li>서버<ul>
+<li>서버사이드 <code>XML</code> 파서의 문제<ul>
+<li><code>easysax</code>를 사용한 유틸리티 제작</li>
+</ul>
+</li>
+<li>서버에서 클라이언트에 내려지는 데이터 사이즈가 기존보다 3~4배<ul>
+<li><code>store</code> 데이터 최소화</li>
+<li><code>css</code> 단축</li>
 </ul>
 </li>
 </ul>
-</blockquote>
-<h2 id="게으름"><a href="#게으름" class="headerlink" title="게으름"></a>게으름</h2><ul>
-<li>필요할 때까지 판단을 미룸</li>
-<li>게으른 컬렉션을 사용하면 무한 수열의 모델링이 가능</li>
-<li>게으름을 사용하면 저장 사이즈가 작아짐</li>
-<li>런타임에 조금 더 효율적인 코드 작성 가능</li>
+</li>
+<li>클라이언트<ul>
+<li>불필요한 리렌더링 방지<ul>
+<li>불필요한 스토어 데이터를 <code>connect</code>하고 있지 않은지</li>
 </ul>
-<blockquote>
-<p>방법은 두 가지</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>apm</code></p>
 <ul>
-<li>게으른 판단을 하거나</li>
-<li>게으른 뷰를 만들거나</li>
+<li><code>es-apm</code></li>
 </ul>
-</blockquote>
-<blockquote>
-<p>다음 글은 <a href="https://eunajjing.github.io/2019/12/30/functional-thinking05/">함수형 사고, 진화하라</a>에서 보실 수 있습니다.</p>
-</blockquote>
-
+</li>
+</ul>
+<h4 id="깨알-팁"><a href="#깨알-팁" class="headerlink" title="깨알 팁"></a>깨알 팁</h4><ul>
+<li>민감한 코드가 클라이언트 번들에 들어가지 않도록 주의</li>
+<li>민감한 데이터가 스토어에 들억지 않도록 주의</li>
+<li>가능한 <code>store</code> 줄이기</li>
+<li><p><code>keep-ailve</code> 활성화</p>
+</li>
+<li><p><code>pr</code>로 시작하는 개발문화 바꾸기</p>
+</li>
+</ul>
+<p>node.js, typescript, react</p>
+<h3 id="브라우저-날개를-달자"><a href="#브라우저-날개를-달자" class="headerlink" title="브라우저 날개를 달자"></a>브라우저 날개를 달자</h3><ul>
+<li>이병승 님 발표</li>
+</ul>
+<h4 id="브라우저를-가볍게-만드려면"><a href="#브라우저를-가볍게-만드려면" class="headerlink" title="브라우저를 가볍게 만드려면?"></a>브라우저를 가볍게 만드려면?</h4><ul>
+<li>resource size</li>
+<li>loop count</li>
+<li>logic</li>
+</ul>
+<h5 id="네트워크-적으로-신경-써야-하는-것"><a href="#네트워크-적으로-신경-써야-하는-것" class="headerlink" title="네트워크 적으로 신경 써야 하는 것"></a>네트워크 적으로 신경 써야 하는 것</h5><ul>
+<li>dns</li>
+<li><strong>cdn</strong></li>
+<li>idc/switch</li>
+<li><strong>http protocol</strong><ul>
+<li>request header</li>
+<li>cookie</li>
+</ul>
+</li>
+</ul>
+<h5 id="서버에서-신경-써야-하는-것"><a href="#서버에서-신경-써야-하는-것" class="headerlink" title="서버에서 신경 써야 하는 것"></a>서버에서 신경 써야 하는 것</h5><ul>
+<li>resource(io / cpu / memory)</li>
+<li><strong>cache</strong></li>
+<li><strong>logic</strong></li>
+<li><strong>non-blocking</strong></li>
+<li><strong>비동기 처리</strong></li>
+</ul>
+<h5 id="DB에서-신경-써야-하는-것"><a href="#DB에서-신경-써야-하는-것" class="headerlink" title="DB에서 신경 써야 하는 것"></a>DB에서 신경 써야 하는 것</h5><ul>
+<li>lock, wait</li>
+<li>internal process mechanism</li>
+<li><strong>SQL Tuning</strong></li>
+<li><strong>Batch</strong></li>
+</ul>
+<h5 id="브라우저"><a href="#브라우저" class="headerlink" title="브라우저"></a>브라우저</h5><ul>
+<li><p>비동기 처리</p>
+</li>
+<li><p>non-blocking</p>
+</li>
+<li>network</li>
+<li>resource (img, javascript)<ul>
+<li>svg : gzip</li>
+<li>png, jpg : webpack</li>
+</ul>
+</li>
+<li>connetion count</li>
+<li>rendering</li>
+</ul>
+<ul>
+<li>conclusion</li>
+<li>로드 시간에 집중할 것</li>
+</ul>
+<h3 id="UI-모듈화로-워라밸-지키기"><a href="#UI-모듈화로-워라밸-지키기" class="headerlink" title="UI 모듈화로 워라밸 지키기"></a>UI 모듈화로 워라밸 지키기</h3><ul>
+<li>안정민 님 발표</li>
+</ul>
+<h4 id="공통-컴포넌트-미리-정의"><a href="#공통-컴포넌트-미리-정의" class="headerlink" title="공통 컴포넌트 미리 정의"></a>공통 컴포넌트 미리 정의</h4><h5 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h5><ul>
+<li>리소스 간단</li>
+<li>유지보수 편리</li>
+</ul>
+<h5 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h5><ul>
+<li>영향 범위 파악이 어려움<ul>
+<li><code>storybook</code> 활용</li>
+</ul>
+</li>
+</ul>
+<h5 id="종류"><a href="#종류" class="headerlink" title="종류"></a>종류</h5><h6 id="마크업-같음-amp-amp-stateful-로직-같음"><a href="#마크업-같음-amp-amp-stateful-로직-같음" class="headerlink" title="마크업 같음 &amp;&amp; stateful 로직 같음"></a>마크업 같음 &amp;&amp; stateful 로직 같음</h6><p>컴포넌트 재활용이 간단</p>
+<h6 id="마크업-다름-stateful-로직-같음"><a href="#마크업-다름-stateful-로직-같음" class="headerlink" title="마크업 다름, stateful 로직 같음"></a>마크업 다름, stateful 로직 같음</h6><ul>
+<li>로직 공통화 필요</li>
+<li>커스텀 훅 활용</li>
+</ul>
+<h6 id="마크업-같음-stateful-로직-다름"><a href="#마크업-같음-stateful-로직-다름" class="headerlink" title="마크업 같음, stateful 로직 다름"></a>마크업 같음, stateful 로직 다름</h6><ul>
+<li>래퍼 컴포넌트 활용<ul>
+<li><code>props</code>의 전달의 전달 문제 발생<ul>
+<li>코드 가독성이 떨어짐</li>
+</ul>
+</li>
+<li><code>context</code> 적용<ul>
+<li>전역으로 관리할 수 있는 <code>state</code>를 넣는다</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="마크업-다름-stateful-로직-다름"><a href="#마크업-다름-stateful-로직-다름" class="headerlink" title="마크업 다름, stateful 로직 다름"></a>마크업 다름, stateful 로직 다름</h6><p>공유할 수 없다</p>
+<h3 id="IaC를-어쭙잖게-맛본-썰"><a href="#IaC를-어쭙잖게-맛본-썰" class="headerlink" title="IaC를 어쭙잖게 맛본 썰"></a><code>IaC</code>를 어쭙잖게 맛본 썰</h3><ul>
+<li>최승호 님 발표</li>
+</ul>
+<h3 id="k8s위에-Node-js-앱-하나를-올리면서-고민한-것들"><a href="#k8s위에-Node-js-앱-하나를-올리면서-고민한-것들" class="headerlink" title="k8s위에 Node.js 앱 하나를 올리면서 고민한 것들"></a><code>k8s</code>위에 <code>Node.js</code> 앱 하나를 올리면서 고민한 것들</h3><ul>
+<li>정형식 님 발표</li>
+</ul>
+<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2>
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/책/">책</a>
+    <a class="article-category-link" href="/categories/일상/">일상</a>
 
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/함수형-사고/">함수형 사고</a></li></ul>
-
       
     </footer>
     <hr class="entry-footer-hr">
@@ -210,7 +313,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/8/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/6/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/130/">130</a><a class="extend next" rel="next" href="/page/8/">Next</a>
   </nav>
 
 </section>
@@ -263,7 +366,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">100</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/">개발공부</a><span class="category-list-count">100</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/GraphQL/">GraphQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/React/">React</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/nodeJS/">nodeJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/뉴딜과정/">뉴딜과정</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/몽고DB/">몽고DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/">부스트코스</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/부스트코스/웹-프로그래밍/">웹 프로그래밍</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/안드로이드/">안드로이드</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/알고리즘-난항일지/">알고리즘 난항일지</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/우아한테크러닝-React-Typescript/">우아한테크러닝(React+Typescript)</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/개발공부/정보처리기사/">정보처리기사</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/일상/">일상</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/책/">책</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -304,6 +407,18 @@
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/01/01/new-programmers-manual01/">신입 개발자 생존의 기술 - 전문적인 프로그래밍</a></h6>
+              <span>1월 1, 2020</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -365,18 +480,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/09/06/naver-show-room/">쇼룸, 쇼핑 개발자를 부탁해</a></h6>
-              <span>9월 6, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -387,7 +490,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">1월 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">9월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">8월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">7월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -416,7 +519,7 @@
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2019 ERecord All Rights Reserved.
+	      &copy; 2020 ERecord All Rights Reserved.
         
       </div>
  </div>
