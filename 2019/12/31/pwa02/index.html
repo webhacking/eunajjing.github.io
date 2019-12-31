@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Hands on! `PWA`+`Azure` workshop | ERecord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Hands on! PWA+Azure workshopPWA해당 세션은 라이브코딩으로 진행되었으므로, 하나하나 친 코드에 대해 복기해보자 합니다. 특정 모듈의 설치이번 PWA는 React를 가지고 실습 했습니다. CRA를 이용하지 않고 한땀한땀 쳐내려갔기 때문에, 일단 React 관련 모듈부터 설치해줬습니다. 1$ yarn add react react-dom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hands on! `PWA`+`Azure` workshop">
+<meta property="og:url" content="http://eunajjing.github.io/2019/12/31/pwa02/index.html">
+<meta property="og:site_name" content="ERecord">
+<meta property="og:description" content="Hands on! PWA+Azure workshopPWA해당 세션은 라이브코딩으로 진행되었으므로, 하나하나 친 코드에 대해 복기해보자 합니다. 특정 모듈의 설치이번 PWA는 React를 가지고 실습 했습니다. CRA를 이용하지 않고 한땀한땀 쳐내려갔기 때문에, 일단 React 관련 모듈부터 설치해줬습니다. 1$ yarn add react react-dom">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-12-31T10:01:04.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hands on! `PWA`+`Azure` workshop">
+<meta name="twitter:description" content="Hands on! PWA+Azure workshopPWA해당 세션은 라이브코딩으로 진행되었으므로, 하나하나 친 코드에 대해 복기해보자 합니다. 특정 모듈의 설치이번 PWA는 React를 가지고 실습 했습니다. CRA를 이용하지 않고 한땀한땀 쳐내려갔기 때문에, 일단 React 관련 모듈부터 설치해줬습니다. 1$ yarn add react react-dom">
+  
+    <link rel="alternate" href="/atom.xml" title="ERecord" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ERecord" rel="home"> ERecord </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">일상 및 개발 공부 기록용 블로그</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1">About</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87">bookmark</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-pwa02" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Hands on! `PWA`+`Azure` workshop
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/12/31/pwa02/" class="article-date">
+	  <time datetime="2019-12-31T10:00:18.000Z" itemprop="datePublished">12월 31, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+ 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hands-on-PWA-Azure-workshop"><a href="#Hands-on-PWA-Azure-workshop" class="headerlink" title="Hands on! PWA+Azure workshop"></a><a href="https://festa.io/events/786" target="_blank" rel="noopener">Hands on! <code>PWA</code>+<code>Azure</code> workshop</a></h1><h2 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h2><p>해당 세션은 라이브코딩으로 진행되었으므로, 하나하나 친 코드에 대해 복기해보자 합니다.</p>
+<h3 id="특정-모듈의-설치"><a href="#특정-모듈의-설치" class="headerlink" title="특정 모듈의 설치"></a>특정 모듈의 설치</h3><p>이번 <code>PWA</code>는 <code>React</code>를 가지고 실습 했습니다. <code>CRA</code>를 이용하지 않고 한땀한땀 쳐내려갔기 때문에, 일단 <code>React</code> 관련 모듈부터 설치해줬습니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> yarn add react react-dom</span><br></pre></td></tr></table></figure>
+<p>이후 <code>Webpack</code>과 <code>babel</code> 관련 모듈을 설치합니다. 해당 모듈은 개발 시에만 필요한 것이므로, <code>devDependencies</code>로 둡니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> yarn add @babel/preset-react @babel/preset-env @babel/core webpack webpack-cli webpack-dev-server --dev</span><br></pre></td></tr></table></figure>
+<h3 id="모듈의-설정"><a href="#모듈의-설정" class="headerlink" title="모듈의 설정"></a>모듈의 설정</h3><h4 id="babellrc"><a href="#babellrc" class="headerlink" title=".babellrc"></a><code>.babellrc</code></h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [</span><br><span class="line">    <span class="string">"@babel/env"</span>,</span><br><span class="line">    <span class="string">"@babel/react"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a><code>webpack.config.js</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="comment">// 로컬 모듈의 path를 가져옵니다</span></span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line"><span class="comment">// 웹팩으로 변환한 파일을 public이란 폴더 안에 넣어주기 위한 모듈</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">"./src/index.js"</span>,</span><br><span class="line">  <span class="comment">// 웹팩의 빌드 타겟</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"/public"</span>),</span><br><span class="line">    <span class="comment">// 퍼블릭이란 폴더 안에 아웃풋 파일을 넣을 것임을 선언</span></span><br><span class="line">    filename: <span class="string">"index.bundle.js"</span></span><br><span class="line">    <span class="comment">// 아웃풋 파일의 이름 설정</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="comment">// js 파일 모두를 찾는 정규식</span></span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="comment">// 노드 모듈의</span></span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"babel-loader"</span></span><br><span class="line">          <span class="comment">// 해당 모듈을 사용할 것임을 명시</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">"./src/index.html"</span></span><br><span class="line">      <span class="comment">// index.html을 퍼블릭 폴더 안으로 넣어줄 것을 기재</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><p><code>src</code> 폴더와 <code>public</code> 폴더 두 곳 모두 <code>index.html</code> 을 가지고 있어야 한다.</p>
+<h4 id="src-index-html"><a href="#src-index-html" class="headerlink" title="src/index.html"></a><code>src/index.html</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"ko"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewpoert"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>React Memo App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>해당 <code>html</code>은 웹팩이 빌드하기 전 파일</p>
+<h4 id="public-index-html"><a href="#public-index-html" class="headerlink" title="public/index.html"></a><code>public/index.html</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"ko"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewpoert"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>React Memo App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"index.bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>src/index.html</code>와 거의 유사하나, <code>index.bundle.js</code>를 스크립트 단에 기재해줘야 한다는 점에 차이가 있다. 해당 파일은 <code>webpack.config.js</code>에서 설정한 것이며, 개발자가 직접 만들어주지 않아도 된다.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/개발공부/">개발공부</a>
+
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/30/functional-thinking05/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">함수형 사고, 진화하라</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hands-on-PWA-Azure-workshop"><span class="nav-number">1.</span> <span class="nav-text">Hands on! PWA+Azure workshop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA"><span class="nav-number">1.1.</span> <span class="nav-text">PWA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#특정-모듈의-설치"><span class="nav-number">1.1.1.</span> <span class="nav-text">특정 모듈의 설치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#모듈의-설정"><span class="nav-number">1.1.2.</span> <span class="nav-text">모듈의 설정</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#babellrc"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">.babellrc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-config-js"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">webpack.config.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#특징"><span class="nav-number">1.1.3.</span> <span class="nav-text">특징</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#src-index-html"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">src/index.html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#public-index-html"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">public/index.html</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://www.notion.so/eunako-attr-every_day-study_hard-ebb1a09d24734280aba94018d13df0a1" class="mobile-nav-link">About</a>
+  
+    <a href="https://www.notion.so/bookmarks-3b11361b4a07466f9fa0236e5f762c87" class="mobile-nav-link">Bookmark</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 ERecord All Rights Reserved.
+        
+      </div>
+ </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
